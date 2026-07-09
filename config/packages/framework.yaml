@@ -1,6 +1,5 @@
 framework:
   secret: '%env(APP_SECRET)%'
-  timezone: 'Europe/Prague'
   test: true
 
   # Session Configuration
