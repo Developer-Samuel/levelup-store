@@ -47,7 +47,7 @@
     "eslint-plugin-prettier": "^5.5.0",
     "eslint-plugin-tsdoc": "^0.5.2",
     "globals": "^17.0.0",
-    "jsdom": "^27.4.0",
+    "jsdom": "^29.1.1",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.7.4",
     "sloc": "^0.3.2",
