@@ -1,0 +1,77 @@
+flowchart TD
+
+    %% Class Styles
+    classDef start fill:#000, color:#fff, stroke:#000;
+    classDef decision fill:#0637c0, color:#fff, stroke:#000, stroke-width:2px;
+    classDef success fill:#00a676, color:#fff, stroke:#000, stroke-width:2px;
+    classDef error fill:#e90d0d, color:#fff, stroke:#000, stroke-width:2px;
+    classDef ean_active fill:#00a676, color:#fff, stroke:#000, stroke-width:2px;
+    classDef ean_reserved fill:#f8a51c, color:#000, stroke:#000, stroke-width:2px;
+    classDef ean_sold fill:#e90d0d, color:#fff, stroke:#000, stroke-width:2px;
+    classDef ean_refunded fill:#8e44ad, color:#fff, stroke:#000, stroke-width:2px;
+
+    Start(["Start Inventory Check"])
+
+    %% Data Hierarchy Retrieval
+    subgraph Data_Lookup [Data Retrieval Layer]
+        Product["Product"]
+        ProductVariant["ProductVariant"]
+        ProductVariantStock["ProductVariantStock"]
+        ProductVariantEAN["ProductVariantEAN"]
+    end
+
+    %% Logic Flow
+    StockCheck{"quantity_available > 0?"}
+
+    %% Status Assignment
+    InStock["Set Status: IN_STOCK"]
+    OutOfStock["Set Status: OUT_OF_STOCK"]
+
+    %% EAN Level Logic
+    EANStatusCheck{"Evaluate EAN Status"}
+
+    EANActive["ACTIVE"]
+    EANReserved["RESERVED"]
+    EANSold["SOLD"]
+    EANRefunded["REFUNDED"]
+
+    End(["End Inventory Workflow"])
+
+    %% Relationships
+    Start --> Product
+    Product --> ProductVariant
+    ProductVariant --> ProductVariantStock
+    ProductVariantStock --> StockCheck
+
+    %% Stock logic
+    StockCheck -- "Yes" --> InStock
+    StockCheck -- "No" --> OutOfStock
+
+    %% OUT_OF_STOCK terminates here - no EAN check needed
+    OutOfStock --> End
+
+    %% Only IN_STOCK proceeds to EAN evaluation
+    InStock --> ProductVariantEAN
+    ProductVariantEAN --> EANStatusCheck
+
+    %% EAN branching
+    EANStatusCheck -- "active" --> EANActive
+    EANStatusCheck -- "reserved" --> EANReserved
+    EANStatusCheck -- "sold" --> EANSold
+    EANStatusCheck -- "refunded" --> EANRefunded
+
+    %% Finalize
+    EANActive --> End
+    EANReserved --> End
+    EANSold --> End
+    EANRefunded --> End
+
+    %% Classes
+    class Start,End start;
+    class StockCheck,EANStatusCheck decision;
+    class InStock success;
+    class OutOfStock error;
+    class EANActive ean_active;
+    class EANReserved ean_reserved;
+    class EANSold ean_sold;
+    class EANRefunded ean_refunded;

@@ -1,0 +1,62 @@
+graph TD
+    %% Subgraph styles
+    style Quality fill:#eceff1, stroke:#000, stroke-width:2px;
+    style Metrics fill:#eceff1, stroke:#000, stroke-width:2px;
+    style Refactoring fill:#eceff1, stroke:#000, stroke-width:2px;
+    style Formatting fill:#eceff1, stroke:#000, stroke-width:2px;
+    style Linting fill:#eceff1, stroke:#000, stroke-width:2px;
+
+    %% Class Styles
+    classDef tools fill:#000, color:#fff;
+    classDef quality fill:#ff5c44, color:#fff, stroke:#000, stroke-width:2px;
+    classDef metrics fill:#00a676, color:#fff, stroke:#000, stroke-width:2px;
+    classDef refactor fill:#f8ff59, color:#000, stroke:#000, stroke-width:2px;
+    classDef formatting fill:#ffa51c, color:#000, stroke:#000, stroke-width:2px;
+    classDef linting fill:#8e44ad, color:#fff, stroke:#000, stroke-width:2px;
+
+    %% Root
+    Backend[🐘 Backend - composer]:::tools
+
+    %% Quality
+    subgraph Quality["🛡️ Quality"]
+        Deptrac[Deptrac]
+        PHPStan[PHPStan]
+        PHPMD[PHP Mess Detector]
+    end
+
+    %% Metrics / Statistics
+    subgraph Metrics["📊 Metrics / Stats"]
+        PHPCPD[PHPCPD]
+        PHPLoc[PHPLoc]
+        PHPMetrics[PHP-Metrics]
+        PDepend[PDepend]
+    end
+
+    %% Refactoring
+    subgraph Refactoring["🛠️ Refactoring"]
+        Rector[Rector]
+    end
+
+    %% Formatting
+    subgraph Formatting["🎨 Formatting"]
+        PHPCS[PHP CS Fixer]
+    end
+
+    %% Linting
+    subgraph Linting["🔍 Linting"]
+        TwigLint[Twig Lint]
+    end
+
+    %% Classes
+    class Deptrac,PHPStan,PHPMD quality;
+    class PHPCPD,PHPLoc,PHPMetrics,PDepend metrics;
+    class Rector refactor;
+    class PHPCS formatting;
+    class TwigLint linting;
+
+    %% Connections
+    Backend --> Quality
+    Backend --> Metrics
+    Backend --> Refactoring
+    Backend --> Formatting
+    Backend --> Linting

@@ -1,0 +1,373 @@
+classDiagram
+    %% Entities: Common
+    class Category {
+        id
+        name
+        created_at
+    }
+
+    class Brand {
+        id
+        name
+        created_at
+        updated_at
+    }
+
+    class Country {
+        id
+        code
+        name
+    }
+
+    class Banner {
+        id
+        position
+        name
+        image
+        url
+        type
+        is_active
+        created_at
+        updated_at
+    }
+
+    %% Entities: User
+    class User {
+        id
+        email
+        first_name
+        last_name
+        password
+        role
+        use_shipping
+        email_verified_at
+        created_at
+        updated_at
+    }
+
+    class UserBilling {
+        id
+        user_id
+        country_id
+        street
+        postal_code
+        city
+        created_at
+        updated_at
+    }
+
+    class UserShipping {
+        id
+        user_id
+        country_id
+        street
+        postal_code
+        city
+        created_at
+        updated_at
+    }
+
+    class UserVerificationToken {
+        id
+        user_id
+        token
+        expires_at
+        created_at
+    }
+
+    %% Entities: Type
+    class Type {
+        id
+        category_id
+        name
+        created_at
+    }
+
+    %% Entities: Subtype
+    class Subtype {
+        id
+        category_id
+        type_id
+        name
+        created_at
+    }
+
+    %% Entities: Product
+    class Product {
+        id
+        category_id
+        type_id
+        brand_id
+        catalog_code
+        name
+        created_at
+        updated_at
+    }
+
+    class ProductSubtype {
+        id
+        product_id
+        subtype_id
+        created_at
+        updated_at
+    }
+
+    class ProductVariant {
+        id
+        product_id
+        sku
+        name
+        price
+        description
+        url
+        status
+        created_at
+        updated_at
+    }
+
+    class ProductVariantStock {
+        id
+        variant_id
+        quantity_available
+        quantity_reserved
+        quantity_refunded
+        status
+        created_at
+        updated_at
+    }
+
+    class ProductVariantEan {
+        id
+        variant_id
+        code
+        status
+        created_at
+        updated_at
+    }
+
+    class ProductVariantDiscount {
+        id
+        variant_id
+        price
+        created_at
+        updated_at
+    }
+
+    class ProductVariantDescription {
+        id
+        variant_id
+        position
+        title
+        body
+        created_at
+        updated_at
+    }
+
+    class ProductVariantImage {
+        id
+        variant_id
+        position
+        path
+        created_at
+        updated_at
+    }
+
+    class ProductVariantRecommended {
+        id
+        variant_id
+        position
+        created_at
+        updated_at
+    }
+
+    %% Entities: Cart
+    class Cart {
+        id
+        user_id
+        created_at
+        updated_at
+    }
+
+    class CartItem {
+        id
+        cart_id
+        variant_id
+        created_at
+    }
+
+    %% Entities: Order
+    class Order {
+        id
+        user_id
+        code
+        price
+        payment
+        status
+        send_shipping
+        created_at
+        updated_at
+    }
+
+    class OrderPayment {
+        id
+        order_id
+        transaction_unique
+        price
+        created_at
+    }
+
+    class OrderPersonal {
+        id
+        order_id
+        email
+        first_name
+        last_name
+    }
+
+    class OrderBilling {
+        id
+        order_id
+        country_id
+        street
+        postal_code
+        city
+    }
+
+    class OrderShipping {
+        id
+        order_id
+        country_id
+        street
+        postal_code
+        city
+    }
+
+    class OrderItem {
+        id
+        order_id
+        variant_id
+        ean_id
+        price
+    }
+
+    %% Entities: Auth Tokens
+    class RefreshToken {
+        id
+        user
+        token
+        expiresAt
+        createdAt
+    }
+
+    %% Entities: Footer
+    class FooterLink {
+        id
+        position
+        value
+        image
+        url
+        group
+        target
+        createdAt
+        updatedAt
+    }
+
+    %% Entities: Password
+    class PasswordResetToken {
+        id
+        user_id
+        token
+        expires_at
+        created_at
+    }
+
+    %% Entities: Review
+    class Review {
+        id
+        user_id
+        variant_id
+        value
+        body
+        type
+        created_at
+        updated_at
+    }
+
+    class ReviewDetail {
+        id
+        review_id
+        body
+        type
+    }
+
+    class ReviewRating {
+        id
+        review_id
+        user_id
+        type
+        created_at
+    }
+
+    %% Entities: Wishlist
+    class Wishlist {
+        id
+        user_id
+        variant_id
+        created_at
+    }
+
+    %% Relations: Core
+    Category --> Type
+    Category --> Subtype
+    Category --> Product
+    Type --> Subtype
+    Type --> Product
+    Subtype --> ProductSubtype
+    Brand --> Product
+    Country --> UserBilling
+    Country --> UserShipping
+    Country --> OrderBilling
+    Country --> OrderShipping
+
+    %% Relations: Auth Tokens
+    User --> RefreshToken
+
+    %% Relations: User
+    User --> UserBilling
+    User --> UserShipping
+    User --> UserVerificationToken
+    User --> Order
+    User --> PasswordResetToken
+    User --> Review
+    User --> ReviewRating
+    User --> Wishlist
+    User --> Cart
+
+    %% Relations: Product
+    Product --> ProductSubtype
+    Product --> ProductVariant
+    ProductVariant --> ProductVariantStock
+    ProductVariant --> ProductVariantEan
+    ProductVariant --> ProductVariantDiscount
+    ProductVariant --> ProductVariantDescription
+    ProductVariant --> ProductVariantImage
+    ProductVariant --> ProductVariantRecommended
+    ProductVariant --> CartItem
+    ProductVariant --> OrderItem
+    ProductVariant --> Review
+    ProductVariant --> Wishlist
+    ProductVariantEan --> OrderItem
+
+    %% Relations: Cart
+    Cart --> CartItem
+
+    %% Relations: Order
+    Order --> OrderPayment
+    Order --> OrderPersonal
+    Order --> OrderBilling
+    Order --> OrderShipping
+    Order --> OrderItem
+
+    %% Relations: Review
+    Review --> ReviewDetail
+    Review --> ReviewRating

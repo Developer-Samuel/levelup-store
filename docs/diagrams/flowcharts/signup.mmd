@@ -1,0 +1,44 @@
+flowchart TD
+
+    %% Class Styles
+    classDef start fill:#000, color:#fff, stroke:#000;
+    classDef decision fill:#0637c0, color:#fff, stroke:#000, stroke-width:2px;
+    classDef success fill:#00a676, color:#fff, stroke:#000, stroke-width:2px;
+    classDef error fill:#e90d0d, color:#fff, stroke:#000, stroke-width:2px;
+
+    Start(["Start Signup Process"])
+    Authenticated{"User Authenticated?"}
+    SignupPage["Show Signup Page"]
+    FillSignup["User fills all required fields"]
+    AcceptConditions["User accepts Terms & Conditions"]
+    ValidateSignup{"All inputs valid?"}
+    RateLimit{"Rate Limit Exceeded?"}
+    CreateUser["Create User Account"]
+    SendVerificationEmail["Send Verification Email"]
+    AutoLogin["Automatically log in user"]
+    EmailVerified{"Email Verified?"}
+    MustVerifyPage["Show 'Must Verify Email' Page"]
+    RedirectHome(["Redirect to Home"])
+    End(["End Signup Process"])
+    Cancel(["429 Rate Limit / Cancel"])
+
+    %% Flow
+    Start --> Authenticated
+    Authenticated -- Yes --> RedirectHome
+    Authenticated -- No --> SignupPage --> FillSignup --> AcceptConditions --> ValidateSignup
+
+    %% Rate limiting check
+    ValidateSignup -- No --> FillSignup
+    ValidateSignup -- Yes --> RateLimit
+    RateLimit -- Yes --> Cancel
+    RateLimit -- No --> CreateUser --> SendVerificationEmail --> AutoLogin --> EmailVerified
+
+    %% Email verification branch
+    EmailVerified -- Yes --> RedirectHome
+    EmailVerified -- No --> MustVerifyPage --> End
+
+    %% Classes
+    class Start,End start;
+    class Authenticated,ValidateSignup,RateLimit,EmailVerified decision;
+    class RedirectHome success;
+    class Cancel error;

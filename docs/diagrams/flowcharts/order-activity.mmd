@@ -1,0 +1,56 @@
+flowchart TD
+
+    %% Class Styles
+    classDef start fill:#000, color:#fff, stroke:#000;
+    classDef decision fill:#0637c0, color:#fff, stroke:#000, stroke-width:2px;
+    classDef success fill:#00a676, color:#fff, stroke:#000, stroke-width:2px;
+    classDef error fill:#e90d0d, color:#fff, stroke:#000, stroke-width:2px;
+
+    Start(["Start"])
+    Authenticated{"User Authenticated?"}
+    ClickBuy["User clicks 'Buy' on Product"]
+    CartCheck{"CartItems > 0?"}
+    AddCart["Add Product to Cart"]
+    OrderRedirect["Redirect to Order"]
+    EnterDetails["Enter Order Details & Payment Method"]
+    ConfirmCart["Confirm Cart - Create Order (status: PENDING)"]
+    ReserveEAN["Reserve EAN codes for ordered variants"]
+    PaymentMethod{"Payment Method?"}
+    CardPayment["Process Payment via Card"]
+    PaymentSuccess{"Payment Successful?"}
+    CashPayment["Cash Payment"]
+    OrderSuccess["Order Completed"]
+    UpdateOrderCache["Invalidate old & update Order List Cache"]
+    SendConfirmation["Send Order Confirmation Email"]
+    ClearCart["Clear Cart"]
+    ViewOrder["User Views Order Details"]
+    DownloadPDF["User Downloads PDF"]
+    LoginRedirect(["Redirect to Login"])
+    End(["End"])
+
+    %% Flow
+    Start --> Authenticated
+    Authenticated -- No --> LoginRedirect --> End
+    Authenticated -- Yes --> ClickBuy --> AddCart --> CartCheck
+    CartCheck -- No --> End
+    CartCheck -- Yes --> OrderRedirect --> EnterDetails --> ConfirmCart --> ReserveEAN --> PaymentMethod
+
+    %% Payment branches
+    PaymentMethod -- Card --> CardPayment --> PaymentSuccess
+    PaymentMethod -- Cash --> CashPayment
+
+    %% Card Payment outcome
+    PaymentSuccess -- Yes --> OrderSuccess
+    PaymentSuccess -- No --> EnterDetails
+
+    %% Cash Payment outcome
+    CashPayment --> OrderSuccess
+
+    %% After Order: update cache first, then send email, then clear cart
+    OrderSuccess --> UpdateOrderCache --> SendConfirmation --> ClearCart --> ViewOrder --> DownloadPDF --> End
+
+    %% Classes
+    class Start,End start;
+    class Authenticated,CartCheck,PaymentMethod,PaymentSuccess decision;
+    class OrderSuccess success;
+    class LoginRedirect error;

@@ -1,0 +1,55 @@
+graph TD
+    %% Subgraph styles
+    style Entrypoints fill:#eceff1, stroke:#000, stroke-width:2px;
+    style DBCache fill:#eceff1, stroke:#000, stroke-width:2px;
+    style ApiServices fill:#eceff1, stroke:#000, stroke-width:2px;
+    style MonitoringLayer fill:#eceff1, stroke:#000, stroke-width:2px;
+
+    %% Class Styles
+    classDef app fill:#000, color:#fff;
+    classDef entrypoint fill:#696969, color:#fff, stroke:#000, stroke-width:2px;
+    classDef db_cache fill:#0637c0, color:#fff, stroke:#000, stroke-width:2px;
+    classDef api_service fill:#e7d62f, color:#000, stroke:#000, stroke-width:2px;
+    classDef monitoring fill:#27ae60, color:#fff, stroke:#000, stroke-width:2px;
+
+    %% Root
+    App[⚙️ Application]:::app
+
+    %% Entrypoints / Core runtime
+    subgraph Entrypoints["Core EntryPoints"]
+        WebServer[🌐 Web Server]:::entrypoint
+        Cron[⏱️ Cron Scheduler]:::entrypoint
+    end
+
+    %% Database & Cache
+    subgraph DBCache["Database & Cache"]
+        DB[🗄️ Database]:::db_cache
+        Cache[⚡ Redis Cache]:::db_cache
+    end
+
+    %% External APIs / Services
+    subgraph ApiServices["External APIs & Services"]
+        API[🌍 External API]:::api_service
+        Stripe[💳 Payment Gateway]:::api_service
+        SMTP[✉️ Email Service]:::api_service
+    end
+
+    %% Monitoring
+    subgraph MonitoringLayer["Monitoring & Observability"]
+        Prometheus[📊 Prometheus]:::monitoring
+        Grafana[📈 Grafana]:::monitoring
+    end
+
+    %% Connections
+    App --> WebServer
+    App --> Cron
+
+    App --> DB
+    App --> Cache
+
+    App --> API
+    App --> Stripe
+    App --> SMTP
+
+    App --> Prometheus
+    Prometheus --> Grafana

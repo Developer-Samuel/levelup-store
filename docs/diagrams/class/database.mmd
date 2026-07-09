@@ -1,0 +1,373 @@
+classDiagram
+    %% Tables: Common
+    class Category {
+        id : SMALLINT PK
+        name : VARCHAR(20) UNIQUE
+        created_at : DATETIME
+    }
+
+    class Brand {
+        id : SMALLINT PK
+        name : VARCHAR(50) UNIQUE
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class Country {
+        id : INT PK
+        code : VARCHAR(2) UNIQUE
+        name : VARCHAR(100) UNIQUE
+    }
+
+    class Banner {
+        id : SMALLINT PK
+        position : SMALLINT UNIQUE
+        name : VARCHAR(100) UNIQUE
+        image : VARCHAR(255) NULL UNIQUE
+        url : VARCHAR(255) NULL UNIQUE
+        type : VARCHAR(50)
+        is_active : BOOLEAN
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    %% Tables: User
+    class User {
+        id : BIGINT PK
+        email : VARCHAR(255) UNIQUE
+        first_name : VARCHAR(100)
+        last_name : VARCHAR(100)
+        password : VARCHAR(100)
+        role : VARCHAR(10)
+        use_shipping : BOOLEAN
+        email_verified_at : DATETIME NULL
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class UserBilling {
+        id : BIGINT PK
+        user_id : BIGINT FK UNIQUE
+        country_id : INT FK NULL
+        street : VARCHAR(200)
+        postal_code : VARCHAR(15)
+        city : VARCHAR(100)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class UserShipping {
+        id : BIGINT PK
+        user_id : BIGINT FK UNIQUE
+        country_id : INT FK NULL
+        street : VARCHAR(200)
+        postal_code : VARCHAR(15)
+        city : VARCHAR(100)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class UserVerificationToken {
+        id : INT PK
+        user_id : BIGINT FK
+        token : VARCHAR(128) UNIQUE
+        expires_at : DATETIME NULL
+        created_at : DATETIME
+    }
+
+    %% Tables: Type
+    class Type {
+        id : SMALLINT PK
+        category_id : SMALLINT FK
+        name : VARCHAR(100) UNIQUE
+        created_at : DATETIME
+    }
+
+    %% Tables: Subtype
+    class Subtype {
+        id : INT PK
+        category_id : SMALLINT FK
+        type_id : SMALLINT FK
+        name : VARCHAR(100) UNIQUE
+        created_at : DATETIME
+    }
+
+    %% Tables: Product
+    class Product {
+        id : INT PK
+        category_id : SMALLINT FK
+        type_id : SMALLINT FK
+        brand_id : SMALLINT FK
+        catalog_code : VARCHAR(50) UNIQUE
+        name : VARCHAR(255) UNIQUE
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductSubtype {
+        id : INT PK
+        product_id : INT FK
+        subtype_id : INT FK
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductVariant {
+        id : INT PK
+        product_id : INT FK
+        sku : VARCHAR(100)
+        name : VARCHAR(255) UNIQUE
+        price : DECIMAL(10,2)
+        description : LONGTEXT NULL
+        url : VARCHAR(255) UNIQUE
+        status : VARCHAR(10)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductVariantStock {
+        id : INT PK
+        variant_id : INT FK
+        quantity_available : INT
+        quantity_reserved : INT
+        quantity_refunded : INT
+        status : VARCHAR(20)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductVariantEan {
+        id : BIGINT PK
+        variant_id : INT FK
+        code : VARCHAR(13) UNIQUE
+        status : VARCHAR(10) NULL
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductVariantDiscount {
+        id : INT PK
+        variant_id : INT FK
+        price : DECIMAL(10,2)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductVariantDescription {
+        id : INT PK
+        variant_id : INT FK
+        position : SMALLINT
+        title : VARCHAR(255) NULL
+        body : LONGTEXT
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductVariantImage {
+        id : BIGINT PK
+        variant_id : INT FK
+        position : SMALLINT
+        path : VARCHAR(255)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ProductVariantRecommended {
+        id : SMALLINT PK
+        variant_id : INT FK UNIQUE
+        position : SMALLINT UNIQUE
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    %% Tables: Cart
+    class Cart {
+        id : BIGINT PK
+        user_id : BIGINT FK UNIQUE
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class CartItem {
+        id : BIGINT PK
+        cart_id : BIGINT FK
+        variant_id : INT FK
+        created_at : DATETIME
+    }
+
+    %% Tables: Order
+    class Order {
+        id : BIGINT PK
+        user_id : BIGINT FK
+        code : VARCHAR(20) UNIQUE
+        price : DECIMAL(10,2)
+        payment : VARCHAR(10)
+        status : VARCHAR(10)
+        send_shipping : BOOLEAN
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class OrderPayment {
+        id : BIGINT PK
+        order_id : BIGINT FK UNIQUE
+        transaction_unique : VARCHAR(255) UNIQUE
+        price : DECIMAL(10,2)
+        created_at : DATETIME
+    }
+
+    class OrderPersonal {
+        id : BIGINT PK
+        order_id : BIGINT FK UNIQUE
+        email : VARCHAR(255)
+        first_name : VARCHAR(100)
+        last_name : VARCHAR(100)
+    }
+
+    class OrderBilling {
+        id : BIGINT PK
+        order_id : BIGINT FK UNIQUE
+        country_id : INT FK NULL
+        street : VARCHAR(200)
+        postal_code : VARCHAR(15)
+        city : VARCHAR(100)
+    }
+
+    class OrderShipping {
+        id : BIGINT PK
+        order_id : BIGINT FK UNIQUE
+        country_id : INT FK NULL
+        street : VARCHAR(200)
+        postal_code : VARCHAR(15)
+        city : VARCHAR(100)
+    }
+
+    class OrderItem {
+        id : BIGINT PK
+        order_id : BIGINT FK
+        variant_id : INT FK
+        ean_id : BIGINT FK NULL UNIQUE
+        price : DECIMAL(10,2)
+    }
+
+    %% Tables: Auth Tokens
+    class RefreshToken {
+        id : BIGINT PK
+        user_id : BIGINT FK
+        token : VARCHAR(128) UNIQUE
+        expires_at : DATETIME
+        created_at : DATETIME
+    }
+
+    %% Tables: Footer
+    class FooterLink {
+        id : SMALLINT PK
+        position : SMALLINT
+        value : VARCHAR(100)
+        image : VARCHAR(255) NULL
+        url : VARCHAR(255)
+        link_group : VARCHAR(20)
+        link_target : VARCHAR(10)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    %% Tables: Password
+    class PasswordResetToken {
+        id : INT PK
+        user_id : BIGINT FK UNIQUE
+        token : VARCHAR(128) UNIQUE
+        expires_at : DATETIME NULL
+        created_at : DATETIME
+    }
+
+    %% Tables: Review
+    class Review {
+        id : BIGINT PK
+        user_id : BIGINT FK
+        variant_id : INT FK
+        value : SMALLINT
+        body : VARCHAR(250) NULL
+        type : VARCHAR(10)
+        created_at : DATETIME
+        updated_at : DATETIME NULL
+    }
+
+    class ReviewDetail {
+        id : INT PK
+        review_id : BIGINT FK
+        body : VARCHAR(80)
+        type : VARCHAR(10)
+    }
+
+    class ReviewRating {
+        id : INT PK
+        review_id : BIGINT FK
+        user_id : BIGINT FK
+        type : VARCHAR(10)
+        created_at : DATETIME
+    }
+
+    %% Tables: Wishlist
+    class Wishlist {
+        id : INT PK
+        user_id : BIGINT FK
+        variant_id : INT FK
+        created_at : DATETIME
+    }
+
+    %% Relations: Core
+    Category --> Type
+    Category --> Subtype
+    Category --> Product
+    Type --> Subtype
+    Type --> Product
+    Subtype --> ProductSubtype
+    Brand --> Product
+    Country --> UserBilling
+    Country --> UserShipping
+    Country --> OrderBilling
+    Country --> OrderShipping
+
+    %% Relations: Auth Tokens
+    User --> RefreshToken
+
+    %% Relations: User
+    User --> UserBilling
+    User --> UserShipping
+    User --> UserVerificationToken
+    User --> Order
+    User --> PasswordResetToken
+    User --> Review
+    User --> ReviewRating
+    User --> Wishlist
+    User --> Cart
+
+    %% Relations: Product
+    Product --> ProductSubtype
+    Product --> ProductVariant
+    ProductVariant --> ProductVariantStock
+    ProductVariant --> ProductVariantEan
+    ProductVariant --> ProductVariantDiscount
+    ProductVariant --> ProductVariantDescription
+    ProductVariant --> ProductVariantImage
+    ProductVariant --> ProductVariantRecommended
+    ProductVariant --> CartItem
+    ProductVariant --> OrderItem
+    ProductVariant --> Review
+    ProductVariant --> Wishlist
+    ProductVariantEan --> OrderItem
+
+    %% Relations: Cart
+    Cart --> CartItem
+
+    %% Relations: Order
+    Order --> OrderPayment
+    Order --> OrderPersonal
+    Order --> OrderBilling
+    Order --> OrderShipping
+    Order --> OrderItem
+
+    %% Relations: Review
+    Review --> ReviewDetail
+    Review --> ReviewRating

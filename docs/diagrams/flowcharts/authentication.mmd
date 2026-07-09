@@ -1,0 +1,92 @@
+flowchart TD
+
+    %% Class Styles
+    classDef start fill:#000, color:#fff, stroke:#000;
+    classDef decision fill:#0637c0, color:#fff, stroke:#000, stroke-width:2px;
+    classDef success fill:#00a676, color:#fff, stroke:#000, stroke-width:2px;
+    classDef error fill:#e90d0d, color:#fff, stroke:#000, stroke-width:2px;
+
+    %% ── Login ────────────────────────────────────────────────────────────────
+
+    subgraph Login ["🔐 Login"]
+        LoginRequest(["POST /api/auth/login"])
+        RateLimit{"Rate Limit Exceeded?"}
+        ValidateLoginRequest["Validate request<br/>(email, password, CSRF)"]
+        HasValidationErrors{"Validation<br/>errors?"}
+        FindUserByEmail["Find User by email"]
+        CredentialsValid{"User found &<br/>password valid?"}
+        GenerateAccessToken["Generate AccessToken<br/>(JWT, short-lived)"]
+        CreateRefreshToken["Create RefreshToken<br/>(stored in DB)"]
+        ReturnLoginTokens(["Return:<br/>access_token → JSON body<br/>refresh_token → HttpOnly cookie"])
+        Cancel(["429 Rate Limit / Cancel"])
+        LoginBadRequest(["400 Bad Request<br/>+ field errors"])
+        InvalidCredentials(["401 Unauthorized<br/>Invalid credentials"])
+    end
+
+    LoginRequest --> RateLimit
+    RateLimit -- Yes --> Cancel
+    RateLimit -- No --> ValidateLoginRequest
+    ValidateLoginRequest --> HasValidationErrors
+    HasValidationErrors -- Yes --> LoginBadRequest
+    HasValidationErrors -- No --> FindUserByEmail
+    FindUserByEmail --> CredentialsValid
+    CredentialsValid -- No --> InvalidCredentials
+    CredentialsValid -- Yes --> GenerateAccessToken
+    GenerateAccessToken --> CreateRefreshToken
+    CreateRefreshToken --> ReturnLoginTokens
+
+    %% ── Token Refresh ─────────────────────────────────────────────────────────
+
+    subgraph Refresh ["🔄 Token Refresh"]
+        RefreshRequest(["POST /api/auth/refresh<br/>(refresh_token cookie)"])
+        ReadRefreshTokenCookie["Read refresh_token<br/>from HttpOnly cookie"]
+        RefreshTokenValid{"Token found<br/>in DB & not expired?"}
+        GetUserFromToken["Get User from token"]
+        RevokeOldRefreshToken["Revoke old RefreshToken<br/>(delete from DB)"]
+        GenerateNewAccessToken["Generate new AccessToken<br/>(JWT)"]
+        CreateNewRefreshToken["Create new RefreshToken<br/>(stored in DB)"]
+        ReturnRefreshedTokens(["Return new token pair:<br/>access_token → JSON body<br/>refresh_token → HttpOnly cookie"])
+        RefreshTokenInvalid(["401 Unauthorized<br/>Invalid or expired token"])
+    end
+
+    RefreshRequest --> ReadRefreshTokenCookie
+    ReadRefreshTokenCookie --> RefreshTokenValid
+    RefreshTokenValid -- No --> RefreshTokenInvalid
+    RefreshTokenValid -- Yes --> GetUserFromToken
+    GetUserFromToken --> RevokeOldRefreshToken
+    RevokeOldRefreshToken --> GenerateNewAccessToken
+    GenerateNewAccessToken --> CreateNewRefreshToken
+    CreateNewRefreshToken --> ReturnRefreshedTokens
+
+    %% ── Logout ────────────────────────────────────────────────────────────────
+
+    subgraph Logout ["🚪 Logout"]
+        LogoutRequest(["POST /api/auth/logout<br/>(refresh_token cookie)"])
+        ReadLogoutCookie["Read refresh_token<br/>from HttpOnly cookie"]
+        CookiePresent{"Token present<br/>in cookie?"}
+        FindTokenInDb["Find token in DB"]
+        TokenFoundInDb{"Token found<br/>in DB?"}
+        RevokeRefreshToken["Revoke RefreshToken<br/>(delete from DB)"]
+        ClearRefreshTokenCookie["Clear refresh_token cookie"]
+        LogoutSuccess(["200 OK"])
+    end
+
+    LogoutRequest --> ReadLogoutCookie
+    ReadLogoutCookie --> CookiePresent
+    CookiePresent -- No --> ClearRefreshTokenCookie
+    CookiePresent -- Yes --> FindTokenInDb
+    FindTokenInDb --> TokenFoundInDb
+    TokenFoundInDb -- No --> ClearRefreshTokenCookie
+    TokenFoundInDb -- Yes --> RevokeRefreshToken
+    RevokeRefreshToken --> ClearRefreshTokenCookie
+    ClearRefreshTokenCookie --> LogoutSuccess
+
+    %% JWT lifecycle: Login → Refresh → Logout
+    ReturnLoginTokens --> RefreshRequest
+    ReturnRefreshedTokens --> LogoutRequest
+
+    %% Classes
+    class LoginRequest,RefreshRequest,LogoutRequest start;
+    class RateLimit,HasValidationErrors,CredentialsValid,RefreshTokenValid,CookiePresent,TokenFoundInDb decision;
+    class ReturnLoginTokens,ReturnRefreshedTokens,LogoutSuccess success;
+    class Cancel,LoginBadRequest,InvalidCredentials,RefreshTokenInvalid error;
