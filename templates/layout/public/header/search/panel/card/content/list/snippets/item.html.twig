@@ -1,0 +1,34 @@
+{% macro render(results) %}
+    {% import 'components/reviews-rating/average-rating-stars.html.twig' as Stars %}
+
+    {% for result in results %}
+        <a href="/product/show/{{ result.url }}" class="search-panel__list-item">
+            <div class="search-panel__list-image">
+                <img
+                    src="{{ result.image ? result.image : '/img/misc/image/no-image.webp' }}"
+                    alt="{{ result.image ? 'Image: ' ~ result.image : 'Image not found' }}"
+                >
+            </div>
+            <div class="search-panel__list-name">
+                <p>{{ result.name }}</p>
+            </div>
+            <div class="search-panel__list-rating product-item__box-rating">
+                {{ Stars.render(result.averageRating) }}
+            </div>
+            <div class="search-panel__list-price">
+                <span class="search-panel__list-price-current">
+                    {% if result.hasDiscount %}
+                        {{ result.price - result.discountPrice }} €
+                    {% else %}
+                        {{ result.price }} €
+                    {% endif %}
+                </span>
+                {% if result.hasDiscount %}
+                    <span class="search-panel__list-price-old">
+                        {{ result.price }} €
+                    </span>
+                {% endif %}
+            </div>
+        </a>
+    {% endfor %}
+{% endmacro %}

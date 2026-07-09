@@ -1,0 +1,12 @@
+{% macro render() %}
+    {% import 'features/admin/views/dashboard/components/snippets/item.html.twig' as ChartItem %}
+
+    <div class="admin-dashboard__charts">
+        {{ ChartItem.render('ordersCountChart') }}
+
+        <div class="admin-dashboard__charts-row">
+            {{ ChartItem.render('ordersRatioChart') }}
+            {{ ChartItem.render('usersCountChart') }}
+        </div>
+    </div>
+{% endmacro %}

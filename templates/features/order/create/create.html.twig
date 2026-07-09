@@ -1,0 +1,38 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/order/create/note/note.html.twig' as OrderNote %}
+    {% import 'features/order/create/forms/order-create-form.html.twig' as OrderForm %}
+    {% import 'features/order/create/cart/cart.html.twig' as OrderCart %}
+
+    <main class="content">
+        <div class="order">
+            <div class="order__card">
+                <div class="order__card-data">
+                    {{
+                        Title.render(
+                            'Order',
+                            'order__card-title',
+                            'h1'
+                        )
+                    }}
+
+                    {{ OrderNote.render() }}
+
+                    {{
+                        OrderForm.render(
+                            order,
+                            totalPrice,
+                            errors ?? []
+                        )
+                    }}
+                </div>
+
+                {{ OrderCart.render() }}
+            </div>
+        </div>
+    </main>
+{% endblock %}

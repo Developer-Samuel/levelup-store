@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ statusCode }} | {{ statusText }}</title>
+        {% import 'layout/public/head/head.html.twig' as Head %}
+        {{ Head.render() }}
+    </head>
+<body>
+    <main class="error-page">
+        <div class="error-page__card">
+            <div class="error-page__container">
+                {% import 'components/common/title.html.twig' as Title %}
+                {% import 'errors/snippets/action.html.twig' as ErrorAction %}
+
+                {{
+                    Title.render(
+                        statusCode ~ ' ' ~ statusText,
+                        'error-page__container-title',
+                        'h1'
+                    )
+                }}
+
+                <div class="error-page__container-body">
+                    {{ message }}
+                </div>
+
+                {% if actionPath is defined and actionLabel is defined %}
+                    {{ ErrorAction.render(actionPath, actionLabel) }}
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

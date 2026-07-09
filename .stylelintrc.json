@@ -1,0 +1,28 @@
+{
+  "plugins": ["stylelint-scss"],
+  "extends": ["stylelint-config-standard-scss"],
+  "customSyntax": "postcss-scss",
+  "ignoreFiles": ["assets/scss/abstracts/**", "assets/scss/libs/**"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "no-invalid-double-slash-comments": null,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null,
+
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+    "scss/double-slash-comment-empty-line-before": null,
+    "scss/at-mixin-argumentless-call-parentheses": null,
+    "comment-empty-line-before": null,
+
+    "selector-class-pattern": [
+      "^[a-z0-9-]+(__[a-z0-9-]+)?(--[a-z0-9-]+)?$",
+      {
+        "resolveNestedSelectors": true,
+        "message": "Class name must be kebab-case or BEM (block__element--modifier)"
+      }
+    ]
+  }
+}

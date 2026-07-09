@@ -1,0 +1,11 @@
+{% macro render(title) %}
+    {% import 'components/common/title.html.twig' as Title %}
+
+    {{
+        Title.render(
+            title,
+            'admin-content__title',
+            'h2'
+        )
+    }}
+{% endmacro %}

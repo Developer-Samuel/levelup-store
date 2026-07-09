@@ -1,0 +1,28 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Dashboard{% endblock %}
+
+{% block admin_body %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/admin/views/dashboard/components/charts-container.html.twig' as Charts %}
+
+    <main
+        id="admin-dashboard-page"
+        class="admin-dashboard admin-content"
+        data-orders="{{ ordersPerDay|json_encode|raw }}"
+        data-orders-ratio="{{ ordersPaidUnpaid|json_encode|raw }}"
+        data-users="{{ usersLast7Days|json_encode|raw }}"
+    >
+        <div class="admin-dashboard__card admin-content__card">
+            {{
+                Title.render(
+                    'Dashboard',
+                    'admin-content__title',
+                    'h2'
+                )
+            }}
+
+            {{ Charts.render() }}
+        </div>
+    </main>
+{% endblock %}

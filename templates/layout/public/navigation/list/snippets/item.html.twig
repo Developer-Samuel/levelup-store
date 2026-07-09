@@ -1,0 +1,16 @@
+{% macro render(path, id, name, imgSrc, class, imgClass, spanClass, imgAlt) %}
+    <a
+        href="{{ path }}"
+        id="{{ id }}"
+        class="{{ class }}"
+    >
+        <img
+            src="{{ imgSrc }}"
+            alt="{{ imgAlt }}"
+            class="{{ imgClass }}"
+        >
+        <span class="{{ spanClass }}">
+            {{ name }}
+        </span>
+    </a>
+{% endmacro %}

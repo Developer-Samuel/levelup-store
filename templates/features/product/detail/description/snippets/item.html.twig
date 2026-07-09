@@ -1,0 +1,17 @@
+{% macro render(description) %}
+    {% import 'components/common/title.html.twig' as Title %}
+
+   <div class="product-detail__description-item">
+        {{
+            Title.render(
+                description.title,
+                'product-detail__description-item-title',
+                'h3',
+            )
+        }}
+
+        <div class="product-detail__description-item-body">
+            {{ description.body|raw }}
+        </div>
+    </div>
+{% endmacro %}

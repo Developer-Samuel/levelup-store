@@ -1,0 +1,6 @@
+@mixin appearance($value: none) {
+  appearance: #{$value}; // Modern browsers (Chrome, Edge, Safari, Firefox)
+  -webkit-appearance: #{$value}; // Safari and older iOS / WebKit browsers
+  -moz-appearance: #{$value}; // Firefox
+  -ms-appearance: #{$value}; // IE / old Edge
+}

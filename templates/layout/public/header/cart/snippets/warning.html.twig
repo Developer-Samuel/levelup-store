@@ -1,0 +1,23 @@
+{% macro render() %}
+    <div class="cart__warning">
+        <div class="cart__warning-actions">
+            <div class="cart__warning-actions-item cart__warning-actions-login">
+                <a href="{{ path('login') }}">
+                    Log In
+                </a>
+            </div>
+            <div class="cart__warning-actions-item cart__warning-actions-signup">
+                <a href="{{ path('signup') }}">
+                    Sign Up
+                </a>
+            </div>
+        </div>
+        <div class="cart__warning-header">
+            <div class="cart__warning-header-close">
+                <p>
+                    Close
+                </p>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

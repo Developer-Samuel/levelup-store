@@ -1,0 +1,11 @@
+{% macro render(products) %}
+    {% import 'features/home/swiper/slider/snippets/item.html.twig' as SwiperItem %}
+
+    <div class="home-page__swiper-slider slider">
+        <div class="home-page__swiper-wrapper swiper-wrapper">
+            {% for product in products %}
+                {{ SwiperItem.render(product) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

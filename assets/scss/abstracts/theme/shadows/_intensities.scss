@@ -1,0 +1,9 @@
+@use '@/scss/abstracts/theme/colors/solid/index' as colors;
+
+$shadow-intensities: (
+  1: colors.$light-500,
+  2: colors.$dark-200,
+  3: colors.$dark-300,
+  4: colors.$dark-400,
+  5: colors.$dark-500,
+);

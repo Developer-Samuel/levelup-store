@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            font-size: 16px;
+            margin: 50px;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            vertical-align: top;
+        }
+
+        th {
+            background: #e4e4e4;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .section-title {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .paid {
+            color: green;
+            font-weight: bold;
+        }
+
+        .unpaid {
+            color: red;
+            font-weight: bold;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .no-border td {
+            border: none;
+            padding: 3px;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            border-top: 1px solid #ccc;
+            margin-top: 7.5em;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ order.code }}</h1>
+
+    <table class="no-border">
+        <tr>
+            <td>
+                <div class="section-title">Customer</div>
+                {{ personal.first_name ~ ' ' ~ personal.last_name }}<br>
+                {{ personal.email }}
+            </td>
+            <td class="text-right">
+                <div class="section-title">Invoice Info</div>
+                <strong>Status:</strong> {{ order.status.value }}<br>
+                <strong>Payment via:</strong> {{ order.payment.value }}<br>
+                <strong>Payment Status:</strong>
+                {% if order.hasPayment is empty %}
+                    <span class="unpaid">Unpaid</span>
+                {% else %}
+                    <span class="paid">Paid</span>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+
+    {% if hasShipping %}
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Shipping Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="20%"><strong>Country:</strong></td>
+                    <td>{{ shipping.country }}</td>
+                </tr>
+                <tr>
+                    <td width="20%"><strong>City:</strong></td>
+                    <td>{{ shipping.city }}</td>
+                </tr>
+                <tr>
+                    <td width="20%"><strong>Postal Code:</strong></td>
+                    <td>{{ shipping.postal_code }}</td>
+                </tr>
+                <tr>
+                    <td width="20%"><strong>Street:</strong></td>
+                    <td>{{ shipping.street }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Billing Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td width="20%"><strong>Country:</strong></td>
+                <td>{{ billing.country }}</td>
+            </tr>
+            <tr>
+                <td width="20%"><strong>City:</strong></td>
+                <td>{{ billing.city }}</td>
+            </tr>
+            <tr>
+                <td width="20"><strong>Postal Code:</strong></td>
+                <td>{{ billing.postal_code }}</td>
+            </tr>
+            <tr>
+                <td width="20%"><strong>Street:</strong></td>
+                <td>{{ billing.street }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Products</div>
+    <table>
+        <thead>
+            <tr>
+                <th width="50%">Product Name</th>
+                <th>Quantity</th>
+                <th>Price (€/piece)</th>
+                <th>Total (€)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.unitPrice }}</td>
+                    <td>{{ product.totalPrice }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr class="text-center">
+                <td><strong>Total:</strong></td>
+                <td colspan="3"><strong>{{ order.price }} €</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer class="footer">
+        <p class="text-center">
+            <strong>LevelUp Store</strong>
+            &mdash; Internal Invoice Preview Only
+        </p>
+    </footer>
+</body>
+</html>

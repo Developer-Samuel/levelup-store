@@ -1,0 +1,22 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Orders (Detail){% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/views/order/common/table-orders.html.twig' as OrdersTable %}
+
+    {{
+        OrdersTable.render(
+            'admin-orders-history-page',
+            'Orders History',
+            'admin-orders-history-table',
+            [
+                {
+                    'url': path('admin_orders_index'),
+                    'label': 'Open Orders',
+                    'color': 'purple'
+                }
+            ]
+        )
+    }}
+{% endblock %}

@@ -1,0 +1,194 @@
+{
+  "Computers": {
+    "Components": {
+      "GIGABYTE GeForce RTX 5090": {
+        "brand": "GIGABYTE",
+        "variants": {
+          "GIGABYTE GeForce RTX 5090 GAMING OC 32G": {
+            "price": 2439,
+            "discountPrice": 50,
+            "description": "Graphics card - 32 GB GDDR7 (28000 MHz), NVIDIA GeForce, Blackwell (GB202, 2017 MHz), PCI Express x16 5.0, 512 Bit, DisplayPort 2.1a and HDMI 2.1b, width 342 mm",
+            "images": [
+              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/1.webp",
+              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/2.webp",
+              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/3.webp",
+              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/4.webp",
+              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/5.webp"
+            ],
+            "descriptions": [
+              [
+                "GIGABYTE GeForce RTX 5090 GAMING OC 32G",
+                "Are you planning to buy a powerful gaming graphics card with which you can play the latest game titles? Then you will definitely be interested in the dedicated GIGABYTE graphics card equipped with 32GB of memory with a frequency of 28000 MHz. With such memory, 512Bit bus and core frequency of 2017 MHz, you can play at the highest details without any restrictions. The graphics, complemented by the PCI Express x16 5.0 interface, allows a total of 4 outputs for connecting to the monitor. There is a DisplayPort 2.1a and HDMI 2.1b port. The active cooler guarantees minimum temperatures even under high load."
+              ],
+              [
+                "Main advantages of the GIGABYTE GeForce RTX 5090 GAMING OC 32G gaming graphics card",
+                "<ul>\n<li>4nm technology was used to create the RTX 5090 graphics chip</li>\n<li>GIGABYTE graphics card features DisplayPort 2.1a and HDMI 2.1b monitor outputs</li>\n<li>Built to play all gaming titles smoothly</li>\n<li>The minimum power of the source should range from 1000 W</li>\n<li>Gaming enthusiasts will definitely be pleased with virtual reality support</li>\n<li>The NVIDIA GeForce RTX 5090 has 32 GB of RAM</li>\n<li>PC graphics cooling: active</li>\n</ul>"
+              ],
+              [
+                "GIGABYTE Gaming Graphics Card Cooling and Dimensions",
+                "The active type of cooler is popular mainly due to its reliable method of reducing temperatures. The four-slot cooler, complete with 3 fans, directs the cooling performance according to the current load. Before ordering a graphics card, you should make sure that it fits in your PC case. GIGABYTE GeForce RTX 5090 GAMING OC 32G has dimensions of 70 × 342 × 152 mm (h × w × d). Such a graphics card is suitable for computer cases from the Mini Tower size."
+              ]
+            ],
+            "stocks_available": 15,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Graphics Cards (GPU)"]
+      },
+      "GAINWARD GeForce RTX 5070": {
+        "brand": "GIGABYTE",
+        "variants": {
+          "GAINWARD GeForce RTX 5070 Python III 12G": {
+            "price": 579,
+            "discountPrice": null,
+            "description": "Graphics card - 12 GB GDDR7 (28000 MHz), NVIDIA GeForce, Blackwell (GB205, 2160 MHz), Boost 2512 MHz, PCI Express x16 5.0, 192 Bit, DisplayPort 2.1b and HDMI 2.1b, width 291.9 mm",
+            "images": [
+              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/1.webp",
+              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/2.webp",
+              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/3.webp",
+              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/4.webp",
+              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/5.webp"
+            ],
+            "descriptions": [
+              [
+                "GAINWARD GeForce RTX 5070 Python III 12G",
+                "Are you planning to buy a very powerful graphics card that can easily handle new game titles? Then there is a dedicated GAINWARD graphics card for you, supplemented by 12GB of memory with a frequency of 28000 MHz. With such memory, a 192Bit bus and a core with a frequency of 2160 MHz, you can play at the highest details without any restrictions. Graphics equipped with a PCI Express x16 5.0 interface allow a total of 4 outputs for connecting to a monitor. You will have DisplayPort 2.1b and HDMI 2.1b available. The active type of cooling guarantees significantly low temperatures even under high load."
+              ],
+              [
+                "Main advantages of the GAINWARD GeForce RTX 5070 Python III 12G gaming graphics card",
+                "<ul>\n<li>4nm technology was used in the production of the RTX 5070 graphics chip</li>\n<li>The GAINWARD graphics card offers DisplayPort 2.1b and HDMI 2.1b monitor connectors</li>\n<li>Designed for playing the latest games and working with more demanding graphics</li>\n<li>Maximum consumption is 250 W</li>\n<li>The power supply should offer at least 650 W</li>\n<li>Fans of modern technology will certainly be pleased with the technology supporting virtual reality</li>\n<li>The NVIDIA GeForce RTX 5070 has 12 GB of RAM</li>\n<li>Graphics card cooling: active</li>\n</ul>"
+              ],
+              [
+                "GAINWARD gaming graphics card cooling and dimensions",
+                "The active type of cooler is known primarily for its proven method of maintaining low temperatures. The dual-slot cooler, complete with 3 fans, adjusts its performance according to the current load. The GAINWARD GeForce RTX 5070 Python III 12G has dimensions of 41.3 × 291.9 × 116.5 mm (h × w × d). With such a graphics card, you should not encounter a problem with most PC cases."
+              ]
+            ],
+            "stocks_available": 35,
+            "stocks_reserved": 3
+          }
+        },
+        "subtypes": ["Graphics Cards (GPU)"]
+      },
+      "AMD Ryzen 7": {
+        "brand": "AMD",
+        "variants": {
+          "AMD Ryzen 7 7800X3D": {
+            "price": 379,
+            "discountPrice": null,
+            "description": "Processor 8-core, 16 threads, 4.2 GHz (TDP 120 W), Turboboost 5 GHz, Boost 5 GHz, 96 MB L3 cache, AMD Radeon Graphics 2200 MHz, socket AMD AM5, Raphael",
+            "images": ["products/images/computers/components/processors/amd-ryzen-7/amd-ryzen-7-7800x3d/1.webp"],
+            "descriptions": [
+              [
+                "AMD Ryzen 7 7800X3D processor",
+                "Gain a competitive edge with AMD Ryzen 7000X3D desktop processors and AMD AM5 socket motherboards. The AMD Ryzen 7 7800X3D delivers smooth gameplay and ultimate performance for a great gaming experience. This processor also features an expanded L3 Cache (called 3D V-Cache) that significantly improves gaming performance."
+              ]
+            ],
+            "stocks_available": 58,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Processors (CPU)"]
+      },
+      "Intel Core i5": {
+        "brand": "Intel",
+        "variants": {
+          "Intel Core i5-14600K": {
+            "price": 349,
+            "discountPrice": 150,
+            "description": "Processor 14-core, 20 threads, 3.5 GHz (TDP 181 W), Turboboost 5.3 GHz, Boost 5.3 GHz, 24 MB L3 cache, Intel UHD Graphics 770, Intel socket 1700, Raptor Lake Refresh, without cooler",
+            "images": ["products/images/computers/components/processors/intel-core-i5/intel-core-i5-14600k/1.webp"],
+            "descriptions": [
+              [
+                "Modern 14-core Intel Core i5-14600K Raptor Lake Refresh processor",
+                "Do you want to indulge in excellent gaming performance? In that case, take advantage of the completely new architecture of Intel Raptor Lake processors. This is the 14th generation of Intel Core chips, which is developed in all directions. The innovative approach is that the Intel Core i5-14600K CPU uses a combination of 6 powerful cores (designed for demanding applications and games) with 8 efficient cores (for multitasking). Thanks to this, it is closer to the more powerful i7 model than ever before.",
+                "Please note that Intel Raptor Lake Refresh processors are supported in boards with the Intel 600 series chipset. However, you will get maximum performance when using the latest Intel 700 series chipset. In some cases, it will be necessary to update the motherboard firmware (BIOS) to the current version."
+              ],
+              [
+                "Intel Core i5-14600K runs up to 5.3 GHz",
+                "The modern Core i5-14600KF processor will offer a base clock of 6 powerful cores at 3.5 GHz. Depending on the load increase, the frequency will then soar to 5.3 GHz, which will be particularly beneficial in gaming or when processing up to 8K HDR video at 60 FPS."
+              ],
+              [
+                "Hybrid architecture",
+                "The 14th generation of Intel Core processors focuses on powerful and efficient cores. Compared to the 13th generation, the operating frequency, L3 Cache capacity and in some cases more cores will be available. Therefore, performance is once again increasing while consumption is maintained."
+              ],
+              [
+                "Intel Thread Director",
+                "To ensure that the demands on the large and small cores of the Core i5-14600K processor are always optimally distributed, Intel had to develop a special hardware scheduler, Thread Director. Thanks to close cooperation with Microsoft, Windows 11 will become the best environment for gaming, entertainment, or creative work."
+              ],
+              [
+                "14th Gen Intel Core Processors Support Both DDR5 and DDR4",
+                "The new Intel Raptor Lake Refresh processor is compatible with motherboards with the new DDR5 interface as well as DDR4, so you can choose the option that suits you best."
+              ],
+              [
+                "Key benefits of the Intel Core i5-14600K CPU",
+                "<ul>\n<li>Powerful processor designed for more demanding users</li>\n<li>Operating frequency up to 5.3 GHz</li>\n<li>Big performance boost in both single-threaded and multi-threaded computing</li>\n<li>Compatible with LGA 1700 socket and Intel 600 series motherboards + full performance with Intel 700</li>\n<li>Increased L3 Cache capacity</li>\n<li>Thanks to the unlocked multiplier, the processor can be overclocked</li>\n<li>Support for DDR5, DDR4 or WiFi 7 memory</li>\n<li>PCIe 5.0 interface</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 79,
+            "stocks_reserved": 9
+          }
+        },
+        "subtypes": ["Processors (CPU)"]
+      },
+      "Intel Core i9": {
+        "brand": "Intel",
+        "variants": {
+          "Intel Core i9-14900F": {
+            "price": 599,
+            "discountPrice": null,
+            "description": "Processor 24-core, 32 threads, 3.2 GHz (TDP 219 W), Turboboost 6 GHz, Boost 6 GHz, 36 MB L3 cache, without integrated graphics chip, Intel socket 1700, Raptor Lake Refresh, box cooler",
+            "images": ["products/images/computers/components/processors/intel-core-i9/intel-core-i9-14900f/1.webp"],
+            "descriptions": [
+              [
+                "",
+                "The Intel Core i9-14900F Raptor Lake Refresh processor is ideal for workstations with the highest available performance. The chip has a total of 24 cores and a solid performance for smooth PC operation is ensured by a frequency of 3.2 GHz . When loaded, it automatically overclocks to a very nice 6 GHz and temporarily increases the performance of your setup. The cache memory important for the operation of the processor has a total of 36 MB in the case of the so-called L3 cache and 32 MB L2 cache. The Intel CPU was manufactured using 10 nm technology and is therefore among the most modern pieces on the market. You can mount it in motherboards equipped with the Intel 1700 socket."
+              ],
+              [
+                "Notable features of the Intel Core i9-14900F processor",
+                "<ul>\n<li>Base clock 3.2 GHz</li>\n<li>Installs in Intel socket 1700</li>\n<li>The Intel Core i9-14900F processor offers 24 cores</li>\n<li>The core frequency at the maximum level is 6 GHz</li>\n<li>Supported number of RAM channels: 2</li>\n<li>Increased performance with automatic overclocking</li>\n<li>The processor supports virtualization function</li>\n<li>Intel Core i9 Raptor Lake Refresh promises DDR4/DDR5 RAM support</li>\n<li>Multi-Threading functionality for efficient data management</li>\n<li>The package includes an original processor cooler</li>\n<li>The highest TDP of the Intel Core i9-14900F processor is 219 W</li>\n<li>L3 cache is 36 MB</li>\n<li>L2 cache reaches 32 MB</li>\n<li>Made with 10 pcs nm technology</li>\n<li>Raptor Cove microarchitecture chip, Gracemont</li>\n</ul>"
+              ],
+              [
+                "Intel Core i9-14900F processor and overclocking",
+                "The CPU works efficiently with consumption and utilization using automatic overclocking. If the load increases, it will automatically increase the speed to a maximum of 6 GHz. However, it is important to consider the possibility of increasing the TDP, which for the Intel Core i9-14900F reaches 219 W. This processor is equipped with an original cooler, which may not be enough for higher temperatures. When overclocking, it is necessary to carefully select another, properly powerful cooling."
+              ],
+              [
+                "What else does the Intel Core i9-14900F processor offer?",
+                "For more demanding work , you will appreciate the support for Multi-threading technology , which allows CPU cores to do more processes at once. It is worth mentioning virtualization , which the Intel Core i9-14900F CPU also handles. With its help, you can simulate multiple virtual computers on one real machine, for example with Quemu software."
+              ]
+            ],
+            "stocks_available": 42,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Processors (CPU)"]
+      },
+      "Kingston FURY 32GB KIT DDR5": {
+        "brand": "Kingston",
+        "variants": {
+          "Kingston FURY 32GB KIT DDR5 6000MTs CL30 Beast Black EXPO": {
+            "price": 119,
+            "discountPrice": 20,
+            "description": "RAM - 2× 16 GB, PC5-48000, CL30-36-36, voltage 1.4 V, passive cooler and AMD EXPO",
+            "images": [
+              "products/images/computers/components/memory-ram/kingston-fury-32gb-kit-ddr5/kingston-fury-32gb-kit-ddr5-6000mt-s-cl30-beast-black-expo/1.webp",
+              "products/images/computers/components/memory-ram/kingston-fury-32gb-kit-ddr5/kingston-fury-32gb-kit-ddr5-6000mt-s-cl30-beast-black-expo/2.webp"
+            ],
+            "descriptions": [
+              [
+                "Kingston FURY 32GB KIT DDR5 6000MT/s CL30 Beast Black EXPO",
+                "Kingston FURY Beast Black EXPO memory delivers great performance, modern design and improved heat dissipation. This model supports the latest technologies for stable and fast performance in demanding applications and games. Kingston FURY Beast Black memory is characterized not only by its elegant appearance, but also by its high speed of 6,000 MT/s and low latency of CL30, which ensures fast response and stable operation . They are an ideal choice for gamers and demanding users who demand top performance without compromise."
+              ],
+              [
+                "Key memory technologies Kingston FURY Beast Black EXPO 32GB KIT DDR5",
+                "<ul>\n<li>New heat spreader design ensures efficient cooling and long-term performance stability</li>\n<li>Automatic overclocking without the need for manual settings in the BIOS</li>\n<li>Easily boost performance with preset overclocking profiles</li>\n<li>Memory operates at 6,000 MT/s with CL30 latency for fast responses in games and work</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 48,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Memory (RAM)"]
+      }
+    }
+  }
+}

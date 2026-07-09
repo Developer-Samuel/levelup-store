@@ -1,0 +1,11 @@
+{% macro render(averageRating) %}
+    {% if averageRating > 0 %}
+        {% if averageRating is same as(averageRating|round(0, 'floor')) %}
+            {{ averageRating|round(0, 'floor') }} / 5
+        {% else %}
+            {{ averageRating|number_format(2) }} / 5
+        {% endif %}
+    {% else %}
+        0 / 5
+    {% endif %}
+{% endmacro %}

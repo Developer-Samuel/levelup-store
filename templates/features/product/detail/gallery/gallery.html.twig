@@ -1,0 +1,55 @@
+{% macro render(variant, firstImage) %}
+    <div class="product-detail__gallery">
+        <div class="product-detail__gallery-image">
+            {% if variant.images|length > 1 %}
+            <div class="product-detail__gallery-image-dots">
+                {% if variant.images is not empty %}
+                    {% for image in variant.images %}
+                        <div class="product-detail__gallery-image-dots-item{% if loop.first %} product-detail__gallery-image-dots-item--active{% endif %}"></div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+            <div class="product-detail__gallery-image-track">
+                {% for image in variant.images %}
+                    <div class="product-detail__gallery-image-track-item">
+                        <img
+                            src="{{ asset('uploads/' ~ image.path) }}"
+                            alt="{{ image.path }}"
+                        >
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if variant.images|length > 1 %}
+        <div class="product-detail__gallery-wrapper">
+            <div id="arrow-left" class="product-detail__gallery-arrow">
+                <img
+                    src="{{ asset('img/icons/elements/arrow.png') }}"
+                    alt="Arrow"
+                    class="product-detail__gallery-arrow-img"
+                >
+            </div>
+            <div class="product-detail__gallery-list">
+                {% if variant.images is not empty %}
+                    {% for image in variant.images %}
+                        <div class="product-detail__gallery-item{% if loop.first %} product-detail__gallery-item--active{% endif %}">
+                            <img
+                                src="{{ asset('uploads/' ~ image.path) }}"
+                                alt="{{ image.path }}"
+                            >
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div id="arrow-right" class="product-detail__gallery-arrow">
+                <img
+                    src="{{ asset('img/icons/elements/arrow.png') }}"
+                    alt="Arrow"
+                    class="product-detail__gallery-arrow-img"
+                >
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endmacro %}

@@ -1,0 +1,25 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Variants{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {{
+        TableContent.render(
+            'admin-variants-page',
+            'Variants (' ~ product.name ~ ')',
+            'admin-variants-table',
+            [
+                'SKU',
+                'Name',
+                'Price [€]',
+                'Discounted Price [€]',
+                'Available',
+                'Created at',
+                ''
+            ],
+            path('admin_products_index', {'id': product.id})
+        )
+    }}
+{% endblock %}

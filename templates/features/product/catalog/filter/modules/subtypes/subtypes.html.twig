@@ -1,0 +1,19 @@
+{% macro render(subtypes, category, type, filterSubtypesActive = []) %}
+    {% import 'features/product/catalog/filter/common/list/render.html.twig' as LinkList %}
+
+    {% if category and type is not empty %}
+        {{
+            LinkList.render(
+                'Subtypes',
+                subtypes,
+                'features/product/catalog/filter/modules/subtypes/snippets/item.html.twig',
+                'products__filter-list',
+                {
+                    'category': category,
+                    'type': type,
+                    'filterSubtypesActive': filterSubtypesActive
+                }
+            )
+        }}
+    {% endif %}
+{% endmacro %}

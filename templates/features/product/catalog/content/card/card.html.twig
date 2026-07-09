@@ -1,0 +1,42 @@
+{% macro render(
+    category,
+    type,
+    sortOptions,
+    sort,
+    productsTitle,
+    currentPage,
+    maxPages,
+    variants,
+    showLoadMore
+) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/product/catalog/options/options.html.twig' as ProductsCatalogOptions %}
+    {% import 'features/product/catalog/content/card/wrapper.html.twig' as ProductsCatalogWrapper %}
+
+    <div class="products__card">
+        {{
+            ProductsCatalogOptions.render(
+                category,
+                type,
+                sortOptions,
+                sort,
+                variants
+            )
+        }}
+        {{
+            Title.render(
+                productsTitle,
+                'products__card-title',
+                'h1',
+            )
+        }}
+        {{
+            ProductsCatalogWrapper.render(
+                currentPage,
+                maxPages,
+                variants,
+                showLoadMore
+            )
+        }}
+    </div>
+{% endmacro %}

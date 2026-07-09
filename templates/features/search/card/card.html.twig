@@ -1,0 +1,14 @@
+{% macro render(results) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/search/card/content/content.html.twig' as SearchContent %}
+
+    <div class="search__card">
+        {{
+            Title.render(
+                'Results',
+                'search__card-title',
+            )
+        }}
+        {{ SearchContent.render(results) }}
+    </div>
+{% endmacro %}

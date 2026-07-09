@@ -1,0 +1,26 @@
+{% macro render() %}
+    {% import 'components/form/input.html.twig' as Input %}
+    {% import 'layout/public/header/search/snippets/icon.html.twig' as SearchIcon %}
+    {% import 'layout/public/header/search/snippets/close.html.twig' as SearchClose %}
+    {% import 'layout/public/header/search/snippets/button.html.twig' as SearchButton %}
+
+    <div class="header__main-search">
+        {{ SearchIcon.render() }}
+        {{ SearchClose.render() }}
+
+        {{ Input.render
+            (
+                'text',
+                'search',
+                'search',
+                null,
+                'Search...',
+                'header__main-search-input',
+                null,
+                []
+            )
+        }}
+
+        {{ SearchButton.render() }}
+    </div>
+{% endmacro %}

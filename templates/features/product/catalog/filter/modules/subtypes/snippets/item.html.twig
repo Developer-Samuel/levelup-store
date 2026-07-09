@@ -1,0 +1,8 @@
+{% set normalizedSubtype = item | normalize %}
+
+<div
+    class="products__filter-list-item {% if normalizedSubtype in filterSubtypesActive %}products__filter-list-item--active{% endif %}"
+    data-subtype="{{ normalizedSubtype }}"
+>
+    {{ item }}
+</div>

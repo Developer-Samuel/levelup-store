@@ -1,0 +1,21 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Variant Description (Edit){% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/forms/form-content.html.twig' as FormContent %}
+
+    {{
+        FormContent.render(
+            'admin-variant-descriptions-update-page',
+            'Edit Description',
+            'features/admin/views/product/variant/description/forms/edit.html.twig',
+            path('admin_variants_descriptions_index', {'id': variant.id}),
+            {
+                'variant': variant,
+                'description': description,
+                'errors': errors ?? []
+            }
+        )
+    }}
+{% endblock %}

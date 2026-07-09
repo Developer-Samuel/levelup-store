@@ -1,0 +1,13 @@
+{% macro render(records) %}
+    {% import 'features/wishlist/card/list/snippets/item.html.twig' as Item %}
+
+    {% if records is not empty %}
+        <div class="products__card-list">
+            {{ Item.render(records) }}
+        </div>
+    {% else %}
+        <div class="products__card-no-results">
+            <p>Your wishlist is empty.</p>
+        </div>
+    {% endif %}
+{% endmacro %}

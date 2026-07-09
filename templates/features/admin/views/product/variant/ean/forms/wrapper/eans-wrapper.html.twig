@@ -1,0 +1,43 @@
+{% macro render(variant, ean = null, errors = []) %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+    {% import 'components/alert/alert.html.twig' as Alert %}
+
+    <div class="admin-detail__data">
+        {{ Alert.render() }}
+
+        <div class="admin-detail__data-groups">
+            <div class="admin-detail__data-form-group">
+                {{
+                    Label.render(
+                        'Code:',
+                        'code',
+                        'admin-detail__data-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'code',
+                        'code',
+                        ean.code ?? '',
+                        'Code',
+                        'admin-detail__data-input input',
+                        null,
+                        errors ?? []
+                    )
+                }}
+            </div>
+        </div>
+
+        {% import 'components/form/action.html.twig' as FormControlAction %}
+
+        {{
+            FormControlAction.render(
+                'admin-detail__form-action',
+                'admin-detail__form-action-btn',
+                app.request.uri matches '/edit/' ? 'Update' : 'Create'
+            )
+        }}
+    </div>
+{% endmacro %}

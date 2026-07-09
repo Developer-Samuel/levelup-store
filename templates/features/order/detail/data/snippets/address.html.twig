@@ -1,0 +1,16 @@
+{% macro render(id, subtitle, address) %}
+    <div
+        id="{{ id }}"
+        class="orders__card-group"
+    >
+        <div class="orders__card-subtitle">
+            {{ subtitle }}
+        </div>
+        <div class="orders__card-address">
+            <p><b>Street:</b> {{ address.street }}</p>
+            <p><b>Postal code:</b> {{ address.postalCode }}</p>
+            <p><b>Country:</b> {{ address.country }}</p>
+            <p><b>City:</b> {{ address.city }}</p>
+        </div>
+    </div>
+{% endmacro %}

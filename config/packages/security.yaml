@@ -1,0 +1,39 @@
+security:
+  role_hierarchy:
+    ROLE_ADMIN: [ROLE_USER]
+
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+  providers:
+    users:
+      entity:
+        class: App\Core\Domain\Segment\User\Entity\User
+        property: email
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|scss|images|js|ts)/
+      security: false
+
+    api_public:
+      pattern: ^/api/(?:search|cookies|auth/)
+      security: false
+
+    api:
+      pattern: ^/api/
+      stateless: true
+      provider: users
+      custom_authenticators:
+        - App\Infrastructure\Security\Authenticator\JwtCookieAuthenticator
+
+    main:
+      stateless: true
+      provider: users
+      entry_point: App\Infrastructure\Security\Authenticator\JwtCookieAuthenticator
+      custom_authenticators:
+        - App\Infrastructure\Security\Authenticator\JwtCookieAuthenticator
+
+  access_control:
+    - { path: ^/api/admin/, roles: ROLE_ADMIN }
+    - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }

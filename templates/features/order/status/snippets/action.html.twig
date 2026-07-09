@@ -1,0 +1,10 @@
+{% macro render(text, url) %}
+    <div class="order-status__card-action">
+        <a
+            href="{{ url }}"
+            class="order-status__card-btn"
+        >
+            {{ text }}
+        </a>
+    </div>
+{% endmacro %}

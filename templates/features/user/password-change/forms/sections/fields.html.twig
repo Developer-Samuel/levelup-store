@@ -1,0 +1,92 @@
+{% macro render(errors = []) %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    <div class="auth-page__card-form-group">
+        {{
+            Label.render(
+                'Old Password:',
+                'old-password',
+                'auth-page__card-form-label'
+            )
+        }}
+        <div class="auth-page__card-form-password">
+            <img
+                src="{{ asset('img/icons/actions/eye/show.png') }}"
+                alt="Show password"
+                class="auth-page__card-form-icon"
+            >
+            {{
+                Input.render (
+                    'password',
+                    'old_password',
+                    'old-password',
+                    null,
+                    '********',
+                    'auth-page__card-form-input input',
+                    null,
+                    errors
+                )
+            }}
+        </div>
+    </div>
+
+    <div class="auth-page__card-form-row row">
+        <div class="auth-page__card-form-group">
+            {{
+                Label.render(
+                    'New Password:',
+                    'new-password',
+                    'auth-page__card-form-label'
+                )
+            }}
+            <div class="auth-page__card-form-password">
+                <img
+                    src="{{ asset('img/icons/actions/eye/show.png') }}"
+                    alt="Show password"
+                    class="auth-page__card-form-icon"
+                >
+                {{
+                    Input.render (
+                        'password',
+                        'new_password',
+                        'new-password',
+                        null,
+                        '********',
+                        'auth-page__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+        </div>
+        <div class="auth-page__card-form-group">
+            {{
+                Label.render(
+                    'Confirm New Password:',
+                    'new-password-confirmation',
+                    'auth-page__card-form-label'
+                )
+            }}
+            <div class="auth-page__card-form-password">
+                <img
+                    src="{{ asset('img/icons/actions/eye/show.png') }}"
+                    alt="Show password"
+                    class="auth-page__card-form-icon"
+                >
+                {{
+                    Input.render (
+                        'password',
+                        'new_password_confirmation',
+                        'new-password-confirmation',
+                        null,
+                        '********',
+                        'auth-page__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

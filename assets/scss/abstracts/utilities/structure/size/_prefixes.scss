@@ -1,0 +1,25 @@
+@use 'sass:list';
+@use 'sass:meta';
+
+@function size-prefixes($extra) {
+  $props: null;
+
+  @if meta.type-of($extra) == 'string' {
+    $props: ($extra, $extra);
+  } @else {
+    $props: $extra;
+  }
+
+  $w-prefix: null;
+  $h-prefix: null;
+
+  @if list.length($props) >= 1 {
+    $w-prefix: list.nth($props, 1);
+  }
+
+  @if list.length($props) >= 2 {
+    $h-prefix: list.nth($props, 2);
+  }
+
+  @return ($w-prefix, $h-prefix);
+}

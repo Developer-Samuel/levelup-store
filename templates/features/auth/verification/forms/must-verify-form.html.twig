@@ -1,0 +1,13 @@
+{% macro render(errors = []) %}
+    {% import 'base/form.html.twig' as Form %}
+
+    {{
+        Form.render(
+            'verification-form',
+            'auth-page__card-form',
+            'verification_store',
+            'features/auth/verification/forms/wrapper/must-verify-wrapper.html.twig',
+            {'errors': errors}
+        )
+    }}
+{% endmacro %}

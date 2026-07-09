@@ -1,0 +1,13 @@
+{% macro render(errors = []) %}
+    {% import 'base/form.html.twig' as Form %}
+
+    {{
+        Form.render(
+            'login-form',
+            'auth-page__card-form',
+            'api_auth_login',
+            'features/auth/login/forms/wrapper/login-wrapper.html.twig',
+            {'errors': errors},
+        )
+    }}
+{% endmacro %}

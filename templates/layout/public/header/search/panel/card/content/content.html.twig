@@ -1,0 +1,10 @@
+{% macro render() %}
+    <div class="search-panel__content">
+        {%
+            include 'layout/public/header/search/panel/card/content/list/list.html.twig'
+            with {
+                results: results|default([])
+            }
+        %}
+    </div>
+{% endmacro %}

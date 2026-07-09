@@ -1,0 +1,283 @@
+{
+  "Computers": {
+    "Desktops": {
+      "Lenovo Legion T5": {
+        "brand": "Lenovo",
+        "variants": {
+          "Lenovo Legion T5 26ARA8": {
+            "price": 2049,
+            "discountPrice": 50,
+            "description": "Gaming PC AMD Ryzen 7 7700X 5.4 GHz, AMD B650, NVIDIA GeForce RTX 4070 SUPER 12 GB, RAM 32 GB DDR5, SSD 1000 GB, without drive, WiFi, HDMI and DisplayPort, 4× USB 3.2, 2× USB 2.0, case type: Big Tower, Windows 11 Home",
+            "images": [
+              "products/images/computers/desktops/gaming/lenovo-legion-t5/lenovo-legion-t5-26ara8/1.webp",
+              "products/images/computers/desktops/gaming/lenovo-legion-t5/lenovo-legion-t5-26ara8/2.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "A Lenovo gaming computer can be the ideal companion for any enthusiastic gamer. In addition to a modern design, you will also be offered a fast and reliable design. This gaming PC build has enough power for new gaming bombs and will handle the demands of games for several years to come."
+              ],
+              [
+                "The most important parameters of the Lenovo Legion T5 26ARA8 gaming PC",
+                "<ul>\n<li>Powerful gaming PC with a streamlined design</li>\n<li>The Lenovo gaming PC has 32 GB of RAM</li>\n<li>The Lenovo Legion T5 26ARA8 is equipped with an AMD Ryzen 7 7700X processor</li>\n<li>The fast SSD disk contains up to 1000 GB</li>\n<li>NVIDIA GeForce RTX 4070 SUPER graphics card with 12 GB memory</li>\n<li>Thanks to the WiFi module, you can easily connect to the Internet</li>\n<li>Graphics outputs are HDMI and DisplayPort</li>\n<li>In total, you will be able to use 2x USB 2.0 to connect additional devices</li>\n<li>Practical USB 3.2 Gen 1 (USB 3.0) is represented 4 times in the gaming PC</li>\n<li>Other features include: Microphone input, Headphone/speaker output and RJ-45 (LAN)</li>\n<li>The Lenovo Legion T5 26ARA8 gaming PC comes with Windows 11 Home pre-installed</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 35,
+            "stocks_reserved": 5
+          }
+        },
+        "subtypes": ["Gaming"]
+      },
+      "MSI MAG Infinite S3": {
+        "brand": "MSI",
+        "variants": {
+          "MSI MAG Infinite S3 14NUE7-2440EU": {
+            "price": 1999,
+            "discountPrice": null,
+            "description": "Gaming PC Intel Core i7 14700F Raptor Lake Refresh 5.4 GHz, Intel H610, NVIDIA GeForce RTX 4070 SUPER 12 GB, RAM 16 GB DDR5, SSD 1000 GB, without drive, WiFi, HDMI and DisplayPort, 3× USB 3.2, 4× USB 2.0, case type: Desktop, Windows 11 Home",
+            "images": [
+              "products/images/computers/desktops/gaming/msi-mag-infinite-s3/msi-mag-infinite-s3-14nue7-2440eu/1.webp",
+              "products/images/computers/desktops/gaming/msi-mag-infinite-s3/msi-mag-infinite-s3-14nue7-2440eu/2.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 10,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Gaming"]
+      },
+      "HAL3000 Online Gamer": {
+        "brand": "HAL3000",
+        "variants": {
+          "HAL3000 Online Gamer 4060": {
+            "price": 1099,
+            "discountPrice": 50,
+            "description": "Gaming PC AMD Ryzen 5 5600 4.4 GHz, AMD B550, NVIDIA GeForce RTX 4060 8 GB, RAM 16 GB DDR4, SSD 1000 GB, without drive, WiFi, HDMI and DisplayPort, 4x USB 3.2, 2x USB 2.0, case type: Mini Tower, Windows 11 Home",
+            "images": [
+              "products/images/computers/desktops/gaming/hal3000-online-gamer/hal3000-online-gamer-4060/1.webp",
+              "products/images/computers/desktops/gaming/hal3000-online-gamer/hal3000-online-gamer-4060/2.webp",
+              "products/images/computers/desktops/gaming/hal3000-online-gamer/hal3000-online-gamer-4060/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 25,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Gaming"]
+      },
+      "LYNX Challenger": {
+        "brand": "LYNX",
+        "variants": {
+          "LYNX Challenger Ryzen 5 RTX3060": {
+            "price": 1019,
+            "discountPrice": 30,
+            "description": "Gaming PC AMD Ryzen 5 5600 4.4 GHz, AMD B550, NVIDIA GeForce RTX 3060 12 GB, RAM 16 GB DDR4, SSD 1000 GB, WiFi, HDMI and DisplayPort, 6× USB 3.2, case type: Midi Tower, Windows 11 Home",
+            "images": [
+              "products/images/computers/desktops/gaming/lynx-challenger/lynx-challenger-ryzen-5-rtx3060/1.webp",
+              "products/images/computers/desktops/gaming/lynx-challenger/lynx-challenger-ryzen-5-rtx3060/2.webp",
+              "products/images/computers/desktops/gaming/lynx-challenger/lynx-challenger-ryzen-5-rtx3060/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 60,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Gaming"]
+      },
+      "HP Pro 400": {
+        "brand": "HP",
+        "variants": {
+          "HP Pro 400 G9 Black": {
+            "price": 965,
+            "discountPrice": 85,
+            "description": "Computer Intel Core i5 14500 Raptor Lake Refresh 5 GHz, Intel Q670, Intel UHD Graphics, RAM 16 GB DDR5, SSD 512 GB, without drive, case type: Big Tower, mouse and keyboard, Windows 11 Pro",
+            "images": [
+              "products/images/computers/desktops/home-office/hp-pro-400/hp-pro-400-g9-black/1.webp",
+              "products/images/computers/desktops/home-office/hp-pro-400/hp-pro-400-g9-black/2.webp",
+              "products/images/computers/desktops/home-office/hp-pro-400/hp-pro-400-g9-black/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 4,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Home & Office"]
+      },
+      "Acer Aspire": {
+        "brand": "Acer",
+        "variants": {
+          "Acer Aspire TC-1785": {
+            "price": 799,
+            "discountPrice": null,
+            "description": "Computer Intel Core i5 14400F Raptor Lake Refresh 4.7 GHz, NVIDIA GeForce RTX 3050 6 GB, RAM 16 GB DDR4, SSD 512 GB, DVD, WiFi, HDMI, DisplayPort and USB-C, 2× USB 3.2, 4× USB 2.0, case type: Mini Tower, mouse and keyboard, without operating system",
+            "images": [
+              "products/images/computers/desktops/home-office/acer-aspire/acer-aspire-tc-1785/1.webp",
+              "products/images/computers/desktops/home-office/acer-aspire/acer-aspire-tc-1785/2.webp",
+              "products/images/computers/desktops/home-office/acer-aspire/acer-aspire-tc-1785/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 15,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Home & Office"]
+      },
+      "Umax U-Box": {
+        "brand": "Umax",
+        "variants": {
+          "Umax U-Box N10 Pro": {
+            "price": 239,
+            "discountPrice": null,
+            "description": "Mini PC Intel Processor N100 3.4 GHz, Intel UHD Graphics 600, RAM 8 GB, SSD 256 GB, without drive, WiFi, VGA D-SUB, DisplayPort and HDMI 2.0a, 4× USB 3.2, cabinet type: Mini ITX, Windows 11 Pro",
+            "images": [
+              "products/images/computers/desktops/mini/umax-u-box/umax-u-box-n10-pro/1.webp",
+              "products/images/computers/desktops/mini/umax-u-box/umax-u-box-n10-pro/2.webp",
+              "products/images/computers/desktops/mini/umax-u-box/umax-u-box-n10-pro/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 15,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Mini"]
+      },
+      "QOOBE II": {
+        "brand": "QOOBE",
+        "variants": {
+          "QOOBE II I5-12450H (16+512 GB)": {
+            "price": 489,
+            "discountPrice": 40,
+            "description": "Mini PC Intel Core i5 12450H Alder Lake 4.4 GHz, Intel UHD Graphics, RAM 16 GB DDR4, SSD 512 GB, WiFi, HDMI 2.0, 1× USB 2.0, cabinet type: Mini ITX, Windows 11 Pro",
+            "images": [
+              "products/images/computers/desktops/mini/qoobe-ii/qoobe-ii-i5-12450h-(16+512-gb)/1.webp",
+              "products/images/computers/desktops/mini/qoobe-ii/qoobe-ii-i5-12450h-(16+512-gb)/2.webp",
+              "products/images/computers/desktops/mini/qoobe-ii/qoobe-ii-i5-12450h-(16+512-gb)/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 5,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Mini"]
+      },
+      "HP 24-cr0002nc": {
+        "brand": "HP",
+        "variants": {
+          "HP 24-cr0002nc White": {
+            "price": 779,
+            "discountPrice": null,
+            "description": "All In One PC 23.8\" 1920 × 1080, AMD Ryzen 5 7520U 4.3 GHz, SoC, AMD Radeon 610M Graphics, RAM 16 GB, SSD 512 GB, without drive, WiFi, HDMI, 2× USB 3.2, 2× USB 2.0, mouse, keyboard and webcam, Windows 11 Home",
+            "images": [
+              "products/images/computers/desktops/all-in-one/hp-24-cr0002nc/hp-24-cr0002nc-white/1.webp",
+              "products/images/computers/desktops/all-in-one/hp-24-cr0002nc/hp-24-cr0002nc-white/2.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 10,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["All In One"]
+      },
+      "Inter-Tech IPC 3U-3098-S": {
+        "brand": "Inter-Tech",
+        "variants": {
+          "Inter-Tech IPC 3U-3098-S - Rack 3U": {
+            "price": 145,
+            "discountPrice": null,
+            "description": "PC case - ATX, mATX (Micro ATX) and mITX (Mini ITX), 5× 3.5\", 6× 2.5\", max. cooler height 113 mm, max. graphics card length 300 mm",
+            "images": [
+              "products/images/computers/desktops/server/inter-tech-ipc-3u-3098-s/inter-tech-ipc-3u-3098-s-rack-3u/1.webp",
+              "products/images/computers/desktops/server/inter-tech-ipc-3u-3098-s/inter-tech-ipc-3u-3098-s-rack-3u/2.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 10,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Server"]
+      },
+      "Lenovo ThinkStation P2": {
+        "brand": "Lenovo",
+        "variants": {
+          "Lenovo ThinkStation P2 Tower": {
+            "price": 1269,
+            "discountPrice": 100,
+            "description": "Workstation Intel Core i5 14500 Raptor Lake Refresh 5 GHz, Intel W680, Intel Intel UHD Graphics 770, RAM 16 GB DDR5, SSD 512 GB, without drive, HDMI and DisplayPort, 6× USB 3.2, case type: Desktop, mouse and keyboard, Windows 11 Pro",
+            "images": [
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p2/lenovo-thinkstation-p2-tower/1.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p2/lenovo-thinkstation-p2-tower/2.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p2/lenovo-thinkstation-p2-tower/3.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p2/lenovo-thinkstation-p2-tower/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "A high-performance Intel workstation designed for professionals and power users. With the latest Intel Core i5 14500 Raptor Lake Refresh running up to 5 GHz, this machine delivers smooth multitasking, fast computations, and excellent reliability for work and creative projects."
+              ],
+              [
+                "The most important parameters of the Lenovo ThinkStation P2 Tower",
+                "<ul>\n<li>Uncompromising workstation performance and efficiency are ideal for demanding users</li>\n<li>The Lenovo workstation has 16 GB of RAM installed</li>\n<li>Lenovo ThinkStation P2 Tower works with an Intel Core i5 14500 Raptor Lake Refresh processor</li>\n<li>Intel Graphics Card Intel UHD Graphics 770</li>\n<li>You will also be able to use a memory card reader.</li>\n<li>Graphics outputs are HDMI and DisplayPort</li>\n<li>USB 3.2 Gen 1 (USB 3.0) is in the workstation 6×</li>\n<li>Other features include: Combo Audio Jack, audio output (line out) and RJ-45 (LAN)</li>\n<li>A small desktop cabinet saves space</li>\n<li>This model also comes with a mouse and keyboard.</li>\n<li>The Lenovo ThinkStation P2 Tower workstation comes with Windows 11 Pro preinstalled</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 40,
+            "stocks_reserved": 3
+          }
+        },
+        "subtypes": ["Workstation"]
+      },
+      "Lenovo ThinkStation P3": {
+        "brand": "Lenovo",
+        "variants": {
+          "Lenovo ThinkStation P3 Tower": {
+            "price": 2949,
+            "discountPrice": null,
+            "description": "Workstation Intel Core i9 14900 Raptor Lake Refresh 5.4 GHz, Intel W680, NVIDIA NVIDIA RTX 2000 Ada Generation 16 GB, RAM 32 GB DDR5, SSD 1000 GB, without drive, mini DisplayPort, 6× USB 3.2, case type: Desktop, mouse and keyboard, Windows 11 Pro",
+            "images": [
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-tower/1.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-tower/2.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-tower/3.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-tower/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Lenovo workstation is suitable for the most demanding users. It relies on the most powerful hardware, you can use it to quickly run the most demanding programs and can handle extremely high workloads. The most important part of the powerful Lenovo ThinkStation P3 Tower workstation is the Intel Core i9 processor, which includes an extra large portion of RAM. A separate graphics card will have its share in the performance, which helps when working with graphics or editing video. The advantage is also the higher storage speed, the SSD disk without mechanical parts is incredibly fast, which affects the speed of working with data and the entire operation. Everything is protected by a Desktop-type case with pleasantly small dimensions, which will save space on your desk. You can count on a mouse and keyboard in the package, you can start using the workstation almost immediately."
+              ],
+              [
+                "Interesting features of the Lenovo ThinkStation P3 Tower workstation",
+                "<ul>\n<li>Efficient workstation</li>\n<li>The Lenovo workstation has 32 GB of RAM</li>\n<li>Lenovo ThinkStation P3 Tower is equipped with an Intel Core i9 14900 Raptor Lake Refresh processor</li>\n<li>Fast SSD drive with a capacity of 1000 GB</li>\n<li>NVIDIA NVIDIA RTX 2000 Ada Generation graphics card with 16 GB memory</li>\n<li>You will be able to work with a memory card reader</li>\n<li>Graphics outputs are mini DisplayPort</li>\n<li>USB 3.2 Gen 1 (USB 3.0) is represented 6 times in the workstation</li>\n<li>Other equipment includes: RJ-45 (LAN)</li>\n<li>A small desktop cabinet saves space on your desk</li>\n<li>This model also comes with a mouse and keyboard.</li>\n<li>The Lenovo ThinkStation P3 Tower workstation comes with Windows 11 Pro</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 20,
+            "stocks_reserved": 1
+          },
+          "Lenovo ThinkStation P3 Ultra": {
+            "price": 5299,
+            "discountPrice": 500,
+            "description": "Computer Intel Core i9 13900 Raptor Lake 5.2 GHz, Intel W680, NVIDIA NVIDIA RTX A5500 16 GB, RAM 32 GB DDR5, SSD 1000 GB, without drive, WiFi, miniDisplayPort, case type: Micro Tower, mouse and keyboard, Windows 11 Pro",
+            "images": [
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-ultra/1.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-ultra/2.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-ultra/3.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-ultra/4.webp",
+              "products/images/computers/desktops/workstation/lenovo-thinkstation-p3/lenovo-thinkstation-p3-ultra/5.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Lenovo PC is a suitable choice for both the desktop and the home. It has reliable components that provide a good performance-price ratio. It is one of the machines designed for very advanced programs and will reliably meet the requirements of demanding applications. The core of the practical Lenovo ThinkStation P3 Ultra PC is the Intel Core i9 chip, which is complemented by a very large RAM. An important share in the performance will be a separate graphics card, which supports the processor when editing video or working with graphics. The disk speed is also a significant advantage, the SSD disk without mechanical parts is extremely fast, the operation of the entire system and access to data will be very fast. Everything is provided by a Micro Tower case with advantageously economical dimensions, which does not require much space on the desk. The keyboard and mouse are included in the package, just connect to the monitor and the PC is ready."
+              ],
+              [
+                "Key benefits of the Lenovo ThinkStation P3 Ultra",
+                "<ul>\n<li>The Lenovo computer has 32 GB of RAM.</li>\n<li>Lenovo ThinkStation P3 Ultra is equipped with an Intel Core i9 13900 Raptor Lake processor</li>\n<li>A very fast SSD disk with a capacity of 1000 GB</li>\n<li>NVIDIA NVIDIA RTX A5500 graphics card with 16 GB memory</li>\n<li>You will be able to connect to the internet wirelessly thanks to the WiFi module</li>\n<li>Graphic outputs are represented by mini DisplayPort</li>\n<li>Graphics outputs are mini DisplayPort</li>\n<li>Other features include: Combo Audio Jack, RJ-45 (LAN) 2.5Gbps and RJ-45 (LAN) 1Gbps</li>\n<li>Small Micro Tower case saves desk space</li>\n<li>This model also comes with a mouse and keyboard.</li>\n<li>Lenovo ThinkStation P3 Ultra will come pre-installed with Windows 11 Pro</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 4,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Workstation"]
+      }
+    }
+  }
+}

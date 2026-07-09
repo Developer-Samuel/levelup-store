@@ -1,0 +1,5 @@
+@forward '@/scss/presentation/components/loading/animations/loading-spinner';
+
+@mixin loading-spinner {
+  animation: spin 0.8s linear infinite;
+}

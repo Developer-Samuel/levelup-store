@@ -1,0 +1,102 @@
+{% macro render(order, billing, shipping, pdfEnabled) %}
+    {% import 'features/order/detail/data/snippets/info.html.twig' as OrderInfo %}
+    {% import 'features/order/detail/data/snippets/address.html.twig' as OrderAddress %}
+
+    <div class="orders__card-data">
+        {% if pdfEnabled %}
+            <a
+                href="{{ path('orders_invoice_download', {'code': order.code}) }}"
+                target="_blank"
+                class="orders__card-data-button"
+            >
+        {% else %}
+            <span class="orders__card-data-button not-allowed disabled">
+        {% endif %}
+            <img
+                src="{{ asset('img/icons/actions/create.png') }}"
+                alt="Create"
+            >
+            <span>
+                Download
+            </span>
+        {% if pdfEnabled %}
+            </a>
+        {% else %}
+            </span>
+        {% endif %}
+        <div
+            id="order-basic"
+            class="orders__card-group"
+        >
+            {{
+                OrderInfo.render(
+                    'order-status',
+                    'Order status:',
+                    order.status.value|capitalize
+                )
+            }}
+
+            {% set icon = order.payment.value == 'card' ? '💳' : '💵' %}
+            {% set paymentMethod = order.payment.value|capitalize ~ ' ' ~ icon %}
+
+            {{
+                OrderInfo.render(
+                    'order-payment-method',
+                    'Payment in:',
+                    paymentMethod
+                )
+            }}
+
+            {{
+                OrderInfo.render(
+                    'order-price',
+                    'Total price:',
+                    order.price ~ ' €'
+                )
+            }}
+
+            {% if order.hasPayment is empty %}
+                {{
+                    OrderInfo.render(
+                        'order-payment',
+                        'Payment status:',
+                        '❌',
+                        'text-red font-bold'
+                    )
+                }}
+            {% else %}
+                {{
+                    OrderInfo.render(
+                        'order-payment',
+                        'Payment status:',
+                        '✅',
+                        'text-green font-bold'
+                    )
+                }}
+            {% endif %}
+        </div>
+
+        {{
+            OrderAddress.render(
+                'order-billing',
+                'Billing Address:',
+                billing
+            )
+        }}
+
+        {% set hasShipping = shipping.country is not empty
+                   or shipping.city is not empty
+                   or shipping.postalCode is not empty
+                   or shipping.street is not empty %}
+
+        {% if hasShipping %}
+            {{
+                OrderAddress.render(
+                    'order-shipping',
+                    'Shipping Address:',
+                    shipping
+                )
+            }}
+        {% endif %}
+    </div>
+{% endmacro %}

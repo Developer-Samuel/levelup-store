@@ -1,0 +1,6 @@
+@mixin user-select($value: none) {
+  user-select: #{$value}; // Modern browsers (Chrome, Edge, Safari, Firefox)
+  -webkit-user-select: #{$value}; // Safari and older iOS / WebKit browsers
+  -moz-user-select: #{$value}; // Firefox
+  -ms-user-select: #{$value}; // IE / old Edge
+}

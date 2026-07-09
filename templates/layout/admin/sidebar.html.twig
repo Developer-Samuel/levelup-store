@@ -1,0 +1,14 @@
+{% macro render() %}
+    {% import 'layout/admin/navigation.html.twig' as Navigation %}
+
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar__content">
+            {{
+                Navigation.render(
+                    'admin-sidebar__list',
+                    'admin-sidebar__list-item'
+                )
+            }}
+        </div>
+    </aside>
+{% endmacro %}

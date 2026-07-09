@@ -1,0 +1,108 @@
+{% macro render(data) %}
+    {% set item = data.review ?? data.lastReview %}
+
+    {% if item is not null %}
+        {% if item.review is not defined %}
+            {% set item = {
+                review: item,
+                details: data.details ?? data.lastReviewDetails,
+                likesCount: data.likesCount|default(0),
+                dislikesCount: data.dislikesCount|default(0),
+                userRatingType: data.userRatingType|default(null)
+            } %}
+        {% endif %}
+
+        {% set review = item.review %}
+        {% set details = item.details|default([]) %}
+        {% set likesCount = item.likesCount|default(0) %}
+        {% set dislikesCount = item.dislikesCount|default(0) %}
+        {% set userRatingType = item.userRatingType|default(null) %}
+        {% set currentUser = app.user ?? null %}
+
+        <div class="reviews__card-list">
+            <div class="reviews__card-item">
+                <div class="reviews__card-item-basic">
+                    <div class="reviews__card-item-basic-left">
+                        <div class="reviews__card-item-stars">
+                            {% for i in 1..5 %}
+                                {% if i <= review.value|default(0) %}
+                                    <img src="{{ asset('img/icons/elements/star/star.png') }}" alt="Star">
+                                {% else %}
+                                    <img src="{{ asset('img/icons/elements/star/star-empty.png') }}" alt="Star">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="reviews__card-item-date">
+                            {{ review.createdAt|date('jS F Y') }}
+                        </div>
+                    </div>
+
+                    {% if currentUser and review.user.id == currentUser.id %}
+                        <div class="reviews__card-item-basic-right">
+                            <div class="reviews__card-item-basic-right-menu">
+                                <img src="{{ asset('img/icons/elements/dots.png') }}" alt="Menu" class="reviews__card-item-basic-right-menu-icon">
+                            </div>
+                            <div class="reviews__card-item-basic-right-dropdown">
+                                <div data-review-id="{{ hmac_encrypt(review.id) }}" class="reviews__card-item-basic-right-dropdown-link reviews__card-item-destroy">
+                                    Delete
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="reviews__card-item-row">
+                    <div class="reviews__card-item-row-left">
+                        <div class="reviews__card-item-user">
+                            {{ review.user.fullname }}
+                        </div>
+                        <div class="reviews__card-item-text">
+                            {{ review.body }}
+                        </div>
+
+                        <div class="reviews__card-item-ratings">
+                            <div class="reviews__card-item-ratings-card reviews__card-item-ratings-pros">
+                                {% for detail in details %}
+                                    {% if detail.type.value == 'positive' %}
+                                        <div class="reviews__card-item-ratings-card-value reviews__card-item-ratings-pros-value">
+                                            <img src="{{ asset('img/icons/elements/operators/pros.png') }}" alt="Pros">
+                                            <span>{{ detail.body }}</span>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <div class="reviews__card-item-ratings-card reviews__card-item-ratings-cons">
+                                {% for detail in details %}
+                                    {% if detail.type.value == 'negative' %}
+                                        <div class="reviews__card-item-ratings-card-value reviews__card-item-ratings-cons-value">
+                                            <img src="{{ asset('img/icons/elements/operators/cons.png') }}" alt="Cons">
+                                            <span>{{ detail.body }}</span>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if data.review is defined and currentUser and userRatingType is defined %}
+                        <div
+                            data-review-id="{{ hmac_encrypt(review.id) }}"
+                            data-rating-type="{{ userRatingType ?? '' }}"
+                            class="reviews__card-item-row-right"
+                        >
+                            <div id="reviews-like" class="reviews__card-item-row-right-rating {% if userRatingType == 'like' %}reviews__card-item-row-right-rating--active{% endif %}">
+                                <span class="reviews__card-item-row-right-rating-icon"></span>
+                                <span class="reviews__card-item-row-right-rating-count">{{ likesCount }}</span>
+                            </div>
+                            <div id="reviews-dislike" class="reviews__card-item-row-right-rating {% if userRatingType == 'dislike' %}reviews__card-item-row-right-rating--active{% endif %}">
+                                <span class="reviews__card-item-row-right-rating-icon"></span>
+                                <span class="reviews__card-item-row-right-rating-count">{{ dislikesCount }}</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}

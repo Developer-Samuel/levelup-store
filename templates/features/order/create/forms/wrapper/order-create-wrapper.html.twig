@@ -1,0 +1,24 @@
+{% macro render(order, totalPrice, errors = []) %}
+    {% import 'components/alert/alert.html.twig' as Alert %}
+
+    {% import 'features/order/create/forms/sections/personal.html.twig' as PersonalSection %}
+    {% import 'features/order/create/forms/sections/billing.html.twig' as BillingSection %}
+    {% import 'features/order/create/forms/sections/shipping.html.twig' as ShippingSection %}
+    {% import 'features/order/create/forms/sections/payment.html.twig' as PaymentSection %}
+    {% import 'features/order/create/snippets/summary.html.twig' as OrderSummary %}
+    {% import 'features/order/create/forms/snippets/checkbox.html.twig' as OrderCheckboxUseShipping %}
+
+    <div id="order-page" class="order__card-form-data">
+        {{ Alert.render() }}
+
+        {{ PersonalSection.render(order, errors ?? []) }}
+        {{ BillingSection.render(order, errors ?? []) }}
+
+        {{ OrderCheckboxUseShipping.render(order) }}
+
+        {{ ShippingSection.render(order, errors ?? []) }}
+        {{ PaymentSection.render(order) }}
+    </div>
+
+    {{ OrderSummary.render(totalPrice) }}
+{% endmacro %}

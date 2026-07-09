@@ -1,0 +1,8 @@
+{% macro render(url, text, color) %}
+    <a
+        class="admin-content__actions-row-btn btn btn--{{ color }}"
+        href="{{ url }}"
+    >
+        {{ text }}
+    </a>
+{% endmacro %}

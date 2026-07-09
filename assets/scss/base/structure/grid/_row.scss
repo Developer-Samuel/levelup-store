@@ -1,0 +1,9 @@
+@use '@/scss/abstracts/mixins/structure/flex' as *;
+
+.row {
+  @include flex;
+
+  position: relative;
+  gap: 1em;
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+{% macro render(id, text, value, class = '') %}
+    <div
+        id="{{ id }}"
+        class="orders__card-info"
+    >
+        <span class="font-bold">
+            {{ text }}
+        </span>
+        <span class="{{ class }}">
+            {{ value }}
+        </span>
+    </div>
+{% endmacro %}

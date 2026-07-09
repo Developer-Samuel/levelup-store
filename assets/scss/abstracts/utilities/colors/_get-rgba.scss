@@ -1,0 +1,12 @@
+@use 'sass:map';
+
+@function get-rgba($color-name, $percent, $map) {
+  $color-map: map.get($map, $color-name);
+  $value: map.get($color-map, $percent);
+
+  @if $value == null {
+    @error "Color `#{$color-name}-rgba` with percent `#{$percent}` not found.";
+  }
+
+  @return $value;
+}

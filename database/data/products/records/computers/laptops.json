@@ -1,0 +1,113 @@
+{
+  "Computers": {
+    "Laptops": {
+      "ASUS ROG Strix G18": {
+        "brand": "ASUS",
+        "variants": {
+          "ASUS ROG Strix G18 G814JVR-N6015W Eclipse Gray metallic": {
+            "price": 2149,
+            "discountPrice": 150,
+            "description": "Gaming laptop - Intel Core i9 14900HX Raptor Lake Refresh, 18\" IPS anti-glare 2560 × 1600 240 Hz, RAM 32 GB DDR5, NVIDIA GeForce RTX 4060 8 GB 140 W (MUX Switch), SSD 1000 GB, numeric keypad, backlit RGB keyboard, webcam, USB 3.2 Gen 2, USB-C, WiFi 6E, WiFi, Bluetooth, weight 3 kg, Windows 11 Home",
+            "images": [
+              "products/images/computers/laptops/gaming/asus-rog-strix-g18/asus-rog-strix-g18-g814jvr-n6015w-eclipse-gray-metallic/1.webp",
+              "products/images/computers/laptops/gaming/asus-rog-strix-g18/asus-rog-strix-g18-g814jvr-n6015w-eclipse-gray-metallic/2.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 50,
+            "stocks_reserved": 10
+          }
+        },
+        "subtypes": ["Gaming"]
+      },
+      "ASUS Vivobook 15": {
+        "brand": "ASUS",
+        "variants": {
+          "ASUS Vivobook 15 X1504VA-NJ2648W Quiet Blue": {
+            "price": 599,
+            "discountPrice": 50,
+            "description": "Laptop - Intel Core i5 1334U Raptor Lake, 15.6' TN matte 1920 × 1080, RAM 16 GB DDR4, Intel Intel Iris Xe Graphics, SSD 1000 GB, numeric keypad, backlit keyboard, webcam, USB 3.2 Gen 1, USB-C, WiFi 5, Bluetooth, weight 1.7 kg, Windows 11 Home",
+            "images": [
+              "products/images/computers/laptops/home-office/asus-vivobook-15/asus-vivobook-15-x1504va-nj2648w-quiet-blue/1.webp",
+              "products/images/computers/laptops/home-office/asus-vivobook-15/asus-vivobook-15-x1504va-nj2648w-quiet-blue/2.webp",
+              "products/images/computers/laptops/home-office/asus-vivobook-15/asus-vivobook-15-x1504va-nj2648w-quiet-blue/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The ASUS Vivobook 15 X1504 notebook offers high-quality equipment and high performance for work and multimedia entertainment. It impresses with a classic design with thin side frames and a favorable price/performance ratio. With a total weight of only 1.7 kg, the ASUS Vivobook 15 X1504 notebook is also ready for comfortable work on the go.\n",
+                "Rely on the performance of the six-core Intel Core i5 1334 Raptor Lake processor with integrated Intel Iris Xe Graphics, a fast M.2 SSD and DDR4 RAM. The ASUS Vivobook 15 X1504 laptop has a complete range of connectors and enjoy realistic spatial reproduction with SonicMaster technology.\n",
+                "The Full HD IPS display has excellent color reproduction with 45% NTSC color gamut coverage, wide viewing angles, and up to 250 nits of brightness. The display's narrow bezel design and 84% screen-to-body ratio offer plenty of room to view content.\n",
+                "A full-size, ergonomically designed keyboard with a solid one-piece construction and 1.4mm key travel offers comfortable typing. Comprehensive connectivity is provided by a series of ports on the ASUS Vivobook 15 X1504 laptop, including USB-C, USB 3.2 and USB 2.0, and HDMI output for seamless compatibility with today's peripherals, displays and projectors. Fast Wi-Fi 5 (802.11ac) is available for wireless communication. *Keyboard location may be for illustrative purposes only."
+              ],
+              [
+                "Basic parameters of the ASUS Vivobook 15 X1504 laptop",
+                "<ul>\n<li>Processor: Intel Core i5 1334U Raptor Lake 4.6 GHz Max Turbo</li>\n<li>Hard drive: 1TB M.2 SSD</li>\n<li>RAM: 16GB DDR4</li>\n<li>Graphics card: Intel Iris Xe Graphics</li>\n<li>Battery capacity: 42 Wh</li>\n<li>Weight: 1.7kg</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 138,
+            "stocks_reserved": 11
+          }
+        },
+        "subtypes": ["Home & Office"]
+      },
+      "MacBook Air": {
+        "brand": "MacBook",
+        "variants": {
+          "MacBook Air 13' M1": {
+            "price": 849,
+            "discountPrice": null,
+            "description": "MacBook - Apple M1, 13.3' IPS glossy 2560 × 1600 px, 8 GB RAM, Apple Apple M1 7-core GPU, 256 GB SSD, backlit keyboard, webcam, USB-C, fingerprint reader, WiFi 6, weight 1.25 kg, macOS",
+            "images": [
+              "products/images/computers/laptops/home-office/macbook-air/macbook-air-13'-m1/1.webp",
+              "products/images/computers/laptops/home-office/macbook-air/macbook-air-13'-m1/2.webp",
+              "products/images/computers/laptops/home-office/macbook-air/macbook-air-13'-m1/3.webp"
+            ],
+            "descriptions": [
+              [
+                "The power of the M3. Dressed in lightness.",
+                "MacBook Air handles work and play with ease. And the M3 chip gives you wings. This ultraportable laptop uses advanced AI features and has up to 18 hours of battery life. So you can power through your day, no matter what you're doing."
+              ]
+            ],
+            "stocks_available": 75,
+            "stocks_reserved": 7
+          }
+        },
+        "subtypes": ["Home & Office"]
+      },
+      "Lenovo IdeaPad 5": {
+        "brand": "Lenovo",
+        "variants": {
+          "Lenovo IdeaPad 5 2-in-1 16AHP9 Cosmic Blue": {
+            "price": 799,
+            "discountPrice": null,
+            "description": "Tablet PC - AMD Ryzen 5 8645HS, touch 16' OLED glossy 2048 × 1280, RAM 16 GB LPDDR5x, AMD Radeon AMD Radeon 760M, SSD 512 GB, numeric keypad, backlit keyboard, webcam, USB 3.2 Gen 1, USB-C, fingerprint reader, stylus, WiFi 6E, WiFi, Bluetooth, weight 1.9 kg, without operating system",
+            "images": [
+              "products/images/computers/laptops/touch-2-in-1/lenovo-ideapad-5/lenovo-ideapad-5-2-in-1-16ahp9-cosmic-blue/1.webp",
+              "products/images/computers/laptops/touch-2-in-1/lenovo-ideapad-5/lenovo-ideapad-5-2-in-1-16ahp9-cosmic-blue/2.webp",
+              "products/images/computers/laptops/touch-2-in-1/lenovo-ideapad-5/lenovo-ideapad-5-2-in-1-16ahp9-cosmic-blue/3.webp",
+              "products/images/computers/laptops/touch-2-in-1/lenovo-ideapad-5/lenovo-ideapad-5-2-in-1-16ahp9-cosmic-blue/4.webp",
+              "products/images/computers/laptops/touch-2-in-1/lenovo-ideapad-5/lenovo-ideapad-5-2-in-1-16ahp9-cosmic-blue/5.webp",
+              "products/images/computers/laptops/touch-2-in-1/lenovo-ideapad-5/lenovo-ideapad-5-2-in-1-16ahp9-cosmic-blue/6.webp",
+              "products/images/computers/laptops/touch-2-in-1/lenovo-ideapad-5/lenovo-ideapad-5-2-in-1-16ahp9-cosmic-blue/7.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Enjoy stunning colors on the 16-inch 2K (2048 x 1280) OLED display, which delivers a perfect experience for your favorite movies and TV shows. With 100% DCI-P3 gamut coverage, it's also great for photo editing and graphics work. And with the included Lenovo Digital Pen 2, you can also create artwork and take notes like on paper.\n",
+                "The Lenovo IdeaPad 5 2-in-1 laptop is equipped with an AMD Ryzen 5 8645HS processor with six computing cores and a clock speed of up to 5 GHz, which provides the performance needed to run even the most demanding applications. With 16 GB of LPDDR5x RAM and together with a 512 GB M.2 SSD, it ensures smooth operation without mowing - whatever you do.\n",
+                "The IdeaPad 5 2-in-1 Tablet PC is made of durable materials to last even under heavy use. Materials like PC-ABS and fiberglass ensure a lightweight, slim design, but also military-grade durability that meets MIL-STD-810H standards. Its sturdy construction also features a 360° hinge, so you can easily convert it from laptop to tablet!"
+              ],
+              [
+                "Why buy the Lenovo IdeaPad 5 2-in-1?",
+                "<ul>\n<li>Perfect display</li>\n<li>High performance</li>\n<li>Ingenious design</li>\n<li>Powerful speakers</li>\n<li>Long battery life</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 75,
+            "stocks_reserved": 7
+          }
+        },
+        "subtypes": ["Touch & 2-in-1"]
+      }
+    }
+  }
+}

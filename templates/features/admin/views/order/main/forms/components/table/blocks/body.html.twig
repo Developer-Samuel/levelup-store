@@ -1,0 +1,13 @@
+{% macro render(items) %}
+    {% import 'features/admin/views/order/main/forms/components/table/snippets/item.html.twig' as Item %}
+
+    <tbody class="admin-table__tbody admin-detail__data-tbody">
+        {% for item in items %}
+            {{ Item.render(item) }}
+        {% else %}
+            <tr>
+                <td colspan="4">No products found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endmacro %}

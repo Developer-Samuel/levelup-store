@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+@function transition-get-value($type, $duration, $map) {
+  $key: '#{$type}-#{$duration}';
+  $value: map.get($map, $key);
+
+  @if $value == null {
+    @error "Transition key `#{$key}` not found. Check type and duration.";
+  }
+
+  @if meta.type-of($value) == 'number' {
+    @return $value * 1ms;
+  } @else {
+    @return $value;
+  }
+}

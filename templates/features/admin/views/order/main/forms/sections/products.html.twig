@@ -1,0 +1,11 @@
+{% macro render(items) %}
+    {% import 'features/admin/views/order/main/forms/components/table/products-table.html.twig' as ProductsTable %}
+
+    <div id="admin-order-products" class="admin-detail__data-group">
+        {% if items is not empty %}
+            {{ ProductsTable.render(items) }}
+        {% else %}
+            <p>No products found.</p>
+        {% endif %}
+    </div>
+{% endmacro %}

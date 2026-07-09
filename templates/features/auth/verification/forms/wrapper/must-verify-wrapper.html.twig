@@ -1,0 +1,15 @@
+{% macro render() %}
+    {% import 'components/form/action.html.twig' as FormControlAction %}
+
+    <p class="auth-page__card-info">
+        A verification link has been sent to your registered email address. Please check your inbox, including your spam or junk folder.
+    </p>
+
+    {{
+        FormControlAction.render(
+            'auth-page__card-form-action',
+            'auth-page__card-form-action-btn',
+            'Resend Link'
+        )
+    }}
+{% endmacro %}

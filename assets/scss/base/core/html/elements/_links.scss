@@ -1,0 +1,6 @@
+@use '@/scss/abstracts/theme/colors/solid/index' as colors;
+
+a {
+  color: colors.$secondary;
+  text-decoration: none;
+}

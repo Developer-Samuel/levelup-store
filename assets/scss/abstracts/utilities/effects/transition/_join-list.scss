@@ -1,0 +1,15 @@
+@use 'sass:list';
+
+@function transition-join-list($results) {
+  $final: '';
+
+  @for $i from 1 through list.length($results) {
+    $final: $final + list.nth($results, $i);
+
+    @if $i != list.length($results) {
+      $final: $final + ', ';
+    }
+  }
+
+  @return $final;
+}

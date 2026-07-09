@@ -1,0 +1,7 @@
+@use '@/scss/abstracts/mixins/accessibility/user-select' as *;
+
+img {
+  @include user-select;
+
+  -webkit-user-drag: none;
+}

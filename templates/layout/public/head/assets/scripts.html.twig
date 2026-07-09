@@ -1,0 +1,5 @@
+{% macro render() %}
+    {% block javascripts %}
+        {{ vite_entry_script_tags('scripts') }}
+    {% endblock %}
+{% endmacro %}

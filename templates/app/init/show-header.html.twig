@@ -1,0 +1,9 @@
+{% macro render(showHeader) %}
+    {% if showHeader %}
+        {% import 'layout/public/header/header.html.twig' as Header %}
+        {% import 'layout/public/header/cart/cart-sidebar.html.twig' as CartSidebar %}
+
+        {{ Header.render() }}
+        {{ CartSidebar.render() }}
+    {% endif %}
+{% endmacro %}

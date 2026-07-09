@@ -1,0 +1,3 @@
+@use '@/scss/abstracts/generators/shadows/generate-shadows' as fn;
+
+$shadows: fn.generate-shadows();

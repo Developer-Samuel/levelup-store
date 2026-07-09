@@ -1,0 +1,122 @@
+{% macro render(shipping, countries = [], errors = []) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+    {% import 'components/form/checkbox.html.twig' as Checkbox %}
+    {% import 'features/user/profile/forms/snippets/select.html.twig' as Select %}
+
+    <div class="user__form-item">
+        <div class="user__form-checkbox-wrapper">
+            {{
+                Checkbox.render(
+                    'use_shipping',
+                    'use-shipping',
+                    'user__form-checkbox-input',
+                    user.useShipping ? 'checked' : false,
+                )
+            }}
+            {{
+                Label.render(
+                    'Use shipping address',
+                    'use-shipping',
+                    'user__form-label'
+                )
+            }}
+        </div>
+        {{
+            Title.render(
+                'Shipping Address',
+                'user__form-title',
+                'h2'
+            )
+        }}
+
+        <div id="profile-shipping-data" class="user__form-list">
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'Street:',
+                        'shipping-street',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'shipping_street',
+                        'shipping-street',
+                        shipping.street ?? null,
+                        'Shipping street',
+                        'user__form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'Postal Code:',
+                        'shipping-postal-code',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'shipping_postal_code',
+                        'shipping-postal-code',
+                        shipping.postalCode ?? null,
+                        'Shipping postal code',
+                        'user__form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'Country:',
+                        'shipping-country',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Select.render(
+                        'shipping_country',
+                        'shipping-country',
+                        billing.country ?? '',
+                        countries,
+                        shipping,
+                        errors
+                    )
+                }}
+            </div>
+
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'City:',
+                        'shipping-city',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'shipping_city',
+                        'shipping-city',
+                        shipping.city ?? null,
+                        'Shipping city',
+                        'user__form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

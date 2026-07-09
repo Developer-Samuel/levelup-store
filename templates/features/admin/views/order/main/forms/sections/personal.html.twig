@@ -1,0 +1,38 @@
+{% macro render(order, personal, statuses) %}
+    <div id="admin-order-personal" class="admin-detail__data-group">
+        <div class="admin-detail__data-groups">
+            <div class="admin-detail__data-subgroup">
+                <select
+                    name="status"
+                    id="status"
+                    class="admin-detail__data-select select"
+                >
+                    {% for statusOption in statuses %}
+                        <option
+                            value="{{ statusOption.value }}"
+                            class="admin-detail__data-option"
+                            {% if order.status is not null and order.status.value == statusOption.value %}selected{% endif %}
+                        >
+                            {{ statusOption.value|capitalize }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="admin-detail__data-subgroup">
+            <p>{{ personal.firstName ~ ' ' ~ personal.lastName }}</p>
+            <p>{{ personal.email }}</p>
+        </div>
+        <div class="admin-detail__data-subgroup">
+            <p><b>Payment via:</b> {{ order.payment.value|capitalize }}</p>
+            <p>
+                <b>Payment Status:</b>
+                {% if order.hasPayment is empty %}
+                    <span class="unpaid">❌</span>
+                {% else %}
+                    <span class="paid">✅</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+{% endmacro %}

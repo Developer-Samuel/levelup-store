@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+@use '@/scss/abstracts/theme/resolution/breakpoints' as bp;
+
+@function resolution-get-value($breakpoint) {
+  $value: map.get(bp.$breakpoints, $breakpoint);
+
+  @if $value == null {
+    @warn "Breakpoint `#{$breakpoint}` is not defined.";
+  }
+
+  @return $value;
+}

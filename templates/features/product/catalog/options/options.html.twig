@@ -1,0 +1,22 @@
+{% macro render(category, type, sortOptions, sort, variants) %}
+    {% import 'features/product/catalog/options/blocks/path.html.twig' as PathOptions %}
+    {% import 'features/product/catalog/options/snippets/sort/sort.html.twig' as SortOptions %}
+
+    <div class="products__card-options">
+        {{
+            PathOptions.render(
+                category,
+                type
+            )
+        }}
+
+        {% if variants|length > 0 %}
+            {{
+                SortOptions.render(
+                    sortOptions,
+                    sort
+                )
+            }}
+        {% endif %}
+    </div>
+{% endmacro %}

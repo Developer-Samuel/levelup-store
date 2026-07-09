@@ -1,0 +1,14 @@
+{% macro render(brands) %}
+    {% import 'features/product/catalog/filter/common/list/render.html.twig' as CheckboxList %}
+
+    {% if brands is not empty %}
+        {{
+            CheckboxList.render(
+                'Brands',
+                brands,
+                'features/product/catalog/filter/modules/brands/snippets/item.html.twig',
+                'products__filter-checkbox-list'
+            )
+        }}
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,14 @@
+{% macro render(name, id = null, value = null, placeholder = null, class = null, condition = null, errors = [], rows = 3, disabled = false) %}
+    <textarea
+        name="{{ name }}"
+        id="{{ id }}"
+        placeholder="{{ placeholder }}"
+        class="{{ class }}"
+        rows="{{ rows }}"
+        {{ condition }}
+        {% if disabled %}disabled{% endif %}
+    >{{ value }}</textarea>
+    <div class="error">
+        {{ errors[name] ?? '' }}
+    </div>
+{% endmacro %}

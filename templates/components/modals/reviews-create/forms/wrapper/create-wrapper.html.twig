@@ -1,0 +1,18 @@
+{% macro render(variant, errors = []) %}
+    {% import 'components/form/action.html.twig' as FormControlAction %}
+    {% import 'components/modals/reviews-create/forms/snippets/rating-stars.html.twig' as RatingStars %}
+    {% import 'components/modals/reviews-create/forms/sections/fields.html.twig' as Fields %}
+    {% import 'components/modals/reviews-create/forms/snippets/switch.html.twig' as FormSwitch %}
+
+    {{ RatingStars.render() }}
+    {{ Fields.render(errors ?? []) }}
+    {{ FormSwitch.render() }}
+
+    {{
+        FormControlAction.render(
+            'reviews-modal__body-form-action',
+            'reviews-modal__body-form-action-btn',
+            'Add rate'
+        )
+    }}
+{% endmacro %}

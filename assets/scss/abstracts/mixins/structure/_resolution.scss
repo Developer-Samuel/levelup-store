@@ -1,0 +1,12 @@
+@use '@/scss/abstracts/utilities/structure/resolution/get-value' as *;
+@use '@/scss/abstracts/utilities/structure/resolution/media-query' as *;
+
+@mixin resolution($breakpoint, $type: min) {
+  $value: resolution-get-value($breakpoint);
+
+  @if $value != null {
+    @media #{resolution-media-query($value, $type)} {
+      @content;
+    }
+  }
+}

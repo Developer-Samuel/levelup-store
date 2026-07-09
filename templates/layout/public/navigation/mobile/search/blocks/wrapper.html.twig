@@ -1,0 +1,35 @@
+{% macro render() %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    <div class="navigation__mobile-wrapper">
+        <div class="navigation__mobile-icon">
+            <img
+                src="{{ asset('img/icons/app/search.png') }}"
+                alt="Search"
+                class="navigation__mobile-icon-image"
+            >
+        </div>
+        <div class="navigation__mobile-close">
+            <img
+                src="{{ asset('img/icons/actions/close.png') }}"
+                alt="Search Close"
+                class="navigation__mobile-close-image"
+            >
+        </div>
+        {{
+            Input.render (
+                'text',
+                'search',
+                'search-mobile',
+                null,
+                'Search...',
+                'navigation__mobile-input',
+                null,
+                []
+            )
+        }}
+        <button class="navigation__mobile-btn">
+            Search
+        </button>
+    </div>
+{% endmacro %}

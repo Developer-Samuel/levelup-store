@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+@use '@/scss/abstracts/theme/fonts/weights/_weights' as weights;
+
+@function font-weight-get-value($weight) {
+  $val: map.get(weights.$font-weights, $weight);
+
+  @if $val == null {
+    @error "Font weight `#{$weight}` not found. Use 100, 200, ..., 900.";
+  }
+
+  @return $val;
+}

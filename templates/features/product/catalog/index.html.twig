@@ -1,0 +1,33 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    {% import 'features/product/catalog/content/content.html.twig' as ProductsContent %}
+
+    {% set filterPriceStep = filter.filterPriceStep ?? 1 %}
+    {% set maxPriceActive = filter.maxPriceActive ?? filter.maxPrice %}
+
+    <main class="content">
+        {{
+            ProductsContent.render(
+                categories,
+                filter.category,
+                filter.types,
+                filter.type,
+                filter.subtypes,
+                filter.brands,
+                filter.maxPrice,
+                filterPriceStep,
+                maxPriceActive,
+                sortOptions,
+                sort,
+                productsTitle,
+                pagination.currentPage,
+                pagination.maxPages,
+                variants,
+                pagination.showLoadMore
+            )
+        }}
+    </main>
+{% endblock %}

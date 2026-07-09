@@ -1,0 +1,21 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Variant EAN (Edit){% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/forms/form-content.html.twig' as FormContent %}
+
+    {{
+        FormContent.render(
+            'admin-variant-eans-update-page',
+            'Edit EAN',
+            'features/admin/views/product/variant/ean/forms/edit.html.twig',
+            path('admin_variants_eans_index', {'id': variant.id}),
+            {
+                'variant': variant,
+                'ean': ean,
+                'errors': errors ?? []
+            }
+        )
+    }}
+{% endblock %}

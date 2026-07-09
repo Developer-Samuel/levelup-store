@@ -1,0 +1,21 @@
+{% macro render() %}
+    {% import 'layout/public/footer/snippets/item.html.twig' as FooterItem %}
+
+    <div class="footer__card-bottom">
+        <div class="footer__card-item">
+            <span>
+                &copy; {{ currentYear }} LevelUp Store by
+            </span>
+            <a
+                href="https://samuel-steiner.com"
+                target="__blank"
+                id="copyright-link"
+                class="footer__card-link"
+            >
+                <span>
+                    Samuel Šteiner
+                </span>
+            </a>
+        </div>
+    </div>
+{% endmacro %}

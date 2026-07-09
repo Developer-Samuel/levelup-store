@@ -1,0 +1,15 @@
+{% macro render(params = {}) %}
+    {% set variant = params.variant %}
+    {% set errors = params.errors ?? [] %}
+
+    <form
+        id="admin-variant-descriptions-create-form"
+        class="admin-detail__form"
+    >
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('admin_variants_descriptions_store') }}">
+        <input type="hidden" name="variant_id" value="{{ hmac_encrypt(variant.id) }}">
+
+        {% import 'features/admin/views/product/variant/description/forms/wrapper/descriptions-wrapper.html.twig' as DescriptionsLayout %}
+        {{ DescriptionsLayout.render(variant, errors ?? []) }}
+    </form>
+{% endmacro %}

@@ -1,0 +1,7 @@
+{% macro render() %}
+    {% import 'layout/public/footer/blocks/card/card.html.twig' as FooterCard %}
+
+    <footer class="footer">
+        {{ FooterCard.render() }}
+    </footer>
+{% endmacro %}

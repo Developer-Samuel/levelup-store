@@ -1,0 +1,25 @@
+{% macro render(name, id, value = '', countries = [], address = null, errors = []) %}
+    <select
+        name="{{ name }}"
+        id="{{ id }}"
+        class="user__form-select select"
+    >
+        <option
+            value=""
+            class="user__form-option"
+            {% if address is null or address.country is null %}selected{% endif %}
+        ></option>
+        {% for country in countries %}
+            <option
+                value="{{ country.id }}"
+                class="user__form-option"
+                {% if address.country.id is defined and address.country.id == country.id %}selected{% endif %}
+            >
+                {{ country.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <div class="error">
+        {{ errors[name] ?? '' }}
+    </div>
+{% endmacro %}

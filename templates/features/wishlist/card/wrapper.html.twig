@@ -1,0 +1,7 @@
+{% macro render(records) %}
+    {% import 'features/wishlist/card/list/list.html.twig' as WishlistList %}
+
+    <div class="wishlist__wrapper products__wrapper">
+        {{ WishlistList.render(records) }}
+    </div>
+{% endmacro %}

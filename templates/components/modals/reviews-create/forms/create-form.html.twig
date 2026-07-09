@@ -1,0 +1,20 @@
+{% macro render(variant, errors = []) %}
+    {% import 'base/form.html.twig' as Form %}
+
+    {{
+        Form.render(
+            'reviews-create-form',
+            'modal reviews-modal__body-form',
+            'reviews_store',
+            'components/modals/reviews-create/forms/wrapper/create-wrapper.html.twig',
+            {
+                'variant': variant,
+                'errors': errors
+            },
+            [
+                { 'name': 'variantId', 'value': hmac_encrypt(variant.id) },
+                { 'name': 'value', 'value': '', 'id': 'review-value' }
+            ]
+        )
+    }}
+{% endmacro %}

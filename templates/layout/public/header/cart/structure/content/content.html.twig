@@ -1,0 +1,7 @@
+{% macro render(cart) %}
+    <div class="cart__content">
+        <div class="cart__content-wrapper">
+            {{ include('layout/public/header/cart/structure/content/list/list.html.twig', { cart: cart }) }}
+        </div>
+    </div>
+{% endmacro %}

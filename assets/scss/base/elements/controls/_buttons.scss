@@ -1,0 +1,64 @@
+@use '@/scss/abstracts/mixins/effects/transition' as *;
+@use '@/scss/abstracts/mixins/fonts/weights' as *;
+@use '@/scss/abstracts/theme/colors/solid/index' as colors;
+
+.btn {
+  @include transition('linear');
+  @include weights(600);
+
+  border-radius: 1em;
+
+  &--blue {
+    color: colors.$primary;
+    background: colors.$secondary;
+
+    &:hover {
+      background: colors.$secondary-hover;
+    }
+  }
+
+  &--green {
+    color: colors.$neutral;
+    background: colors.$success;
+
+    &:hover {
+      background: colors.$success-hover;
+    }
+  }
+
+  &--red {
+    color: colors.$primary;
+    background: colors.$error;
+
+    &:hover {
+      background: colors.$error-hover;
+    }
+  }
+
+  &--orange {
+    color: colors.$neutral;
+    background: colors.$orange-500;
+
+    &:hover {
+      background: colors.$orange-400;
+    }
+  }
+
+  &--purple {
+    color: colors.$primary;
+    background: colors.$purple-900;
+
+    &:hover {
+      background: colors.$purple-800;
+    }
+  }
+
+  &--dark {
+    color: colors.$primary;
+    background: colors.$dark-400;
+
+    &:hover {
+      background: colors.$dark-300;
+    }
+  }
+}

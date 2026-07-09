@@ -1,0 +1,9 @@
+{% macro render(categories) %}
+    {% import 'layout/public/navigation/menu/snippets/type.html.twig' as NavigationMenuType %}
+
+    {% for category in categories %}
+        <div id="{{ category.name|lower|replace({' ': '-'}) }}-menu" class="navigation__menu-submenu">
+            {{ NavigationMenuType.render(category, maxTypes) }}
+        </div>
+    {% endfor %}
+{% endmacro %}

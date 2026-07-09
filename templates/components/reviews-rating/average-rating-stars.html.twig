@@ -1,0 +1,13 @@
+{% macro render(rating) %}
+    {% import 'components/reviews-rating/snippets/star.html.twig' as Star %}
+
+    {% for i in 1..5 %}
+        {% if rating >= i %}
+            {{ Star.render('full') }}
+        {% elseif rating >= i - 0.5 %}
+            {{ Star.render('half') }}
+        {% else %}
+            {{ Star.render('empty') }}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,7 @@
+{% macro render(request) %}
+    {% import 'components/modals/cookies/cookies.html.twig' as CookiesModal %}
+
+    {% if not request.cookies.get('cookie_consent') %}
+        {{ CookiesModal.render() }}
+    {% endif %}
+{% endmacro %}

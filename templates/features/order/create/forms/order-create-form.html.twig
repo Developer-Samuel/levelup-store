@@ -1,0 +1,25 @@
+{# features/order/create/forms/order-create-form.html.twig #}
+
+{% macro render(
+    order,
+    totalPrice,
+    errors = []
+) %}
+    <form
+        id="order-form"
+        class="order__card-form"
+    >
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('orders_store') }}">
+
+        {% import 'features/order/create/forms/wrapper/order-create-wrapper.html.twig' as OrderLayout %}
+
+        {{
+            OrderLayout.render
+            (
+                order,
+                totalPrice,
+                errors ?? []
+            )
+        }}
+    </form>
+{% endmacro %}

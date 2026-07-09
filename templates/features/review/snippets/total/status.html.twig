@@ -1,0 +1,18 @@
+{% macro render(reviewData) %}
+    {% import 'components/reviews-rating/snippets/score.html.twig' as Score %}
+    {% import 'components/reviews-rating/snippets/text.html.twig' as Text %}
+
+    <div class="reviews__card-status">
+        <div class="reviews__card-status-value">
+            {{ reviewValueText(reviewData.averageRating) }}
+        </div>
+
+        <div class="reviews__card-status-score">
+            {{ Score.render(reviewData.averageRating) }}
+        </div>
+
+        <div class="reviews__card-status-text">
+            {{ Text.render(reviewData) }}
+        </div>
+    </div>
+{% endmacro %}

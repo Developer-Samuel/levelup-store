@@ -1,0 +1,23 @@
+@use 'sass:map';
+
+@use '@/scss/abstracts/theme/shadows/directions' as directions;
+@use '@/scss/abstracts/theme/shadows/intensities' as intensities;
+
+@function generate-shadows() {
+  $result: ();
+
+  @each $direction, $offset in directions.$shadow-directions {
+    @each $level, $color in intensities.$shadow-intensities {
+      $key: '#{$direction}-shadow-#{$level}';
+      $value: #{$offset} #{$color};
+      $result: map.merge(
+        $result,
+        (
+          $key: $value,
+        )
+      );
+    }
+  }
+
+  @return $result;
+}

@@ -1,0 +1,14 @@
+{% macro render(shipping) %}
+    {% import 'components/common/title.html.twig' as Title %}
+
+    {% if shipping and shipping.country %}
+        <div id="admin-order-shipping" class="admin-detail__data-group">
+            {{ Title.render('Shipping Address', 'admin-detail__data-group-title', 'h3') }}
+
+            <p><b>Country:</b> {{ shipping.country|default('') }}</p>
+            <p><b>City:</b> {{ shipping.city|default('') }}</p>
+            <p><b>Postal Code:</b> {{ shipping.postalCode|default('') }}</p>
+            <p><b>Street:</b> {{ shipping.street|default('') }}</p>
+        </div>
+    {% endif %}
+{% endmacro %}

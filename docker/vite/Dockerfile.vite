@@ -1,0 +1,7 @@
+FROM node:24-alpine
+
+WORKDIR /var/www
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]

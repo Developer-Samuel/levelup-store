@@ -1,0 +1,7 @@
+{% macro render() %}
+    {% import 'layout/public/navigation/list/blocks/categories.html.twig' as CategoriesBlock %}
+
+    <div class="navigation__list">
+        {{ CategoriesBlock.render(categories) }}
+    </div>
+{% endmacro %}

@@ -1,0 +1,7 @@
+{% macro render(request, variant) %}
+    {% if request.pathinfo starts with '/reviews/' or request.pathinfo starts with '/product/show/' %}
+        {% import 'components/modals/reviews-create/create.html.twig' as ReviewsCreateModal %}
+
+        {{ ReviewsCreateModal.render(variant) }}
+    {% endif %}
+{% endmacro %}

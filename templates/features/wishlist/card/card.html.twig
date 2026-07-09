@@ -1,0 +1,14 @@
+{% macro render(records) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/wishlist/card/wrapper.html.twig' as WishlistWrapper %}
+
+    <div class="wishlist__card">
+        {{
+            Title.render(
+                'Wishlist',
+                'wishlist__card-title',
+            )
+        }}
+        {{ WishlistWrapper.render(records) }}
+    </div>
+{% endmacro %}

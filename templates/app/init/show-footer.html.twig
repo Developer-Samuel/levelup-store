@@ -1,0 +1,7 @@
+{% macro render(showFooter) %}
+    {% if showFooter %}
+        {% import 'layout/public/footer/footer.html.twig' as Footer %}
+
+        {{ Footer.render() }}
+    {% endif %}
+{% endmacro %}

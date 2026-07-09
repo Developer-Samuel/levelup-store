@@ -1,0 +1,7 @@
+{% include 'errors/common/error.html.twig' with {
+    statusCode: 500,
+    statusText: 'Internal Server Error',
+    message: message,
+    actionPath: path('home'),
+    actionLabel: 'Go to Home'
+} %}

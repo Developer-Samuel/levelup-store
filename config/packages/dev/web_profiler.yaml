@@ -1,0 +1,10 @@
+web_profiler:
+  toolbar: false
+  intercept_redirects: false
+
+framework:
+  profiler:
+    enabled: true
+    collect: true
+    collect_serializer_data: true
+    only_exceptions: false

@@ -1,0 +1,11 @@
+{% macro render(billing) %}
+    {% import 'components/common/title.html.twig' as Title %}
+
+    <div id="admin-order-billing" class="admin-detail__data-group">
+        {{ Title.render('Billing Address', 'admin-detail__data-group-title', 'h3') }}
+        <p><b>Country:</b> {{ billing.country }}</p>
+        <p><b>City:</b> {{ billing.city }}</p>
+        <p><b>Postal Code:</b> {{ billing.postalCode }}</p>
+        <p><b>Street:</b> {{ billing.street }}</p>
+    </div>
+{% endmacro %}

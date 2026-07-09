@@ -1,0 +1,9 @@
+{% macro render() %}
+    {% import 'layout/public/footer/blocks/top/top.html.twig' as FooterCardTop %}
+    {% import 'layout/public/footer/blocks/bottom/bottom.html.twig' as FooterCardBottom %}
+
+    <div class="footer__card">
+        {{ FooterCardTop.render() }}
+        {{ FooterCardBottom.render() }}
+    </div>
+{% endmacro %}

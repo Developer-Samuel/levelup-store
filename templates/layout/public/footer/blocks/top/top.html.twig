@@ -1,0 +1,7 @@
+{% macro render() %}
+    {% import 'layout/public/footer/blocks/top/groups.html.twig' as FooterCardGroups %}
+
+    <div class="footer__card-top">
+        {{ FooterCardGroups.render() }}
+    </div>
+{% endmacro %}

@@ -1,0 +1,15 @@
+{% macro render(params = {}) %}
+    {% set variant = params.variant %}
+    {% set errors = params.errors ?? [] %}
+
+    <form
+        id="admin-variant-eans-create-form"
+        class="admin-detail__form"
+    >
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('admin_variants_eans_store') }}">
+        <input type="hidden" name="variant_id" value="{{ hmac_encrypt(variant.id) }}">
+
+        {% import 'features/admin/views/product/variant/ean/forms/wrapper/eans-wrapper.html.twig' as EansLayout %}
+        {{ EansLayout.render(variant, errors ?? []) }}
+    </form>
+{% endmacro %}

@@ -1,0 +1,20 @@
+{% import 'features/product/catalog/content/card/list/snippets/item.html.twig' as Item %}
+
+{% if variants %}
+    <div class="products__card-list">
+        {% for item in variants %}
+            {{ Item.render(item) }}
+        {% endfor %}
+    </div>
+    {% if showLoadMore %}
+        <div class="products__card-load-more">
+            <button type="button" id="load-more">
+                Load More
+            </button>
+        </div>
+    {% endif %}
+{% else %}
+    <div class="products__card-no-results">
+        <p>No products found.</p>
+    </div>
+{% endif %}

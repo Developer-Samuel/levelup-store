@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '@/scss/abstracts/theme/transitions/types' as types;
+
+@function generate-transitions($start: 0, $end: 1000, $step: 50) {
+  $result: ();
+  $i: $start;
+
+  @while $i <= $end {
+    $duration-value: $i * 1ms;
+
+    @each $type-name, $type-value in types.$transition-types {
+      $key: '#{$type-name}-#{$i}';
+      $value: #{$duration-value} #{$type-value};
+      $result: map.merge(
+        $result,
+        (
+          $key: $value,
+        )
+      );
+    }
+
+    $i: $i + $step;
+  }
+
+  @return $result;
+}

@@ -1,0 +1,7 @@
+{% macro render() %}
+    {% import 'layout/public/navigation/mobile/search/blocks/wrapper.html.twig' as SearchWrapper %}
+
+    <div class="navigation__mobile-search">
+        {{ SearchWrapper.render() }}
+    </div>
+{% endmacro %}

@@ -1,0 +1,9 @@
+{% macro render(variant) %}
+    <input type="hidden" id="csrf-cart-store" value="{{ csrf_token('cart_store') }}">
+    <button
+        data-variant-id="{{ variant.id }}"
+        class="product-detail__details-btn buy-btn"
+    >
+        Buy
+    </button>
+{% endmacro %}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyzer>
+    <file_extensions>
+        <ext>php</ext>
+        <ext>ts</ext>
+        <ext>css</ext>
+    </file_extensions>
+    <ignored_dirs>
+        <dir>var</dir>
+        <dir>node_modules</dir>
+        <dir>public</dir>
+        <dir>vendor</dir>
+    </ignored_dirs>
+</analyzer>

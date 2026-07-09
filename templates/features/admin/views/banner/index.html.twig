@@ -1,0 +1,21 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Banners{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {{
+        TableContent.render(
+            'admin-banners-page',
+            'Banners',
+            'admin-banners-table',
+            [
+                'Name',
+                'Active',
+                'Created at'
+            ],
+            null
+        )
+    }}
+{% endblock %}

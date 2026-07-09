@@ -1,0 +1,9 @@
+{% macro render(name, id, class = '', condition = false) %}
+    <input
+        type="checkbox"
+        name="{{ name }}"
+        id="{{ id }}"
+        class="{{ class }}"
+        {% if condition %}checked{% endif %}
+    >
+{% endmacro %}

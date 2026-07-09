@@ -1,0 +1,82 @@
+import type { PlaywrightTestConfig, Project, BrowserContextOptions } from '@playwright/test'
+import { defineConfig, devices } from '@playwright/test'
+import { config } from 'dotenv'
+
+config({ path: '.env.test' })
+
+const APP_URL = process.env['APP_URL'] ?? 'http://127.0.0.1:8000'
+const COOKIE_DOMAIN = new URL(APP_URL).hostname
+
+const projects: Project[] = [
+  // Desktop
+  { name: 'chromium',      use: { ...devices['Desktop Chrome'] } },
+  { name: 'firefox',       use: { ...devices['Desktop Firefox'], launchOptions: { firefoxUserPrefs: { 'layers.acceleration.disabled': true } } } },
+  { name: 'webkit',        use: { ...devices['Desktop Safari'] } },
+  { name: 'edge',          use: { ...devices['Desktop Edge'], channel: 'msedge' } },
+
+  // Tablet
+  { name: 'tablet-chrome',  use: { ...devices['Galaxy Tab S9'] } },
+  { name: 'tablet-safari',  use: { ...devices['iPad Pro 11'] } },
+
+  // Mobile
+  { name: 'mobile-chrome', use: { ...devices['Pixel 10'] } },
+  { name: 'mobile-safari', use: { ...devices['iPhone 17'] } },
+]
+
+const webServer: PlaywrightTestConfig['webServer'] = {
+  command: 'php -S 127.0.0.1:8000 -t public',
+  port: 8000,
+  reuseExistingServer: true,
+  timeout: 30_000,
+}
+
+type StorageState = Exclude<BrowserContextOptions['storageState'], string | undefined>
+
+const storageState: StorageState = {
+  cookies: [
+    {
+      name: 'cookie_consent',
+      value: 'true',
+      domain: COOKIE_DOMAIN,
+      path: '/',
+      expires: -1,
+      httpOnly: true,
+      secure: false,
+      sameSite: 'Lax',
+    },
+  ],
+  origins: [],
+}
+
+export default defineConfig({
+  testDir: './assets/tests/e2e',
+  outputDir: './var/tools/playwright/results',
+
+  webServer,
+
+  fullyParallel: false,
+  workers: 1,
+  retries: 1,
+
+  reporter: [
+    ['html', { outputFolder: 'var/tools/playwright/html', open: 'on-failure' }],
+    ['list'],
+  ],
+
+  timeout: 30_000,
+  expect: { timeout: 5_000 },
+
+  use: {
+    baseURL: APP_URL,
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+
+    actionTimeout: 8_000,
+    navigationTimeout: 30_000,
+
+    storageState,
+  },
+
+  projects,
+})

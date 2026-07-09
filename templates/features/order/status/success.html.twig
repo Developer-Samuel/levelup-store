@@ -1,0 +1,18 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Order | Success{% endblock %}
+
+{% block body %}
+    {% import 'features/order/status/common/status.html.twig' as OrderStatus %}
+
+    {{
+        OrderStatus.render(
+            'order-success',
+            'img/status/success.webp',
+            'Success',
+            'The order was successful',
+            'View orders',
+            path('orders_index')
+        )
+    }}
+{% endblock %}

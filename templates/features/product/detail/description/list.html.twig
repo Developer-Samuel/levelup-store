@@ -1,0 +1,11 @@
+{% macro render(descriptions) %}
+    {% import 'features/product/detail/description/snippets/item.html.twig' as Item %}
+
+    {% if descriptions is not empty %}
+        <div class="product-detail__description">
+            {% for description in descriptions %}
+                {{ Item.render(description) }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,7 @@
+{% macro render(variant) %}
+    <div class="reviews__card-action">
+        <a href="{{ path('reviews_index', {'url': variant.url}) }}" class="reviews__card-action-link">
+            Show more reviews
+        </a>
+    </div>
+{% endmacro %}

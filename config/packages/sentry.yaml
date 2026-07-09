@@ -1,0 +1,15 @@
+when@dev:
+  sentry:
+    dsn: '%env(SENTRY_DSN)%'
+    options:
+      traces_sample_rate: 1.0
+      profiles_sample_rate: 1.0
+      enable_logs: true
+
+when@test:
+  sentry:
+    dsn: ~
+    tracing:
+      enabled: false
+      dbal:
+        enabled: false

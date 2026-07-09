@@ -1,0 +1,17 @@
+@use '@/scss/abstracts/theme/colors/solid/index' as colors;
+@use '@/scss/abstracts/theme/fonts/core/index' as fonts;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  scroll-behavior: smooth;
+  color: colors.$neutral;
+  font-family: fonts.$primary-font, fonts.$secondary-font;
+  overflow-x: hidden;
+}

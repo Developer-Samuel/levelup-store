@@ -1,0 +1,26 @@
+{% macro render(reviewData) %}
+    <div class="reviews__card-stars">
+        {% for star in 5..1 %}
+            <div class="reviews__card-stars-row">
+                <div class="reviews__card-stars-left">
+                    <span>{{ star }}</span>
+                    <div class="reviews__card-stars-left-icons">
+                        {% for i in 1..5 %}
+                            <img src="{{ asset('img/icons/elements/star/' ~ (i <= star ? 'star.png' : 'star-empty.png')) }}" alt="Star-{{ i }}">
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="reviews__card-stars-right">
+                    <div class="reviews__card-stars-slider">
+                        {% set totalCount = reviewData.totalRatings + reviewData.totalFeedbacks %}
+                        {% set fillPercent = reviewData.totalCount > 0 ? (reviewData.ratingsCount[star] / totalCount) * 100 : 0 %}
+                        <div class="reviews__card-stars-slider--fill" style="width: {{ fillPercent }}%;"></div>
+                    </div>
+                    <div class="reviews__card-stars-text">
+                        {{ reviewData.ratingsCount[star] }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

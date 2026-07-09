@@ -1,0 +1,20 @@
+{% macro render(totalItems) %}
+    {% if app.user %}
+        <div class="cart__summary{% if totalItems > 0 %} visible{% endif %}">
+            <div class="cart__summary-price">
+                <p>
+                    Total:
+                    <span class="cart__summary-price-span">
+                        {{ totalPrice ?? 0 }}
+                    </span>
+                </p>
+            </div>
+            <a
+                href="{{ path('orders_create') }}"
+                class="cart__summary-btn"
+            >
+                Go to Checkout
+            </a>
+        </div>
+    {% endif %}
+{% endmacro %}

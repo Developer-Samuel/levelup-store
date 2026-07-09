@@ -1,0 +1,14 @@
+@use 'sass:map';
+
+$font-weights: ();
+$i: 100;
+
+@while $i <= 900 {
+  $font-weights: map.merge(
+    $font-weights,
+    (
+      $i: $i,
+    )
+  );
+  $i: $i + 100;
+}

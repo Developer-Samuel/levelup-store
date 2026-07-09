@@ -1,0 +1,12 @@
+@use 'sass:map';
+
+@function shadow-get-value($direction, $intensity, $map) {
+  $key: '#{$direction}-shadow-#{$intensity}';
+  $value: map.get($map, $key);
+
+  @if $value == null {
+    @error "Shadow key `#{$key}` not found. Check direction and intensity.";
+  }
+
+  @return $value;
+}

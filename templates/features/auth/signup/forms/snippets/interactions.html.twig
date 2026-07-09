@@ -1,0 +1,35 @@
+{% macro render() %}
+    <div class="auth-page__card-form-consent">
+        <p class="auth-page__card-form-consent-text">
+            <label
+                for="terms-and-conditions"
+                class="auth-page__card-form-consent-label"
+            >
+                <input
+                    type="checkbox"
+                    name="terms_and_conditions"
+                    id="terms-and-conditions"
+                    class="auth-page__card-form-consent-checkbox"
+                    required
+                >
+                I accept the
+                <a
+                    href="{{ asset('pdf/terms-and-conditions.pdf') }}"
+                    target="_blank"
+                    class="auth-page__card-form-consent-link"
+                >
+                    Terms and conditions
+                </a>
+            </label>
+        </p>
+        <p class="auth-page__card-form-consent-text">
+            Forgot password?
+            <a
+                href="{{ path('forgot_password') }}"
+                class="auth-page__card-form-consent-link"
+            >
+                Reset here
+            </a>
+        </p>
+    </div>
+{% endmacro %}

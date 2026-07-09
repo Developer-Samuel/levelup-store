@@ -1,0 +1,25 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    {% import 'components/alert/alert.html.twig' as Alert %}
+    {% import 'features/user/profile/forms/profile.html.twig' as ProfileForm %}
+
+    <main class="content">
+        <div id="profile-page" class="user">
+            <div class="user__action">
+                <a
+                    href="{{ path('change_password') }}"
+                    class="user__action-link"
+                >
+                    Change Password
+                </a>
+            </div>
+
+            {{ Alert.render() }}
+
+            {{ ProfileForm.render(user, billing, shipping, countries, errors ?? []) }}
+        </div>
+    </main>
+{% endblock %}

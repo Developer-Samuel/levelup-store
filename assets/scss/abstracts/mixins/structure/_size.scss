@@ -1,0 +1,30 @@
+@use 'sass:list';
+
+@use '@/scss/abstracts/utilities/structure/size/get-value' as *;
+@use '@/scss/abstracts/utilities/structure/size/prefixes' as *;
+
+@mixin size($width: 100%, $height: 100%, $extra: null, $important: false) {
+  $width-val: size-get-value($width, $important);
+  $height-val: size-get-value($height, $important);
+
+  @if $extra == null {
+    width: $width-val;
+    height: $height-val;
+  } @else {
+    $prefixes: size-prefixes($extra);
+    $w-prefix: list.nth($prefixes, 1);
+    $h-prefix: list.nth($prefixes, 2);
+
+    @if $w-prefix != null {
+      #{$w-prefix}-width: $width-val;
+    } @else {
+      width: $width-val;
+    }
+
+    @if $h-prefix != null {
+      #{$h-prefix}-height: $height-val;
+    } @else {
+      height: $height-val;
+    }
+  }
+}

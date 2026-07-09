@@ -1,0 +1,7 @@
+@function backdrop-get-value($value) {
+  @if $value != none {
+    @return $value * 1px;
+  } @else {
+    @return none;
+  }
+}

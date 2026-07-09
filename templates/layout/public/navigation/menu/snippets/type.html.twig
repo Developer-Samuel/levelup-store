@@ -1,0 +1,31 @@
+{% macro render(category, maxTypes) %}
+    {% import 'layout/public/navigation/menu/snippets/subtype.html.twig' as SubtypeMenu %}
+    {% set typesToShow = getTypesToShow(category.types) %}
+    {% set typeCount = getTypeCount(category.types) %}
+
+    {% for type in typesToShow %}
+        <div class="navigation__menu-item">
+            <div class="navigation__menu-title">
+                <a href="{{ path('products_index', {'category': category.name|lower|replace({' ': '-'}), 'type': type.name|lower|replace({' ': '-'}) }) }}">
+                    {{ type.name }}
+                </a>
+            </div>
+            <div class="navigation__menu-list">
+                {{ SubtypeMenu.render(category, type) }}
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if typeCount < maxTypes %}
+        {% set emptyItems = maxTypes - typeCount %}
+        {% for i in range(0, emptyItems - 1) %}
+            <div class="navigation__menu-item">
+                <div class="navigation__menu-title">
+                    <a href="javascript:void(0)">
+                        &nbsp;
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}

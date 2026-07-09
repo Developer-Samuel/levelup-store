@@ -1,0 +1,10 @@
+{% macro render(url, text) %}
+    <div class="error-page__container-action">
+        <a
+            href="{{ url }}"
+            class="error-page__container-btn"
+        >
+            {{ text }}
+        </a>
+    </div>
+{% endmacro %}

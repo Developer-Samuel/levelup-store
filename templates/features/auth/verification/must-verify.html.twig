@@ -1,0 +1,16 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Must Verify{% endblock %}
+
+{% block body %}
+    {% import 'base/auth/wrapper.html.twig' as AuthWrapper %}
+    {% import 'features/auth/verification/snippets/logout.html.twig' as MustVerifyLogout %}
+
+    {{ MustVerifyLogout.render() }}
+
+    {{ AuthWrapper.render(
+        'verification-page',
+        'Must Verify',
+        'features/auth/verification/forms/must-verify-form.html.twig'
+    ) }}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% macro render(item, currentVariantId) %}
+    <a
+        href="{% if item.id == currentVariantId %}javascript:void(0){% else %}{{ path('product_show', {'url': item.url}) }}{% endif %}"
+        class="product-detail__details-item {% if item.id == currentVariantId %}product-detail__details-item--active{% endif %}"
+    >
+        {{ item.name }}
+    </a>
+{% endmacro %}

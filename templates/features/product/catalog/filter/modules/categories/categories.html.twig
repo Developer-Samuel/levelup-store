@@ -1,0 +1,17 @@
+{% macro render(categories, category = null) %}
+    {% import 'features/product/catalog/filter/common/list/render.html.twig' as LinkList %}
+
+    {% if category is empty %}
+        {{
+            LinkList.render(
+                'Categories',
+                categories,
+                'features/product/catalog/filter/modules/categories/snippets/item.html.twig',
+                'products__filter-list',
+                {
+                    'productRoute': productRoute
+                }
+            )
+        }}
+    {% endif %}
+{% endmacro %}

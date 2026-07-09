@@ -1,0 +1,15 @@
+{% macro render(url, value, image = null, id = '', target = '_blank') %}
+    <div class="footer__card-item">
+        <a
+            href="{{ url }}"
+            {% if id %}id="{{ id }}"{% endif %}
+            class="footer__card-link"
+            target="{{ target }}"
+        >
+            {% if image %}
+                <img src="{{ asset(image) }}" alt="{{ value }}">
+            {% endif %}
+            <span>{{ value }}</span>
+        </a>
+    </div>
+{% endmacro %}

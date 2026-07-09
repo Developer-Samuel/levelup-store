@@ -1,0 +1,7 @@
+@function apply-important($value, $important) {
+  @if $important {
+    @return '#{$value} !important';
+  } @else {
+    @return $value;
+  }
+}

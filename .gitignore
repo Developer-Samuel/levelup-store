@@ -1,0 +1,40 @@
+# Environment
+.env
+.env.local
+
+# Config Secrets & JWT
+config/secrets/*/*.private.php
+config/secrets/*/*.public.php
+config/jwt/*.pem
+
+# Dependencies
+vendor/
+
+# Bin
+bin/*
+!bin/console
+!bin/phpunit
+
+# Node / npm
+node_modules/
+npm-debug.log
+
+# Cache & Logs
+var/
+.cache/
+.phpunit.result.cache
+
+# Frontend Build
+assets/vendor/
+public/assets/
+public/build/
+public/bundles/
+public/uploads/
+
+# PHP Tools
+.php-cs-fixer.php
+phpunit.xml
+
+# Editor
+.vscode/
+.gitconfig

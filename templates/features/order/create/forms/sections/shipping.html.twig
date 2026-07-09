@@ -1,0 +1,118 @@
+{% macro render(order, errors = []) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    {% set shipping = order.shipping %}
+    {% set countries = order.countries %}
+
+    <div
+        id="order-shipping-data"
+        class="order__card-form-item"
+    >
+        {{
+            Title.render(
+                'Shipping Data',
+                'order__card-form-title',
+                'h2'
+            )
+        }}
+        <div class="order__card-form-section">
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'Street:',
+                        'shipping-street',
+                        'order__card-form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'shipping_street',
+                        'shipping-street',
+                        shipping is not null and shipping.street is not null ? shipping.street : null,
+                        'Name',
+                        'order__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'Postal Code:',
+                        'shipping-postal-code',
+                        'order__card-form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'shipping_postal_code',
+                        'shipping-postal-code',
+                        shipping is not null and shipping.postalCode is not null ? shipping.postalCode : null,
+                        'Postal Code',
+                        'order__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'Country:',
+                        'shipping-country',
+                        'order__card-form-label'
+                    )
+                }}
+                <select
+                    name="shipping_country"
+                    id="shipping-country"
+                    class="order__card-form-select select"
+                >
+                    <option
+                        value=""
+                        class="order__card-form-option"
+                        {% if shipping is null or shipping.country is null %}selected{% endif %}
+                    ></option>
+                    {% for country in countries %}
+                        <option
+                            value="{{ country.id }}"
+                            class="order__card-form-option"
+                            {% if shipping is not null and shipping.country and shipping.country.id == country.id %}selected{% endif %}
+                        >
+                            {{ country.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div class="error">
+                    {{ errors.shipping_country ?? '' }}
+                </div>
+            </div>
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'City:',
+                        'shipping-city',
+                        'order__card-form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'shipping_city',
+                        'shipping-city',
+                        shipping is not null and shipping.city is not null ? shipping.city : null,
+                        'City',
+                        'order__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

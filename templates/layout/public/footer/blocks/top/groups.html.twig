@@ -1,0 +1,24 @@
+{% macro render() %}
+    {% import 'layout/public/footer/snippets/item.html.twig' as FooterItem %}
+
+    {% for groupKey, links in footerLinks %}
+        {% if links is not empty %}
+            <div class="footer__card-top-group">
+                <span class="footer__card-top-heading">{{ groupKey|capitalize }}</span>
+                <div class="footer__card-top-subgroup">
+                    {% for link in links %}
+                        {{
+                            FooterItem.render(
+                                link.url,
+                                link.value,
+                                link.image,
+                                '',
+                                link.target.value
+                            )
+                        }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

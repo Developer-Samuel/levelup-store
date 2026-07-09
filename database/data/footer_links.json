@@ -1,0 +1,66 @@
+{
+  "contact_email": {
+    "position": 1,
+    "value": "info@samuel-steiner.com",
+    "image": "img/icons/links/contact/email.webp",
+    "url": "mailto:info@samuel-steiner.com",
+    "group": "contact",
+    "target": "_self"
+  },
+  "contact_website": {
+    "position": 2,
+    "value": "www.samuel-steiner.com",
+    "image": "img/icons/links/contact/www.webp",
+    "url": "https://samuel-steiner.com",
+    "group": "contact",
+    "target": "_blank"
+  },
+  "contact_links": {
+    "position": 3,
+    "value": "links.samuel-steiner.com",
+    "image": "img/icons/links/contact/links.webp",
+    "url": "https://links.samuel-steiner.com",
+    "group": "contact",
+    "target": "_blank"
+  },
+  "contact_project": {
+    "position": 4,
+    "value": "LevelUp Store",
+    "image": "img/icons/links/project/rocket.webp",
+    "url": "https://github.com/developer-samuel/levelup-store",
+    "group": "contact",
+    "target": "_blank"
+  },
+  "connect_github": {
+    "position": 1,
+    "value": "developer-samuel",
+    "image": "img/icons/links/social/github.webp",
+    "url": "https://github.com/developer-samuel",
+    "group": "connect",
+    "target": "_blank"
+  },
+  "connect_linkedin": {
+    "position": 2,
+    "value": "samuel.programmer",
+    "image": "img/icons/links/social/linkedin.webp",
+    "url": "https://www.linkedin.com/in/samuel-programmer",
+    "group": "connect",
+    "target": "_blank"
+  },
+  "connect_instagram": {
+    "position": 3,
+    "value": "samuel.programmer",
+    "image": "img/icons/links/social/instagram.webp",
+    "url": "https://www.instagram.com/samuel.programmer",
+    "group": "connect",
+    "target": "_blank"
+  },
+  "legal_terms": {
+    "position": 1,
+    "value": "Terms and Conditions",
+    "image": null,
+    "url": "pdf/terms-and-conditions.pdf",
+    "group": "legal",
+    "target": "_blank"
+  }
+}

@@ -1,0 +1,20 @@
+{% import 'layout/admin/snippets/links.html.twig' as LinkData %}
+
+{% macro render(listClass, itemClass) %}
+    {% set links = [
+        { 'label': 'Dashboard', 'route': 'admin_dashboard_index' },
+        { 'label': 'Banners',  'route': 'admin_banners_index'  },
+        { 'label': 'Brands',   'route': 'admin_brands_index'   },
+        { 'label': 'Products', 'route': 'admin_products_index' },
+        { 'label': 'Orders',   'route': 'admin_orders_index'   },
+        { 'label': 'Users',    'route': 'admin_users_index'    },
+    ] %}
+
+    <div class="{{ listClass }}">
+        {% for link in links %}
+            <div class="{{ itemClass }}">
+                <a href="{{ path(link.route) }}">{{ link.label }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

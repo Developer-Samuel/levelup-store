@@ -1,0 +1,8 @@
+{% macro render(label, id, class = '') %}
+    <label
+        for="{{ id }}"
+        class="{{ class }}"
+    >
+        {{ label }}
+    </label>
+{% endmacro %}

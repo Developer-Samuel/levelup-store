@@ -1,0 +1,9 @@
+@use 'sass:meta';
+
+@function transition-ensure-list($value) {
+  @if meta.type-of($value) == 'list' {
+    @return $value;
+  } @else {
+    @return ($value);
+  }
+}

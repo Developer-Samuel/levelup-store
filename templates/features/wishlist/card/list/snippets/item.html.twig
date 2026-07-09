@@ -1,0 +1,46 @@
+{% macro render(records) %}
+    {% for item in records %}
+        <a href="{{ path('product_show', {'url': item.url}) }}" class="product-item item">
+            <div
+                data-variant-id="{{ item.variant_id }}"
+                class="product-item__destroy"
+            >
+                <p>Delete</p>
+            </div>
+            <div class="product-item__box">
+                <div class="product-item__box-top">
+                    <div class="product-item__box-image">
+                        <img
+                            src="{{ asset(item.imagePath ?: 'img/misc/image/no-image.webp') }}"
+                            alt="{{ item.imagePath ?: 'Image not found' }}"
+                        >
+                    </div>
+                    <div class="product-item__box-name">
+                        <p>
+                            {{ item.name }}
+                        </p>
+                    </div>
+                </div>
+                <div class="product-item__box-bottom">
+                    <div class="product-item__box-price">
+                        <span class="product-item__box-price-current">
+                            {{ item.discountPrice ? item.discountPrice : item.price }} €
+                        </span>
+                        {% if item.discount %}
+                        <span class="product-item__box-price-old">
+                            {{ item.price }} €
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="csrf-cart-store" value="{{ csrf_token('cart_store') }}">
+            <button
+                data-variant-id="{{ item.variant_id }}"
+                class="product-item__box-btn buy-btn"
+            >
+                Buy
+            </button>
+        </a>
+    {% endfor %}
+{% endmacro %}

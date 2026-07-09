@@ -1,0 +1,104 @@
+{% macro render(billing, countries = [], errors = []) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+    {% import 'features/user/profile/forms/snippets/select.html.twig' as Select %}
+
+    <div class="user__form-item">
+        {{
+            Title.render(
+                'Billing Address',
+                'user__form-title',
+                'h2'
+            )
+        }}
+
+        <div class="user__form-list">
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'Street:',
+                        'billing-street',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'billing_street',
+                        'billing-street',
+                        billing.street ?? null,
+                        'Billing street',
+                        'user__form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'Postal Code:',
+                        'billing-postal-code',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'billing_postal_code',
+                        'billing-postal-code',
+                        billing.postalCode ?? null,
+                        'Billing postal code',
+                        'user__form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'Country:',
+                        'billing-country',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Select.render(
+                        'billing_country',
+                        'billing-country',
+                        billing.country ?? '',
+                        countries,
+                        billing,
+                        errors
+                    )
+                }}
+            </div>
+
+            <div class="user__form-group">
+                {{
+                    Label.render(
+                        'City:',
+                        'billing-city',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'billing_city',
+                        'billing-city',
+                        billing.city ?? null,
+                        'Billing city',
+                        'user__form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

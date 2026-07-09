@@ -1,0 +1,16 @@
+{% macro render(category, type) %}
+    <div class="products__card-options-item">
+        <a
+            href="{% if category and type is null %}javascript:void(0){% else %}{{ path(productRoute, { 'category': category|replace({' ': '-'}) }) }}{% endif %}"
+            class="products__card-options-item{% if type is null %}--active{% endif %}"
+        >
+            {{ category|length <= 2 ? category|upper : category|capitalize }}
+        </a>
+        {% if type is not null %}
+            <img
+                src="{{ asset('img/icons/elements/arrow.png') }}"
+                alt="Arrow"
+            >
+        {% endif %}
+    </div>
+{% endmacro %}

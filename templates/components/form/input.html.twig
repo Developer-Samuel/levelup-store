@@ -1,0 +1,15 @@
+{% macro render(type, name, id = null, value = null, placeholder = null, class = null, condition = null, errors = [], disabled = false) %}
+    <input
+        type="{{ type }}"
+        name="{{ name }}"
+        id="{{ id }}"
+        placeholder="{{ placeholder }}"
+        value="{{ value }}"
+        class="{{ class }}"
+        {{ condition }}
+        {% if disabled %}disabled{% endif %}
+    >
+    <div class="error">
+        {{ errors[name] ?? '' }}
+    </div>
+{% endmacro %}

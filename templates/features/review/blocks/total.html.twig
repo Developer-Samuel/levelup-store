@@ -1,0 +1,14 @@
+{% macro render(reviewData) %}
+    {% import 'features/review/snippets/total/status.html.twig' as Status %}
+    {% import 'features/review/snippets/total/stars.html.twig' as Stars %}
+    {% import 'features/review/snippets/total/info.html.twig' as Info %}
+
+    <div class="reviews__card-total">
+        <div class="reviews__card-total-row">
+            {{ Status.render(reviewData) }}
+            {{ Stars.render(reviewData) }}
+        </div>
+
+        {{ Info.render() }}
+    </div>
+{% endmacro %}

@@ -1,0 +1,35 @@
+{% macro render(variant, data) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/review/content/list/list.html.twig' as ReviewList %}
+    {% import 'features/review/blocks/total.html.twig' as Total %}
+    {% import 'features/review/snippets/open-create-modal.html.twig' as OpenCreateModal %}
+    {% import 'features/product/detail/review/snippets/show-more-button.html.twig' as ShowMoreButton %}
+
+    <div class="reviews">
+        <div class="reviews__card">
+            <div class="reviews__card-top">
+                {{
+                    Title.render(
+                        'Product reviews',
+                        'reviews__card-title',
+                        'h2',
+                    )
+                }}
+
+                {% if app.user and data.reviewExists %}
+                    {{ OpenCreateModal.render() }}
+                {% endif %}
+            </div>
+
+            {{ Total.render(data) }}
+
+            {% if data.lastReview %}
+                {{ ReviewList.render(data) }}
+            {% endif %}
+
+            {% if data.totalFeedbacks > 0 %}
+                {{ ShowMoreButton.render(variant) }}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

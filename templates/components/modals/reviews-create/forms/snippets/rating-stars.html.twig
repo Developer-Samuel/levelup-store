@@ -1,0 +1,11 @@
+{% macro render() %}
+    <div
+        data-value=""
+        id="review-modal-rating"
+        class="reviews-modal__body-form-stars"
+    >
+        {% for i in 1..5 %}
+            <img data-index="{{ i }}" src="{{ asset('img/icons/elements/star/star-empty.png') }}">
+        {% endfor %}
+    </div>
+{% endmacro %}

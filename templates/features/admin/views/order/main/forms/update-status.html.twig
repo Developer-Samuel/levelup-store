@@ -1,0 +1,28 @@
+{% macro render(params = {}) %}
+    {% set order = params.order %}
+    {% set personal = params.personal %}
+    {% set billing = params.billing %}
+    {% set shipping = params.shipping %}
+    {% set items = params.items %}
+    {% set statuses = params.statuses %}
+
+    {% import 'features/admin/views/order/main/forms/wrapper/order-detail-wrapper.html.twig' as OrderDetailWrapper %}
+
+    <form
+        id="admin-orders-status-form"
+        class="admin-detail__form"
+    >
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('admin_orders_status_update') }}">
+
+        {{
+            OrderDetailWrapper.render(
+                order,
+                personal,
+                billing,
+                shipping,
+                items,
+                statuses
+            )
+        }}
+    </form>
+{% endmacro %}

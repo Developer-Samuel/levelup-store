@@ -1,0 +1,25 @@
+{% macro render(order, personal, billing, shipping, items, statuses) %}
+    {% import 'components/form/action.html.twig' as FormControlAction %}
+    {% import 'components/alert/alert.html.twig' as Alert %}
+    {% import 'features/admin/views/order/main/forms/sections/personal.html.twig' as Personal %}
+    {% import 'features/admin/views/order/main/forms/sections/shipping.html.twig' as Shipping %}
+    {% import 'features/admin/views/order/main/forms/sections/billing.html.twig' as Billing %}
+    {% import 'features/admin/views/order/main/forms/sections/products.html.twig' as Products %}
+
+    <div class="admin-detail__data">
+        {{ Alert.render() }}
+
+        {{ Personal.render(order, personal, statuses) }}
+        {{ Shipping.render(shipping) }}
+        {{ Billing.render(billing) }}
+        {{ Products.render(items) }}
+
+        {{
+            FormControlAction.render(
+                'admin-detail__form-action',
+                'admin-detail__form-action-btn',
+                'Update Status'
+            )
+        }}
+    </div>
+{% endmacro %}

@@ -1,0 +1,44 @@
+{% macro render(item) %}
+    {% import 'components/reviews-rating/average-rating-stars.html.twig' as Stars %}
+
+    <input type="hidden" id="csrf-cart-destroy" value="{{ csrf_token('cart_destroy') }}">
+    <div
+        data-item-id="{{ item.id }}"
+        class="cart__content-item"
+    >
+        <div class="cart__content-destroy">
+            <img
+                src="{{ asset('img/icons/actions/close.png') }}"
+                alt="Destroy"
+            >
+        </div>
+        <div class="cart__content-image">
+            <img
+                src="{{ asset(item.imagePath ?: 'img/no-image.png') }}"
+                alt="{{ item.imagePath ? 'Image: ' ~ item.imagePath : 'Image not found' }}"
+            >
+        </div>
+        <div class="cart__content-name">
+            <p>
+                {{ item.variant.name }}
+            </p>
+        </div>
+        <div class="cart__content-rating product-item__box-rating">
+            {{ Stars.render(item.averageRating) }}
+        </div>
+        <div class="cart__content-price">
+            <span class="cart__content-price-current">
+                {% if item.formattedDiscountPrice %}
+                    {{ item.formattedDiscountPrice }}
+                {% else %}
+                    {{ item.formattedPrice }}
+                {% endif %}
+            </span>
+            {% if item.hasDiscount %}
+                <span class="cart__content-price-old">
+                    {{ item.formattedPrice }}
+                </span>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

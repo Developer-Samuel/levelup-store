@@ -1,0 +1,395 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Infrastructure\Segment\Product\Repository\Variant;
+
+use Doctrine\{
+    ORM\QueryBuilder,
+    Persistence\ManagerRegistry
+};
+
+use Kit\Utils\Shared\Normalizer\StringNormalizer;
+
+use App\Core\Domain\{
+    Segment\Product\Entity\Product,
+    Segment\Product\Entity\Variant\ProductVariant,
+    Segment\Product\Enum\ProductSortOption,
+    Segment\Product\Specification\ProductVariantAvailabilitySpecification,
+    Segment\Product\ValueObject\ProductFilterObject,
+    Segment\Review\Entity\Review,
+    Segment\Type\Entity\Type
+};
+
+use App\Core\Ports\Segment\Product\Repository\Variant\ProductVariantRepositoryContract;
+
+use App\Infrastructure\{
+    Abstract\Repository\AbstractRepository,
+    Shared\Enum\SortDirection,
+    Shared\Traits\OrderedQuery,
+    Shared\Traits\SingleResult
+};
+
+/**
+ * @extends AbstractRepository<ProductVariant>
+*/
+class ProductVariantRepository extends AbstractRepository implements ProductVariantRepositoryContract
+{
+    use OrderedQuery;
+    use SingleResult;
+
+    /**
+     * @param ManagerRegistry $registry
+    */
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct(
+            $registry,
+            ProductVariant::class,
+        );
+    }
+
+    /**
+     * @return string
+    */
+    protected function getAlias(): string
+    {
+        return 'v';
+    }
+
+    /**
+     * @return string
+    */
+    protected function getFindAllSortColumn(): string
+    {
+        return 'createdAt';
+    }
+
+    /**
+     * @return SortDirection
+    */
+    protected function getFindAllSortDirection(): SortDirection
+    {
+        return SortDirection::DESC;
+    }
+
+    /**
+     * @param ProductFilterObject $filter
+     * @param int $page
+     * @param int $limit
+     * @param ProductSortOption|null $sort
+     *
+     * @return array{
+     *     items: ProductVariant[],
+     *     total: int
+     * }
+    */
+    public function findAvailableVariantsPaginated(
+        ProductFilterObject $filter,
+        int $page,
+        int $limit,
+        ?ProductSortOption $sort = null,
+    ): array {
+        $qb = $this->createAvailableVariantsQueryBuilder();
+
+        $this->applyEffectivePrice($qb);
+        $this->applyAverageRating($qb);
+
+        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
+
+        $this->applyFilters($qb, $filter);
+
+        $total = $this->getTotalCount($qb);
+
+        $sort ??= ProductSortOption::TOP_RATED;
+        $this->applySorting($qb, $sort);
+
+        $this->applyPagination($qb, $page, $limit);
+
+        /** @var ProductVariant[] $items */
+        $items = $qb->getQuery()->getResult();
+
+        return [
+            'items' => $items,
+            'total' => $total,
+        ];
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return ProductVariant[]
+    */
+    public function findAllByProduct(?Product $product = null): array
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->andWhere('v.product = :product')
+            ->setParameter('product', $product);
+
+        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
+
+        /** @var ProductVariant[] $results */
+        $results = $this->getOrderedResults($qb, 'v', ProductVariant::class);
+
+        return $results;
+    }
+
+    /**
+     * @param Type[] $types
+     *
+     * @return ProductVariant[]
+    */
+    public function findAvailableVariantsByTypes(array $types): array
+    {
+        if (empty($types)) {
+            return [];
+        }
+
+        $products = $this->extractProductsFromTypes($types);
+
+        $qb = $this->createQueryBuilder('v')
+            ->andWhere('v.product IN (:products)')
+            ->setParameter('products', $products);
+
+        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
+
+        /** @var ProductVariant[] $results */
+        $results = $this->getOrderedResults($qb, 'v', ProductVariant::class);
+
+        return $results;
+    }
+
+    /**
+     * @param ProductFilterObject $filter
+     *
+     * @return float
+    */
+    public function getMaxPriceForFilter(ProductFilterObject $filter): float
+    {
+        $qb = $this->createAvailableVariantsQueryBuilder();
+
+        $qb->select('MAX(v.price - COALESCE(d.price, 0)) AS maxPrice');
+
+        return (float) $qb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * @param string $searchTerm
+     *
+     * @return ProductVariant[]
+    */
+    public function searchByName(string $searchTerm): array
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->andWhere('LOWER(v.name) LIKE LOWER(:searchTerm)')
+            ->setParameter('searchTerm', '%' . $searchTerm . '%');
+
+        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
+
+        /** @var ProductVariant[] $results */
+        $results = $this->getOrderedResults($qb, 'v', ProductVariant::class);
+
+        return $results;
+    }
+
+    /**
+     * @param string $url
+     *
+     * @return ProductVariant|null
+    */
+    public function findOneByUrl(string $url): ?ProductVariant
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->andWhere('LOWER(v.url) = LOWER(:url)')
+            ->setParameter('url', $url);
+
+        $variant = $this->getResultOrNull($qb);
+        if (!$variant instanceof ProductVariant) {
+            return null;
+        }
+
+        return ProductVariantAvailabilitySpecification::findOneInStock($variant);
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return ProductVariant|null
+    */
+    public function findById(int $id): ?ProductVariant
+    {
+        return $this->find($id);
+    }
+
+    /**
+     * @return QueryBuilder
+    */
+    private function createAvailableVariantsQueryBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('v')
+            ->innerJoin('v.product', 'p')
+            ->leftJoin('v.discount', 'd')
+            ->leftJoin('p.brand', 'b')
+            ->leftJoin('p.type', 't')
+            ->leftJoin('p.category', 'c')
+            ->leftJoin('p.subtypes', 'ps')
+            ->leftJoin('ps.subtype', 'st')
+            ->addSelect('v');
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     *
+     * @return void
+    */
+    private function applyEffectivePrice(QueryBuilder $qb): void
+    {
+        $qb->addSelect('(v.price - COALESCE(d.price, 0)) AS HIDDEN effectivePrice');
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     *
+     * @return void
+    */
+    private function applyAverageRating(QueryBuilder $qb): void
+    {
+        $qb->addSelect('(
+            SELECT COALESCE(AVG(r.value), 0.0)
+            FROM ' . Review::class . ' r
+            WHERE r.variant = v
+        ) AS HIDDEN avgRating');
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     * @param ProductFilterObject $filter
+     *
+     * @return void
+    */
+    private function applyFilters(QueryBuilder $qb, ProductFilterObject $filter): void
+    {
+        $brands = $this->normalizeArray($filter->brands);
+        $subtypes = $this->normalizeArray($filter->subtypes);
+        $category = $this->normalizeScalar($filter->category);
+        $type = $this->normalizeScalar($filter->type);
+
+        if ($filter->isDiscountRoute) {
+            $qb->andWhere('d.id IS NOT NULL');
+        }
+
+        if ($brands) {
+            $qb->andWhere('LOWER(b.name) IN (:brands)')->setParameter('brands', $brands);
+        }
+
+        if ($subtypes) {
+            $qb->andWhere('LOWER(st.name) IN (:subtypes)')->setParameter('subtypes', $subtypes);
+        }
+
+        if ($category) {
+            $qb->andWhere('LOWER(c.name) = :category')->setParameter('category', $category);
+        }
+
+        if ($type) {
+            $qb->andWhere('LOWER(t.name) = :type')->setParameter('type', $type);
+        }
+
+        if ($filter->minPrice !== null) {
+            $qb->andWhere('(v.price - COALESCE(d.price, 0)) >= :minPrice')
+                ->setParameter('minPrice', $filter->minPrice);
+        }
+
+        if ($filter->maxPrice !== null) {
+            $qb->andWhere('(v.price - COALESCE(d.price, 0)) <= :maxPrice')
+                ->setParameter('maxPrice', $filter->maxPrice);
+        }
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     *
+     * @return int
+    */
+    private function getTotalCount(QueryBuilder $qb): int
+    {
+        $countQb = clone $qb;
+        $countQb->select('COUNT(DISTINCT v.id)')->resetDQLPart('orderBy');
+
+        return (int) $countQb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * @param string[] $items
+     *
+     * @return string[]
+    */
+    private function normalizeArray(array $items): array
+    {
+        $normalized = array_map(
+            static fn($item): string => StringNormalizer::toLowerCase(StringNormalizer::replaceSpacesWithDash($item)),
+            $items,
+        );
+
+        return array_values(array_unique(array_filter($normalized)));
+    }
+
+    /**
+     * @param string|null $value
+     *
+     * @return string|null
+    */
+    private function normalizeScalar(?string $value): ?string
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return StringNormalizer::toLowerCase(StringNormalizer::replaceSpacesWithDash($value));
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     * @param ProductSortOption $sort
+     *
+     * @return void
+    */
+    private function applySorting(QueryBuilder $qb, ProductSortOption $sort): void
+    {
+        match ($sort) {
+            ProductSortOption::TOP_RATED      => $qb->orderBy('avgRating', 'DESC')->addOrderBy('v.createdAt', 'DESC'),
+            ProductSortOption::CHEAPEST       => $qb->orderBy('effectivePrice', 'ASC'),
+            ProductSortOption::MOST_EXPENSIVE => $qb->orderBy('effectivePrice', 'DESC'),
+            ProductSortOption::LATEST         => $qb->orderBy('v.createdAt', 'DESC'),
+        };
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     * @param int $page
+     * @param int $limit
+     *
+     * @return void
+    */
+    private function applyPagination(QueryBuilder $qb, int $page, int $limit): void
+    {
+        $qb->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit);
+    }
+
+    /**
+     * @param Type[] $types
+     *
+     * @return Product[]
+    */
+    private function extractProductsFromTypes(array $types): array
+    {
+        $products = [];
+        foreach ($types as $type) {
+            foreach ($type->getProducts() as $product) {
+                $products[] = $product;
+            }
+        }
+
+        return $products;
+    }
+}

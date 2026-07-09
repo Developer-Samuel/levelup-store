@@ -1,0 +1,65 @@
+{% macro render(variant, description = null, errors = []) %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+    {% import 'components/form/textarea.html.twig' as Textarea %}
+    {% import 'components/alert/alert.html.twig' as Alert %}
+
+    <div class="admin-detail__data">
+        {{ Alert.render() }}
+
+        <div class="admin-detail__data-groups">
+            <div class="admin-detail__data-form-group">
+                {{
+                    Label.render(
+                        'Title:',
+                        'title',
+                        'admin-detail__data-label'
+                    )
+                }}
+                {{
+                    Input.render (
+                        'text',
+                        'title',
+                        'title',
+                        description.title ?? '',
+                        'Title',
+                        'admin-detail__data-input input',
+                        null,
+                        errors ?? []
+                    )
+                }}
+            </div>
+
+            <div class="admin-detail__data-form-group">
+                {{
+                    Label.render(
+                        'Body:',
+                        'body',
+                        'admin-detail__data-label'
+                    )
+                }}
+                {{
+                    Textarea.render(
+                        'body',
+                        'body',
+                        description.body ?? '',
+                        'Body',
+                        'admin-detail__data-textarea textarea',
+                        null,
+                        errors ?? []
+                    )
+                }}
+            </div>
+        </div>
+
+        {% import 'components/form/action.html.twig' as FormControlAction %}
+
+        {{
+            FormControlAction.render(
+                'admin-detail__form-action',
+                'admin-detail__form-action-btn',
+                app.request.uri matches '/edit/' ? 'Update' : 'Create'
+            )
+        }}
+    </div>
+{% endmacro %}

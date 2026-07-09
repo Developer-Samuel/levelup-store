@@ -1,0 +1,16 @@
+{% macro render(pageId, title, formPath, backUrl, additionalParams = {}) %}
+    {% import 'features/admin/common/snippets/back.html.twig' as Back %}
+    {% import 'features/admin/common/snippets/title.html.twig' as Title %}
+    {% import formPath as Form %}
+
+    <main
+        id="{{ pageId }}"
+        class="admin-content"
+    >
+        <div class="admin-content__card">
+            {{ Back.render(backUrl) }}
+            {{ Title.render(title) }}
+            {{ Form.render(additionalParams) }}
+        </div>
+    </main>
+{% endmacro %}

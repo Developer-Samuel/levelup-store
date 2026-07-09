@@ -1,0 +1,47 @@
+{% macro render(variant, variants, descriptions, wishlistExists, reviewData) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/product/detail/info/top/rating/average-rating-stars.html.twig' as AverageRatingStars %}
+    {% import 'features/product/detail/info/top/rating/scroll-reviews.html.twig' as ScrollReviews %}
+    {% import 'features/product/detail/info/top/wishlist/toggle-button.html.twig' as WishlistToggleButton %}
+    {% import 'features/product/detail/info/top/descriptions/scroll-descriptions.html.twig' as ScrollDescriptions %}
+    {% import 'features/product/detail/info/top/variants/list.html.twig' as VariantList %}
+
+    <div class="product-detail__details-info-top">
+        <h2 class="product-detail__details-title">
+            {{ variant.name }}
+        </h2>
+        <div class="product-detail__details-row">
+            <div class="product-detail__details-stars">
+                {{ AverageRatingStars.render(reviewData) }}
+
+                {% if reviewData.averageRating > 0 %}
+                    {{ ScrollReviews.render(reviewData) }}
+                {% endif %}
+            </div>
+
+            {% if app.user %}
+                {{ WishlistToggleButton.render(variant, wishlistExists) }}
+            {% endif %}
+        </div>
+        <div class="product-detail__details-description">
+            <p>
+                {{ variant.description }}
+            </p>
+
+            {% if descriptions is not empty %}
+                {{ ScrollDescriptions.render() }}
+            {% endif %}
+        </div>
+        <div class="product-detail__details-variants">
+            {{
+                Title.render(
+                    'Variants',
+                    'product-detail__details-subtitle',
+                    'h2'
+                )
+            }}
+
+            {{ VariantList.render(variants, variant.id) }}
+        </div>
+    </div>
+{% endmacro %}

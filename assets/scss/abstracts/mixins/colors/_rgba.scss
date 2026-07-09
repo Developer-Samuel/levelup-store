@@ -1,0 +1,10 @@
+@use 'sass:map';
+
+@use '@/scss/abstracts/utilities/colors/get-rgba' as *;
+@use '@/scss/abstracts/maps/_rgba' as rgba;
+
+@mixin rgba($color-name, $percent) {
+  $value: get-rgba($color-name, $percent, rgba.$rgba-colors);
+
+  background: $value;
+}

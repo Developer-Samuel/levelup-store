@@ -1,0 +1,81 @@
+deptrac:
+  paths:
+    - ./src
+
+  layers:
+    - name: Domain
+      collectors:
+        - type: directory
+          value: src/Core/Domain/*
+
+    - name: Application
+      collectors:
+        - type: directory
+          value: src/Core/Application/*
+
+    - name: Ports
+      collectors:
+        - type: directory
+          value: src/Core/Ports/*
+
+    - name: Adapters
+      collectors:
+        - type: directory
+          value: src/Adapters/*
+
+    - name: Infrastructure
+      collectors:
+        - type: directory
+          value: src/Infrastructure/*
+
+    - name: Presentation
+      collectors:
+        - type: directory
+          value: src/Presentation/*
+
+    - name: Scheduler
+      collectors:
+        - type: directory
+          value: src/Scheduler/*
+
+    - name: Shared
+      collectors:
+        - type: directory
+          value: src/Shared/*
+
+  ruleset:
+    Shared: []
+
+    Domain:
+      - Shared
+
+    Application:
+      - Domain
+      - Ports
+      - Shared
+
+    Ports:
+      - Domain
+      - Shared
+
+    Adapters:
+      - Domain
+      - Ports
+      - Infrastructure
+      - Shared
+
+    Infrastructure:
+      - Domain
+      - Ports
+      - Shared
+
+    Presentation:
+      - Domain
+      - Application
+      - Ports
+      - Shared
+
+    Scheduler:
+      - Domain
+      - Ports
+      - Shared

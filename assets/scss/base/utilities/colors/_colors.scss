@@ -1,0 +1,25 @@
+@use '@/scss/abstracts/theme/colors/solid/index' as colors;
+
+.text-black {
+  color: colors.$neutral;
+}
+
+.text-white {
+  color: colors.$primary;
+}
+
+.text-green {
+  color: colors.$success;
+}
+
+.text-yellow {
+  color: colors.$warning;
+}
+
+.text-orange {
+  color: colors.$orange-500;
+}
+
+.text-red {
+  color: colors.$error;
+}

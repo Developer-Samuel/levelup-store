@@ -1,0 +1,87 @@
+{% macro render(order, errors = []) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    {% set personal = order.personal %}
+
+    <div
+        id="personal-data"
+        class="order__card-form-item"
+    >
+        {{
+            Title.render(
+                'Personal Data',
+                'order__card-form-title',
+                'h2'
+            )
+        }}
+        <div class="order__card-form-section">
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'Email:',
+                        'email',
+                        'order__card-form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'email',
+                        'email',
+                        personal.email ?? '',
+                        'Email',
+                        'order__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+            <div class="order__card-form-row row">
+                <div class="order__card-form-group">
+                    {{
+                        Label.render(
+                            'First Name:',
+                            'first-name',
+                            'order__card-form-label'
+                        )
+                    }}
+                    {{
+                        Input.render(
+                            'text',
+                            'first_name',
+                            'first-name',
+                            personal.firstName ?? '',
+                            'First Name',
+                            'order__card-form-input input',
+                            null,
+                            errors
+                        )
+                    }}
+                </div>
+                <div class="order__card-form-group">
+                    {{
+                        Label.render(
+                            'Last Name:',
+                            'last-name',
+                            'order__card-form-label'
+                        )
+                    }}
+                    {{
+                        Input.render(
+                            'text',
+                            'last_name',
+                            'last-name',
+                            personal.lastName ?? '',
+                            'Last Name',
+                            'order__card-form-input input',
+                            null,
+                            errors
+                        )
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

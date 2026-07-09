@@ -1,0 +1,85 @@
+{% macro render(user, errors = []) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    <div class="user__form-item">
+        {{
+            Title.render(
+                'Personal Information',
+                'user__form-title',
+                'h2'
+            )
+        }}
+
+        <div class="user__form-list">
+            <div class="user__form-group disabled">
+                {{
+                    Label.render(
+                        'Email:',
+                        'email',
+                        'user__form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'email',
+                        'email',
+                        user.email,
+                        'Email',
+                        'user__form-input input',
+                        null,
+                        errors,
+                        true
+                    )
+                }}
+            </div>
+
+            <div class="user__form-row row">
+                <div class="user__form-group">
+                    {{
+                        Label.render(
+                            'First name:',
+                            'first-name',
+                            'user__form-label'
+                        )
+                    }}
+                    {{
+                        Input.render(
+                            'text',
+                            'first_name',
+                            'first-name',
+                            user.firstName,
+                            'Your first name:',
+                            'user__form-input input',
+                            null,
+                            errors
+                        )
+                    }}
+                </div>
+                <div class="user__form-group">
+                    {{
+                        Label.render(
+                            'Last name:',
+                            'last-name',
+                            'user__form-label'
+                        )
+                    }}
+                    {{
+                        Input.render(
+                            'text',
+                            'last_name',
+                            'last-name',
+                            user.lastName,
+                            'Your last name:',
+                            'user__form-input input',
+                            null,
+                            errors
+                        )
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

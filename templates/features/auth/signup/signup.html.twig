@@ -1,0 +1,14 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+    {% import 'base/auth/wrapper.html.twig' as AuthWrapper %}
+
+    {{ AuthWrapper.render(
+        'signup-page',
+        'Sign Up',
+        'features/auth/signup/forms/signup-form.html.twig',
+        { errors: errors ?? [] },
+    ) }}
+{% endblock %}

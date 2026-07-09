@@ -1,0 +1,11 @@
+{% macro render(variants, currentVariantId) %}
+    {% import 'features/product/detail/info/top/variants/snippets/item.html.twig' as Item %}
+
+    <div class="product-detail__details-list">
+        {% for item in variants %}
+            {{ Item.render(item, currentVariantId) }}
+        {% else %}
+            <div>No variants found</div>
+        {% endfor %}
+    </div>
+{% endmacro %}

@@ -1,0 +1,10 @@
+{% macro render(currentPage, maxPages, variants, showLoadMore) %}
+    <div
+        id="products-wrapper"
+        data-current-page="{{ currentPage }}"
+        data-total-page="{{ maxPages }}"
+        class="products__card-wrapper"
+    >
+        {% include 'features/product/catalog/content/card/list/list.html.twig' %}
+    </div>
+{% endmacro %}

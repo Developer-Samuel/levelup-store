@@ -1,0 +1,6 @@
+{% macro render() %}
+    {% import 'layout/public/navigation/mobile/content/list/blocks/categories.html.twig' as CategoriesBlock %}
+    <div class="navigation__mobile-list">
+        {{ CategoriesBlock.render(categories) }}
+    </div>
+{% endmacro %}

@@ -1,0 +1,16 @@
+{% macro render(products) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/home/swiper/slider/slider.html.twig' as SwiperSlider %}
+
+    <div class="home-page__swiper products-swiper">
+        {{
+            Title.render(
+                'Recommended Products',
+                'home-page__swiper-title',
+                'h2'
+            )
+        }}
+
+        {{ SwiperSlider.render(products) }}
+    </div>
+{% endmacro %}

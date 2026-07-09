@@ -1,0 +1,77 @@
+{%
+    macro render(
+        reviews,
+        reviewExists,
+        averageRating,
+        totalRatings,
+        totalFeedbacks,
+        totalCount,
+        ratingsCount,
+        lastReview,
+        lastReviewDetails,
+        variant
+    )
+%}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/review/content/list/list.html.twig' as ReviewList %}
+    {% import 'features/review/snippets/open-create-modal.html.twig' as OpenCreateModal %}
+    {% import 'features/review/blocks/total.html.twig' as Total %}
+
+    <div class="reviews" data-variant-id="{{ variant.id }}">
+        <div class="reviews__back">
+            <a class="reviews__back-btn" href="{{ path('product_show', {'url': variant.url}) }}">
+                Back
+            </a>
+        </div>
+        <div class="reviews__product">
+            <div class="reviews__product-name">
+                {{ variant.name }}
+            </div>
+        </div>
+        <div class="reviews__card">
+            <div class="reviews__card-top">
+                {{
+                    Title.render(
+                        'Product reviews',
+                        'reviews__card-title',
+                        'h2',
+                    )
+                }}
+
+                {% if app.user and reviewExists %}
+                    {{ OpenCreateModal.render() }}
+                {% endif %}
+            </div>
+
+            {% set reviewData = {
+                averageRating: averageRating,
+                totalRatings: totalRatings,
+                totalFeedbacks: totalFeedbacks,
+                totalCount: totalCount,
+                ratingsCount: ratingsCount
+            } %}
+
+            {{ Total.render(reviewData) }}
+
+            {% if reviews is not empty %}
+                {% for item in reviews %}
+                   {% set review = item.review %}
+                    {% set details = item.details %}
+                    {% set likesCount = item.likesCount %}
+                    {% set dislikesCount = item.dislikesCount %}
+                    {% set userRatingType = item.userRatingType %}
+
+                    {{
+                        ReviewList.render({
+                            review: review,
+                            details: details,
+                            likesCount: likesCount,
+                            dislikesCount: dislikesCount,
+                            userRatingType: userRatingType
+                        })
+                    }}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

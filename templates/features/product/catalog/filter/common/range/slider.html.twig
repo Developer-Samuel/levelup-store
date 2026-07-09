@@ -1,0 +1,43 @@
+{% macro render(label, minId, maxId, maxValue, step = 1, output_item_template, output_class) %}
+    {% import 'components/common/title.html.twig' as Title %}
+
+    <div class="products__filter-menu-item">
+        {{
+            Title.render(
+                label,
+                'products__filter-title',
+                'h3'
+            )
+        }}
+
+        <div class="products__filter-range-slider">
+            <input
+                type="range"
+                min="0"
+                max="{{ maxValue }}"
+                value="0"
+                step="{{ step }}"
+                id="{{ minId }}"
+                class="products__filter-range-slider-input"
+            >
+            <input
+                type="range"
+                min="0"
+                max="{{ maxValue }}"
+                value="{{ maxValue }}"
+                step="{{ step }}"
+                id="{{ maxId }}"
+                class="products__filter-range-slider-input"
+            >
+
+            {{
+                include(output_item_template, {
+                    minId: minId,
+                    maxId: maxId,
+                    maxValue: maxValue,
+                    output_class: output_class
+                })
+            }}
+        </div>
+    </div>
+{% endmacro %}

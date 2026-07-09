@@ -1,0 +1,132 @@
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-start {
+  @include flex;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@mixin flex-start-x {
+  @include flex;
+
+  justify-content: flex-start;
+}
+
+@mixin flex-start-y {
+  @include flex;
+
+  align-items: flex-start;
+}
+
+@mixin flex-center {
+  @include flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-x {
+  @include flex;
+
+  justify-content: center;
+}
+
+@mixin flex-center-y {
+  @include flex;
+
+  align-items: center;
+}
+
+@mixin flex-end {
+  @include flex;
+
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+@mixin flex-end-x {
+  @include flex;
+
+  justify-content: flex-end;
+}
+
+@mixin flex-end-y {
+  @include flex;
+
+  align-items: flex-end;
+}
+
+@mixin flex-end-center {
+  @include flex;
+
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin flex-between-x {
+  @include flex;
+
+  justify-content: space-between;
+}
+
+@mixin flex-between-center {
+  @include flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-stretch {
+  @include flex;
+
+  align-items: stretch;
+}
+
+@mixin flex-row {
+  @include flex;
+
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  @include flex;
+
+  flex-direction: column;
+}
+
+@mixin flex-col-between-x {
+  @include flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@mixin flex-col-between-center {
+  @include flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-col-center {
+  @include flex-col;
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-col-center-x {
+  @include flex-col;
+
+  justify-content: center;
+}
+
+@mixin flex-col-center-y {
+  @include flex-col;
+
+  align-items: center;
+}

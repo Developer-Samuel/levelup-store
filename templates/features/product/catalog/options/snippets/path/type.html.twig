@@ -1,0 +1,10 @@
+{% macro render(category, type) %}
+    <div class="products__card-options-item">
+        <a
+            href="{% if category and type %}javascript:void(0){% else %}{{ path(productRoute, { 'category': category|replace({' ': '-'}) , 'type': type|replace({' ': '-'}) }) }}{% endif %}"
+            class="products__card-options-item--active"
+        >
+            {{ type|length <= 2 ? type|upper : type|capitalize }}
+        </a>
+    </div>
+{% endmacro %}

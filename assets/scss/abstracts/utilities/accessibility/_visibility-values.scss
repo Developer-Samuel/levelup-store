@@ -1,0 +1,27 @@
+@use 'sass:meta';
+
+@function visibility-value($visible) {
+  @if $visible {
+    @return visible;
+  } @else {
+    @return hidden;
+  }
+}
+
+@function opacity-value($visible, $opacity: null) {
+  @if $opacity != null {
+    @return $opacity;
+  } @else if $visible {
+    @return 1;
+  } @else {
+    @return 0;
+  }
+}
+
+@function pointer-value($pointer) {
+  @if $pointer == true {
+    @return auto;
+  } @else {
+    @return none;
+  }
+}

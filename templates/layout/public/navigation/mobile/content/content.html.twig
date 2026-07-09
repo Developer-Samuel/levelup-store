@@ -1,0 +1,11 @@
+{% macro render() %}
+    {% import 'layout/public/navigation/mobile/search/search.html.twig' as Search %}
+    {% import 'layout/public/navigation/mobile/content/list/list.html.twig' as NavigationList %}
+
+    <div class="navigation__mobile">
+        <nav class="navigation__mobile-content">
+            {{ Search.render() }}
+            {{ NavigationList.render() }}
+        </nav>
+    </div>
+{% endmacro %}

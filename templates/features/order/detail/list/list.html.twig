@@ -1,0 +1,16 @@
+{% macro render(items) %}
+    {% import 'features/order/detail/list/snippets/item.html.twig' as OrderItem %}
+
+    <div
+        id="order-products"
+        class="orders__card-group"
+    >
+        {% if items is not empty %}
+            <div class="orders__card-list">
+                {% for item in items %}
+                    {{ OrderItem.render(item) }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}

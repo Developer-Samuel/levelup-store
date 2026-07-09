@@ -1,0 +1,75 @@
+@use '@/scss/abstracts/theme/colors/solid/index' as colors;
+
+.orders__card-box {
+  &--pending {
+    background: colors.$warning;
+    color: colors.$neutral;
+
+    &:hover {
+      background: colors.$warning-hover;
+    }
+  }
+
+  &--confirmed {
+    background: colors.$secondary;
+    color: colors.$primary;
+
+    &:hover {
+      background: colors.$secondary-hover;
+    }
+  }
+
+  &--processed {
+    background: colors.$orange-400;
+    color: colors.$primary;
+
+    &:hover {
+      background: colors.$orange-500;
+    }
+  }
+
+  &--shipped {
+    background: colors.$dark-green-100;
+    color: colors.$primary;
+
+    &:hover {
+      background: colors.$dark-green-200;
+    }
+  }
+
+  &--delivered {
+    background: colors.$dark-green-600;
+    color: colors.$primary;
+
+    &:hover {
+      background: colors.$dark-green-700;
+    }
+  }
+
+  &--completed {
+    background: colors.$purple-400;
+    color: colors.$primary;
+
+    &:hover {
+      background: colors.$purple-500;
+    }
+  }
+
+  &--returned {
+    background: colors.$orange-400;
+    color: colors.$primary;
+
+    &:hover {
+      background: colors.$orange-500;
+    }
+  }
+
+  &--refunded {
+    background: colors.$light-blue-600;
+    color: colors.$primary;
+
+    &:hover {
+      background: colors.$light-blue-700;
+    }
+  }
+}

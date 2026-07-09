@@ -1,0 +1,10 @@
+{% macro render(class, btnClass, text) %}
+    <div class="{{ class }}">
+        <button
+            type="submit"
+            class="{{ btnClass }}"
+        >
+            {{ text }}
+        </button>
+    </div>
+{% endmacro %}

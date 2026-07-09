@@ -1,0 +1,22 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Users{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {{
+        TableContent.render(
+            'admin-users-page',
+            'Users',
+            'admin-users-table',
+            [
+                'Name',
+                'Email',
+                'Role',
+                'Verified',
+                'Created at'
+            ]
+        )
+    }}
+{% endblock %}

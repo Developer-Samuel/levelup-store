@@ -1,0 +1,18 @@
+{% macro render(user, billing, shipping, countries, errors = []) %}
+    {% import 'features/user/profile/forms/sections/personal.html.twig' as PersonalSection %}
+    {% import 'features/user/profile/forms/sections/billing.html.twig' as BillingSection %}
+    {% import 'features/user/profile/forms/sections/shipping.html.twig' as ShippingSection %}
+    {% import 'features/user/profile/forms/snippets/select.html.twig' as Select %}
+    {% import 'components/form/action.html.twig' as FormControlAction %}
+
+    {{ PersonalSection.render(user, errors ?? []) }}
+    {{ BillingSection.render(billing, countries ?? [], errors ?? []) }}
+    {{ ShippingSection.render(shipping, countries ?? [], errors ?? []) }}
+    {{
+        FormControlAction.render(
+            'user__form-action',
+            'user__form-btn',
+            'Update'
+        )
+    }}
+{% endmacro %}

@@ -1,0 +1,30 @@
+{% macro render(category, type) %}
+    {% import 'features/product/catalog/options/snippets/path/category.html.twig' as CategoryPath %}
+    {% import 'features/product/catalog/options/snippets/path/type.html.twig' as TypePath %}
+
+    {% if category or type %}
+        <div class="products__card-options-list">
+            <div class="products__card-options-item">
+                <a href="{{ path(productRoute) }}">
+                    All Products
+                </a>
+                <img
+                    src="{{ asset('img/icons/elements/arrow.png') }}"
+                    alt="Arrow"
+                >
+            </div>
+
+            {% if category %}
+                {{ CategoryPath.render(category, type) }}
+            {% endif %}
+
+            {% if type %}
+                {{ TypePath.render(category, type) }}
+            {% endif %}
+        </div>
+    {% else %}
+        <div>
+            &nbsp;
+        </div>
+    {% endif %}
+{% endmacro %}

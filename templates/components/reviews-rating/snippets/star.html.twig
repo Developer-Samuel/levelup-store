@@ -1,0 +1,20 @@
+{% macro render(type) %}
+    {% set starMap = {
+        'full': {
+            'path': 'img/icons/elements/star/star.png',
+            'alt':  'Full Star'
+        },
+        'half': {
+            'path': 'img/icons/elements/star/star-half.png',
+            'alt':  'Half Star'
+        },
+        'empty': {
+            'path': 'img/icons/elements/star/star-empty.png',
+            'alt':  'Empty Star'
+        }
+    } %}
+
+    {% set data = starMap[type] ?? starMap['empty'] %}
+
+    <img src="{{ asset(data.path) }}" alt="{{ data.alt }}">
+{% endmacro %}

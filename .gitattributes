@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+*.php text diff=php
+*.twig text diff=html
+*.scss text diff=css
+*.js text diff=javascript
+*.ts text diff=javascript
+
+*.md text diff=markdown
+*.xml text diff=xml
+*.json text diff=json
+*.yml text diff=yaml
+*.yaml text diff=yaml

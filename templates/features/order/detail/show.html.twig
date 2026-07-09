@@ -1,0 +1,36 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Order Details{% endblock %}
+
+{% block body %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'features/order/detail/data/data.html.twig' as OrderData %}
+    {% import 'features/order/detail/list/list.html.twig' as OrderList %}
+
+    <main class="content">
+        <div class="orders">
+            <div class="orders__card">
+                {{
+                    Title.render(
+                        '#' ~ order.code,
+                        'orders__card-title',
+                        'h2'
+                    )
+                }}
+
+                <div class="orders__card-detail">
+                    {{
+                        OrderData.render(
+                            order,
+                            billing,
+                            shipping,
+                            pdfEnabled
+                        )
+                    }}
+
+                    {{ OrderList.render(items) }}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

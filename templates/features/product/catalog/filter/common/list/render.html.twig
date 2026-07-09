@@ -1,0 +1,24 @@
+{% macro render(label, items, item_template, wrapper_class, extra_context={}) %}
+    {% import 'components/common/title.html.twig' as Title %}
+
+    <div class="products__filter-menu-item">
+        {{
+            Title.render(
+                label,
+                'products__filter-title',
+                'h3'
+            )
+        }}
+
+        <div class="{{ wrapper_class }}">
+            {% for item in items %}
+                {{
+                    include(
+                        item_template,
+                        _context|merge({'item': item} | merge(extra_context))
+                    )
+                }}
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

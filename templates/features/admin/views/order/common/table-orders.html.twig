@@ -1,0 +1,24 @@
+{% macro render(pageId, title, tableId, actions = []) %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {% set COLUMNS = [
+        'Code',
+        'Price',
+        'Payment',
+        'Paid',
+        'Status',
+        'Ordered at',
+        ''
+    ] %}
+
+    {{
+        TableContent.render(
+            pageId,
+            title,
+            tableId,
+            COLUMNS,
+            null,
+            actions
+        )
+    }}
+{% endmacro %}

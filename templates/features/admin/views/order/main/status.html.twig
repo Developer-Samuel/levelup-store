@@ -1,0 +1,24 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Orders{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/forms/form-content.html.twig' as FormContent %}
+
+    {{
+        FormContent.render(
+            'admin-order-status-page',
+            '#' ~ order.code,
+            'features/admin/views/order/main/forms/update-status.html.twig',
+            path('admin_orders_index'),
+            {
+                order,
+                personal,
+                billing,
+                shipping,
+                items,
+                statuses
+            }
+        )
+    }}
+{% endblock %}

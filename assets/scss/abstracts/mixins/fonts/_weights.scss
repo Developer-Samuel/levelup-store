@@ -1,0 +1,9 @@
+@use '@/scss/abstracts/utilities/fonts/weights/get-value' as *;
+@use '@/scss/abstracts/utilities/effects/important' as *;
+
+@mixin weights($weight: 400, $important: false) {
+  $val: font-weight-get-value($weight);
+  $final: apply-important($val, $important);
+
+  font-weight: #{$final};
+}

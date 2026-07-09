@@ -1,0 +1,28 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Brands{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {{
+        TableContent.render(
+            'admin-brands-page',
+            'Brands',
+            'admin-brands-table',
+            [
+                'Name',
+                'Created at',
+                ''
+            ],
+            null,
+            [
+                {
+                    'url': path('admin_brands_create'),
+                    'label': 'Create',
+                    'color': 'green'
+                }
+            ]
+        )
+    }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% macro render() %}
+    <div class="auth-page__card-form-consent">
+        <p class="auth-page__card-form-consent-text">
+            Forgot password?
+            <a
+                href="{{ path('forgot_password') }}"
+                class="auth-page__card-form-consent-link"
+            >
+                Reset here
+            </a>
+        </p>
+    </div>
+{% endmacro %}

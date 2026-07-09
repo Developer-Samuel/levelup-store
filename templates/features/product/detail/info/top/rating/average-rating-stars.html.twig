@@ -1,0 +1,19 @@
+{% macro render(reviewData) %}
+    <div class="
+        product-detail__details-stars-row
+        {{ reviewData.averageRating is not null and reviewData.averageRating > 0 ? '' : 'not-allowed' }}
+    ">
+        {% set rating = (reviewData.averageRating is not null) ? reviewData.averageRating : 0 %}
+        {% if rating < 0 %}{% set rating = 0 %}{% elseif rating > 5 %}{% set rating = 5 %}{% endif %}
+
+        {% for i in 1..5 %}
+            {% if rating >= i %}
+                <img src="{{ asset('img/icons/elements/star/star.png') }}" alt="star">
+            {% elseif rating >= (i - 0.5) %}
+                <img src="{{ asset('img/icons/elements/star/star-half.png') }}" alt="star-half">
+            {% else %}
+                <img src="{{ asset('img/icons/elements/star/star-empty.png') }}" alt="star-empty">
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endmacro %}

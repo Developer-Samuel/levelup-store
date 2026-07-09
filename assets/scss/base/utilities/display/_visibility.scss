@@ -1,0 +1,9 @@
+@use '@/scss/abstracts/mixins/accessibility/visibility' as *;
+
+.visible {
+  @include visibility(true, 1, true, true);
+}
+
+.hidden {
+  @include visibility(false, 0, false, true);
+}

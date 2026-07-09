@@ -1,0 +1,15 @@
+{% macro render(orders) %}
+    {% import 'features/order/catalog/list/snippets/item.html.twig' as OrderItem %}
+
+    {% if orders is not empty %}
+        <div class="orders__card-list">
+            {% for order in orders %}
+                {{ OrderItem.render(order) }}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="orders__card-no-results">
+            <p>No orders found.</p>
+        </div>
+    {% endif %}
+{% endmacro %}

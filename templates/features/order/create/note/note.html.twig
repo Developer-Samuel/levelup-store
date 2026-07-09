@@ -1,0 +1,16 @@
+{% macro render() %}
+    {% import 'features/order/create/note/snippets/title.html.twig' as OrderNoteTitle %}
+    {% import 'features/order/create/note/list/snippets/text.html.twig' as OrderNoteText %}
+    {% import 'features/order/create/note/list/list.html.twig' as OrderNoteList %}
+
+    <div class="order__card-note">
+        <div class="order__card-note-body">
+            {{ OrderNoteTitle.render() }}
+
+            <div class="order__card-note-info">
+                {{ OrderNoteText.render() }}
+                {{ OrderNoteList.render() }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

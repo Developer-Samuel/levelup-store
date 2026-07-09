@@ -1,0 +1,52 @@
+@use 'sass:list';
+@use 'sass:meta';
+
+@use '@/scss/abstracts/utilities/effects/transition/ensure-list' as *;
+@use '@/scss/abstracts/utilities/effects/transition/get-value' as *;
+@use '@/scss/abstracts/utilities/effects/transition/join-list' as *;
+@use '@/scss/abstracts/maps/transitions' as maps;
+
+@mixin transition(
+  $type: 'ease',
+  $duration: 500,
+  $properties: (
+    'all',
+  ),
+  $important: false
+) {
+  $properties-list: transition-ensure-list($properties);
+  $durations-list: transition-ensure-list($duration);
+
+  @if list.length($durations-list) == 0 {
+    $durations-list: (500);
+  }
+
+  $results: ();
+
+  $props-count: list.length($properties-list);
+  $dur-count: list.length($durations-list);
+
+  @for $i from 1 through $props-count {
+    $prop: list.nth($properties-list, $i);
+
+    $index: 1;
+    @if $i <= $dur-count {
+      $index: $i;
+    } @else {
+      $index: $dur-count;
+    }
+
+    $dur: list.nth($durations-list, $index);
+
+    $value: transition-get-value($type, $dur, maps.$transitions);
+    $results: list.append($results, '#{$prop} #{$value}');
+  }
+
+  $final: transition-join-list($results);
+
+  @if meta.type-of($important) == 'bool' and $important {
+    $final: $final + ' !important';
+  }
+
+  transition: #{$final};
+}

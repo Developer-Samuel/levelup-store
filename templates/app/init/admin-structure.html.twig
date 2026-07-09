@@ -1,0 +1,9 @@
+{% macro render(isAdminPath) %}
+    {% if not isAdminPath %}
+        {% import 'layout/admin/header.html.twig' as AdminHeader %}
+        {% import 'layout/admin/sidebar.html.twig' as AdminSidebar %}
+
+        {{ AdminHeader.render() }}
+        {{ AdminSidebar.render() }}
+    {% endif %}
+{% endmacro %}

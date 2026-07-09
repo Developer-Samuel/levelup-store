@@ -1,0 +1,13 @@
+{% macro render(banner) %}
+    <div class="home-page__banners-item">
+        <div class="home-page__discount">
+            <a href="{{ path('discounts') }}" class="home-page__discount-item">
+                <img
+                    id="discount-banner"
+                    src="{{ asset('uploads/' ~ (banner.image ?: 'img/misc/image/no-image.webp')) }}"
+                    alt="Banner"
+                >
+            </a>
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,16 @@
+{% macro render(totalItems) %}
+    <div class="cart__header">
+        <div class="cart__header-count">
+            Items: {{ totalItems ?? 0 }}
+        </div>
+        <div
+            id="header-close"
+            class="cart__header-close"
+        >
+            <img
+                src="{{ asset('img/icons/actions/close.png') }}"
+                alt="Close"
+            >
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,55 @@
+{% macro render(errors = []) %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    <div class="auth-page__card-form-group">
+        {{
+            Label.render(
+                'Email:',
+                'email',
+                'auth-page__card-form-label'
+            )
+        }}
+        {{
+            Input.render (
+                'text',
+                'email',
+                'email',
+                null,
+                'Email',
+                'auth-page__card-form-input input',
+                null,
+                errors
+            )
+        }}
+    </div>
+
+    <div class="auth-page__card-form-group">
+        {{
+            Label.render(
+                'Password:',
+                'password',
+                'auth-page__card-form-label'
+            )
+        }}
+        <div class="auth-page__card-form-password">
+            <img
+                src="{{ asset('img/icons/actions/eye/show.png') }}"
+                alt="Show password"
+                class="auth-page__card-form-icon"
+            >
+            {{
+                Input.render (
+                    'password',
+                    'password',
+                    'password',
+                    null,
+                    '********',
+                    'auth-page__card-form-input input',
+                    null,
+                    errors
+                )
+            }}
+        </div>
+    </div>
+{% endmacro %}

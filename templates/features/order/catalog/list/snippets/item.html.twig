@@ -1,0 +1,28 @@
+{% macro render(order) %}
+    <a href="{{ path('orders_show', {'code': order.code}) }}" class="orders__card-box orders__card-box--{{ order.status.value|lower }}">
+        <div class="orders__card-box-payment">
+            <div class="orders__card-box-payment-type">
+                {{ order.payment.value == 'card' ? '💳' : '💵' }}
+            </div>
+            <div class="orders__card-box-payment-paid">
+                {{ order.orderPayment ? '✅' : '❌' }}
+            </div>
+        </div>
+        <div class="orders__card-box-left">
+            <div class="orders__card-status">
+                {{ order.status.value|capitalize }}
+            </div>
+            <div class="orders__card-code">
+                #{{ order.code }}
+            </div>
+        </div>
+        <div class="orders__card-box-right">
+            <p class="orders__card-date">
+                {{ order.createdAt|date('d.m.Y') }}
+            </p>
+            <p class="orders__card-time">
+                {{ order.createdAt|date('H:i') }}
+            </p>
+        </div>
+    </a>
+{% endmacro %}

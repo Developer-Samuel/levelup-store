@@ -1,0 +1,25 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Products{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {{
+        TableContent.render(
+            'admin-products-page',
+            'Products',
+            'admin-products-table',
+            [
+                'Name',
+                'Catalog Code',
+                'Category',
+                'Type',
+                'Brand',
+                'Created at',
+                ''
+            ],
+            null
+        )
+    }}
+{% endblock %}

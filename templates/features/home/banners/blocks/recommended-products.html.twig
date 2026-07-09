@@ -1,0 +1,7 @@
+{% macro render(banner, products) %}
+    {% import 'features/home/swiper/swiper.html.twig' as Swiper %}
+
+    <div class="home-page__banners-item">
+        {{ Swiper.render(products) }}
+    </div>
+{% endmacro %}

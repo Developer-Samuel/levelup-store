@@ -1,0 +1,7 @@
+{% macro render() %}
+    {% import 'layout/public/header/search/panel/card/content/content.html.twig' as SearchContent %}
+
+    <div class="search-panel__card">
+        {{ SearchContent.render() }}
+    </div>
+{% endmacro %}

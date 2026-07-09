@@ -1,0 +1,8 @@
+{% macro render(
+    text = 'There is no stock available.',
+    className = 'text-red'
+) %}
+    <p class="{{ className }}">
+        {{ text }}
+    </p>
+{% endmacro %}

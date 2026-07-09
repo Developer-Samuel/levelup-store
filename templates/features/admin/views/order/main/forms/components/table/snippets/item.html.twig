@@ -1,0 +1,12 @@
+{% macro render(item) %}
+    <tr>
+        <td>
+            <img src="{{ asset(item.imagePath) }}" alt="{{ item.variant.name }}">
+        </td>
+        <td>{{ item.variant.name }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+            <a href="{{ path('product_show', {'url': item.url}) }}" target="_blank">View</a>
+        </td>
+    </tr>
+{% endmacro %}

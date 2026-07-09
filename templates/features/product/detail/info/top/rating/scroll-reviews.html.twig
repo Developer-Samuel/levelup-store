@@ -1,0 +1,9 @@
+{% macro render(reviewData) %}
+    {% import 'components/reviews-rating/snippets/text.html.twig' as Text %}
+
+    <div id="scroll-review" class="product-detail__details-stars-total">
+        <span>
+            {{ Text.render(reviewData) }}
+        </span>
+    </div>
+{% endmacro %}

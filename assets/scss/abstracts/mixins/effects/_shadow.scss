@@ -1,0 +1,11 @@
+@use '@/scss/abstracts/utilities/effects/shadows/get-value' as *;
+@use '@/scss/abstracts/utilities/effects/important' as *;
+
+@use '@/scss/abstracts/maps/shadows' as maps;
+
+@mixin shadow($direction, $intensity: 1, $important: false) {
+  $value: shadow-get-value($direction, $intensity, maps.$shadows);
+  $final: apply-important($value, $important);
+
+  box-shadow: #{$final};
+}

@@ -1,0 +1,22 @@
+{% macro render(order) %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/checkbox.html.twig' as Checkbox %}
+
+    <div class="order__card-form-checkbox-wrapper">
+        {{
+            Checkbox.render(
+                'send_shipping',
+                'send-shipping',
+                'order__card-form-checkbox-wrapper-input',
+                order.useShipping ? 'checked' : false,
+            )
+        }}
+        {{
+            Label.render(
+                'Send to shipping address',
+                'send-shipping',
+                'order__card-form-label'
+            )
+        }}
+    </div>
+{% endmacro %}

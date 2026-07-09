@@ -1,0 +1,12 @@
+{% macro render(variant, wishlistExists) %}
+    <div
+        data-variant-id="{{ variant.id }}"
+        data-active="{{ wishlistExists ? 'true' : 'false' }}"
+        class="product-detail__details-wishlist {{ wishlistExists ? 'product-detail__details-wishlist--active' : '' }}"
+    >
+        <img
+            src="{{ asset(wishlistExists ? 'img/icons/elements/heart/heart.png' : 'img/icons/elements/heart/heart-outline.png') }}"
+            style="opacity: {{ wishlistExists ? '1' : '0.8' }};"
+        >
+    </div>
+{% endmacro %}

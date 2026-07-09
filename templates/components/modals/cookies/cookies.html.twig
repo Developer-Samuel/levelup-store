@@ -1,0 +1,19 @@
+{% macro render() %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/modals/cookies/snippets/text.html.twig' as CookiesText %}
+    {% import 'components/modals/cookies/snippets/action.html.twig' as CookiesActions %}
+
+    <div class="modal cookies">
+        <div class="cookies__body">
+            {{
+                Title.render(
+                    'Cookie Consent',
+                    'cookies__body-title',
+                    'h2',
+                )
+            }}
+            {{ CookiesText.render() }}
+            {{ CookiesActions.render() }}
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,24 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Reviews List{% endblock %}
+
+{% block body %}
+    {% import 'features/review/content/content.html.twig' as ReviewsContent %}
+
+    <main class="content">
+        {{
+            ReviewsContent.render(
+                reviews,
+                reviewExists,
+                averageRating,
+                totalRatings,
+                totalFeedbacks,
+                totalCount,
+                ratingsCount,
+                lastReview,
+                lastReviewDetails,
+                variant
+            )
+        }}
+    </main>
+{% endblock %}

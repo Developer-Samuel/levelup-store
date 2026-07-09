@@ -1,0 +1,17 @@
+{% macro render(types, category = null, type = null) %}
+    {% import 'features/product/catalog/filter/common/list/render.html.twig' as LinkList %}
+
+    {% if category and type is empty %}
+        {{
+            LinkList.render(
+                'Types',
+                types,
+                'features/product/catalog/filter/modules/types/snippets/item.html.twig',
+                'products__filter-list',
+                {
+                    'category': category
+                }
+            )
+        }}
+    {% endif %}
+{% endmacro %}

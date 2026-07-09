@@ -1,0 +1,37 @@
+{% macro render(pageId, title, tableId, columns, backUrl = null, actions = []) %}
+    {% import 'base/admin/table.html.twig' as Table %}
+    {% import 'features/admin/common/snippets/action.html.twig' as Action %}
+    {% import 'features/admin/common/snippets/back.html.twig' as Back %}
+    {% import 'features/admin/common/snippets/title.html.twig' as Title %}
+
+    <main
+        id="{{ pageId }}"
+        class="admin-table admin-content"
+    >
+        <div class="admin-table__card admin-content__card">
+            {% if backUrl is not null %}
+                {{ Back.render(backUrl) }}
+            {% endif %}
+
+            {{ Title.render(title) }}
+
+            {% if actions is not empty %}
+                <div class="admin-content__actions">
+                    <div class="admin-content__actions-row">
+                        {% for action in actions %}
+                            {{
+                                Action.render(
+                                    action.url,
+                                    action.label,
+                                    action.color|default('gray')
+                                )
+                            }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {{ Table.render(tableId, columns) }}
+        </div>
+    </main>
+{% endmacro %}

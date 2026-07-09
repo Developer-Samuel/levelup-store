@@ -1,0 +1,16 @@
+{% macro render(params = {}) %}
+    {% set brand = params.brand %}
+    {% set errors = params.errors ?? [] %}
+
+    <form
+        id="admin-brands-update-form"
+        class="admin-detail__form"
+    >
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('admin_brands_update') }}">
+        <input type="hidden" name="id" value="{{ hmac_encrypt(brand.id) }}">
+
+        {% import 'features/admin/views/brand/forms/wrapper/brands-wrapper.html.twig' as BrandsLayout %}
+
+        {{ BrandsLayout.render(brand, errors ?? []) }}
+    </form>
+{% endmacro %}

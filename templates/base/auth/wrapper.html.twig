@@ -1,0 +1,56 @@
+{% macro render(pageId, title, formComponent, formParams = {}) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/alert/alert.html.twig' as Alert %}
+    {% import formComponent as Form %}
+
+    <div id="{{ pageId }}" class="auth-page">
+        {% if app.request.pathinfo != '/must-verify' %}
+            <a
+                class="auth-page__logo"
+                href="{{ path('home') }}"
+            >
+                <img
+                    src="{{ asset('img/misc/logo/logo.webp') }}"
+                    alt="Logo"
+                    id="logo"
+                    class="auth-page__logo-image"
+                >
+            </a>
+        {% else %}
+            <p
+                class="auth-page__logo"
+                href="{{ path('home') }}"
+            >
+                <img
+                    src="{{ asset('img/misc/logo/logo.webp') }}"
+                    alt="Logo"
+                    id="logo"
+                    class="auth-page__logo-image"
+                >
+            </p>
+        {% endif %}
+
+
+        <div class="auth-page__card">
+            {{
+                Title.render(
+                    title,
+                    'auth-page__card-title',
+                    'h2'
+                )
+            }}
+
+            {{ Alert.render() }}
+            {{ Form.render(formParams) }}
+        </div>
+
+        <div class="auth-page__footer">
+            <p class="auth-page__footer-text">
+                © 2025 LevelUp Store by
+                <a href="https://samuel-steiner.com">
+                    Samuel Šteiner
+                </a>
+            </p>
+        </div>
+    </div>
+{% endmacro %}

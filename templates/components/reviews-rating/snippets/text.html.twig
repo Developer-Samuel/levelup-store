@@ -1,0 +1,11 @@
+{% macro render(reviewData) %}
+    {% if reviewData.totalCount == 0 %}
+        No rating
+    {% elseif reviewData.totalRatings > 0 and reviewData.totalFeedbacks == 0 %}
+        {{ reviewData.totalRatings }} rating{{ reviewData.totalRatings > 1 ? 's' : '' }}
+    {% elseif reviewData.totalFeedbacks > 0 and reviewData.totalRatings == 0 %}
+        {{ reviewData.totalFeedbacks }} review{{ reviewData.totalFeedbacks > 1 ? 's' : '' }}
+    {% else %}
+        {{ reviewData.totalRatings }} rating{{ reviewData.totalRatings > 1 ? 's' : '' }} and {{ reviewData.totalFeedbacks }} review{{ reviewData.totalFeedbacks > 1 ? 's' : '' }}
+    {% endif %}
+{% endmacro %}

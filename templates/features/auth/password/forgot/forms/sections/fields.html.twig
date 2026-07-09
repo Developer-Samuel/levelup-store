@@ -1,0 +1,26 @@
+{% macro render(errors = []) %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    <div class="auth-page__card-form-group">
+        {{
+            Label.render(
+                'Email:',
+                'email',
+                'auth-page__card-form-label'
+            )
+        }}
+        {{
+            Input.render (
+                'text',
+                'email',
+                'email',
+                null,
+                'Email',
+                'auth-page__card-form-input input',
+                null,
+                errors
+            )
+        }}
+    </div>
+{% endmacro %}

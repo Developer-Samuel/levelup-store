@@ -1,0 +1,17 @@
+<div class="products__filter-checkbox-list-item">
+    {% set normalizedBrand = item.name | normalize %}
+
+    <input
+        type="checkbox"
+        name="brand[]"
+        id="brand-{{ normalizedBrand }}"
+        value="{{ normalizedBrand }}"
+        class="products__filter-checkbox-list-input"
+    >
+    <label
+        for="brand-{{ normalizedBrand }}"
+        class="products__filter-checkbox-list-label"
+    >
+        {{ item.name }}
+    </label>
+</div>

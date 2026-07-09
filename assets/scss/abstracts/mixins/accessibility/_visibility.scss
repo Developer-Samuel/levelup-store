@@ -1,0 +1,19 @@
+@use 'sass:meta';
+
+@use '@/scss/abstracts/utilities/accessibility/visibility-values' as *;
+
+@mixin visibility($visible: false, $opacity: null, $pointer: null, $important: false) {
+  $vis: visibility-value($visible);
+  $op: opacity-value($visible, $opacity);
+  $pe: pointer-value($pointer);
+
+  @if meta.type-of($important) == 'bool' and $important {
+    visibility: $vis !important;
+    opacity: $op !important;
+    pointer-events: $pe !important;
+  } @else {
+    visibility: $vis;
+    opacity: $op;
+    pointer-events: $pe;
+  }
+}

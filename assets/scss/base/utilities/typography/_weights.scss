@@ -1,0 +1,37 @@
+@use '@/scss/abstracts/mixins/fonts/weights' as *;
+
+.font-thin {
+  @include weights(100);
+}
+
+.font-extralight {
+  @include weights(200);
+}
+
+.font-light {
+  @include weights(300);
+}
+
+.font-normal {
+  @include weights;
+}
+
+.font-medium {
+  @include weights(500);
+}
+
+.font-semibold {
+  @include weights(600);
+}
+
+.font-bold {
+  @include weights(700);
+}
+
+.font-extrabold {
+  @include weights(800);
+}
+
+.font-black {
+  @include weights(900);
+}

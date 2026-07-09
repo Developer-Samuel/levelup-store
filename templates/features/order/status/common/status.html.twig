@@ -1,0 +1,15 @@
+{% macro render(id, imagePath, title, message, actionText, actionPath) %}
+    <main class="content">
+        <div id="{{ id }}" class="order-status">
+            <div class="order-status__card">
+                {% import 'features/order/status/snippets/image.html.twig' as OrderStatusImage %}
+                {% import 'features/order/status/snippets/text.html.twig' as OrderStatusText %}
+                {% import 'features/order/status/snippets/action.html.twig' as OrderStatusAction %}
+
+                {{ OrderStatusImage.render(asset(imagePath), title) }}
+                {{ OrderStatusText.render(message) }}
+                {{ OrderStatusAction.render(actionText, actionPath) }}
+            </div>
+        </div>
+    </main>
+{% endmacro %}

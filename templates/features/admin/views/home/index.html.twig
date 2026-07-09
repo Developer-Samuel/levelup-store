@@ -1,0 +1,27 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin | Home{% endblock %}
+
+{% block admin_body %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'layout/admin/navigation.html.twig' as Navigation %}
+
+    <main class="admin-home">
+        <div class="admin-home__card">
+            {{
+                Title.render(
+                    'Home',
+                    'admin-home__card-title',
+                    'h2'
+                )
+            }}
+
+            {{
+                Navigation.render(
+                    'admin-home__list',
+                    'admin-home__list-item'
+                )
+            }}
+        </div>
+    </main>
+{% endblock %}

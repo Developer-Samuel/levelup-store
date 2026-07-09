@@ -1,0 +1,7 @@
+{% include 'errors/common/error.html.twig' with {
+    statusCode: 404,
+    statusText: 'Not Found',
+    message: message,
+    actionPath: path('home'),
+    actionLabel: 'Go to Home'
+} %}

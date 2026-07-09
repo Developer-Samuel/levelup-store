@@ -1,0 +1,12 @@
+{% macro render(id, columns) %}
+    <table id="{{ id }}" class="admin-table__table">
+        <thead class="admin-table__thead">
+            <tr>
+                {% for column in columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody class="admin-table__tbody"></tbody>
+    </table>
+{% endmacro %}

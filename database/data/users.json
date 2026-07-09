@@ -1,0 +1,418 @@
+[
+  {
+    "email": "admin@example.com",
+    "first_name": "Admin",
+    "last_name": "Test",
+    "password": "Test123@",
+    "role": "admin",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "test@example.com",
+    "first_name": "User",
+    "last_name": "Test",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "olivia.bennett@example.com",
+    "first_name": "Olivia",
+    "last_name": "Bennett",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "mason.carter@example.com",
+    "first_name": "Mason",
+    "last_name": "Carter",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "emma.richardson@example.com",
+    "first_name": "Emma",
+    "last_name": "Richardson",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "liam.foster@example.com",
+    "first_name": "Liam",
+    "last_name": "Foster",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "ava.hamilton@example.com",
+    "first_name": "Ava",
+    "last_name": "Hamilton",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "noah.reynolds@example.com",
+    "first_name": "Noah",
+    "last_name": "Reynolds",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "sophia.mitchell@example.com",
+    "first_name": "Sophia",
+    "last_name": "Mitchell",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "jackson.hayes@example.com",
+    "first_name": "Jackson",
+    "last_name": "Hayes",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "isabella.cooper@example.com",
+    "first_name": "Isabella",
+    "last_name": "Cooper",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "lucas.sullivan@example.com",
+    "first_name": "Lucas",
+    "last_name": "Sullivan",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "mia.crawford@example.com",
+    "first_name": "Mia",
+    "last_name": "Crawford",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "ethan.wallace@example.com",
+    "first_name": "Ethan",
+    "last_name": "Wallace",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "charlotte.grant@example.com",
+    "first_name": "Charlotte",
+    "last_name": "Grant",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "aiden.porter@example.com",
+    "first_name": "Aiden",
+    "last_name": "Porter",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "amelia.hughes@example.com",
+    "first_name": "Amelia",
+    "last_name": "Hughes",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "james.donovan@example.com",
+    "first_name": "James",
+    "last_name": "Donovan",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "harper.russell@example.com",
+    "first_name": "Harper",
+    "last_name": "Russell",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "benjamin.lawson@example.com",
+    "first_name": "Benjamin",
+    "last_name": "Lawson",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "evelyn.brooks@example.com",
+    "first_name": "Evelyn",
+    "last_name": "Brooks",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "henry.spencer@example.com",
+    "first_name": "Henry",
+    "last_name": "Spencer",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "william.barker@example.com",
+    "first_name": "William",
+    "last_name": "Barker",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "grace.powell@example.com",
+    "first_name": "Grace",
+    "last_name": "Powell",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "daniel.morgan@example.com",
+    "first_name": "Daniel",
+    "last_name": "Morgan",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "chloe.perry@example.com",
+    "first_name": "Chloe",
+    "last_name": "Perry",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "matthew.kemp@example.com",
+    "first_name": "Matthew",
+    "last_name": "Kemp",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "lily.dixon@example.com",
+    "first_name": "Lily",
+    "last_name": "Dixon",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "samuel.griffin@example.com",
+    "first_name": "Samuel",
+    "last_name": "Griffin",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "zoe.tate@example.com",
+    "first_name": "Zoe",
+    "last_name": "Tate",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "alexander.reed@example.com",
+    "first_name": "Alexander",
+    "last_name": "Reed",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "nora.webb@example.com",
+    "first_name": "Nora",
+    "last_name": "Webb",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "caleb.monroe@example.com",
+    "first_name": "Caleb",
+    "last_name": "Monroe",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "victoria.lane@example.com",
+    "first_name": "Victoria",
+    "last_name": "Lane",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "ryan.chandler@example.com",
+    "first_name": "Ryan",
+    "last_name": "Chandler",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "penelope.frost@example.com",
+    "first_name": "Penelope",
+    "last_name": "Frost",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "nathan.cole@example.com",
+    "first_name": "Nathan",
+    "last_name": "Cole",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "stella.barrett@example.com",
+    "first_name": "Stella",
+    "last_name": "Barrett",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "owen.hart@example.com",
+    "first_name": "Owen",
+    "last_name": "Hart",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "lucy.palmer@example.com",
+    "first_name": "Lucy",
+    "last_name": "Palmer",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "gabriel.shaw@example.com",
+    "first_name": "Gabriel",
+    "last_name": "Shaw",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "aria.kim@example.com",
+    "first_name": "Aria",
+    "last_name": "Kim",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "julian.price@example.com",
+    "first_name": "Julian",
+    "last_name": "Price",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "ruby.nash@example.com",
+    "first_name": "Ruby",
+    "last_name": "Nash",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "christian.fox@example.com",
+    "first_name": "Christian",
+    "last_name": "Fox",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "sadie.owens@example.com",
+    "first_name": "Sadie",
+    "last_name": "Owens",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "theodore.miles@example.com",
+    "first_name": "Theodore",
+    "last_name": "Miles",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "vivian.stone@example.com",
+    "first_name": "Vivian",
+    "last_name": "Stone",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "miles.harper@example.com",
+    "first_name": "Miles",
+    "last_name": "Harper",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "clara.bishop@example.com",
+    "first_name": "Clara",
+    "last_name": "Bishop",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "adrian.cross@example.com",
+    "first_name": "Adrian",
+    "last_name": "Cross",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  },
+  {
+    "email": "fiona.dale@example.com",
+    "first_name": "Fiona",
+    "last_name": "Dale",
+    "password": "Test123@",
+    "role": "user",
+    "email_verified_at": "2025-08-20T21:30:00+02:00"
+  }
+]

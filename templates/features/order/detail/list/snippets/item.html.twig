@@ -1,0 +1,26 @@
+{% macro render(item) %}
+    <a href="{{ path('product_show', {'url': item.url}) }}" class="product-item">
+        <div class="product-item__box">
+            <div class="product-item__box-top">
+                <div class="product-item__box-image">
+                    <img
+                        src="{{ asset(item.imagePath) }}"
+                    alt="{{ item.imagePath ? 'Image: ' ~ item.imagePath : 'Image not found' }}"
+                    >
+                </div>
+                <div class="product-item__box-name">
+                    <p>
+                        {{ item.variant.name }}
+                    </p>
+                </div>
+            </div>
+            <div class="product-item__box-bottom">
+                <div class="product-item__box-price">
+                    <span class="product-item__box-price-current">
+                        {{ item.price }} €
+                    </span>
+                </div>
+            </div>
+        </div>
+    </a>
+{% endmacro %}

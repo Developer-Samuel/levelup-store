@@ -1,0 +1,11 @@
+@use '@/scss/abstracts/mixins/accessibility/user-select' as *;
+
+.disabled {
+  @include user-select;
+
+  opacity: 0.5;
+}
+
+.empty {
+  opacity: 0.4;
+}

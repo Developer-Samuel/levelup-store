@@ -1,0 +1,13 @@
+{% macro render() %}
+    {% import 'layout/public/head/meta/blocks/base.html.twig' as MetaBase %}
+    {% import 'layout/public/head/meta/blocks/seo.html.twig' as MetaSEO %}
+    {% import 'layout/public/head/meta/blocks/theme.html.twig' as MetaTheme %}
+    {% import 'layout/public/head/meta/blocks/open-graph.html.twig' as MetaOpenGraph %}
+    {% import 'layout/public/head/meta/blocks/twitter.html.twig' as MetaTwitter %}
+
+    {{ MetaBase.render() }}
+    {{ MetaSEO.render() }}
+    {{ MetaTheme.render() }}
+    {{ MetaOpenGraph.render() }}
+    {{ MetaTwitter.render() }}
+{% endmacro %}

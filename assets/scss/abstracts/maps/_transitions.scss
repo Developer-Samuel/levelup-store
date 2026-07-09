@@ -1,0 +1,3 @@
+@use '@/scss/abstracts/generators/transitions/generate-transitions' as fn;
+
+$transitions: fn.generate-transitions();

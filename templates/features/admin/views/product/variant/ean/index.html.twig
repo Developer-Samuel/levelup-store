@@ -1,0 +1,28 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Variant Eans{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {{
+        TableContent.render(
+            'admin-variant-eans-page',
+            'EANS Active (' ~ variant.name ~ ')',
+            'admin-variant-eans-table',
+            [
+                'Code',
+                'Created at',
+                ''
+            ],
+            path('admin_variants_index', {'id': variant.id}),
+            [
+                {
+                    'url': path('admin_variants_eans_create', { 'id': variant.id }),
+                    'label': 'Create',
+                    'color': 'green'
+                }
+            ]
+        )
+    }}
+{% endblock %}

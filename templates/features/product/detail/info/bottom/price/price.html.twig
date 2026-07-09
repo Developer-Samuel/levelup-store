@@ -1,0 +1,19 @@
+{% macro render(price) %}
+    {% import 'features/product/detail/info/bottom/price/snippets/item.html.twig' as Item %}
+
+    <div class="product-detail__details-price">
+        {% if price.hasDiscount %}
+            {{ Item.render(price.discounted) }}
+            {{
+                Item.render(
+                    price.original,
+                    'product-detail__details-price-old'
+                )
+            }}
+        {% else %}
+            <span class="product-detail__details-price-current">
+                {{ Item.render(price.original) }}
+            </span>
+        {% endif %}
+    </div>
+{% endmacro %}

@@ -1,0 +1,5 @@
+{% macro render(categories) %}
+    {% import 'layout/public/navigation/common/categories.html.twig' as Categories %}
+
+    {{ Categories.render(categories, 'desktop') }}
+{% endmacro %}

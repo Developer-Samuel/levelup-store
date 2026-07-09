@@ -1,0 +1,5 @@
+@forward '@/scss/presentation/components/cursor/animations/cursor-pulse';
+
+@mixin cursor-pulse {
+  animation: cursor-pulse 1s infinite alternate;
+}

@@ -1,0 +1,13 @@
+parameters:
+    level: max
+
+    paths:
+        - src
+        - database
+        - kit
+        - tests
+
+    treatPhpDocTypesAsCertain: false
+
+includes:
+    - vendor/phpstan/phpstan-symfony/extension.neon

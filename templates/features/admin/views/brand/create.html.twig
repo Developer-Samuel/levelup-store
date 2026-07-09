@@ -1,0 +1,19 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Brands (Create){% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/forms/form-content.html.twig' as FormContent %}
+
+    {{
+        FormContent.render(
+            'admin-brands-create-page',
+            'Create Brand',
+            'features/admin/views/brand/forms/create.html.twig',
+            path('admin_brands_index'),
+            {
+                'errors': errors ?? []
+            }
+        )
+    }}
+{% endblock %}

@@ -1,0 +1,103 @@
+services:
+  # ⚙️  Global Defaults
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+    bind:
+      $fromEmail: '%env(MAILER_USER)%'
+
+  # 🔗 Session
+  Symfony\Component\HttpFoundation\Session\SessionInterface: '@session'
+
+  session.handler.redis:
+    class: Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler
+    arguments:
+      $redis: '@snc_redis.default'
+      $options:
+        ttl: 3600
+    tags:
+      - { name: 'monolog.logger', channel: 'session' }
+
+  # 📦 Namespace Registrations
+  App\Adapters\:       { resource: '../src/Adapters/' }
+  App\Core\:           { resource: '../src/Core/' }
+  App\Infrastructure\: { resource: '../src/Infrastructure/' }
+  App\Shared\:         { resource: '../src/Shared/' }
+
+  # 🔐 Security & Encryption
+  App\Core\Application\Shared\Encryption\HmacGenerator:
+    arguments:
+      $secretKey: '%env(HMAC_SECRET)%'
+
+  # 🗄️ Cache
+  App\Adapters\External\Cache\RedisCacheAdapter:
+    arguments:
+      $redisEnabled: '%env(bool:REDIS_ENABLED)%'
+      $redisUrl: '%env(REDIS_URL)%'
+
+  # 🖨️ PDF Generation
+  App\Adapters\External\Pdf\SnappyPdfGeneratorAdapter:
+    arguments:
+      $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'
+
+  App\Core\Application\Segment\Order\Handler\Query\GetOrderDetailQueryHandler:
+    arguments:
+      $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'
+
+  # 💳 Payment
+  App\Infrastructure\Payment\Stripe\StripeSdk:
+    arguments:
+      $secretKey: '%env(STRIPE_SECRET)%'
+
+  # 🌍 External APIs
+  App\Adapters\External\Api\Country\CountryApiAdapter:
+    arguments:
+      $countryUrl: '%env(API_COUNTRY_URL)%'
+
+  # 🔑 Auth
+  App\Infrastructure\Auth\Repository\RefreshTokenRepository:
+    arguments:
+      $refreshTokenTtl: '%env(int:JWT_REFRESH_TTL)%'
+
+  # 📋 Logging
+  App\Infrastructure\Shared\Logging\AppLogger:
+    arguments:
+      $logger: '@monolog.logger.app_logger'
+
+  # 📡 Event Subscribers
+  App\Infrastructure\Shared\Subscriber\:
+    resource: '../src/Infrastructure/Shared/Subscriber/'
+    tags:
+      - { name: kernel.event_subscriber }
+
+  # 🌐 Presentation
+  App\Presentation\:
+    resource: '../src/Presentation/'
+    tags: ['controller.service_arguments']
+
+  App\Presentation\Auth\Manager\RefreshTokenCookieManager:
+    arguments:
+      $refreshTokenTtl: '%env(int:JWT_REFRESH_TTL)%'
+
+  App\Presentation\Segment\Review\Twig\Extension\ReviewExtension:
+    tags:
+      - { name: twig.extension }
+
+  App\Presentation\Shared\Twig\Extension\HmacExtension:
+    tags:
+      - { name: twig.extension }
+
+  # ⏰ Scheduler
+  App\Scheduler\:
+    resource: '../src/Scheduler/'
+
+  # 🗃️ Database
+  Database\Fixtures\:
+    resource: '../database/fixtures/'
+
+  Database\Seeds\Records\:
+    resource: '../database/seeds/Records/'
+
+  Database\Seeds\Utils\:
+    resource: '../database/seeds/Utils/'

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation: #{{ order.code }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1;
+            color: #000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th { background-color: #f4f4f4; }
+        .section { margin-bottom: 25px; }
+        .section-price { font-size: 20px; font-weight: 700; }
+        .section-items { margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>Order Confirmation</h2>
+    <span>#{{ order.code }}</span>
+
+    <div class="section">
+        <h3>Customer Info</h3>
+        <p>{{ personal.firstName ~ ' ' ~ personal.lastName }}</p>
+        <p>{{ personal.email }}</p>
+    </div>
+
+    <div class="section">
+        <h3>Order Info</h3>
+        <p><b>Payment Method:</b> {{ order.payment.value|capitalize }}</p>
+        <p>
+            <b>Payment Status:</b>
+            {% if order.hasPayment is empty %}
+                <span class="unpaid">❌</span>
+            {% else %}
+                <span class="paid">✅</span>
+            {% endif %}
+        </p>
+        <p><b>Status:</b> {{ order.status.value|capitalize }}</p>
+    </div>
+
+    {% if shipping %}
+    <div class="section">
+        <h3>Shipping Address</h3>
+        <p>{{ shipping.street }}, {{ shipping.postalCode }} {{ shipping.city }}</p>
+        <p>{{ shipping.country.name }}</p>
+    </div>
+    {% endif %}
+
+    <div class="section">
+        <h3>Billing Address</h3>
+        <p>{{ billing.street }}, {{ billing.postalCode }} {{ billing.city }}</p>
+        <p>{{ billing.country.name }}</p>
+    </div>
+
+    <div class="section section-price">
+        <p><b>Total Price:</b> {{ order.price }} €</p>
+    </div>
+
+    <div class="section section-items">
+        <h3>Order Items</h3>
+        {% if items is not empty %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Price (€)</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            {% if item.imagePath %}
+                                <td><img src="{{ asset(item.imagePath) }}" alt="{{ item.variant.name }}" width="50"></td>
+                            {%  endif %}
+
+                            <td>{{ item.variant.name }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>
+                                <a href="{{ path('product_show', {'url': item.variant.url}) }}" target="_blank">View</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No products in this order.</p>
+        {% endif %}
+    </div>
+
+    <p>Thanks for shopping with LevelUp Store!</p>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% macro render(errors = []) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/input.html.twig' as Input %}
+    {% import 'components/form/textarea.html.twig' as Textarea %}
+
+    <div id="review-modal-fields" class="reviews-modal__body-form-fields">
+        <div class="reviews-modal__body-form-group">
+            {{
+                Textarea.render(
+                    'body',
+                    'body',
+                    '',
+                    'Share your experiences',
+                    'reviews-modal__body-form-group-textarea textarea',
+                    null,
+                    errors ?? [],
+                    5
+                )
+            }}
+            <div
+                id="review-body-chars"
+                class="reviews-modal__body-form-group-chars"
+            >
+                0/250
+            </div>
+        </div>
+
+        <div class="reviews-modal__body-form-group">
+            {{
+                Title.render(
+                    'Positives',
+                    'reviews-modal__body-form-group-title',
+                    'h4',
+                )
+            }}
+            <div id="reviews-positive-fields" class="reviews-modal__body-form-group-fields">
+                <div class="reviews-modal__body-form-group-item">
+                    {{
+                        Input.render (
+                            'text',
+                            'positives[]',
+                            'positive-detail-1',
+                            '',
+                            'Positive',
+                            'reviews-modal__body-form-group-input input',
+                            null,
+                            []
+                        )
+                    }}
+                    <div
+                        id="review-positive-chars-1"
+                        class="reviews-modal__body-form-group-chars"
+                    >
+                        0/80
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-modal__body-form-group">
+            {{
+                Title.render(
+                    'Negatives',
+                    'reviews-modal__body-form-group-title',
+                    'h4',
+                )
+            }}
+            <div id="reviews-negative-fields" class="reviews-modal__body-form-group-fields">
+                <div class="reviews-modal__body-form-group-item">
+                    {{
+                        Input.render (
+                            'text',
+                            'negatives[]',
+                            'negative-detail-1',
+                            '',
+                            'Negative',
+                            'reviews-modal__body-form-group-input input',
+                            null,
+                            []
+                        )
+                    }}
+                    <div
+                        id="review-negative-chars-1"
+                        class="reviews-modal__body-form-group-chars"
+                    >
+                        0/80
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

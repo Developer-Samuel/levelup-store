@@ -1,0 +1,18 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block body %}
+    {% import 'base/auth/wrapper.html.twig' as AuthWrapper %}
+
+    {{
+        AuthWrapper.render(
+            'login-page',
+            'Log In',
+            'features/auth/login/forms/login-form.html.twig',
+            {
+                errors: errors ?? []
+            },
+        )
+    }}
+{% endblock %}

@@ -1,0 +1,19 @@
+{
+  "Computers": ["Desktops", "Laptops", "Components", "Monitors", "Peripherals", "Network Parts"],
+  "Smart": ["Smartphones", "Tablets", "Smart Watch", "Smart Ring"],
+  "Gaming": ["VR Headsets", "Gamepads", "Racing Wheels", "Pedals", "Shifters", "Racing Kits"],
+  "TV": ["Full HD", "QHD", "4K", "8K"],
+  "Appliances": [
+    "Washing Machines",
+    "Dryers",
+    "Refrigerators",
+    "Freezers",
+    "Dishwashers",
+    "Stoves",
+    "Microwaves",
+    "Air Conditioners",
+    "Vacuum Cleaners",
+    "Irons",
+    "Air Purifiers"
+  ]
+}

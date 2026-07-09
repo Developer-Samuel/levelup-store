@@ -1,0 +1,43 @@
+{% macro render(order) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    {% set paymentMethods = order.paymentMethods %}
+
+    <div
+        id="payment-method-data"
+        class="order__card-form-item"
+    >
+        {{
+            Title.render(
+                'Payment Method',
+                'order__card-form-title',
+                'h2'
+            )
+        }}
+        <div class="order__card-form-section">
+            {% for method in paymentMethods %}
+                <div class="order__card-form-radio-group">
+                    {{
+                        Input.render(
+                            'radio',
+                            'payment_method',
+                            'payment-' ~ method.value ,
+                            method.value,
+                            null,
+                            'order__card-form-radio-input',
+                            method.value == 'card' ? 'checked' : null,
+                            []
+                        )
+                    }}
+                    <label
+                        for="payment-{{ method.value }}"
+                        class="order__card-form-radio-label"
+                    >
+                        {{ method.name | replace({'_': ' '}) | capitalize }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

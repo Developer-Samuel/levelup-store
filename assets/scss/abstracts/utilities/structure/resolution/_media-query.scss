@@ -1,0 +1,10 @@
+@function resolution-media-query($value, $type: min) {
+  @if $type == min {
+    @return '(min-width: #{$value})';
+  } @else if $type == max {
+    @return '(max-width: #{$value})';
+  } @else {
+    @warn "Invalid type `#{$type}` for resolution-media-query. Use `min` or `max`.";
+    @return '(min-width: #{$value})';
+  }
+}

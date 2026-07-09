@@ -1,0 +1,20 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Admin - Product Subtypes{% endblock %}
+
+{% block admin_body %}
+    {% import 'features/admin/common/tables/table-content.html.twig' as TableContent %}
+
+    {{
+        TableContent.render(
+            'admin-product-subtypes-page',
+            'Subtypes (' ~ product.name ~ ')',
+            'admin-product-subtypes-table',
+            [
+                'Name',
+                'Created at',
+            ],
+            path('admin_products_index')
+        )
+    }}
+{% endblock %}

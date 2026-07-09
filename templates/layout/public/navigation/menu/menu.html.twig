@@ -1,0 +1,9 @@
+{% macro render(categories, maxTypes) %}
+    {% import 'layout/public/navigation/menu/snippets/category.html.twig' as CategoryMenu %}
+    {% import 'layout/public/navigation/menu/snippets/background.html.twig' as BackgroundMenu %}
+
+    <div class="navigation__menu">
+        {{ CategoryMenu.render(categories) }}
+        {{ BackgroundMenu.render() }}
+    </div>
+{% endmacro %}

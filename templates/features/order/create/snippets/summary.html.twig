@@ -1,0 +1,16 @@
+{% macro render(totalPrice) %}
+   <div
+        id="order-total-price"
+        class="order__card-form-price"
+    >
+        <p>
+            Total:
+            <span>
+                {{ totalPrice ?? '0 €' }}
+            </span>
+        </p>
+    </div>
+    <button type="submit" class="order__card-form-btn">
+        Order
+    </button>
+{% endmacro %}

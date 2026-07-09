@@ -1,0 +1,25 @@
+{% macro render(errors = []) %}
+    {% import 'components/form/action.html.twig' as FormControlAction %}
+    {% import 'components/form/switch.html.twig' as FormSwitch %}
+    {% import 'features/auth/login/forms/sections/fields.html.twig' as LoginSectionData %}
+    {% import 'features/auth/login/forms/snippets/interactions.html.twig' as LoginConsent %}
+
+    {{ LoginSectionData.render(errors ?? []) }}
+    {{ LoginConsent.render() }}
+
+    {{
+        FormControlAction.render(
+            'auth-page__card-form-action',
+            'auth-page__card-form-action-btn',
+            'Log in'
+        )
+    }}
+
+    {{
+        FormSwitch.render(
+            "Don't have an account?",
+            path('signup'),
+            'Sign up'
+        )
+    }}
+{% endmacro %}

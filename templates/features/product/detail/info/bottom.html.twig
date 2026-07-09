@@ -1,0 +1,15 @@
+{% macro render(variant, stocks, price) %}
+    {% import 'features/product/detail/info/bottom/stocks/stocks.html.twig' as Stocks %}
+    {% import 'features/product/detail/info/bottom/price/price.html.twig' as Price %}
+    {% import 'features/product/detail/info/bottom/actions/buy-button.html.twig' as BuyButton %}
+
+    <div class="product-detail__details-info-bottom">
+        <div class="product-detail__details-data">
+            {{ Stocks.render(stocks) }}
+            {{ Price.render(price) }}
+        </div>
+        <div class="product-detail__details-action">
+            {{ BuyButton.render(variant) }}
+        </div>
+    </div>
+{% endmacro %}

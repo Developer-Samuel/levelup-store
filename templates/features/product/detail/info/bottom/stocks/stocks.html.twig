@@ -1,0 +1,27 @@
+{% macro render(stocks) %}
+    {% import 'features/product/detail/info/bottom/stocks/snippets/item.html.twig' as Item %}
+
+    <div class="product-detail__details-stocks">
+        {% if stocks %}
+            {% if stocks.quantityAvailable >= 5 %}
+                {{
+                    Item.render(
+                        'In stock quantity > 5',
+                        'text-green'
+                    )
+                }}
+            {% elseif stocks.quantityAvailable > 0 and stocks.quantityAvailable < 5 %}
+                {{
+                    Item.render(
+                        'In stock quantity: ' ~ stocks.quantityAvailable,
+                        'text-orange'
+                    )
+                }}
+            {% else %}
+                {{ Item.render() }}
+            {% endif %}
+        {% else %}
+            {{ Item.render() }}
+        {% endif %}
+    </div>
+{% endmacro %}

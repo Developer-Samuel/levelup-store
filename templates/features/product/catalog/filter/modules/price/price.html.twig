@@ -1,0 +1,15 @@
+{% macro render(maxPrice, filterPriceStep = 1) %}
+    {% import 'features/product/catalog/filter/common/range/slider.html.twig' as RangeSlider %}
+
+    {{
+        RangeSlider.render(
+            'Price',
+            'minPrice',
+            'maxPrice',
+            maxPrice,
+            filterPriceStep,
+            'features/product/catalog/filter/modules/price/snippets/item.html.twig',
+            'products__filter-price-output'
+        )
+    }}
+{% endmacro %}

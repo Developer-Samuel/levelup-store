@@ -1,0 +1,16 @@
+FROM nginx:1.31-alpine
+
+# Install useful network troubleshooting tools inside nginx container
+RUN apk update && apk add --no-cache \
+    iputils \
+    busybox-extras \
+    netcat-openbsd \
+    curl \
+  && rm -rf /var/cache/apk/*
+
+# Run nginx in foreground mode (daemon off) to keep container alive
+CMD ["nginx", "-g", "daemon off;"]
+
+# Healthcheck to verify nginx is serving requests correctly
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/ || exit 1

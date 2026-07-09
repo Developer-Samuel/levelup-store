@@ -1,0 +1,118 @@
+{% macro render(order, errors = []) %}
+    {% import 'components/common/title.html.twig' as Title %}
+    {% import 'components/form/label.html.twig' as Label %}
+    {% import 'components/form/input.html.twig' as Input %}
+
+    {% set billing = order.billing %}
+    {% set countries = order.countries %}
+
+    <div
+        id="order-billing-data"
+        class="order__card-form-item"
+    >
+        {{
+            Title.render(
+                'Billing Data',
+                'order__card-form-title',
+                'h2'
+            )
+        }}
+        <div class="order__card-form-section">
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'Street:',
+                        'billing-street',
+                        'order__card-form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'billing_street',
+                        'billing-street',
+                        billing is not null and billing.street is not null ? billing.street : null,
+                        'Name',
+                        'order__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'Postal Code:',
+                        'billing-postal-code',
+                        'order__card-form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'billing_postal_code',
+                        'billing-postal-code',
+                        billing is not null and billing.postalCode is not null ? billing.postalCode : null,
+                        'Postal Code',
+                        'order__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'Country:',
+                        'billing-country',
+                        'order__card-form-label'
+                    )
+                }}
+                <select
+                    name="billing_country"
+                    id="billing-country"
+                    class="order__card-form-select select"
+                >
+                    <option
+                        value=""
+                        class="order__card-form-option"
+                        {% if billing is null or billing.country is null %}selected{% endif %}
+                    ></option>
+                    {% for country in countries %}
+                        <option
+                            value="{{ country.id }}"
+                            class="order__card-form-option"
+                            {% if billing is not null and billing.country and billing.country.id == country.id %}selected{% endif %}
+                        >
+                            {{ country.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div class="error">
+                    {{ errors.billing_country ?? '' }}
+                </div>
+            </div>
+            <div class="order__card-form-group">
+                {{
+                    Label.render(
+                        'City:',
+                        'billing-city',
+                        'order__card-form-label'
+                    )
+                }}
+                {{
+                    Input.render(
+                        'text',
+                        'billing_city',
+                        'billing-city',
+                        billing is not null and billing.city is not null ? billing.city : null,
+                        'City',
+                        'order__card-form-input input',
+                        null,
+                        errors
+                    )
+                }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

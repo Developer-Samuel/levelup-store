@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Update - {{ order.code }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1;
+            color: #000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th { background-color: #f4f4f4; }
+        .section { margin-bottom: 25px; }
+        .section-status { font-size: 18px; font-weight: 500; }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff !important;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Order Update</h2>
+    <span>#{{ order.code }}</span>
+
+    <div class="section section-status">
+        <p><b>Current Status:</b> {{ order.status.value|capitalize }}</p>
+    </div>
+
+    <div class="section">
+        <p>You can view the full details of your order here:</p>
+        <a href="{{ url }}" class="btn" target="_blank">View Order</a>
+    </div>
+
+    <p>Thanks for shopping with LevelUp Store!</p>
+</body>
+</html>

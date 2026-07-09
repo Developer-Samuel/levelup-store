@@ -1,0 +1,9 @@
+{% macro render(items) %}
+    {% import 'features/admin/views/order/main/forms/components/table/blocks/head.html.twig' as Head %}
+    {% import 'features/admin/views/order/main/forms/components/table/blocks/body.html.twig' as Body %}
+
+    <table class="admin-table__table admin-detail__data-table">
+        {{ Head.render() }}
+        {{ Body.render(items) }}
+    </table>
+{% endmacro %}

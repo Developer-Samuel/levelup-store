@@ -1,0 +1,65 @@
+{
+  "Computers": {
+    "Desktops": ["Gaming", "Home & Office", "Mini", "All In One", "Server", "Workstation"],
+    "Laptops": ["Gaming", "Home & Office", "Touch & 2-in-1"],
+    "Components": [
+      "Graphics Cards (GPU)",
+      "Processors (CPU)",
+      "Memory (RAM)",
+      "Motherboards",
+      "Power Supplies",
+      "Internal Storage (SSD & HDD)",
+      "External Storage (SSD & HDD)",
+      "PC Cases",
+      "Cooling",
+      "Optical mechanics",
+      "Sound cards",
+      "Network cards"
+    ],
+    "Monitors": ["Full HD", "QHD", "4K", "8K"],
+    "Peripherals": [
+      "Keyboards",
+      "Mices",
+      "Headphones",
+      "Speakers",
+      "Webcams",
+      "Microphones",
+      "Bags & Backpacks",
+      "Printers"
+    ],
+    "Network Parts": ["Routers", "Switches", "Network Cards"]
+  },
+  "Smart": {
+    "Smartphones": ["Android", "iOS", "Foldable", "Gaming"],
+    "Tablets": ["Android", "iOS", "Gaming", "Professional"],
+    "Smart Watch": ["Apple Watch", "Samsung", "Xiaomi"],
+    "Smart Ring": ["Samsung", "ULTRAHUMAN", "Payment rings"]
+  },
+  "Gaming": {
+    "VR Headsets": ["Standalone", "PC-Connected", "Console-Connected"],
+    "Gamepads": ["Wired", "Wireless", "Pro / Premium"],
+    "Racing Wheels": ["Force Feedback", "Non-Force Feedback", "Entry-Level"],
+    "Pedals": ["2-Pedal", "3-Pedal", "Adjustable"],
+    "Shifters": ["Manual H-Shifter", "Sequential", "Hybrid"],
+    "Racing Kits": ["Complete Set", "Wheel + Pedals", "Wheel + Pedals + Shifter"]
+  },
+  "TV": {
+    "Full HD": ["LED", "LCD", "Samsung", "LG", "Sony", "Panasonic"],
+    "QHD": ["LED", "LCD", "Samsung", "LG", "Sony"],
+    "4K": ["LED", "LCD", "OLED", "QLED", "Samsung", "LG", "Sony", "Panasonic"],
+    "8K": ["LED", "OLED", "QLED", "Samsung", "LG", "Sony"]
+  },
+  "Appliances": {
+    "Washing Machines": ["Narrow", "With Dryer", "Smart", "Built-in"],
+    "Dryers": ["Electric", "Gas", "Condensation", "Heat Pump", "Compact"],
+    "Refrigerators": ["American", "Built-in", "Smart", "Retro", "Side-by-Side"],
+    "Freezers": ["Chest", "Upright", "Portable", "Under-counter", "Smart"],
+    "Dishwashers": ["Built-in", "Portable", "Compact", "Smart", "Drawer type"],
+    "Stoves": ["Gas", "Electric", "Induction", "Dual Fuel", "Smart"],
+    "Microwaves": ["Solo", "Grill", "Convection", "Compact", "Smart"],
+    "Air Conditioners": ["Mobile", "With heating", "Smart"],
+    "Vacuum Cleaners": ["Robot", "Handheld", "Bagged", "Cordless"],
+    "Irons": ["Steam", "Dry", "Travel", "Smart", "Steam Generator"],
+    "Air Purifiers": ["HEPA Filter", "Ionizer", "Smart", "Portable", "Tower"]
+  }
+}

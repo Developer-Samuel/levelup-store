@@ -1,0 +1,46 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    {% import 'features/product/detail/gallery/gallery.html.twig' as Gallery %}
+    {% import 'features/product/detail/info/top.html.twig' as DetailsTop %}
+    {% import 'features/product/detail/info/bottom.html.twig' as DetailsBottom %}
+    {% import 'features/product/detail/description/list.html.twig' as Descriptions %}
+    {% import 'features/product/detail/review/reviews.html.twig' as Reviews %}
+
+    <main class="content">
+        <div class="product-detail">
+            {{
+                Gallery.render(
+                    variant,
+                    firstImage
+                )
+            }}
+
+            <div class="product-detail__details">
+                <div class="product-detail__details-info">
+                    {{
+                        DetailsTop.render(
+                            variant,
+                            variants,
+                            descriptions,
+                            wishlistExists,
+                            reviewData
+                        )
+                    }}
+                    {{
+                        DetailsBottom.render(
+                            variant,
+                            stocks,
+                            price
+                        )
+                    }}
+                </div>
+            </div>
+        </div>
+
+        {{ Descriptions.render(descriptions) }}
+        {{ Reviews.render(variant, reviewData) }}
+    </main>
+{% endblock %}

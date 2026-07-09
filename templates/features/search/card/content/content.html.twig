@@ -1,0 +1,6 @@
+{% macro render(results) %}
+    {% import 'features/search/card/content/list/list.html.twig' as SearchList %}
+    <div class="search__content">
+        {{ SearchList.render(results) }}
+    </div>
+{% endmacro %}

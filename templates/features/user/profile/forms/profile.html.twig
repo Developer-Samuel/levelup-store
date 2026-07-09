@@ -1,0 +1,20 @@
+{% macro render(user, billing, shipping, countries, errors = []) %}
+    <form
+        id="profile-form"
+        class="user__form"
+    >
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('profile_update') }}">
+
+        {% import 'features/user/profile/forms/wrapper/profile-wrapper.html.twig' as ProfileLayout %}
+
+        {{ ProfileLayout.render
+            (
+                user,
+                billing,
+                shipping,
+                countries,
+                errors ?? []
+            )
+        }}
+    </form>
+{% endmacro %}

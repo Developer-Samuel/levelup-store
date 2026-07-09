@@ -1,0 +1,11 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+    {% import 'features/search/card/card.html.twig' as SearchCard %}
+
+    <main class="content">
+        {{ SearchCard.render(results) }}
+    </main>
+{% endblock %}

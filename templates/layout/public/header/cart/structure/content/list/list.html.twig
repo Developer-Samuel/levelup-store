@@ -1,0 +1,13 @@
+{% import 'layout/public/header/cart/structure/content/list/snippets/item.html.twig' as Item %}
+
+{% if cart is not empty %}
+    <div class="cart__content-list">
+        {% for item in cart %}
+            {{ Item.render(item) }}
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="cart__content-no-results">
+        <p>The cart is empty.</p>
+    </div>
+{% endif %}

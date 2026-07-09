@@ -1,0 +1,13 @@
+{% macro render(results) %}
+    {% import 'features/search/card/content/list/snippets/item.html.twig' as Item %}
+
+    {% if results is not empty %}
+        <div class="search__list">
+            {{ Item.render(results) }}
+        </div>
+    {% else %}
+        <div class="no-results">
+            <p>No results found.</p>
+        </div>
+    {% endif %}
+{% endmacro %}

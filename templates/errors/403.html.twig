@@ -1,0 +1,7 @@
+{% include 'errors/common/error.html.twig' with {
+    statusCode: 403,
+    statusText: 'Forbidden',
+    message: message,
+    actionPath: path('login'),
+    actionLabel: 'Login'
+} %}

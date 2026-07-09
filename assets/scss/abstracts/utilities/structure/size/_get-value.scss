@@ -1,0 +1,11 @@
+@use 'sass:meta';
+
+@function size-get-value($value, $important: false) {
+  $result: $value;
+
+  @if meta.type-of($important) == 'bool' and $important {
+    $result: #{$value} !important;
+  }
+
+  @return $result;
+}
