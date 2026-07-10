@@ -15,3 +15,7 @@ body {
   font-family: fonts.$primary-font, fonts.$secondary-font;
   overflow-x: hidden;
 }
+
+body:has(.modal.visible) {
+  overflow: hidden;
+}
