@@ -60,7 +60,12 @@
       }
 
       &:last-child {
-        @include flex-end-x;
+        text-align: right;
+
+        a {
+          display: inline-flex;
+          justify-content: flex-end;
+        }
       }
 
       a {

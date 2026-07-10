@@ -36,14 +36,28 @@
     &__data {
       gap: 1.5em;
 
-      &-label {
+      &-groups,
+      &-label,
+      &-select {
         font-size: 16px;
       }
     }
 
     &__form-action-btn {
       font-size: 14px;
-      padding: 0.5em 1.25em;
+      padding: 0.75em 1.25em;
+    }
+  }
+}
+
+@include resolution(sm, max) {
+  .admin-detail {
+    &__data {
+      &-groups,
+      &-label,
+      &-select {
+        font-size: 14px;
+      }
     }
   }
 }
