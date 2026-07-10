@@ -2,8 +2,6 @@ doctrine:
   dbal:
     url: '%env(resolve:DATABASE_URL)%'
 
-    # 🗃️ Database Server Version
-
     # 🐘 PostgreSQL (active)
     server_version: '17'
 
