@@ -112,6 +112,7 @@
       "importmap:install": "symfony-cmd"
     },
     "post-install-cmd": [
+      "Composer\\Config::disableProcessTimeout",
       "php scripts/symfony/env/generate/launcher.php",
       "php scripts/symfony/env/secret/launcher.php",
       "php scripts/symfony/jwt/generate/launcher.php",
@@ -120,6 +121,7 @@
       "php scripts/tasks/prepare-assets/launcher.php"
     ],
     "post-update-cmd": [
+      "Composer\\Config::disableProcessTimeout",
       "@auto-scripts",
       "php scripts/tasks/prepare-temp/launcher.php",
       "php scripts/tasks/prepare-assets/launcher.php"

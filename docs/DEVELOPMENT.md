@@ -1,10 +1,26 @@
 # ⚒️ Development
 
-## Makefile / Docker Commands
+## 📦 App Commands
+
+```bash
+# Full local setup: install dependencies + database + cache + serve
+make setup
+
+# Install dependencies and build assets
+make install
+
+# Clear and warmup cache (also flushes Redis if available)
+make cache-clear
+
+# Start local development servers (PHP + frontend)
+make serve
+```
+
+## 🐳 Docker Commands
 
 If you have a `Makefile` or want to manage Docker manually, these commands cover **all typical operations**:
 
-### 🚀 Core Commands
+### Core Commands
 
 ```bash
 # Start all services in foreground
@@ -62,7 +78,7 @@ docker compose down --volumes --remove-orphans
 docker compose up
 ```
 
-### 🛠️ Setup Commands
+### Setup Commands
 
 ```bash
 # Build and start setup containers (first time or Dockerfile changes)
@@ -95,7 +111,7 @@ docker compose down --volumes --remove-orphans
 docker compose --profile setup up
 ```
 
-### 💻 Development Commands
+### Development Commands
 
 ```bash
 # Start dev profile services in foreground
@@ -109,7 +125,7 @@ make dev-detached
 docker compose --profile dev up -d
 ```
 
-### 🔍 Utility Commands
+### Utility Commands
 
 ```bash
 # Show logs of all services

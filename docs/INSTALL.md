@@ -4,108 +4,64 @@ This file describes the **installation steps** on a fresh checkout.
 
 ---
 
-## 1. Install PHP dependencies (Composer)
+## 1. Install Dependencies
 
 ```bash
-composer install
-```
+# Quick start - installs dependencies, sets up database, clears cache and starts servers
+make setup
 
-- `composer install` installs exact versions from `composer.lock` to ensure reproducibility.
-- Dependency updates are handled separately as part of maintenance.
+# or step by step:
 
----
+# Install dependencies and build assets
+make install
 
-## 2. Install TypeScript dependencies (pnpm / npm)
+# Setup database (without Docker)
+composer db-setup
 
-```bash
-# pnpm
-pnpm install
-
-# or npm
-npm install
-```
-
-- Dependency updates are intentionally excluded from installation steps.
-
----
-
-## 3. Check Setup
-
-This file is the **quick-start guide** to get the project running. It complements [SETUP.md](SETUP.md), which covers full environment and configuration setup. Use this when cloning the project fresh.
-
----
-
-## 4. Prepare Cache & Redis
-
-#### locally
-
-```bash
+# Clear cache (also flushes Redis if available)
+make cache-clear
+# or
 composer cache:clear
 composer cache:warmup
-```
-
-#### Redis
-
-```bash
 redis-cli -h "$REDIS_HOST" -p "$REDIS_PORT" flushall
-```
 
----
+# Start local development servers
+make serve
 
-## 5. Run Application
-
-#### Without Docker
-
-```bash
-# Local development server
+# or manually (PHP + frontend separately):
 composer serve
 
-# Frontend development (live server)
-npm run dev
-# or
 pnpm dev
-
-# Frontend build
-npm run build
 # or
-pnpm build
-```
-
-#### With Docker
-
-### First time setup
-
-```bash
-# Using Docker (loads DB and initial data)
-docker compose --profile setup up
-
-# Using Makefile
-make setup-up
-```
-
-### Subsequent starts
-
-```bash
-# Using Docker
-docker compose up
-
-# Using Makefile
-make up
+npm run dev
 ```
 
 ---
 
-## 6. Database Setup (if not using Docker)
+## 2. Run Application with Docker
+
+First time setup:
 
 ```bash
-composer db-setup
+# Using Makefile
+make setup-up
+# or
+docker compose --profile setup up
+```
+
+Subsequent starts:
+
+```bash
+# Using Makefile
+make up
+# or
+docker compose up
 ```
 
 ---
 
 ✅ This `INSTALL.md` is your **quick-start guide** for getting the project running.
 
-- Always start with `composer install` and `pnpm install` or `npm install`.
 - Dependency updates are handled as part of regular maintenance. See [MAINTENANCE.md](MAINTENANCE.md).
 - For full environment and configuration setup see [SETUP.md](SETUP.md).
 - For complete Docker and Makefile command reference see [DEVELOPMENT.md](DEVELOPMENT.md).

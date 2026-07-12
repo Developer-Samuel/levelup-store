@@ -2,14 +2,57 @@
 # 📝 Declare all phony targets to prevent conflicts with files
 # ────────────────────────────────────────────────────────────────────────────
 
-.PHONY: up up-detached down down-clean clean-all build force build-force build-cache restart \
+.PHONY: install cache-clear serve setup \
+		up up-detached down down-clean clean-all build force build-force build-cache restart \
         setup-build setup-up setup-restart-build setup-restart-build-without-cache setup-restart \
         dev dev-detached \
 		logs
 
 # ──────────────────────────────────────────────────────────────────────────────
-# 🚀 Core Commands
+# 📦 App Commands
 # ──────────────────────────────────────────────────────────────────────────────
+
+# Install dependencies and build assets
+install:
+	@echo "📦 Installing dependencies and building assets..."
+	composer install
+	@if command -v pnpm > /dev/null 2>&1; then \
+		pnpm install && pnpm run build; \
+	else \
+		npm install && npm run build; \
+	fi
+
+# Clear and warmup Symfony cache (flushes Redis if available)
+cache-clear:
+	@echo "🧹 Clearing and warming up cache..."
+	composer cache:clear
+	composer cache:warmup
+	@if command -v redis-cli > /dev/null 2>&1; then \
+		redis-cli -h "$$REDIS_HOST" -p "$$REDIS_PORT" flushall; \
+	fi
+
+# Start local development servers (PHP + frontend)
+serve:
+	@echo "🚀 Starting local development servers..."
+	composer serve &
+	@if command -v pnpm > /dev/null 2>&1; then \
+		pnpm dev; \
+	else \
+		npm run dev; \
+	fi
+
+# Full local setup: install dependencies + database + cache + serve
+setup:
+	$(MAKE) install
+	composer db-setup
+	$(MAKE) cache-clear
+	$(MAKE) serve
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 🐳 Docker Commands
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── 🚀 Core ──────────────────────────────────────────────────────────────────
 
 # Start all services in foreground
 up:
@@ -65,9 +108,7 @@ restart:
 	$(MAKE) down-clean
 	$(MAKE) up
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 🛠️ Setup Commands
-# ──────────────────────────────────────────────────────────────────────────────
+# ── 🛠️ Setup ─────────────────────────────────────────────────────────────────
 
 # Build and start setup containers (first time or Dockerfile changes)
 setup-build:
@@ -98,9 +139,7 @@ setup-restart:
 	$(MAKE) down-clean
 	$(MAKE) setup-up
 
-# ──────────────────────────────────────────────────────────────────────────────────────────────
-# 💻 Development Commands
-# ──────────────────────────────────────────────────────────────────────────────────────────────
+# ── 💻 Development ───────────────────────────────────────────────────────────
 
 # Start dev profile services in foreground
 dev:
@@ -112,9 +151,7 @@ dev-detached:
 	@echo "▶ Starting dev profile services detached..."
 	docker compose --profile dev up -d
 
-# ──────────────────────────────────────────────────────────────────────────────────────────────
-# 🔍 Utility Commands
-# ──────────────────────────────────────────────────────────────────────────────────────────────
+# ── 🔍 Utility ───────────────────────────────────────────────────────────────
 
 # Show logs of all services
 logs:
