@@ -87,7 +87,7 @@ trait VariantFactory
             ->setName($variantName)
             ->setPrice((float) $variantData['price'])
             ->setDescription($variantData['description'] ?? null)
-            ->setUrl(StringNormalizer::toLowerCase(StringNormalizer::replaceSpacesWithDash($variantName)))
+            ->setUrl($this->generateSlug($variantName))
             ->setStatus(ProductVariantStatus::AVAILABLE);
     }
 
@@ -154,6 +154,20 @@ trait VariantFactory
         $uniqueSuffix = '-' . IdentifierGenerator::generateRandomAlphanumeric($randomLength);
 
         return $prefix . $variantPart . $uniqueSuffix;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return string
+    */
+    private function generateSlug(string $name): string
+    {
+        $slug = StringNormalizer::toLowerCase($name);
+        $slug = (string) preg_replace('/[^a-z0-9]+/', '-', $slug);
+        $slug = trim($slug, '-');
+
+        return $slug;
     }
 
     /**

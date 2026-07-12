@@ -10,7 +10,10 @@ export async function handleAcceptCookies(modal: HTMLElement | null): Promise<vo
 
     NotyfAlert.success(data.message)
 
-    if (modal) modal.style.display = 'none'
+    if (modal) {
+      modal.style.display = 'none'
+      modal.classList.remove('visible')
+    }
   } catch (error) {
     logDevError('[Cookie]', error)
     NotyfAlert.error('Something went wrong. Please try again.')

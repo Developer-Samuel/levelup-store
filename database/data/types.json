@@ -1,7 +1,7 @@
 {
   "Computers": ["Desktops", "Laptops", "Components", "Monitors", "Peripherals", "Network Parts"],
   "Smart": ["Smartphones", "Tablets", "Smart Watch", "Smart Ring"],
-  "Gaming": ["VR Headsets", "Gamepads", "Racing Wheels", "Pedals", "Shifters", "Racing Kits"],
+  "Gaming": ["VR Headsets", "Gamepads", "Gaming Chairs", "Racing Wheels", "Pedals", "Racing Kits"],
   "TV": ["Full HD", "QHD", "4K", "8K"],
   "Appliances": [
     "Washing Machines",

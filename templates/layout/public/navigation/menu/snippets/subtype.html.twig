@@ -1,16 +1,10 @@
 {% macro render(category, type) %}
-    {% set typeHasVariants = false %}
-    {% for subtype in type.subtypes %}
-        {% if subtype.hasVariants() %}
-            {% set typeHasVariants = true %}
-        {% endif %}
-    {% endfor %}
-
     {% set firstSubtypes = type.subtypes|slice(0, 8) %}
 
     {% for subtype in firstSubtypes %}
-        <div class="navigation__menu-list-item {% if not typeHasVariants %}empty{% endif %}">
-            <a href="{{ not typeHasVariants
+        {% set hasVariants = subtype.hasVariants() %}
+        <div class="navigation__menu-list-item {% if not hasVariants %}empty{% endif %}">
+            <a href="{{ not hasVariants
                 ? 'javascript:void(0)'
                 : path('products_index', {
                     'category': category.name|lower|replace({' ': '-'}),

@@ -1,5 +1,137 @@
 {
   "TV": {
-    "4K": {}
+    "4K": {
+      "TCL 65Q6C": {
+        "brand": "TCL",
+        "variants": {
+          "65\" TCL 65Q6C": {
+            "price": 749,
+            "discountPrice": 250,
+            "description": "TV - Mini LED, 165 cm, 4K Ultra HD, 100/120 Hz (144 Hz in game mode), HDR10+, Dolby Vision, local dimming (242 zones), anti-glare image, DVB-T2/S2/C, 4× HDMI 2.1, 1× USB, CI+, WiFi, Bluetooth, Chromecast, Miracast, game mode, voice control, Google Assistant, Apple Airplay2, Oneplay, YouTube, Netflix, Spotify, Disney+, HBO Max, VESA 300 × 300, 40 W speakers, DTS:X, DTS Virtual:X, Dolby Atmos, built-in subwoofer, model year 2025, SMART - Google TV",
+            "images": [
+              "products/tv/4k/tcl-65q6c/65-tcl-65q6c/1.webp",
+              "products/tv/4k/tcl-65q6c/65-tcl-65q6c/2.webp",
+              "products/tv/4k/tcl-65q6c/65-tcl-65q6c/3.webp",
+              "products/tv/4k/tcl-65q6c/65-tcl-65q6c/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The 165 cm smart Mini LED TV TCL delivers an excellent picture with support for all major HDR standards with vivid colors, deeper contrast and precise details. The Google platform provides a diverse range of content and applications to expand the possibilities of using your smart TV. The advanced <b>HVA panel</b> ensures wider viewing angles and eliminates unwanted glare, so the picture remains clear and sharp from anywhere in the room. For gamers, support for <b>HDMI 2.1, ALLM and VRR</b> is ideal, so the TV offers a smooth gaming experience. MEMC technology minimizes blurring. The 144 Hz refresh rate will prevent tearing and blurring of the image when playing games or watching action movies or sports matches. The sound system equipped with 40 W speakers will fill the room with <b>Dolby Atmos</b> surround sound, creating rich sound that draws you into the action. Smart voice control via the <b>Google Assistant</b> enables quick content search and personalized recommendations. TCL Smart TV combines picture quality, premium sound and smart features that transform both watching and playing into a true experience."
+              ],
+              [
+                "Key features of Google TV TCL 65Q6C",
+                "<ul>\n<li>Smart 65-inch Mini LED TV</li>\n<li>Support for high-definition standards HDR10, HDR10+, HLG and Dolby Vision</li>\n<li>4K HDR ensures faithful display of colors and all details in 4K resolution</li>\n<li>AiPQ Pro processor ensures sharpness, true colors, optimized contrast, smooth motion</li>\n<li>144 Hz refresh rate</li>\n<li>HVA panel offers high contrast and minimized glare</li>\n<li>Motion Clarity technology captures every detail in a moving scene</li>\n<li>Game Master offers smooth visuals, low latency, and optimized performance for a great gaming experience</li>\n<li>40W ONKYO speakers with surround sound support</li>\n<li></li>\n<li>DTS:X, DTS Virtual:X, Dolby Atmos</li>\n<li>Integrated subwoofer</li>\n<li>Voice control via Google Assistant</li>\n<li>Share content from mobile devices with Google Cast and Apple AirPlay 2 support</li>\n<li>Eye protection thanks to Multiple Eye Care technologies</li>\n<li>Elegant frameless design</li>\n<li>Adjustable stand in two positions</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 12,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["LED"]
+      },
+      "Samsung UE98DU9072": {
+        "brand": "Samsung",
+        "variants": {
+          "98\" Samsung UE98DU9072": {
+            "price": 1499,
+            "discountPrice": null,
+            "description": "TV - LED, 249 cm, 4K Ultra HD, 100/120 Hz, HDR10+, DVB-T2/S2/C, 3× HDMI 2.1, 2× USB, CI+, WiFi, Bluetooth, game mode, voice control, Apple Airplay2, Oneplay, YouTube, Netflix, Spotify, Disney+, HBO Max, VESA 600 × 400, model year 2024, SMART - Tizen",
+            "images": [
+              "products/tv/4k/samsung-ue98du9072/98-samsung-ue98du9072/1.webp",
+              "products/tv/4k/samsung-ue98du9072/98-samsung-ue98du9072/2.webp"
+            ],
+            "descriptions": [
+              [
+                "Multitasking at the highest level",
+                "Watch multiple programs on one screen at the same time. Connect your mobile phone and view live sports statistics, game tutorials, or various shows from multiple sources."
+              ],
+              [
+                "Keep your privacy safe",
+                "Samsung Knox Security protects sensitive data, monitors smart devices, and blocks threats, and is regularly updated by Samsung's dedicated security team."
+              ],
+              [
+                "Planet-friendly controller",
+                "It charges with both sunlight and interior lighting, so you can say goodbye to unnecessary batteries. It's made from recycled materials, so it's environmentally friendly."
+              ]
+            ],
+            "stocks_available": 26,
+            "stocks_reserved": 5
+          }
+        },
+        "subtypes": ["LED"]
+      },
+      "Samsung QE55S90F": {
+        "brand": "Samsung",
+        "variants": {
+          "55\" Samsung QE55S90F": {
+            "price": 999,
+            "discountPrice": 200,
+            "description": "TV - OLED, 139 cm, 4K Ultra HD, 100/120 Hz (144 Hz in game mode), HDR10+, anti-glare image, DVB-T2/S2/C, 4× HDMI 2.1, 2× USB, Bluetooth, game mode, voice control, Apple Airplay2, Oneplay, Netflix, Disney+, HBO Max, VESA 300 × 200, 40 W speakers, Dolby Atmos, Dolby Digital Plus, model year 2025, SMART - Tizen",
+            "images": [
+              "products/tv/4k/samsung-qe55s90f/55-samsung-qe55s90f/1.webp",
+              "products/tv/4k/samsung-qe55s90f/55-samsung-qe55s90f/2.webp"
+            ],
+            "descriptions": [
+              [
+                "Automatic picture and sound adjustment",
+                "AI Mode gives you quick adjustments to adaptive picture and sound settings that always intelligently optimize the viewing experience of your favorite content."
+              ],
+              [
+                "Audio tailored to your space",
+                "Forget about manually adjusting the volume during movie scenes. The Samsung QE55S90F TV uses AI to recognize different types of sounds and adjust them to perfectly match the room's acoustics."
+              ],
+              [
+                "Your pet will be taken care of",
+                "Need to get away but your four-legged friend has to stay home? Don't worry - the microphone will detect any barking and play your pets their favorite content."
+              ],
+              [
+                "Advanced voice assistant - your helper in the home",
+                "Make your everyday life easier with the improved Bixby assistant. It can process multiple commands at once and better understand context, making your Samsung QE55S90F TV the center of your home."
+              ],
+              [
+                "Maximally enhanced picture and sound",
+                "The NQ4 AI Gen3 processor uses 128 neural networks to enhance the audiovisual experience. Whether you're watching your favorite movie or playing a game, you won't miss a single detail."
+              ],
+              [
+                "Movie classics in higher definition",
+                "Treat yourself to a movie marathon full of classics that have been around for decades. 4K AI Upscaling technology converts and enhances content to 4K resolution for uninterrupted viewing."
+              ],
+              [
+                "Stronger brightness and deeper contrast",
+                "The processor analyzes scenes to enhance contrast and brightness in HDR+ dynamic range, and highlights foreground objects for a more spatial image experience."
+              ],
+              [
+                "Authentic color expression with Samsung OLED",
+                "Immerse yourself in the action with deep blacks and a spectrum of vivid colors. Self-lighting pixels then allow you to see a clearer, more accurate picture."
+              ],
+              [
+                "Thousands of PANTONE-certified color shades",
+                "Enjoy color accuracy and a highly refined visual experience. The Samsung QE55S90F TV can express up to 2,140 colors and 110 skin tones, which is underlined by the PANTONE certification."
+              ],
+              [
+                "Authentic color tone of every scene",
+                "Advanced artificial intelligence algorithms analyze each scene in real time and then adjust color tones for an even greater cinematic experience."
+              ],
+              [
+                "Moving scenes in maximum quality",
+                "Are you a sports fan? Watching sports has never been easier! The innovative processor uses AI to smooth and sharpen moving objects and text so you never miss a thing again."
+              ],
+              [
+                "Focused even in motion",
+                "Smooth visuals even at lightning speed. Motion Xcelerator technology with a 144Hz refresh rate ensures minimal lag and sharp, blur-free motion while gaming."
+              ],
+              [
+                "Dolby Atmos multidimensional sound",
+                "Immerse yourself in the action with Samsung TV's 3D surround sound, which adds realism to scenes and enhances your viewing experience."
+              ]
+            ],
+            "stocks_available": 33,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["OLED"]
+      }
+    }
   }
 }

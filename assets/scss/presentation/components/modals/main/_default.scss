@@ -5,7 +5,6 @@
 @use '@/scss/abstracts/mixins/effects/transition' as *;
 
 .modal {
-  @include flex-center;
   @include size(100%, 100vh);
   @include rgba('black', 50);
   @include backdrop-filter;

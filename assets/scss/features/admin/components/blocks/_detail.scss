@@ -39,6 +39,16 @@
       margin-bottom: 1em;
     }
 
+    &-table {
+      width: 100%;
+      min-width: 600px;
+
+      &-wrapper {
+        width: 100%;
+        overflow-x: auto;
+      }
+    }
+
     &-tbody img {
       @include size(auto, 48px);
     }

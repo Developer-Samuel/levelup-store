@@ -80,7 +80,7 @@ We maintain 100% focus on code quality using these tools:
 
 | Tool         | Purpose                                        | Execution (via Composer)  |
 |--------------|------------------------------------------------|---------------------------|
-| PHPUnit      | Unit and Integration testing                   | composer php-unit          |
+| PHPUnit      | Unit, Integration and Feature testing          | composer php-unit         |
 | Deptrac      | Architectural dependency enforcement           | composer deptrac          |
 | PHPMD        | PHP Mess Detector (using `phpmd.xml`)          | composer php-md           |
 | PHPStan      | Static analysis (Level 10+)                    | composer php-stan         |
@@ -95,7 +95,7 @@ We maintain 100% focus on code quality using these tools:
 
 | Tool              | Purpose                                   | Execution                              |
 |-------------------|-------------------------------------------|----------------------------------------|
-| Vitest            | Unit and integration testing              | npm run vitest / pnpm vitest           |
+| Vitest            | Unit, Integration and Functional testing  | npm run vitest / pnpm vitest           |
 | Playwright        | End-to-end testing                        | npm run e2e / pnpm e2e                 |
 | TypeScript        | Static type checking                      | npm run type-check / pnpm type-check   |
 | ESLint + Prettier | TS linting and automated code formatting  | npm run lint / pnpm lint               |

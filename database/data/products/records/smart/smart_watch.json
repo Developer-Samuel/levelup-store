@@ -1,5 +1,56 @@
 {
   "Smart": {
-    "Smart Watch": {}
+    "Smart Watch": {
+      "Apple Watch Series 11": {
+        "brand": "Apple",
+        "variants": {
+          "Apple Watch Series 11 Cellular 42mm Gold Titanium with Gold Milanese Loop": {
+            "price": 899,
+            "discountPrice": 100,
+            "description": "Smart watch - for men and women, compatible with iOS OS, 1.77\" OLED display, NFC payments via Apple Pay, Bluetooth 5.3, GPS, WiFi, LTE, pedometer, blood oxygen and ECG measurement, sleep monitoring, pulse measurement, water resistance 50 m (5 ATM), maximum battery life 38 h, with controls in Slovak",
+            "images": [
+              "products/smart/smart-watch/apple-watch-series-11/apple-watch-series-11-cellular-42mm-gold-titanium-with-gold-milanese-loop/1.webp",
+              "products/smart/smart-watch/apple-watch-series-11/apple-watch-series-11-cellular-42mm-gold-titanium-with-gold-milanese-loop/2.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Apple Watch Series 11 comes with a range of practical features that will make your life easier at every step. In addition to the always-on, highly durable Retina display with a wide viewing angle, they stand out with a titanium case and a battery that lasts up to 24 hours on a single charge. By measuring heart rate and breathing rate, ECG, blood oxygen levels and sleep duration, they will provide you with a detailed overview of your health, including a warning about possible sleep apnea or high blood pressure. A gyroscope, accelerometer and GPS allow detailed tracking of a variety of sports activities, while advanced safety features such as car accident and fall detection ensure that you are always safe. With the S10 chip, you can also enjoy easy control, whether you are making calls, paying with Apple Pay or listening to music."
+              ]
+            ],
+            "stocks_available": 34,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Apple Watch"]
+      },
+      "Samsung Galaxy Watch8 Classic": {
+        "brand": "Samsung",
+        "variants": {
+          "Samsung Galaxy Watch8 Classic 46mm LTE Black": {
+            "price": 499,
+            "discountPrice": null,
+            "description": "Smart watch - for men and women, compatible with Android OS, 1.34\" AMOLED display, NFC payments via Google Pay, Bluetooth 5.3, GPS, WiFi, LTE, pedometer, blood oxygen and ECG measurement, sleep monitoring, pulse measurement, water resistance 50 m (5 ATM), maximum battery life 40 h",
+            "images": [
+              "products/smart/smart-watch/samsung-galaxy-watch8-classic/samsung-galaxy-watch8-classic-46mm-lte-black/1.webp",
+              "products/smart/smart-watch/samsung-galaxy-watch8-classic/samsung-galaxy-watch8-classic-46mm-lte-black/2.webp"
+            ],
+            "descriptions": [
+              [
+                "Innovation meets timeless design in the Galaxy Watch8 Classic",
+                "<b>The iconic rotating bezel is back!</b> A signature feature of the Galaxy Watch8 Classic, it adds elegance and sophistication. The bezel also offers an interesting control option - you can rotate it to smoothly scroll and intuitively navigate the entire user interface. The watch’s modern look is underlined by a durable design that adheres to the classic round look and uses the latest technologies that a smartwatch can offer."
+              ],
+              [
+                "A redesigned design that fits much better",
+                "Experience the most comfortable Galaxy Watch Classic yet. The <b>Dynamic Buckle System</b> ensures that Galaxy Watch8 Classic fits your wrist much better³, with angles adjusted to keep the watch securely in place. The Dynamic Buckle System is also improved so that you can change the strap in a flash."
+              ]
+            ],
+            "stocks_available": 11,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Samsung"]
+      }
+    }
   }
 }

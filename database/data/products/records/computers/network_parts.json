@@ -1,5 +1,30 @@
 {
   "Computers": {
-    "Network Parts": {}
+    "Network Parts": {
+      "TP-Link Archer AX55 Pro": {
+        "brand": "TP-Link",
+        "variants": {
+          "TP-Link Archer AX55 Pro": {
+            "price": 69,
+            "discountPrice": 5,
+            "description": "WiFi router - WiFi 6, 802.11s/b/g/n/ac/ax standard, maximum WiFi speed 2976 Mb/s, Dual-Band (2.4 GHz 574 Mb/s + 5 GHz 2402 Mb/s), 1× WAN, 4× LAN, IPv6 Ready and EasyMesh compatibility, WPA, WPA2, WPA2-Enterprise and WPA3, 4× external antenna, QoS (Quality of Service), maximum number of SSIDs 2×, Ethernet cable and power adapter included",
+            "images": [
+              "products/computers/network-parts/tp-link-archer-ax55-pro/tp-link-archer-ax55-pro/1.webp",
+              "products/computers/network-parts/tp-link-archer-ax55-pro/tp-link-archer-ax55-pro/2.webp",
+              "products/computers/network-parts/tp-link-archer-ax55-pro/tp-link-archer-ax55-pro/3.webp"
+            ],
+            "descriptions": [
+              [
+                "WiFi router TP-Link Archer AX55 Pro",
+                "<ul>\n<li>Enjoy speeds of up to 2,402 Mbps on the 5 GHz band and 574 Mbps on the 2.4 GHz band</li>\n<li>1× 2.5 Gb/s WAN/LAN, 1× 1 Gb/s WAN/LAN port, 3× gigabit LAN ports and 1× USB 3.0 port</li>\n<li>Four external high-gain antennas with Beamforming technology</li>\n<li>OFDMA 4x technology increases capacity and enables simultaneous data transfers to multiple devices</li>\n<li>VPN client support</li>\n<li>TP-Link HomeShield - Enhanced Security to Protect Against the Latest Cyber ​​Threats</li>\n<li>Compatible with TP-Link OneMesh</li>\n<li>Mobile application in Czech and Slovak</li>\n<li>Target Wake Time technology allows devices to communicate more frequently but with lower power consumption</li>\n<li>Compatible with Amazon Alexa</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 33,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Routers"]
+      }
+    }
   }
 }

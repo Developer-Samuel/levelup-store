@@ -353,7 +353,7 @@
   &__description {
     @include flex-col;
 
-    gap: 1.5em;
+    gap: 2.5em;
     padding: 2.5em 1.5em;
     margin: 0 auto;
     border-bottom: 1px solid colors.$border-primary;

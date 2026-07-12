@@ -19,8 +19,9 @@
     "Monitors": ["Full HD", "QHD", "4K", "8K"],
     "Peripherals": [
       "Keyboards",
-      "Mices",
+      "Mice",
       "Headphones",
+      "Earphones",
       "Speakers",
       "Webcams",
       "Microphones",
@@ -38,16 +39,16 @@
   "Gaming": {
     "VR Headsets": ["Standalone", "PC-Connected", "Console-Connected"],
     "Gamepads": ["Wired", "Wireless", "Pro / Premium"],
+    "Gaming Chairs": ["RGB", "Reclining", "With Headrest"],
     "Racing Wheels": ["Force Feedback", "Non-Force Feedback", "Entry-Level"],
     "Pedals": ["2-Pedal", "3-Pedal", "Adjustable"],
-    "Shifters": ["Manual H-Shifter", "Sequential", "Hybrid"],
     "Racing Kits": ["Complete Set", "Wheel + Pedals", "Wheel + Pedals + Shifter"]
   },
   "TV": {
-    "Full HD": ["LED", "LCD", "Samsung", "LG", "Sony", "Panasonic"],
-    "QHD": ["LED", "LCD", "Samsung", "LG", "Sony"],
-    "4K": ["LED", "LCD", "OLED", "QLED", "Samsung", "LG", "Sony", "Panasonic"],
-    "8K": ["LED", "OLED", "QLED", "Samsung", "LG", "Sony"]
+    "Full HD": ["LED", "QLED", "LCD"],
+    "QHD": ["LED", "LCD"],
+    "4K": ["LED", "LCD", "OLED", "QLED"],
+    "8K": ["LED", "OLED", "QLED"]
   },
   "Appliances": {
     "Washing Machines": ["Narrow", "With Dryer", "Smart", "Built-in"],

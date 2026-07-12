@@ -1,5 +1,42 @@
 {
   "Gaming": {
-    "Pedals": {}
+    "Pedals": {
+      "Logitech PRO Racing Pedals": {
+        "brand": "Logitech",
+        "variants": {
+          "Logitech PRO Racing Pedals": {
+            "price": 349,
+            "discountPrice": 30,
+            "description": "Steering wheel pedals - for Logitech PRO Racing and G923 steering wheels",
+            "images": [
+              "products/gaming/pedals/logitech-pro-racing-pedals/logitech-pro-racing-pedals/1.webp",
+              "products/gaming/pedals/logitech-pro-racing-pedals/logitech-pro-racing-pedals/2.webp",
+              "products/gaming/pedals/logitech-pro-racing-pedals/logitech-pro-racing-pedals/3.webp"
+            ],
+            "descriptions": [
+              [
+                "Logitech G PRO Racing Pedals - professional racing pedals",
+                "These racing pedals with pressure-sensing brakes, replaceable springs, non-contact Hall sensors or removable modules are specially designed for professionals and superior performance. With Logitech G PRO Racing Pedals, you'll enjoy a deeper connection to your car, the road and the race."
+              ],
+              [
+                "Brake with pressure sensor",
+                "Logitech G PRO Racing Pedals feature a pressure-sensing brake that provides the racer with perfect feedback and consistent performance through pressure sensing. Combined with the ability to adjust the pedal sensitivity, every racer will be able to achieve racing synergy, whether they prefer a softer pedal than in a regular car or a much harder pedal than in a real race car."
+              ],
+              [
+                "Logitech G PRO Racing Pedals have all pedals customizable",
+                "But it doesn't stop there, as both the clutch and accelerator pedals can also be adjusted to be harder or softer, using a set of easily replaceable springs. Both the accelerator and brake pedals are also equipped with non-contact Hall effect sensors, ensuring a long service life."
+              ],
+              [
+                "Fully modular design",
+                "Each pedal can be moved horizontally to create the ideal spacing for the racer's feet. What's more, the pedal modules can be removed from the base and then mounted in their own cockpit, allowing for things like upside-down pedal mounting and more."
+              ]
+            ],
+            "stocks_available": 18,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["3-Pedal"]
+      }
+    }
   }
 }

@@ -1,5 +1,90 @@
 {
   "TV": {
-    "Full HD": {}
+    "Full HD": {
+      "Sencor SLE 43F20TCS": {
+        "brand": "Sencor",
+        "variants": {
+          "43\" Sencor SLE 43F20TCS": {
+            "price": 199,
+            "discountPrice": 20,
+            "description": "TV - LED, 109 cm, Full HD, 50/60 Hz, maximum brightness 220 Nits, anti-glare image, DVB-T2/S2/C, 1× USB, CI+, USB recording, VESA 200 × 200, 16 W speakers, built-in soundbar, model year 2025",
+            "images": [
+              "products/tv/full-hd/sencor-sle-43f20tcs/43-sencor-sle-43f20tcs/1.webp",
+              "products/tv/full-hd/sencor-sle-43f20tcs/43-sencor-sle-43f20tcs/2.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Sencor SLE 43F20TCS TV with a 43\" diagonal has an LED panel with Full HD resolution. The absence of an operating system ensures direct access to functions and allows full operation of the device regardless of the Internet connection. For broadcast reception, it includes a <b>complete set of DVB-T2/S2/C tuners</b> with HEVC codec support and offers functions such as recording to a USB drive or playing your own multimedia files."
+              ],
+              [
+                "Key features of the Sencor 43\" SLE 43F20TCS TV",
+                "<ul>\n<li>The LED panel offers a 43\" diagonal and Full HD resolution</li>\n<li>Supports basic HDR and has 16W of audio output</li>\n<li>The structure stands on two side legs</li>\n<li>Suitable for casual viewing</li>\n<li>The VESA mount has a size of 200 × 200 mm</li>\n</ul>"
+              ],
+              [
+                "Image properties",
+                "The 109 cm (43\") panel displays content in native Full HD resolution (1920 × 1080 pixels). The screen operates at a refresh rate of 50/60 Hz and the Direct LED backlight <b>distributes light behind the panel for an even display.</b> The brightness value is 220 nits and the device also has support for content with high dynamic range, which improves the display contrast."
+              ],
+              [
+                "Sound and audio connectivity",
+                "The sound is provided by a pair of speakers with a total output of 16 W. A digital optical output is used to connect an external audio system, such as a soundbar or home theater. One of the HDMI ports also supports ARC, which sends the audio signal from the TV to the connected device and unifies the volume control. A separate headphone output is used for private listening."
+              ],
+              [
+                "Multimedia functions",
+                "The TV prioritizes direct control of TV functions. These include an electronic program guide (EPG) and teletext. The integrated USB port is not only for playback, but also for recording. The device offers <b>recording TV broadcasts to a USB drive (PVR)</b> and a Timeshift function that temporarily pauses live broadcasts. It is equipped with a parental lock, a sleep timer and a basic hotel mode."
+              ],
+              [
+                "Game mode",
+                "The TV has standard HDMI ports for connecting game consoles, multimedia centers or computers. The image processor ensures smooth motion display at a stable refresh rate, which <b>suits the operation of older gaming systems and video playback</b> in common formats. The absence of advanced gaming technologies, such as automatic low latency mode (ALLM) or variable refresh rate (VRR), predetermines this device primarily for undemanding viewing of digital broadcasting and working with multimedia in a home environment."
+              ],
+              [
+                "Tuners and physical interface",
+                "The device has a complete set of tuners for receiving TV signals. It supports terrestrial DVB-T2 with the HEVC (H.265) codec, satellite DVB-S2 and cable DVB-C. <b>Satellite users can use the Skylink FastScan function.</b> It offers two HDMI 2.0 ports and one USB port for connecting external devices. The equipment is complemented by a CI+ slot for decoding cards, a digital optical output and a headphone jack."
+              ],
+              [
+                "Construction, installation and energy data",
+                "The TV stands on two side feet, the overall dimensions with the stand are 956 × 611 × 201 mm and the weight is 6.3 kg. For possible wall mounting, the back has preparation for a <b>VESA mount with a hole spacing of 200 × 200 mm.</b> The energy class F shows a consumption of 45 kWh per 1,000 hours of operation in SDR mode, while the integrated power supply optimizes electricity consumption during active use of the panel and in standby mode."
+              ]
+            ],
+            "stocks_available": 48,
+            "stocks_reserved": 6
+          }
+        },
+        "subtypes": ["LED"]
+      },
+      "TCL 43S5K": {
+        "brand": "TCL",
+        "variants": {
+          "43\" TCL 43S5K": {
+            "price": 279,
+            "discountPrice": null,
+            "description": "TV - QLED, 109 cm, Full HD, 50/60 Hz, maximum brightness 300 Nits, HDR10, anti-glare image, DVB-T2/S2/C, 2× HDMI 1.4, 1× USB, CI+, WiFi, Bluetooth, Chromecast, game mode, voice control, Google Assistant, Oneplay, YouTube, Netflix, Spotify, Disney+, HBO Max, VESA 100 × 100, 20 W speakers, Dolby Digital Plus, model year 2025, SMART - Android TV",
+            "images": [
+              "products/tv/full-hd/tcl-43s5k/43-tcl-43s5k/1.webp",
+              "products/tv/full-hd/tcl-43s5k/43-tcl-43s5k/2.webp",
+              "products/tv/full-hd/tcl-43s5k/43-tcl-43s5k/3.webp",
+              "products/tv/full-hd/tcl-43s5k/43-tcl-43s5k/4.webp"
+            ],
+            "descriptions": [
+              [
+                "Discover the future of home entertainment with the TCL 43S5K Smart TV",
+                "Enter a world of superior picture, smart features and elegant design with the TCL Smart TV. This model combines the latest technologies such as <b>QLED with Quantum Dot, HDR10, Full HD</b> resolution and <b>Dolby Audio</b> to provide you with an unforgettable visual and audio experience. Thanks to the <b>Android TV</b> system, you get access to thousands of applications, films and series, while features such as Google Cast allow you to easily share content from your devices. The 43\" TCL 43S5K TV also offers display modes adapted to your viewing style, support for <b>Multisound</b> and a stylish <b>frameless design</b> - all for maximum comfort and entertainment in your living room."
+              ],
+              [
+                "Key features of the TCL 43S5K Google TV",
+                "<ul>\n<li>43-inch diagonal</li>\n<li>Smart TV with modern QLED technology</li>\n<li>Quantum Dot technology for an extremely realistic and immersive image</li>\n<li>Double the resolution ensures a sharp image in Full HD quality</li>\n<li>HDR10 technology for a more dynamic range of TV colors</li>\n<li>Dolby Audio ensures a cinematic experience</li>\n<li>Thousands of movies available on Android TV</li>\n<li>Additional apps and extensions will be available from the Google Play Store.</li>\n<li>Share content from mobile devices with Google Cast support</li>\n<li>Multiple display modes for comfortable viewing of sports, movies and gaming</li>\n<li>Elegant frameless design</li>\n</ul>"
+              ],
+              [
+                "Smart TV offers stunning colors and perfect picture with TCL QLED technology",
+                "Discover a whole new dimension of viewing with <b>TCL QLED technology.</b> Featuring color quantum crystals that combine cutting-edge nanomaterials and quantum dots in multiple layers, this revolutionary technology brings you stunning colors and exceptional images. <b>Higher brightness reveals even the finest details</b> - every moment comes to life in a lifelike, immersive experience you'll love."
+              ]
+            ],
+            "stocks_available": 23,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["QLED"]
+      }
+    }
   }
 }

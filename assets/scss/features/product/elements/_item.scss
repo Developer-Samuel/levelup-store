@@ -2,10 +2,12 @@
 @use '@/scss/abstracts/mixins/structure/size' as *;
 @use '@/scss/abstracts/mixins/effects/transition' as *;
 @use '@/scss/abstracts/mixins/fonts/weights' as *;
+@use '@/scss/abstracts/mixins/accessibility/user-select' as *;
 @use '@/scss/abstracts/theme/colors/solid/index' as colors;
 
 .product-item {
   @include flex-col-between-x;
+  @include user-select;
 
   position: relative;
   flex: 0 0 auto;

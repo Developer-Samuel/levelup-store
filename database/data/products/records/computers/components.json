@@ -5,19 +5,19 @@
         "brand": "GIGABYTE",
         "variants": {
           "GIGABYTE GeForce RTX 5090 GAMING OC 32G": {
-            "price": 2439,
-            "discountPrice": 50,
+            "price": 4949,
+            "discountPrice": null,
             "description": "Graphics card - 32 GB GDDR7 (28000 MHz), NVIDIA GeForce, Blackwell (GB202, 2017 MHz), PCI Express x16 5.0, 512 Bit, DisplayPort 2.1a and HDMI 2.1b, width 342 mm",
             "images": [
-              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/1.webp",
-              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/2.webp",
-              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/3.webp",
-              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/4.webp",
-              "products/images/computers/components/graphics-cards/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/5.webp"
+              "products/computers/components/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/1.webp",
+              "products/computers/components/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/2.webp",
+              "products/computers/components/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/3.webp",
+              "products/computers/components/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/4.webp",
+              "products/computers/components/gigabyte-geforce-rtx-5090/gigabyte-geforce-rtx-5090-gaming-oc-32g/5.webp"
             ],
             "descriptions": [
               [
-                "GIGABYTE GeForce RTX 5090 GAMING OC 32G",
+                "",
                 "Are you planning to buy a powerful gaming graphics card with which you can play the latest game titles? Then you will definitely be interested in the dedicated GIGABYTE graphics card equipped with 32GB of memory with a frequency of 28000 MHz. With such memory, 512Bit bus and core frequency of 2017 MHz, you can play at the highest details without any restrictions. The graphics, complemented by the PCI Express x16 5.0 interface, allows a total of 4 outputs for connecting to the monitor. There is a DisplayPort 2.1a and HDMI 2.1b port. The active cooler guarantees minimum temperatures even under high load."
               ],
               [
@@ -36,22 +36,22 @@
         "subtypes": ["Graphics Cards (GPU)"]
       },
       "GAINWARD GeForce RTX 5070": {
-        "brand": "GIGABYTE",
+        "brand": "GAINWARD",
         "variants": {
           "GAINWARD GeForce RTX 5070 Python III 12G": {
-            "price": 579,
-            "discountPrice": null,
+            "price": 629,
+            "discountPrice": 50,
             "description": "Graphics card - 12 GB GDDR7 (28000 MHz), NVIDIA GeForce, Blackwell (GB205, 2160 MHz), Boost 2512 MHz, PCI Express x16 5.0, 192 Bit, DisplayPort 2.1b and HDMI 2.1b, width 291.9 mm",
             "images": [
-              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/1.webp",
-              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/2.webp",
-              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/3.webp",
-              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/4.webp",
-              "products/images/computers/components/graphics-cards/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/5.webp"
+              "products/computers/components/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/1.webp",
+              "products/computers/components/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/2.webp",
+              "products/computers/components/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/3.webp",
+              "products/computers/components/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/4.webp",
+              "products/computers/components/gainward-geforce-rtx-5070/gainward-geforce-rtx-5070-python-iii-12g/5.webp"
             ],
             "descriptions": [
               [
-                "GAINWARD GeForce RTX 5070 Python III 12G",
+                "",
                 "Are you planning to buy a very powerful graphics card that can easily handle new game titles? Then there is a dedicated GAINWARD graphics card for you, supplemented by 12GB of memory with a frequency of 28000 MHz. With such memory, a 192Bit bus and a core with a frequency of 2160 MHz, you can play at the highest details without any restrictions. Graphics equipped with a PCI Express x16 5.0 interface allow a total of 4 outputs for connecting to a monitor. You will have DisplayPort 2.1b and HDMI 2.1b available. The active type of cooling guarantees significantly low temperatures even under high load."
               ],
               [
@@ -74,9 +74,11 @@
         "variants": {
           "AMD Ryzen 7 7800X3D": {
             "price": 379,
-            "discountPrice": null,
+            "discountPrice": 50,
             "description": "Processor 8-core, 16 threads, 4.2 GHz (TDP 120 W), Turboboost 5 GHz, Boost 5 GHz, 96 MB L3 cache, AMD Radeon Graphics 2200 MHz, socket AMD AM5, Raphael",
-            "images": ["products/images/computers/components/processors/amd-ryzen-7/amd-ryzen-7-7800x3d/1.webp"],
+            "images": [
+              "products/computers/components/amd-ryzen-7/amd-ryzen-7-7800x3d/1.webp"
+            ],
             "descriptions": [
               [
                 "AMD Ryzen 7 7800X3D processor",
@@ -96,7 +98,9 @@
             "price": 349,
             "discountPrice": 150,
             "description": "Processor 14-core, 20 threads, 3.5 GHz (TDP 181 W), Turboboost 5.3 GHz, Boost 5.3 GHz, 24 MB L3 cache, Intel UHD Graphics 770, Intel socket 1700, Raptor Lake Refresh, without cooler",
-            "images": ["products/images/computers/components/processors/intel-core-i5/intel-core-i5-14600k/1.webp"],
+            "images": [
+              "products/computers/components/intel-core-i5/intel-core-i5-14600k/1.webp"
+            ],
             "descriptions": [
               [
                 "Modern 14-core Intel Core i5-14600K Raptor Lake Refresh processor",
@@ -135,9 +139,11 @@
         "variants": {
           "Intel Core i9-14900F": {
             "price": 599,
-            "discountPrice": null,
+            "discountPrice": 100,
             "description": "Processor 24-core, 32 threads, 3.2 GHz (TDP 219 W), Turboboost 6 GHz, Boost 6 GHz, 36 MB L3 cache, without integrated graphics chip, Intel socket 1700, Raptor Lake Refresh, box cooler",
-            "images": ["products/images/computers/components/processors/intel-core-i9/intel-core-i9-14900f/1.webp"],
+            "images": [
+              "products/computers/components/intel-core-i9/intel-core-i9-14900f/1.webp"
+            ],
             "descriptions": [
               [
                 "",
@@ -166,16 +172,16 @@
         "brand": "Kingston",
         "variants": {
           "Kingston FURY 32GB KIT DDR5 6000MTs CL30 Beast Black EXPO": {
-            "price": 119,
-            "discountPrice": 20,
+            "price": 449,
+            "discountPrice": null,
             "description": "RAM - 2× 16 GB, PC5-48000, CL30-36-36, voltage 1.4 V, passive cooler and AMD EXPO",
             "images": [
-              "products/images/computers/components/memory-ram/kingston-fury-32gb-kit-ddr5/kingston-fury-32gb-kit-ddr5-6000mt-s-cl30-beast-black-expo/1.webp",
-              "products/images/computers/components/memory-ram/kingston-fury-32gb-kit-ddr5/kingston-fury-32gb-kit-ddr5-6000mt-s-cl30-beast-black-expo/2.webp"
+              "products/computers/components/kingston-fury-32gb-kit-ddr5/kingston-fury-32gb-kit-ddr5-6000mt-s-cl30-beast-black-expo/1.webp",
+              "products/computers/components/kingston-fury-32gb-kit-ddr5/kingston-fury-32gb-kit-ddr5-6000mt-s-cl30-beast-black-expo/2.webp"
             ],
             "descriptions": [
               [
-                "Kingston FURY 32GB KIT DDR5 6000MT/s CL30 Beast Black EXPO",
+                "",
                 "Kingston FURY Beast Black EXPO memory delivers great performance, modern design and improved heat dissipation. This model supports the latest technologies for stable and fast performance in demanding applications and games. Kingston FURY Beast Black memory is characterized not only by its elegant appearance, but also by its high speed of 6,000 MT/s and low latency of CL30, which ensures fast response and stable operation . They are an ideal choice for gamers and demanding users who demand top performance without compromise."
               ],
               [
@@ -188,6 +194,391 @@
           }
         },
         "subtypes": ["Memory (RAM)"]
+      },
+      "Kingston FURY 8 GB DDR4": {
+        "brand": "Kingston",
+        "variants": {
+          "Kingston FURY 8 GB DDR4 3200 MHz CL16 Beast Black RGB": {
+            "price": 69,
+            "discountPrice": 10,
+            "description": "RAM - 1× 8 GB in the package, type DDR4, frequency 3200 MHz, CL16-18-18, voltage 1.35 V, RGB lighting and XMP, RGB backlighting",
+            "images": [
+              "products/computers/components/kingston-fury-8gb-ddr4/kingston-fury-8gb-ddr4-3200mhz-cl16-beast-black-rgb/1.webp",
+              "products/computers/components/kingston-fury-8gb-ddr4/kingston-fury-8gb-ddr4-3200mhz-cl16-beast-black-rgb/2.webp",
+              "products/computers/components/kingston-fury-8gb-ddr4/kingston-fury-8gb-ddr4-3200mhz-cl16-beast-black-rgb/3.webp",
+              "products/computers/components/kingston-fury-8gb-ddr4/kingston-fury-8gb-ddr4-3200mhz-cl16-beast-black-rgb/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Kingston FURY 8 GB DDR4-3200 CL16 Beast Black RGB memory is designed for high performance at a frequency of 3,200 MT/s and low latency of CL16. This module uses a 288-pin DIMM design with 8-bit pre-fetch and 1Rx8 configuration, which ensures stable and fast data throughput. Thanks to Intel® XMP 2.0 support, you can easily activate preset performance profiles without the need for manual tuning in the BIOS. The memory is equipped with a high-quality black cooler with RGB backlighting and complies with the JEDEC standard. The product supports dynamic burst length switching (BL8/BC4) and operates at a voltage of 1.35 V (XMP) and 1.2 V (JEDEC). In addition to performance advantages, the memory also ensures high operational stability in the temperature range of 0 °C to 70 °C."
+              ],
+              [
+                "Key technologies Kingston FURY 8GB DDR4 Beast Black RGB",
+                "<ul>\n<li>Intel® XMP 2.0 - fast overclocking using preset profiles</li>\n<li>Plug N Play - <b>automatically sets to the highest possible speed</b></li>\n<li>Low latency - CL16 for fast system response</li>\n<li>RGB backlight - aesthetic accessory with adjustable lighting effect</li>\n<li>8-bit pre-fetch - efficient data processing for modern applications</li>\n</ul>"
+              ],
+              [
+                "Preset profiles and performance",
+                "Kingston FURY 8 GB RAM features two XMP profiles - the first with a frequency of 3,200 MT/s and timings of 16-18-18 at a voltage of 1.35 V, the second with a frequency of 3,000 MT/s and timings of 15-17-17 at the same voltage. The standard JEDEC profile operates at 2,400 MT/s, with timings of 17-17-17 and a voltage of 1.2 V. The module has <b>16 internal banks arranged in four groups</b> and supports bidirectional differential data transfer. The height of the module with the heatsink is 43 mm, which is also suitable for systems with limited space."
+              ]
+            ],
+            "stocks_available": 29,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Memory (RAM)"]
+      },
+      "Kingston FURY 64GB KIT DDR5": {
+        "brand": "Kingston",
+        "variants": {
+          "Kingston FURY 64GB KIT DDR5 5600MT/s CL40 Beast Black (32Gbit)": {
+            "price": 899,
+            "discountPrice": null,
+            "description": "RAM - 2× 32 GB in the package, type DDR5, frequency 5600 MHz, CL40-40-40, throughput 44800 MB/s, voltage 1.25 V, PC5-44800 module, passive cooler, XMP 3.0 and AMD EXPO",
+            "images": [
+              "products/computers/components/kingston-fury-64gb-kit-ddr5/kingston-fury-64gb-kit-ddr5-5600mts-cl40-beast-black-32gbit/1.webp",
+              "products/computers/components/kingston-fury-64gb-kit-ddr5/kingston-fury-64gb-kit-ddr5-5600mts-cl40-beast-black-32gbit/2.webp",
+              "products/computers/components/kingston-fury-64gb-kit-ddr5/kingston-fury-64gb-kit-ddr5-5600mts-cl40-beast-black-32gbit/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Kingston has created a DIMM RAM that is a great choice for high-performance computers designed for working with graphics, video editing and more. Kingston FURY 64GB KIT 5600MT/s DDR5 CL40 Beast Black (32Gbit) requires a DDR5 slot to function. <b>The kit consists of 2 memory modules, giving a total of 64 GB.</b> The passive cooler is responsible for reducing adverse temperatures. A very important feature of Kingston memory is also the timing of 40-40-40 and the frequency limited to 5600 MHz."
+              ],
+              [
+                "Key advantages of Kingston FURY 64GB KIT 5600MT/s DDR5 CL40 Beast Black (32Gbit) RAM",
+                "<ul>\n<li>Kingston RAM memory will provide a capacity of 64 GB</li>\n<li>The memory module uses its own passive cooling</li>\n<li><b>All memory operation runs at 5600 MHz</b></li>\n<li>RAM uses a low voltage of 1.25V</li>\n<li>Inside the package are 2 DDR5 memory modules.</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 4,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Memory (RAM)"]
+      },
+      "ASROCK B550M": {
+        "brand": "ASROCK",
+        "variants": {
+          "ASROCK B550M Pro4": {
+            "price": 99,
+            "discountPrice": null,
+            "description": "Motherboard - AMD B550, AMD AM4 socket, mATX (Micro ATX) size, 4× DDR4, 4733 MHz (OC), 2× PCIe x16, 1× PCIe x1, 6× SATA III, 2× M.2, RJ-45 (LAN) 1 Gbps, 2× USB 3.2 Gen 2, 4× USB 3.2.Gen 1 (USB 3.0), 2× USB 2.0, DisplayPort 1.4, HDMI 2.1, 8ch sound card",
+            "images": [
+              "products/computers/components/asrock-b550m/asrock-b550m-pro4/1.webp",
+              "products/computers/components/asrock-b550m/asrock-b550m-pro4/2.webp",
+              "products/computers/components/asrock-b550m/asrock-b550m-pro4/3.webp",
+              "products/computers/components/asrock-b550m/asrock-b550m-pro4/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The ASROCK B550M Pro4 motherboard is the ideal solution for users looking for good performance in a compact mATX form factor without having to sacrifice expandability or flexibility. This board <b>supports a wide range of AMD</b> Ryzen™ 3000, 4000 G-Series and 5000 Series processors, ensuring that it meets the needs of both casual users and demanding gamers and workers with high computing requirements. For effective cooling, the board is equipped with large aluminum heatsinks that effectively dissipate heat and ensure stable system operation even under high demands. With support for AMD Smart Access Memory and strong power phases, this board is ideal for demanding users and overclocking enthusiasts."
+              ],
+              [
+                "Key features of the ASROCK B550M Pro4 motherboard",
+                "<ul>\n<li>Supports AMD AM4 processors including Ryzen™ 3000, 4000 G-Series and 5000 Series</li>\n<li>DDR4 support up to 4733 MHz (OC) for high performance</li>\n<li>1× PCIe 4.0 x16 and 2× PCIe 3.0 x16 for expansion options</li>\n<li>Integrated 7.1-channel sound card with Nahimic Audio technology</li>\n<li>RGB support for lighting customization via Polychrome RGB</li>\n<li>Dual M.2 SSD slots with PCIe Gen4 x4 support</li>\n<li>AMD Smart Access Memory technology to boost system performance</li>\n</ul>"
+              ],
+              [
+                "Power supply stability and construction",
+                "Digi Power with carefully dimensioned elements and massive passives keeps the platform running under control even under constant load, while <b>multi-layer copper PCB helps with efficient heat dissipation</b> and clean signal conduction. Reinforced Steel Slot protects the graphics connector from mechanical stress and supports reliable installation of heavier cards."
+              ],
+              [
+                "Storage, connectivity, and software",
+                "The PC motherboard is ready for fast NVMe SSDs including PCI Express 4.0 and offers flexible peripheral connectivity via USB including Type-C on the rear panel. <b>Three video outputs facilitate the connection of multiple monitors</b> (requires APU), the network is provided by a gigabit controller and the Post Status Checker facilitates boot diagnostics; system management is complemented by a useful tool suite and synchronizable Polychrome RGB lighting."
+              ],
+              [
+                "Easy assembly, protection and customization",
+                "Post Status Checker makes it easy to identify the cause of a failed boot thanks to clear indications of CPU/DRAM/VGA/BOOT status, while Full Spike Protection protects the interface from voltage spikes. <b>Steel-reinforced Steel Slot increases mechanical resistance</b> of the PCIe connector for secure installation of heavier cards. A prepared M.2 Key E slot allows you to add wireless connectivity as needed, RGB and addressable ARGB headers can be connected to the Polychrome RGB ecosystem, and firmware and tools can be kept up to date via Live Update & APP Shop."
+              ]
+            ],
+            "stocks_available": 19,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Motherboards"]
+      },
+      "GIGABYTE B650": {
+        "brand": "GIGABYTE",
+        "variants": {
+          "GIGABYTE B650 EAGLE": {
+            "price": 139,
+            "discountPrice": 20,
+            "description": "Motherboard - AMD B650, AMD AM5 socket, ATX size, 4× DDR5, 7600 MHz (OC), 4× PCIe x16, 4× SATA III, 3× M.2, RJ-45 (LAN) 1 Gbps, 2× USB 3.2 Gen 2, 1× USB 3.2.Gen 1 (USB 3.0), 6× USB 2.0, DisplayPort 1.4, HDMI 2.1, 8ch sound card",
+            "images": [
+              "products/computers/components/gigabyte-b650/gigabyte-b650-eagle/1.webp",
+              "products/computers/components/gigabyte-b650/gigabyte-b650-eagle/2.webp",
+              "products/computers/components/gigabyte-b650/gigabyte-b650-eagle/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "GIGABYTE B650 EAGLE AX is a motherboard designed for the latest AMD Ryzen™ 7000, 8000 and 9000 series processors. It offers support for modern DDR5 memory, fast M.2 slots including PCIe 5.0 and 4.0, reliable power with a digital 12+2+2 phase passive. <b>Gigabit network provides fast and stable connectivity,</b> while HDMI and DisplayPort interfaces expand graphics output options. The board is equipped with practical technologies such as EZ-Latch for easy component installation and Q-Flash Plus for quick BIOS updates even without a processor or memory."
+              ],
+              [
+                "Key Features of the GIGABYTE B650 EAGLE Motherboard",
+                "<ul>\n<li>Support for AMD Ryzen™ 7000, 8000 and 9000 processors</li>\n<li>12+2+2 phase digital power supply with high-quality MOSFETs</li>\n<li>4 DDR5 slots with EXPO/XMP, frequency up to 7600 MT/s</li>\n<li>3× M.2 (1× PCI Gen5, 2× PCI Gen4) with Thermal Guard</li>\n<li>Advanced cooling system for MOSFETs and M.2 slots</li>\n<li>GbE LAN with bandwidth control</li>\n<li>HDMI and DisplayPort for monitor connection</li>\n<li>High-quality audio with noise isolation and Hi-Fi capacitors</li>\n<li>Smart Fan 6 with multiple sensors and hybrid connectors</li>\n<li>EZ-Latch and Q-Flash Plus for easy operation</li>\n</ul>"
+              ],
+              [
+                "Power, cooling and networking equipment",
+                "The board uses solid power connectors, a 6-layer PCB design, and quality components to ensure stability even under heavy loads. Fully covered MOSFET heatsinks with high thermal conductivity keep critical parts at optimal temperatures. <b>Smart Fan 6</b> then adds extensive fan and water pump management capabilities with precise control and the ability to create custom profiles. In the area of connectivity, a gigabit LAN card is available with bandwidth management support."
+              ]
+            ],
+            "stocks_available": 11,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Motherboards"]
+      },
+      "Corsair RM650e": {
+        "brand": "Corsair",
+        "variants": {
+          "Corsair RM650e (2025)": {
+            "price": 99,
+            "discountPrice": null,
+            "description": "PC power supply - 650 W, ATX format, 80 PLUS Gold certification, detachable cables, thermal speed control, power switch and zero RPM mode, fan size 120 mm, 2× EPS/CPU 4+4-pin, 1× PCI Express 16-pin, 3× PCI Express 8-pin/6+2-pin, 4× Serial ATA 15-pin, 4× Molex HDD 4-pin connectors, dimensions 150 × 86 × 140 mm (W×H×D)",
+            "images": [
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/1.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/2.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/3.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/4.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/5.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/6.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/7.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/8.webp",
+              "products/computers/components/corsair-rm650e/corsair-rm650e-2025/9.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Corsair RM650e PC power supply supplies your PC components with a stable and efficient 650 W of power. Its design meets modern ATX 3.1 and PCIe 5.1 standards, supporting modern generations of hardware and handling high energy demands. The fully modular cabling system contributes to a clean and tidy installation. The high efficiency of energy conversion is confirmed by 80 PLUS Gold and Cybenetics Gold certifications, which reduce heat loss."
+              ],
+              [
+                "Key technologies of the Corsair RM650e (2025) computer power supply",
+                "<ul>\n<li>Meets 80 PLUS Gold and Cybenetics Gold certifications</li>\n<li>Supports ATX 3.1 and PCIe 5.1 standards</li>\n<li>Includes a native 12V-2x6 connector that powers current graphics cards</li>\n<li>Cooling is provided by a fan with Zero RPM mode</li>\n<li>Internal LLC topology with DC-DC conversion uses high temperature resistant capacitors</li>\n</ul>"
+              ],
+              [
+                "ATX 3.1 and PCIe 5.1 standards",
+                "Full compliance with ATX 3.1 and PCIe 5.1 standards prepares this computer power supply for the high energy demands of modern graphics cards. The power supply effectively handles sudden power peaks that are typical for powerful components. <b>The equipment includes a native 12V-2x6 connector</b> for direct and reliable power supply to graphics cards without the need to use adapters. This eliminates the need for bulky adapters."
+              ]
+            ],
+            "stocks_available": 18,
+            "stocks_reserved": 4
+          }
+        },
+        "subtypes": ["Power Supplies"]
+      },
+      "ADATA XPG": {
+        "brand": "ADATA",
+        "variants": {
+          "ADATA XPG PROBE 600 W": {
+            "price": 49,
+            "discountPrice": 10,
+            "description": "PC power supply - 600 W, ATX format, 80 PLUS Bronze certification, thermal speed control and power switch, fan size 120 mm, 2× EPS/CPU 4+4-pin, 2× PCI Express 8-pin/6+2-pin, 5× Serial ATA 15-pin, 2× Molex HDD 4-pin connectors, dimensions 150 × 86 × 140 mm (W×H×D)",
+            "images": [
+              "products/computers/components/adata-xpg/adata-xpg-probe-600-w/1.webp",
+              "products/computers/components/adata-xpg/adata-xpg-probe-600-w/2.webp",
+              "products/computers/components/adata-xpg/adata-xpg-probe-600-w/3.webp",
+              "products/computers/components/adata-xpg/adata-xpg-probe-600-w/4.webp",
+              "products/computers/components/adata-xpg/adata-xpg-probe-600-w/5.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The ADATA XPG Probe 600W PC power supply delivers 600W of stable power for modern PC builds. It operates in the standard ATX format and meets the requirements of the ATX version 2.52 standard, which contributes to higher reliability and safer operation. <b>80 PLUS Bronze certification confirms efficiency of up to 87%</b> at half load, thereby reducing heat loss and power consumption. Cooling is provided by a 120 mm fan, whose intelligent speed curve maintains quiet operation at low load. The internal installation of high-quality capacitors rated up to 105 °C supports long-term power stability."
+              ],
+              [
+                "Key technologies of the ADATA XPG Probe 600W computer power supply",
+                "<ul>\n<li>The power supply provides high overall performance</li>\n<li>Efficiency reaches up to 87% at half load</li>\n<li>The power supply meets the modern ATX standard version 2.52</li>\n<li>Two CPUs and two PCIe connectors provide power to the components.</li>\n<li>Components are protected by six types of industrial protection</li>\n<li>Cooling is provided by a speed-controlled fan</li>\n<li>Compact depth makes it easy to install in cabinets</li>\n<li>Installed capacitors withstand temperatures up to 105 °C</li>\n</ul>"
+              ],
+              [
+                "Stability and source protection",
+                "This 600W ATX power supply complies with the ATX version 2.52 standard, which defines stricter requirements for stability and response to load changes. The use of high-quality capacitors with a temperature rating of <b>up to 105 °C contributes to long-term reliability</b> of the power supply even in harsh conditions. A set of six types of industrial protection ensures safe operation, protecting components from damage due to overvoltage, undervoltage, overload, short circuit, overheating or current surges."
+              ],
+              [
+                "Quiet cooling and compact dimensions",
+                "Heat dissipation is provided by a 120 mm fan with a plain bearing, which works with an intelligent speed curve that adapts the cooling speed to the current load and temperature of the power supply. During normal office work or web browsing, the power supply remains quiet and does not disturb the surroundings. Thanks to the compact depth of 140 mm, the power supply does not take up excess space and facilitates installation even in cabinets with limited internal layout, where it also leaves more space for cabling."
+              ]
+            ],
+            "stocks_available": 32,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Power Supplies"]
+      },
+      "Samsung 870 EVO": {
+        "brand": "Samsung",
+        "variants": {
+          "Samsung 870 EVO 1 TB": {
+            "price": 299,
+            "discountPrice": 50,
+            "description": "SSD disk 1000 GB - 2.5\", SATA III, TLC (Triple-Level Cell), read speed 560 MB/s, write speed 530 MB/s, lifespan 600 TBW, typical consumption 2.5 W, stand-by consumption (standby) 0.03 W, dimensions 69.85 × 6.8 × 100 mm (W×H×D), weight 45 g",
+            "images": [
+              "products/computers/components/samsung-870-evo/samsung-870-evo-1-tb/1.webp",
+              "products/computers/components/samsung-870-evo/samsung-870-evo-1-tb/2.webp",
+              "products/computers/components/samsung-870-evo/samsung-870-evo-1-tb/3.webp",
+              "products/computers/components/samsung-870-evo/samsung-870-evo-1-tb/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Samsung 870 EVO 1 TB builds on the world's best-selling SSD series and delivers massive storage for power users, content creators, and professionals. <b>Up to 560 MB/s read and 530 MB/s write speeds make the most of the SATA III interface,</b> while Intelligent TurboWrite technology maintains high performance even under long-term loads. A 600 TBW lifespan and a five-year warranty guarantee reliability for years to come. With a standard 2.5\" form factor and broad compatibility with PCs, laptops, and NAS systems, it's the ideal upgrade for anyone who needs fast, reliable storage with large capacity."
+              ],
+              [
+                "Key Features of the Samsung 870 EVO 1TB SSD",
+                "<ul>\n<li>1 TB capacity provides enough space for the operating system, applications, games, videos and large work projects on a single drive</li>\n<li>Sequential read speeds of up to 560MB/s and write speeds of up to 530MB/s take full advantage of SATA III for fast system response</li>\n<li>Intelligent TurboWrite technology with variable buffering maintains high write speeds even when transferring large amounts of data</li>\n<li>600 TBW and 1.5 million hours mean time between failures ensure long-term reliability even under heavy use</li>\n<li>Sixth-generation TLC V-NAND and Samsung MKX controller ensure stable performance with low power consumption</li>\n<li>Standard 2.5\" format and SATA III interface guarantee compatibility with computers, laptops, NAS servers and external boxes</li>\n<li>Samsung's five-year limited warranty provides peace of mind for both home and professional use</li>\n<li>Samsung Magician software allows for easy disk management, status monitoring, firmware updates, and data migration from legacy storage</li>\n</ul>"
+              ],
+              [
+                "Performance at the limit of SATA capabilities",
+                "<b>Sequential read speeds of up to 560 MB/s and write speeds of up to 530 MB/s make the most of the SATA III interface and ensure fast system, application and game startup.</b> Intelligent TurboWrite technology uses variable buffer memory that maintains high write speeds even when transferring large files or long-term loads. 1 GB LPDDR4 DRAM cache memory accelerates access to frequently used data and optimizes work with smaller files. The Samsung 870 EVO 1 TB SSD, thanks to the sixth generation TLC V-NAND and the Samsung MKX controller, offers consistent performance without slowdowns, whether you are copying hundreds of gigabytes of video or working with large databases."
+              ]
+            ],
+            "stocks_available": 48,
+            "stocks_reserved": 7
+          }
+        },
+        "subtypes": ["Internal Storage (SSD & HDD)"]
+      },
+      "WD Purple": {
+        "brand": "WD",
+        "variants": {
+          "WD Purple 2 TB": {
+            "price": 149,
+            "discountPrice": null,
+            "description": "Hard drive - 3.5\", SATA III, maximum transfer speed 180 MB/s, cache 64 MB, for computer, for monitoring systems and data storage, CMR recording technology, noise level 26 dB, typical consumption 3.8 W",
+            "images": [
+              "products/computers/components/wd-purple/wd-purple-2-tb/1.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The WD Purple 2TB hard drive offers reliable storage designed specifically for 24/7 continuous video recording, resistant to elevated temperatures and vibrations in NVR environments. These surveillance-class solutions provide stable performance where conventional desktop drives fail over long periods of time. AllFrame™ technology reduces frame loss and ensures smooth video playback. The WD Purple hard drive is optimized for high temperatures and continuous operation, so you can count on high-quality video when it matters most."
+              ],
+              [
+                "Key features of the WD Purple 2TB hard drive",
+                "<ul>\n<li>Highly reliable storage for continuous 24/7 video recording</li>\n<li>AllFrame™ technology minimizes frame loss and ensures smooth playback</li>\n<li>Hard drive optimized for high temperatures and vibrations in NVR environments</li>\n<li>Support for up to 64 HD cameras</li>\n<li>High workload up to 180 TB/year</li>\n<li>Corrosion-resistant components and long disc life</li>\n</ul>"
+              ],
+              [
+                "High load and HDD compatibility",
+                "All WD Purple HDDs feature AllFrame™ technology, which minimizes frame loss and improves the quality of recorded and played back video. The drives handle workloads of up to 180 TB/year, which is three times that of conventional desktop hard drives, and support up to 64 HD cameras simultaneously. WD Purple hard drives are designed for DVR and NVR systems with more than eight bays and <b>feature corrosion-resistant components.</b> With an MTBF of up to 1 million hours and broad compatibility with industrial enclosures and chipsets, reliable integration into existing systems and flexibility for future expansion are ensured."
+              ]
+            ],
+            "stocks_available": 27,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Internal Storage (SSD & HDD)"]
+      },
+      "WD 2.5\" Elements Portable": {
+        "brand": "WD",
+        "variants": {
+          "WD 2.5\" Elements Portable 4TB black": {
+            "price": 169,
+            "discountPrice": null,
+            "description": "External disk 4000 GB - HDD storage, 2.5\" format, with USB 3.2 Gen 1 (USB 3.0) connection, material plastic, cable included, dimensions 111 × 82 × 21.5 mm (H×W×D)",
+            "images": [
+              "products/computers/components/wd-2.5-elements-portable/wd-2.5-elements-portable-4tb-black/1.webp",
+              "products/computers/components/wd-2.5-elements-portable/wd-2.5-elements-portable-4tb-black/2.webp",
+              "products/computers/components/wd-2.5-elements-portable/wd-2.5-elements-portable-4tb-black/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The WD Elements Portable 4 TB external drive is used to expand the storage space of your computer or laptop by 4 TB. The capacity can accommodate large collections of photos, videos and work files and frees up the device's internal storage for smoother system operation. <b>For Windows 10 and higher, the connection works on the Plug-and-play principle.</b> The drive does not require the installation of any additional drivers and works immediately after connecting with the included USB-A cable. The design is based on proven components for stable operation and protection of stored data."
+              ],
+              [
+                "Key features of the WD Elements Portable 4TB external drive, black",
+                "<ul>\n<li>WD Elements portable storage with USB 3.2 Gen1 support</li>\n<li>Backward compatibility for older USB versions is maintained</li>\n<li>Small and lightweight case delivers style and great portability</li>\n<li>Ready to use with Windows systems (reformatting required for other platforms)</li>\n</ul>"
+              ],
+              [
+                "Portable disk storage",
+                "The WD Elements Portable 4 TB external drive in 2.5\" version simply connects directly to the USB-A port and you don't have to deal with anything else. <b>The WD Elements Portable 4 TB external drive is ready to use on Windows systems.</b> You can also use the drive with macOS and Linux systems, but you will need to reformat the drive to the appropriate file system."
+              ],
+              [
+                "Capacity and compatibility",
+                "The small and lightweight design makes the WD Elements portable storage the ideal companion for users who want to keep their important files with them. The WD Elements Portable 4 TB drive is also protected by a durable case that was also designed with style in mind. <b>When you connect the WD Elements Portable 4 TB portable storage via USB 3.0, you get high-speed data transfer.</b> You can transfer a full 4K movie in a fraction of the time it takes to use the older USB 2.0 interface. However, compatibility is fully maintained."
+              ]
+            ],
+            "stocks_available": 38,
+            "stocks_reserved": 5
+          }
+        },
+        "subtypes": ["External Storage (SSD & HDD)"]
+      },
+      "MSI MAG FORGE": {
+        "brand": "MSI",
+        "variants": {
+          "MSI MAG FORGE 320R AIRFLOW": {
+            "price": 79,
+            "discountPrice": 20,
+            "description": "PC case - ATX, mATX (Micro ATX) and mITX (Mini ITX), 1× 2.5\", 2× 2.5\"/3.5\", Front panel connectors USB 3.2 Gen 1, 3.5 mm Jack (headphones) and 3.5 mm Jack (microphone), number of pre-installed fans 4× 120 mm, max. radiator height 160 mm, max. graphics card length 390 mm, without power supply, side panel material tempered glass, ARGB backlight color",
+            "images": [
+              "products/computers/components/msi-mag-force/msi-mag-force-320r-airflow/1.webp",
+              "products/computers/components/msi-mag-force/msi-mag-force-320r-airflow/2.webp",
+              "products/computers/components/msi-mag-force/msi-mag-force-320r-airflow/3.webp",
+              "products/computers/components/msi-mag-force/msi-mag-force-320r-airflow/4.webp",
+              "products/computers/components/msi-mag-force/msi-mag-force-320r-airflow/5.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The MSI MAG FORGE 320R AIRFLOW computer case is designed in a Midi Tower format. The open design of the front panel with a fine mesh allows a large amount of air to the internal components, which helps maintain stable temperatures under high loads. The robust steel frame is complemented by a tempered glass side panel, through which the installed hardware and lighting effects stand out. <b>Factory installation with four ARGB fans</b> effectively dissipates heat without the need to purchase additional accessories. This case accommodates ATX, mATX and mITX motherboards and offers enough space for graphics cards up to 390 mm long."
+              ],
+              [
+                "Key features of the MSI MAG FORGE 320R AIRFLOW computer case",
+                "<ul>\n<li>Supports AIO water cooling up to 360mm</li>\n<li>Possibility to install up to 11 system fans, ensuring efficient ventilation and stable performance</li>\n<li>Integrated ARGB fans and control board for dynamic lighting effects</li>\n<li>Tempered glass side panel that allows the RGB lighting to stand out</li>\n<li>Easily removable magnetic dust filter on top of the cabinet</li>\n<li>LED Switch button for intuitive control and switching between 9 lighting effects</li>\n<li>Fine-mesh front panel ensures ample airflow to components</li>\n<li>Top position supports water cooling radiator mounting</li>\n<li>Internal space accommodates large graphics cards</li>\n</ul>"
+              ],
+              [
+                "Cabinet construction",
+                "The steel chassis offers plenty of space for modern hardware while maintaining the compact dimensions of a Midi Tower. The transparent side panel made of <b>4 mm thick tempered glass</b> stands out for its high durability and easy access to the internal space. The front side with full-surface perforation ensures that the fans draw in fresh air without unnecessary resistance, which contributes to maintaining low temperatures inside the system."
+              ],
+              [
+                "Cooling and lighting",
+                "The cooling system uses four 120mm fans with ARGB backlighting that can be controlled by the user. The case supports <b>installation of up to eleven fans</b> or water radiators with a size of up to 360mm on the top and 240mm on the front. The Insta-Light Loop button on the top panel allows you to quickly switch between lighting effects without the need for software intervention."
+              ]
+            ],
+            "stocks_available": 13,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["PC Cases"]
+      },
+      "Fractal Design North XL": {
+        "brand": "Fractal Design",
+        "variants": {
+          "Fractal Design North XL Charcoal Black TG Dark": {
+            "price": 189,
+            "discountPrice": null,
+            "description": "PC case - ATX, mATX (Micro ATX), mITX (Mini ITX) and eATX (Extended ATX), 2× 2.5\", 2× 2.5\"/3.5\", Front panel connectors USB 3.2 Gen 1, USB-C, 3.5 mm Jack (headphones), 3.5 mm Jack (microphone) and USB 3.2 Gen 2, number of pre-installed fans 3× 140 mm, max. radiator height 185 mm, max. graphics card length 413 mm, without power supply, side material tempered glass, without backlight",
+            "images": [
+              "products/computers/components/fractal-design-north-xl/fractal-design-north-xl-charcoal-black-tg-dark/1.webp",
+              "products/computers/components/fractal-design-north-xl/fractal-design-north-xl-charcoal-black-tg-dark/2.webp",
+              "products/computers/components/fractal-design-north-xl/fractal-design-north-xl-charcoal-black-tg-dark/3.webp",
+              "products/computers/components/fractal-design-north-xl/fractal-design-north-xl-charcoal-black-tg-dark/4.webp",
+              "products/computers/components/fractal-design-north-xl/fractal-design-north-xl-charcoal-black-tg-dark/5.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Fractal design of the North XL Charcoal Black TG Dark provides ample space for larger components, including more powerful graphics cards and advanced cooling solutions. The front panel is made of real wood slats, which also allow <b>direct air intake into the interior</b> and promote efficient airflow through the case. Three 140 mm fans are installed from the factory, which ensure effective airflow around key components even at low speeds."
+              ],
+              [
+                "Key features of the Fractal design North XL Charcoal Black TG Dark computer case",
+                "<ul>\n<li>With tempered glass side panel</li>\n<li>Real wood front</li>\n<li>Also accommodates E-ATX format boards</li>\n<li>A total of three 140 mm Aspect 14 fans</li>\n<li>Enough space to hide the necessary wiring</li>\n<li>Dust filters in the front and at the source</li>\n</ul>"
+              ],
+              [
+                "Emphasis on quiet operation",
+                "The North XL is designed for users looking to build a quiet gaming PC. It offers enough space for E-ATX motherboards, larger graphics cards, and <b>installation of a water cooling radiator up to 413 mm long.</b> Three 140 mm fans are factory-installed, which ensure airflow around key components at low speeds."
+              ],
+              [
+                "Control panel and cooling",
+                "The Fractal design North XL case is equipped with 140 mm Aspect 14 fans. All of them are located in the front and draw air into the case through a dust filter. Of course, <b>it is possible to install additional fans, including water cooling.</b> Thanks to this, the components inside the Fractal design PC case are well cooled. In addition to the power button, the control panel also includes connectors for headphones and a microphone. However, USB 3.2 Gen 1 and USB-C are much more important."
+              ]
+            ],
+            "stocks_available": 23,
+            "stocks_reserved": 7
+          }
+        },
+        "subtypes": ["PC Cases"]
       }
     }
   }

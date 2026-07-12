@@ -1,5 +1,41 @@
 {
   "TV": {
-    "8K": {}
+    "8K": {
+      "Samsung QE75QN800C": {
+        "brand": "Samsung",
+        "variants": {
+          "75\" Samsung QE75QN800C": {
+            "price": 2199,
+            "discountPrice": null,
+            "description": "TV - SMART, Neo QLED, Mini LED, 191cm, Ultra HD 8K, 120 Hz, HDR10+, local dimming, dual tuner, DVB-C/S2/T2 HEVC, 4× HDMI, 3× USB, CI+, LAN, WiFi, Bluetooth, DLNA, HbbTV 2.0, voice control, 360° video playback, Apple Airplay 2, pairing with mobile device, Tizen, VESA 400×400, Dolby Atmos, Dolby Digital Plus, energy class G",
+            "images": [
+              "products/tv/8k/samsung-qe75qn800c/75-samsung-qe75qn800c/1.webp",
+              "products/tv/8k/samsung-qe75qn800c/75-samsung-qe75qn800c/2.webp"
+            ],
+            "descriptions": [
+              [
+                "Samsung QE75QN800C SMART QLED Neo reveals every detail",
+                "Unique movie experiences in first-class 8K resolution and ultra-fine contrast? That's also possible with the Samsung Neo QLED TV. <b>Thanks to Quantum Matrix Technology Pro, all hidden details are displayed</b> in the darkest and brightest scenes. So you will truly experience the full experience."
+              ],
+              [
+                "8K image crafted to perfection",
+                "The advanced Neural Quantum Processor has even better picture quality. <b>By using 64 neural networks instead of one standard one, every scene undergoes visual editing up to 8K resolution,</b> regardless of the original resolution of the source signal. Enjoy every movie experience at home, in the comfort of your own home."
+              ],
+              [
+                "The picture and sound of the Samsung QE75QN800C SMART QLED Neo TV in perfect harmony",
+                "Immerse yourself in the action, whether you're watching the latest movie or playing your favorite game. <b>The combination of advanced top-firing speakers and cutting-edge Dolby Atmos technology</b> creates surround sound that will completely immerse you. Surround yourself with dynamic audio and prepare for a cinematic experience."
+              ],
+              [
+                "Samsung QE75QN800C SMART QLED Neo TV - perfect for gamers",
+                "Get ready for unforgettable gaming experiences in up to 4K resolution without annoying lag and choppiness thanks to the innovative Motion Xcelerator Turbo+ function. <b>Top performance and a sharp image even with extremely fast movement are created by a 120 Hz refresh rate and certified AMD FreeSync Premium Pro technology, thanks to which every frame is flawlessly synchronized with the gaming device, whether you play on a PC or a game console."
+              ]
+            ],
+            "stocks_available": 11,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["QLED"]
+      }
+    }
   }
 }

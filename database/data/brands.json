@@ -1,12 +1,11 @@
 [
-  "Iphone",
+  "Apple",
   "Samsung",
   "Xiaomi",
   "Motorola",
   "Google",
   "Sony",
   "Honor",
-  "Ipad",
   "Panasonic",
   "Thomson",
   "Hisense",
@@ -55,5 +54,17 @@
   "ULTRAHUMAN",
   "MacBook",
   "Dell",
-  "Kingston"
+  "Kingston",
+  "ASROCK",
+  "ADATA",
+  "WD",
+  "Fractal Design",
+  "TCL",
+  "AOC",
+  "Logitech",
+  "HyperX",
+  "Xerox",
+  "TP-Link",
+  "Meta",
+  "Sencor"
 ]

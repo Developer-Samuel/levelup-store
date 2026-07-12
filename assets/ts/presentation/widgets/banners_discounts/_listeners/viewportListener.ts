@@ -1,4 +1,4 @@
 export function attachViewportListener(onViewportChange: () => void): void {
-  window.addEventListener('load', onViewportChange, { once: true })
+  onViewportChange()
   window.addEventListener('resize', onViewportChange)
 }

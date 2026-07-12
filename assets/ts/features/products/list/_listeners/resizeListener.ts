@@ -1,11 +1,12 @@
-import { BREAKPOINT_XL } from '@/ts/shared/constants/breakpoints'
+import { handleResize } from '@/ts/features/products/list/_handlers/resizeHandler'
 
-import { toggle } from '@/ts/features/products/list/_ui/visibility'
-
-export function attachResizeListener(productFilter: HTMLElement | null): void {
+export function attachResizeListener(productFilter: HTMLElement | null): (() => void) | void {
   if (!productFilter) return
 
-  window.addEventListener('resize', () => {
-    toggle(productFilter, window.innerWidth >= BREAKPOINT_XL)
-  })
+  const lastWidth = { value: window.innerWidth }
+  const handler = (): void => handleResize(productFilter, lastWidth)
+
+  window.addEventListener('resize', handler)
+
+  return () => window.removeEventListener('resize', handler)
 }

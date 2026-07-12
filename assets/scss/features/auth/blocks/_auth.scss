@@ -25,7 +25,7 @@
   }
 
   &__card {
-    @include shadow(full, 4);
+    @include shadow(full, 3);
 
     height: auto;
     background: #fff;

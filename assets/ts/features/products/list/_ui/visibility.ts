@@ -2,12 +2,14 @@ export function show(filter: HTMLElement | null): void {
   if (!filter) return
 
   filter.style.display = 'block'
+  document.body.style.overflow = 'hidden'
 }
 
 export function hide(filter: HTMLElement | null): void {
   if (!filter) return
 
   filter.style.display = 'none'
+  document.body.style.overflow = ''
 }
 
 export function toggle(filter: HTMLElement | null, condition: boolean): void {

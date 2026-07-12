@@ -326,7 +326,9 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     private function normalizeArray(array $items): array
     {
         $normalized = array_map(
-            static fn($item): string => StringNormalizer::toLowerCase(StringNormalizer::replaceSpacesWithDash($item)),
+            static fn($item): string => StringNormalizer::toLowerCase(
+                str_replace('-', ' ', $item),
+            ),
             $items,
         );
 
@@ -344,7 +346,7 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
             return null;
         }
 
-        return StringNormalizer::toLowerCase(StringNormalizer::replaceSpacesWithDash($value));
+        return StringNormalizer::toLowerCase(str_replace('-', ' ', $value));
     }
 
     /**

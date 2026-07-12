@@ -1,5 +1,42 @@
 {
   "Gaming": {
-    "Racing Wheels": {}
+    "Racing Wheels": {
+      "Logitech RS50 System": {
+        "brand": "Logitech",
+        "variants": {
+          "Logitech RS50 System for PlayStation/PC": {
+            "price": 649,
+            "discountPrice": 30,
+            "description": "Steering wheel - feedback, gearshift under the steering wheel, rotation angle up to 2700°, 15 buttons, D-Pad, programmable buttons, compatible with PC and PS5, connection via USB and USB-A",
+            "images": [
+              "products/gaming/racing-wheels/logitech-rs50-system/logitech-rs50-system-for-playstation-pc/1.webp",
+              "products/gaming/racing-wheels/logitech-rs50-system/logitech-rs50-system-for-playstation-pc/2.webp",
+              "products/gaming/racing-wheels/logitech-rs50-system/logitech-rs50-system-for-playstation-pc/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Logitech RS50 Racing System offers a maximum torque of 8 Nm, surpassing most competitors in the mid-range class. It provides sufficient power and precision for a wide range of racing simulators. <b>It is compatible with both PlayStation and PC consoles</b> (connects via USB) and supports TRUEFORCE feedback technology, which faithfully transmits the track surface and vehicle dynamics. Thanks to the integrated OLED display, it is easy to change the steering wheel settings while driving. The new RS Wheel Hub node ensures compatibility with various steering wheels, including custom models. The package includes a practical clamp for attaching to a workbench. For detailed adjustments, you can use the G HUB software."
+              ],
+              [
+                "Key Features of the Logitech RS50 System Steering Wheel for PlayStation/PC",
+                "<ul>\n<li>Torque up to 8 Nm - ideal for realistic racing simulators</li>\n<li>Complete racing system for PlayStation and PC</li>\n<li>TRUEFORCE feedback technology for precise transmission of driving sensations</li>\n<li>OLED display for quick setup during the race</li>\n<li>RS Wheel Hub compatible with a wide range of steering wheels</li>\n<li>Connecting via USB</li>\n<li>Rotation angle up to 2,700°</li>\n<li>The RS Round Wheel is made of durable silicone leather</li>\n<li>Logitech RS50 System with customizable shifters</li>\n<li><b>LIGHTSYNC backlighting controllable via G HUB</b></li>\n<li>Quick-release mechanism for easy steering wheel replacement</li>\n</ul>"
+              ],
+              [
+                "Steering wheel Logitech RS Round Wheel",
+                "The RS50 system includes the RS Round Wheel, made of durable silicone leather. Thanks to the material used, it does not slip in your hands and offers a comfortable grip even during longer races. The construction is designed to enable fast and precise turning while also withstanding long-term use. <b>The steering wheel provides a rotation angle of up to 2,700°.</b>"
+              ],
+              [
+                "RS Wheel Hub - a flexible solution",
+                "The RS Wheel Hub supports wide compatibility with various steering wheel shapes and sizes. <b>The shift paddles can be individually adjusted to your preferences.</b> LIGHTSYNC backlighting is fully customizable via G HUB software. In addition, the quick-release mechanism allows for instant wheel replacement."
+              ]
+            ],
+            "stocks_available": 23,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Force Feedback"]
+      }
+    }
   }
 }
