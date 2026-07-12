@@ -3,12 +3,16 @@
     <file_extensions>
         <ext>php</ext>
         <ext>ts</ext>
-        <ext>css</ext>
+        <ext>scss</ext>
+        <ext>twig</ext>
+        <ext>yaml</ext>
+        <ext>sh</ext>
+        <ext>cmd</ext>
     </file_extensions>
     <ignored_dirs>
-        <dir>var</dir>
-        <dir>node_modules</dir>
         <dir>public</dir>
+        <dir>node_modules</dir>
+        <dir>var</dir>
         <dir>vendor</dir>
     </ignored_dirs>
 </analyzer>
