@@ -50,7 +50,19 @@ abstract class AbstractRateLimitHandler extends AbstractCommandHandler
     private function assertRateLimit(object $tracker): void
     {
         if (property_exists($tracker, 'tooManyAttempts') && $tracker->tooManyAttempts) {
-            throw new TooManyRequestsException();
+            throw new TooManyRequestsException($this->getRetryAfter($tracker));
         }
+    }
+
+    /**
+     * @param object $tracker
+     *
+     * @return int
+    */
+    private function getRetryAfter(object $tracker): int
+    {
+        $value = property_exists($tracker, 'retryAfterSeconds') ? $tracker->retryAfterSeconds : 0;
+
+        return is_int($value) ? $value : 0;
     }
 }

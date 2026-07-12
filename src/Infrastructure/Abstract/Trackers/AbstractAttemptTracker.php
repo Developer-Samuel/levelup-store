@@ -10,10 +10,11 @@ use App\Core\Ports\Shared\Proxy\SessionProxyContract;
 
 abstract class AbstractAttemptTracker
 {
-    private const MAX_ATTEMPTS = 8;
+    private const MAX_ATTEMPTS = 5;
     private const LOCKOUT_SECONDS = 60;
 
     public bool $tooManyAttempts = false;
+    public int $retryAfterSeconds = 0;
 
     /**
      * @param SessionProxyContract $sessionProxy
@@ -40,9 +41,18 @@ abstract class AbstractAttemptTracker
         $attempts = $this->getSafeIntFromSession($session, $this->attemptsSessionKey, 0);
         $lastAttempt = $this->getSafeIntFromSession($session, $this->lastAttemptSessionKey, time());
 
-        $this->tooManyAttempts = $this->checkTooManyAttempts($attempts, $lastAttempt);
+        $isExpired = $this->timeSinceLastAttempt($lastAttempt) >= $this->lockoutSeconds;
+        $newAttempts = $isExpired ? 1 : $attempts + 1;
 
-        $this->updateSession($session, $attempts, $lastAttempt);
+        $this->tooManyAttempts = $this->checkTooManyAttempts($newAttempts, $lastAttempt);
+        $this->retryAfterSeconds = $this->tooManyAttempts
+            ? $this->calculateRetryAfter($lastAttempt)
+            : 0;
+
+        if (!$this->tooManyAttempts) {
+            $session->set($this->attemptsSessionKey, $newAttempts);
+            $session->set($this->lastAttemptSessionKey, time());
+        }
     }
 
     /**
@@ -60,6 +70,16 @@ abstract class AbstractAttemptTracker
     }
 
     /**
+     * @param int $lastAttempt
+     *
+     * @return int
+    */
+    private function timeSinceLastAttempt(int $lastAttempt): int
+    {
+        return time() - $lastAttempt;
+    }
+    
+    /**
      * @param int $attempts
      * @param int $lastAttempt
      *
@@ -71,28 +91,12 @@ abstract class AbstractAttemptTracker
     }
 
     /**
-     * @param SessionInterface $session
-     * @param int $attempts
-     * @param int $lastAttempt
-     *
-     * @return void
-    */
-    private function updateSession(SessionInterface $session, int $attempts, int $lastAttempt): void
-    {
-        $isExpired = $this->timeSinceLastAttempt($lastAttempt) >= $this->lockoutSeconds;
-        $newAttempts = $isExpired ? 1 : $attempts + 1;
-
-        $session->set($this->attemptsSessionKey, $newAttempts);
-        $session->set($this->lastAttemptSessionKey, time());
-    }
-
-    /**
      * @param int $lastAttempt
      *
      * @return int
     */
-    private function timeSinceLastAttempt(int $lastAttempt): int
+    private function calculateRetryAfter(int $lastAttempt): int
     {
-        return time() - $lastAttempt;
+        return max(0, $this->lockoutSeconds - $this->timeSinceLastAttempt($lastAttempt));
     }
 }

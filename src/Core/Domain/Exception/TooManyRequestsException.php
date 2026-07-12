@@ -9,12 +9,11 @@ class TooManyRequestsException extends \Exception
     protected int $statusCode = 429;
 
     /**
-     * @param string $message
+     * @param int $retryAfterSeconds
     */
-    public function __construct(
-        string $message = 'Too many attempts, please try again in a moment.',
-    ) {
-        parent::__construct($message);
+    public function __construct(int $retryAfterSeconds = 0)
+    {
+        parent::__construct($this->buildMessage($retryAfterSeconds));
     }
 
     /**
@@ -23,5 +22,17 @@ class TooManyRequestsException extends \Exception
     public function getStatusCode(): int
     {
         return $this->statusCode;
+    }
+
+    /**
+     * @param int $retryAfterSeconds
+     *
+     * @return string
+    */
+    private function buildMessage(int $retryAfterSeconds): string
+    {
+        return $retryAfterSeconds > 0
+            ? sprintf('Too many attempts, please try again in %ds.', $retryAfterSeconds)
+            : 'Too many attempts, please try again in a moment.';
     }
 }
