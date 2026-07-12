@@ -17,7 +17,7 @@ security:
       security: false
 
     api_public:
-      pattern: ^/api/(?:search|cookies|auth/)
+      pattern: ^/api/(?:cookies|auth/|search|dev/)
       security: false
 
     api:

@@ -117,3 +117,27 @@ make logs
 # or
 docker compose logs -f
 ```
+
+## 🩺 Health Check
+
+Verify that all services (database, cache, mailer, Stripe, disk, wkhtmltopdf) are running correctly:
+
+```
+GET /api/dev/health-check
+```
+
+Example response:
+
+```json
+{
+  "status": "ok",
+  "database": "ok",
+  "cache": "ok",
+  "disk": "ok",
+  "mailer": "ok",
+  "stripe": "ok",
+  "wkhtmltopdf": "ok"
+}
+```
+
+> `wkhtmltopdf` returns `"disabled"` if `WKHTMLTOPDF_ENABLED=false` and does not affect the overall `status`.

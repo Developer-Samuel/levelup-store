@@ -25,47 +25,42 @@ services:
   App\Infrastructure\: { resource: '../src/Infrastructure/' }
   App\Shared\:         { resource: '../src/Shared/' }
 
-  # 🔐 Security & Encryption
+  # 🏛️ Core - Application
   App\Core\Application\Shared\Encryption\HmacGenerator:
     arguments:
       $secretKey: '%env(HMAC_SECRET)%'
-
-  # 🗄️ Cache
-  App\Adapters\External\Cache\RedisCacheAdapter:
-    arguments:
-      $redisEnabled: '%env(bool:REDIS_ENABLED)%'
-      $redisUrl: '%env(REDIS_URL)%'
-
-  # 🖨️ PDF Generation
-  App\Adapters\External\Pdf\SnappyPdfGeneratorAdapter:
-    arguments:
-      $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'
 
   App\Core\Application\Segment\Order\Handler\Query\GetOrderDetailQueryHandler:
     arguments:
       $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'
 
-  # 💳 Payment
-  App\Infrastructure\Payment\Stripe\StripeSdk:
+  # 🔌 Adapters - External
+  App\Adapters\External\Cache\RedisCacheAdapter:
     arguments:
-      $secretKey: '%env(STRIPE_SECRET)%'
+      $redisEnabled: '%env(bool:REDIS_ENABLED)%'
+      $redisUrl: '%env(REDIS_URL)%'
 
-  # 🌍 External APIs
+  App\Adapters\External\Pdf\SnappyPdfGeneratorAdapter:
+    arguments:
+      $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'
+
   App\Adapters\External\Api\Country\CountryApiAdapter:
     arguments:
       $countryUrl: '%env(API_COUNTRY_URL)%'
 
-  # 🔑 Auth
+  # 🏗️ Infrastructure
+  App\Infrastructure\Payment\Stripe\StripeSdk:
+    arguments:
+      $secretKey: '%env(STRIPE_SECRET)%'
+
   App\Infrastructure\Auth\Repository\RefreshTokenRepository:
     arguments:
       $refreshTokenTtl: '%env(int:JWT_REFRESH_TTL)%'
 
-  # 📋 Logging
   App\Infrastructure\Shared\Logging\AppLogger:
     arguments:
       $logger: '@monolog.logger.app_logger'
 
-  # 📡 Event Subscribers
   App\Infrastructure\Shared\Subscriber\:
     resource: '../src/Infrastructure/Shared/Subscriber/'
     tags:
@@ -75,6 +70,16 @@ services:
   App\Presentation\:
     resource: '../src/Presentation/'
     tags: ['controller.service_arguments']
+
+  App\Presentation\Dev\Api\Controller\HealthCheckController:
+    arguments:
+      $stripeSecretKey: '%env(STRIPE_SECRET)%'
+      $mailerUser: '%env(MAILER_USER)%'
+      $mailerPass: '%env(MAILER_PASS)%'
+      $mailerHost: '%env(MAILER_HOST)%'
+      $mailerPort: '%env(int:MAILER_PORT)%'
+      $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'
+      $wkhtmltopdfPath: '%env(WKHTMLTOPDF_PATH)%'
 
   App\Presentation\Auth\Manager\RefreshTokenCookieManager:
     arguments:
