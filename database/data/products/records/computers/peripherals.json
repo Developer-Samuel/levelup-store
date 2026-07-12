@@ -1,5 +1,371 @@
 {
   "Computers": {
-    "Peripherals": {}
+    "Peripherals": {
+      "Logitech G213": {
+        "brand": "Logitech",
+        "variants": {
+          "Logitech G213 - CZ/SK": {
+            "price": 59,
+            "discountPrice": 10,
+            "description": "Gaming keyboard - Logitech Mech Dome membrane switch, wired, backlit, classic (high-profile) keys, Czech and Slovak keyboard localization, USB-A, waterproof, black color, dimensions 3.3 × 45.2 × 21.8 cm (H×W×D)",
+            "images": [
+              "products/computers/peripherals/logitech-g213/logitech-g213-cz-sk/1.webp",
+              "products/computers/peripherals/logitech-g213/logitech-g213-cz-sk/2.webp",
+              "products/computers/peripherals/logitech-g213/logitech-g213-cz-sk/3.webp"
+            ],
+            "descriptions": [
+              [
+                "Every player should own one of these",
+                "Better performance, better build quality, and spill resistance. These are the 3 main features of the Logitech G213 Prodigy gaming keyboard in the US layout. This keyboard <b>enables up to 4x faster and more accurate feedback,</b> backlight adjustment with a choice of 16.8 million shades, and key customization with the new Logitech Gaming Software."
+              ],
+              [
+                "Logitech G213 Prodigy with anti-ghosting and spill resistance",
+                "The gaming matrix with <b>anti-ghosting function ensures 100% keyboard functionality</b> even when pressing several keys at once. The Logitech G213 Prodigy also resists spills, so you don't have to worry about a standing mug of coffee or other drink nearby."
+              ],
+              [
+                "Sensitive feedback and stylish backlighting",
+                "The Logitech G213 Prodigy gaming keyboard features 4x more responsive feedback and multi-color zones with stylish multi-color backlighting. You can choose from 16.8 million color combinations to enhance your gaming experience, especially in the evening or at night."
+              ],
+              [
+                "Logitech G213 Prodigy Adjustable Tilt Angle",
+                "The Logitech G213 Prodigy keyboard's precise tilt position according to your needs is guaranteed by the legs, which can be folded to two different angles. The keyboard cable measures 1.8 meters and is terminated with a traditional USB connector."
+              ],
+              [
+                "Keys for more comfortable multimedia control",
+                "The Logitech Prodigy G213 keyboard features <b>media controls</b> on the top right. There are keys for play, pause, scroll, volume control, and other settings. You'll appreciate the comfortable wrist rest for long gaming or work sessions."
+              ]
+            ],
+            "stocks_available": 137,
+            "stocks_reserved": 24
+          },
+          "Logitech G213 - US INTL": {
+            "price": 59,
+            "discountPrice": null,
+            "description": "Gaming keyboard - Logitech Mech Dome membrane switch, wired, backlit, classic (high-profile) keys, American key localization, USB-A, waterproof, black color, dimensions 3.3 × 45.2 × 21.8 cm (H×W×D)",
+            "images": [
+              "products/computers/peripherals/logitech-g213/logitech-g213-us-intl/1.webp",
+              "products/computers/peripherals/logitech-g213/logitech-g213-us-intl/2.webp"
+            ],
+            "descriptions": [
+              [
+                "Every player should own one of these",
+                "Better performance, better build quality, and spill resistance. These are the 3 main features of the Logitech G213 Prodigy gaming keyboard in the US layout. This keyboard <b>enables up to 4x faster and more accurate feedback,</b> backlight adjustment with a choice of 16.8 million shades, and key customization with the new Logitech Gaming Software."
+              ],
+              [
+                "Logitech G213 Prodigy with anti-ghosting and spill resistance",
+                "The gaming matrix with <b>anti-ghosting function ensures 100% keyboard functionality</b> even when pressing several keys at once. The Logitech G213 Prodigy also resists spills, so you don't have to worry about a standing mug of coffee or other drink nearby."
+              ],
+              [
+                "Sensitive feedback and stylish backlighting",
+                "The Logitech G213 Prodigy gaming keyboard features 4x more responsive feedback and multi-color zones with stylish multi-color backlighting. You can choose from 16.8 million color combinations to enhance your gaming experience, especially in the evening or at night."
+              ],
+              [
+                "Logitech G213 Prodigy Adjustable Tilt Angle",
+                "The Logitech G213 Prodigy keyboard's precise tilt position according to your needs is guaranteed by the legs, which can be folded to two different angles. The keyboard cable measures 1.8 meters and is terminated with a traditional USB connector."
+              ],
+              [
+                "Keys for more comfortable multimedia control",
+                "The Logitech Prodigy G213 keyboard features <b>media controls</b> on the top right. There are keys for play, pause, scroll, volume control, and other settings. You'll appreciate the comfortable wrist rest for long gaming or work sessions."
+              ]
+            ],
+            "stocks_available": 24,
+            "stocks_reserved": 5
+          }
+        },
+        "subtypes": ["Keyboards"]
+      },
+      "Razer BlackWidow V4 PRO": {
+        "brand": "Razer",
+        "variants": {
+          "Razer BlackWidow V4 PRO 75 % - US INTL": {
+            "price": 449,
+            "discountPrice": 150,
+            "description": "Gaming keyboard - Razer Opto-Mechanical mechanical switch, wireless, dynamic backlight, classic (high-profile) keys, American (international) key localization, Bluetooth, USB-C input and radio frequency connection (2.4 GHz), quiet, black color, dimensions 4 × 33 × 16 cm (H×W×D)",
+            "images": [
+              "products/computers/peripherals/razer-blackwidow-v4-pro/razer-blackwidow-v4-pro-75%-us-int/1.webp",
+              "products/computers/peripherals/razer-blackwidow-v4-pro/razer-blackwidow-v4-pro-75%-us-int/2.webp",
+              "products/computers/peripherals/razer-blackwidow-v4-pro/razer-blackwidow-v4-pro-75%-us-int/3.webp",
+              "products/computers/peripherals/razer-blackwidow-v4-pro/razer-blackwidow-v4-pro-75%-us-int/4.webp",
+              "products/computers/peripherals/razer-blackwidow-v4-pro/razer-blackwidow-v4-pro-75%-us-int/5.webp",
+              "products/computers/peripherals/razer-blackwidow-v4-pro/razer-blackwidow-v4-pro-75%-us-int/6.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Unleash full immersion with the Razer BlackWidow V4 Pro 75% - US INTL - <b>Wireless, Hot-Swap Keyboard</b> powered by Razer HyperSpeed ​​and 4K Hz HyperPolling. Equipped with Bluetooth 5.1, Razer Command Dial, and an OLED display to track PC metrics, display custom GIFs, and more - there are no limits to creating your dream keyboard. Experience a higher level of gaming responsiveness with Razer HyperSpeed ​​and Razer HyperPolling. Expand your control by connecting and switching between 3 Bluetooth devices. The design is hot-swappable with pre-installed Razer Orange Gen-3 tactile switches. The keyboard's circuit board is compatible with 3 or 5-pin switches, allowing you to easily swap out the pre-installed switches for your own to achieve the key feel you want. With per-key lighting and striking 2-sided Razer Chroma RGB backlighting, sync your keyboard with your battle station and enjoy greater immersion in hundreds of integrated games."
+              ],
+              [
+                "Key Features of the Razer BlackWidow V4 PRO 75% Gaming Keyboard - US INTL",
+                "<ul>\n<li>2-sided backlighting with per-key lighting powered by Razer Chroma RGB technology</li>\n<li>Magnetic plush leatherette wrist rest for extra gaming comfort</li>\n<li>75% wireless format - compact layout without losing functionality</li>\n<li>2” OLED display and Razer Command Dial - PC metrics, custom GIFs and up to 100 control modes</li>\n<li>Dynamic backlighting with game synchronization</li>\n<li>Doubleshot PBT keycaps - durable, fade-resistant and RGB-optimized</li>\n<li>Razer Gen-3 mechanical switches (tactile)</li>\n<li>Hybrid internal storage for up to 6 profiles</li>\n<li>Media keys - Razer command selector with 1 dedicated side button</li>\n<li>Connect via Razer HyperSpeed ​​Wireless (2.4GHz), Bluetooth 5.1, or Type-C</li>\n<li>Recycled 5052 aluminum alloy top case, PCR plastic bottom case</li>\n<li>Including PCB and case sound deadening foam</li>\n<li>Non-conductive printed circuit board enhanced with tape and lubricated screw stabilizers with GPL 205g</li>\n<li>Wireless polling rate up to 4,000 Hz, wired polling rate up to 1,000 Hz</li>\n<li>N-key rollover & Anti-ghosting</li>\n</ul>"
+              ],
+              [
+                "OLED display with Razer Dial command selector for maximum control and customizability",
+                "From checking your PC's system metrics to customizing your display to show custom GIFs, <b>expand your control with up to 100 customizable modes</b> with the Razer Command Dial."
+              ],
+              [
+                "Optimized typing experience with enthusiast-level typing acoustics",
+                "With a gasket-mounted FR4 board, an improved circuit board, lubricated screw stabilizers, and two layers of sound-dampening foam, you'll enjoy <b>a clean sound and typing feel with minimal rattling or wobbling.</b> With a soft, cushioned wrist rest that securely attaches to the keyboard, enjoy long-lasting comfort that will help you get through the most intense gaming marathons."
+              ],
+              [
+                "Textured Doubleshot PBT keycaps for increased durability and RGB shine",
+                "Stronger and more durable than ABS, the <b>non-fade keycaps</b> maintain a matte, textured finish and are optimized to support better backlighting."
+              ]
+            ],
+            "stocks_available": 10,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Keyboards"]
+      },
+      "Razer Basilisk V3": {
+        "brand": "Razer",
+        "variants": {
+          "Razer Basilisk V3": {
+            "price": 69,
+            "discountPrice": 15,
+            "description": "Gaming mouse - wired, for right-handed people, optical, USB connection, sensitivity 26000 DPI, 1 ms response time, 11 buttons, hyperscroll, flywheel wheel, RGB backlight, cable length 1.8 m, dimensions 4.3 × 6 × 13 cm (H×W×D), weight 0.1 kg",
+            "images": [
+              "products/computers/peripherals/razer-basilisk-v3/razer-basilisk-v3/1.webp",
+              "products/computers/peripherals/razer-basilisk-v3/razer-basilisk-v3/2.webp",
+              "products/computers/peripherals/razer-basilisk-v3/razer-basilisk-v3/3.webp"
+            ],
+            "descriptions": [
+              [
+                "Razer Basilisk V3 Wired Gaming Mouse",
+                "The Razer Basilisk V3 gaming mouse features 10 +1 programmable buttons, a Razer HyperScroll scroll wheel, 11 Razer Chroma RGB lighting zones, an ergonomic design with a thumb rest for comfort. In games, you can rely on Razer Gen-2 optical mouse switches, a Razer Focus+ optical sensor, and 26,000 DPI."
+              ],
+              [
+                "Choose between profiles",
+                "The Razer Basilisk V3 wired mouse lets you switch between your profiles at will using a programmable button, ensuring optimized performance for every demanding game."
+              ],
+              [
+                "Take advantage of 11 programmable buttons",
+                "You'll have room for all your macros, as the Razer Basilisk V3 gaming mouse is equipped with 11 programmable, easy-to-access buttons that make it easy to perform essential actions like push-to-talk, ping, and more."
+              ],
+              [
+                "Backlight with 11 light zones",
+                "The Razer Basilisk V3 wired mouse features 11 Razer Chroma RGB lighting zones, each individually programmable with the Chroma Studio app, to uniquely illuminate your gaming space with 16.8 million colors."
+              ],
+              [
+                "Bet on the Razer Folding Wheel",
+                "The innovative tilt wheel offers new functionality. Thanks to its flexibility, you can easily switch between two speeds, achieving top gaming results."
+              ],
+              [
+                "Main advantages of the Razer Basilisk V3 wired mouse",
+                "<ul>\n<li>The Razer Basilisk V3 gaming mouse offers 11 programmable buttons</li>\n<li>A tilt wheel is available</li>\n<li>Has 11 programmable lighting zones</li>\n<li>Ergonomic design with thumb rest ensures comfort</li>\n<li>You will appreciate 26,000 DPI</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 135,
+            "stocks_reserved": 5
+          }
+        },
+        "subtypes": ["Mice"]
+      },
+      "SteelSeries Aerox 5": {
+        "brand": "SteelSeries",
+        "variants": {
+          "SteelSeries Aerox 5 Wireless": {
+            "price": 149,
+            "discountPrice": null,
+            "description": "Gaming mouse - wireless, for right-handed people, connection via Bluetooth, 9 buttons, RGB backlight, weight 0.074 kg",
+            "images": [
+              "products/computers/peripherals/steelseries-aerox-5/steelseries-aerox-5-wireless/1.webp"
+            ],
+            "descriptions": [
+              [
+                "The ultimate gaming mouse SteelSeries Aerox 5 Wireless for action and FPS gamers",
+                "SteelSeries introduces the Aerox 5 wireless gaming mouse, which is aimed at demanding gamers, mainly action and FPS titles. For gaming success, you need a whole range of complex commands, which you can program to one of the 5 buttons on the side. The SteelSeries Aerox 5 gaming mouse has a total of 9 buttons. Its shape is suitable for right-handed people. Other attractive benefits include extended battery life (up to 180 hours), 74-gram weight, super fast mouse movement thanks to 100% PTFE slides and an unconventional perforated design."
+              ],
+              [
+                "Key features of the SteelSeries Aerox 5 Wireless gaming mouse",
+                "<ul>\n<li>Attractive SteelSeries Aerox 5 gaming mouse with precise optical sensor</li>\n<li>High-quality switches with long service life</li>\n<li>Weighs only 74 grams</li>\n<li>Wireless gaming mouse suitable for right-handed users</li>\n<li>RGB backlight</li>\n<li><b>A total of 9 programmable buttons available</b></li>\n<li>Easily customizable gaming mouse via SteelSeries Engine software</li>\n<li>Power supply via the supplied USB-C cable</li>\n<li>Battery life up to 180 hours of use</li>\n<li>After a 15-minute charge, you get enough power for over 40 hours of fun</li>\n<li>AquaBarrier™ protection ensures SteelSeries mice are IP54 rated</li>\n<li>100% PTFE slide</li>\n<li>PixArt's TrueMove Air optical sensor with 18,000 DPI resolution, 400 IPS speed, up to 40G acceleration and tilt tracking</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 19,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Mice"]
+      },
+      "HyperX Cloud III": {
+        "brand": "HyperX",
+        "variants": {
+          "HyperX Cloud III Red": {
+            "price": 105,
+            "discountPrice": 40,
+            "description": "Gaming headphones - wired, with microphone, over-the-head, around the ears, closed construction, 3.5 mm Jack, USB-A, USB-C, for PC, PlayStation 5 and Xbox Series, gaming mode, frequency range 10 - 21000 Hz, sensitivity 100 dB/mW, impedance 64 Ohm, cable 1.2 m",
+            "images": [
+              "products/computers/peripherals/hyperx-cloud-iii/hyperx-cloud-iii-red/1.webp",
+              "products/computers/peripherals/hyperx-cloud-iii/hyperx-cloud-iii-red/2.webp",
+              "products/computers/peripherals/hyperx-cloud-iii/hyperx-cloud-iii-red/3.webp",
+              "products/computers/peripherals/hyperx-cloud-iii/hyperx-cloud-iii-red/4.webp"
+            ],
+            "descriptions": [
+              [
+                "HyperX Cloud III Wired Gaming Headset with Surround Sound",
+                "HyperX Cloud III is a professional wired headset for demanding gamers who are looking for comfort, lightness, durability, top sound quality and other advanced features. <b>Thanks to the soft padding, HyperX Cloud III headphones guarantee maximum comfort even during long-term wear.</b> The equipment includes a flexible microphone with ambient noise suppression or support for DTS Headphone: X Spatial Audio technology with immersive 3D sound."
+              ],
+              [
+                "Key features of HyperX Cloud III headset",
+                "<ul>\n<li>Redesigned gaming headset</li>\n<li>DTS Headphone:X Spatial Audio technology delivers immersive 3D sound</li>\n<li>Detachable microphone with Discord and TeamSpeak certification</li>\n<li>Braided cable with integrated audio control</li>\n<li>The earcups are surrounded by premium soft leatherette for comfortable all-day wear.</li>\n<li>Compatible with PCs, PS5, Xbox Series X|S, Xbox One, Nintendo Switch, Mac, and mobile devices with a 3.5mm jack, USB-C, or USB-A</li>\n<li>USB-C to USB-A adapter included</li>\n</ul>"
+              ],
+              [
+                "Comfortable HyperX Cloud III gaming headset with excellent sound",
+                "The Cloud III gaming headset also features the comfort that HyperX is famous for. It is provided with premium memory foam, an extended headband, and a softer, more supple leatherette. The aluminum frame is built to last. The sophisticated design of the closed-back earcups of the HyperX Cloud III headphones <b>effectively eliminates distracting ambient noise, while the powerful 53 mm drivers deliver detailed, dynamic sound</b> with enhanced bass that draws you fully into the game. In practice, you will also appreciate the great use of surround sound. Thanks to this, you will enjoy the gaming experience even better."
+              ],
+              [
+                "Detachable durable cable and certified microphone of HyperX Cloud III headset",
+                "In response to gamers' demands, the HyperX Cloud III headset features a durable, detachable braided cable. A detachable, noise-canceling microphone that's certified for Discord and TeamSpeak ensures seamless communication with your team. <b>The microphone features noise-canceling and an integrated network filter</b> that reduces distracting sounds. It also features a microphone mute LED indicator that shows whether the mute is active. Players can enjoy the great sound of the new HyperX Cloud III gaming headset on PC, PS5, Xbox Series X|S, Xbox One, Nintendo Switch, Mac, and other devices with a USB-C/A port and a 3.5mm jack."
+              ]
+            ],
+            "stocks_available": 33,
+            "stocks_reserved": 9
+          }
+        },
+        "subtypes": ["Headphones"]
+      },
+      "Logitech G522 LIGHTSPEED": {
+        "brand": "Logitech",
+        "variants": {
+          "Logitech G522 LIGHTSPEED - Black": {
+            "price": 149,
+            "discountPrice": null,
+            "description": "Gaming headphones - wireless, with microphone, over-the-head, around the ears, closed design, Bluetooth, radio frequency connection, USB-C, for PC, with volume control, DTS surround sound, frequency range 20 - 20000 Hz, sensitivity 97 dB/mW, 40 mm driver, battery life up to 70 h",
+            "images": [
+              "products/computers/peripherals/logitech-g522-lightspeed/logitech-g522-lightspeed-black/1.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Logitech G522 LIGHTSPEED Wireless Gaming Headset combines performance, comfort, and durability. This model will appeal to both demanding gamers and streamers who are looking for precise sound, low latency, and high connection reliability. Thanks to the closed design and 40 mm drivers, you will enjoy every battle with maximum intensity. The headset supports LIGHTSPEED wireless technology and classic Bluetooth connection, which gives them the flexibility to use not only on PCs, but also with mobile devices. Ergonomic design and <b>extreme battery life of up to 70 hours</b> allow you to immerse yourself in the world of games without constant interruptions. Logitech G522 LIGHTSPEED offers DTS surround sound that draws you right into the action. Elegant black design with lighting effects."
+              ],
+              [
+                "Key features of the Logitech G522 LIGHTSPEED gaming headset, black",
+                "<ul>\n<li>LIGHTSPEED wireless technology with ultra-low latency</li>\n<li>Battery life up to 70 hours on a single charge</li>\n<li>DTS surround sound for the ultimate surround experience</li>\n<li>Closed-back design with comfortable over-ear cushions</li>\n<li>High-quality 40mm drivers with 97 dB/mW sensitivity</li>\n<li>Possibility of connecting via Bluetooth and USB-C</li>\n<li>Logitech G522 LIGHTSPEED Gaming Headset is ideal for everyday gaming and streaming</li>\n<li>Black version</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 24,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Headphones"]
+      },
+      "Logitech G333 Gaming Earphones": {
+        "brand": "Logitech",
+        "variants": {
+          "Logitech G333 Gaming Earphones Black": {
+            "price": 49,
+            "discountPrice": 10,
+            "description": "Gaming headphones - wired, with microphone, earplugs, closed design, 3.5 mm Jack, USB-C, for PC, PlayStation 4, PlayStation 5, Xbox ONE, Xbox Series and Nintendo Switch, game mode, frequency range 20 - 20000 Hz, sensitivity 101.6 dB/mW, impedance 24 Ohm, 9.2 mm driver",
+            "images": [
+              "products/computers/peripherals/logitech-g333-gaming-earphones/logitech-g333-gaming-earphones-black/1.webp",
+              "products/computers/peripherals/logitech-g333-gaming-earphones/logitech-g333-gaming-earphones-black/2.webp",
+              "products/computers/peripherals/logitech-g333-gaming-earphones/logitech-g333-gaming-earphones-black/3.webp"
+            ],
+            "descriptions": [
+              [
+                "LOGITECH G333 GAMING - wired headphones with immersive surround sound",
+                "The G333, Logitech G's first in-ear headset, is designed specifically for gamers. With dual drivers in each earbud - one for deep bass, the other for midrange and highs - they deliver a rich soundstage that reveals every detail of your gaming environment and clearly separates voice chat."
+              ]
+            ],
+            "stocks_available": 58,
+            "stocks_reserved": 7
+          }
+        },
+        "subtypes": ["Earphones"]
+      },
+      "Logitech C920s HD Pro": {
+        "brand": "Logitech",
+        "variants": {
+          "Logitech C920s HD Pro": {
+            "price": 99,
+            "discountPrice": 10,
+            "description": "Webcam with Full HD resolution (1920 × 1080 px), photos up to 2 Mpx, 78° viewing angle, built-in stereo microphone, autofocus, folding mechanism, low light correction",
+            "images": [
+              "products/computers/peripherals/logitech-c920s-hd-pro/logitech-c920s-hd-pro/1.webp"
+            ],
+            "descriptions": [
+              [
+                "Enjoy video calls in full HD resolution",
+                "The Logitech C920s HD Pro is a webcam that provides you with exceptionally sharp and detailed images in Full HD resolution (1080p at 30 fps). The webcam's field of view is 78° and you will certainly appreciate the practical function of automatic lighting correction in HD resolution. The Logitech C920s HD Pro is also equipped with dual microphones and a snap-on lens cover that not only protects it from damage, but also protects your privacy."
+              ],
+              [
+                "A great choice for video conferencing",
+                "A fixed 78° diagonal field of view and a five-element glass lens allow you to capture perfectly sharp images with pure colors. There is also autofocus and you will have a choice of two resolutions - Full HD (1080p at 30 fps) and HD resolution (720p at 30 fps). If you don't want the Logitech C920s HD Pro webcam to record you, simply attach the included lens cap."
+              ],
+              [
+                "Webcam offers great images in any conditions",
+                "When streaming in HD, you can take advantage of automatic ambient light correction with Logitech's RightLight 2 technology. The C920s webcam offers bright, high-contrast images even in dim lighting."
+              ]
+            ],
+            "stocks_available": 11,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Webcams"]
+      },
+      "SteelSeries Alias Pro": {
+        "brand": "SteelSeries",
+        "variants": {
+          "SteelSeries Alias Pro - EMEA": {
+            "price": 399,
+            "discountPrice": 50,
+            "description": "Microphone - desktop, suitable for PC, streaming, gaming communication, condenser, directional pickup, frequency from 50 to 20,000 Hz, sensitivity 120 dB, Mute button and Volume control, headphone output, stand and cable included",
+            "images": [
+              "products/computers/peripherals/steelseries-alias-pro/steelseries-alias-pro-emea/1.webp",
+              "products/computers/peripherals/steelseries-alias-pro/steelseries-alias-pro-emea/2.webp",
+              "products/computers/peripherals/steelseries-alias-pro/steelseries-alias-pro-emea/3.webp",
+              "products/computers/peripherals/steelseries-alias-pro/steelseries-alias-pro-emea/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The SteelSeries Alias Pro gaming microphone uses a 3x larger capsule (25 mm) than regular microphones, thanks to which it can capture a wide range of sounds. The microphone was designed to be connected to two PCs at the same time. With the Sonar for Streamers software solution, you can easily adjust your sound like a pro. SteelSeries Alias ​​Pro <b>uses artificial intelligence-assisted ambient noise cancellation.</b> The microphone comes with a Stream Mixer, where you can easily mute the sound and microphone, or adjust the volume. In addition, you will definitely appreciate the stylish RGB backlighting of the Stream Mixer. A robust shock mount will prevent unwanted sound from getting into your stream."
+              ],
+              [
+                "Key Features of the SteelSeries Alias Pro Microphone",
+                "<ul>\n<li>The ideal microphone for gaming and streaming</li>\n<li>SteelSeries Alias Pro has a 1\" capsule for accurate sound capture</li>\n<li>Includes a Stream Mixer with mappable controls and RGB lighting that connects to the microphone via an XLR cable</li>\n<li>AI-powered noise cancellation ensures sound clarity</li>\n<li>The robust shock mount prevents the transmission of unwanted sounds such as typing on the keyboard, etc.</li>\n<li>Connecting via USB-C (Stream Mixer to PC)</li>\n<li>2× USB-C for connecting to two PCs simultaneously</li>\n<li>Possibility to connect headphones for real-time monitoring</li>\n<li>Flexible design</li>\n</ul>"
+              ],
+              [
+                "Easy audio editing in Sonar and XLR Stream Mixer",
+                "First, you select your device and set Sonar Stream as the only source in any streaming software. Then, with a simple drag and drop, you can <b>drop</b> your favorite apps, like Spotify or Discord, into one of four audio streams (Game, Chat, AUX, and Media). You can choose from a variety of presets that you can then customize as needed. With the Alias ​​Pro microphone, you get an XLR Stream Mixer that lets you convert a professional XLR signal into a stream. You connect the SteelSeries Alias ​​Pro microphone to the Stream Mixer via an XLR cable, and you can then connect the station to up to two PCs simultaneously via USB-C. The right joystick and right button are also fully mappable."
+              ]
+            ],
+            "stocks_available": 14,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Microphones"]
+      },
+      "Xerox C235DNI": {
+        "brand": "Xerox",
+        "variants": {
+          "Xerox C235DNI - White": {
+            "price": 299,
+            "discountPrice": null,
+            "description": "Laser printer - multifunctional, color, A4, copy and scan, fax, black and white print speed (ISO) 22 ppm, color print speed (ISO) 22 ppm, print resolution 600 × 600 DPI, automatic duplex, ADF scanner, touchscreen, AirPrint, USB, LAN and WiFi",
+            "images": [
+              "products/computers/peripherals/xerox-c235dni/xerox-c235dni-white/1.webp",
+              "products/computers/peripherals/xerox-c235dni/xerox-c235dni-white/2.webp",
+              "products/computers/peripherals/xerox-c235dni/xerox-c235dni-white/3.webp",
+              "products/computers/peripherals/xerox-c235dni/xerox-c235dni-white/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "The Xerox C235DNI color laser printer with four functions (print, fax, copy, scan) combines fast printing, high reliability and easy document management, making it an ideal choice for <b>small and medium-sized businesses or home offices</b>. The printer enables automatic duplex printing (600 × 600 DPI) at a speed of up to 22 pages per minute, while it can print up to 30,000 pages per month. In addition to the classic wired connection via USB or RJ-45 (LAN) connector, you can also use the WiFi interface with Apple AirPrint, Mopria and WiFi Direct functions, which allow you to print wirelessly directly from mobile devices, laptops, tablets and other devices. The printer also features an automatic document feeder, a 250-sheet main paper tray, and a 2.8-inch color touchscreen. The C235DNI also features a built-in fax with a maximum transmission speed of 33.6 kbps. You will also appreciate the advanced security features that protect your sensitive data and documents from cyber threats and misuse. The printer's recommended monthly print volume is 1,500 pages."
+              ],
+              [
+                "Key features of the Xerox C235DNI multifunction laser printer",
+                "<ul>\n<li>Color multifunction printer allows printing, faxing, scanning and copying</li>\n<li>Automatic two-sided printing with 250-sheet paper tray</li>\n<li><b>Print speed reaches up to 22 pages per minute</b></li>\n<li>Wireless WiFi connection with Apple AirPrint, Mopria and WiFi Direct</li>\n<li>Supports Adobe PostScript 3 and PCL 5/6 printing languages</li>\n<li>Possibility of wired connection using RJ-45 connector or USB port</li>\n<li>Automatic single-sided feeder for up to 50 sheets (for scanning and copying)</li>\n<li>Easy operation via color touch display</li>\n<li>The Xerox C235DNI printer can be connected to the Xerox Easy Assist mobile app</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 19,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["Printers"]
+      }
+    }
   }
 }

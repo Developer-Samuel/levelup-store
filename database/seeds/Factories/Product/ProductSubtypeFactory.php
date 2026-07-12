@@ -31,7 +31,11 @@ trait ProductSubtypeFactory
         array $subtypes,
     ): void {
         foreach ($subtypes as $subtypeName) {
-            $subtype = $manager->getRepository(Subtype::class)->findOneBy(['name' => $subtypeName]);
+            $subtype = $manager->getRepository(Subtype::class)->findOneBy([
+                'name'     => $subtypeName,
+                'type'     => $product->getType(),
+                'category' => $product->getCategory(),
+            ]);
             SubtypeAssertion::assertExists($subtype);
 
             $productSubtype = (new ProductSubtype())

@@ -1,5 +1,60 @@
 {
   "Appliances": {
-    "Washing Machines": {}
+    "Washing Machines": {
+      "LG FASR3A04WW": {
+        "brand": "LG",
+        "variants": {
+          "LG FASR3A04WW": {
+            "price": 599,
+            "discountPrice": 150,
+            "description": "Steam washing machine - front loading, energy class A, washing machine capacity 10 kg, weighted energy consumption 47 kWh/100 cycles, weighted water consumption per cycle 52 l, automatic weight control, programs: fast, steam, for allergy sufferers, for delicate laundry, ECO, for wool, sports/outdoor and MIX, inverter motor and mobile control, Fuzzy Logic, 1360 rpm during spinning, dimensions 60 × 85 × 62 cm (W×H×D)",
+            "images": [
+              "products/appliances/washing-machines/lg-fasr3a04ww/lg-fasr3a04ww/1.webp",
+              "products/appliances/washing-machines/lg-fasr3a04ww/lg-fasr3a04ww/2.webp",
+              "products/appliances/washing-machines/lg-fasr3a04ww/lg-fasr3a04ww/3.webp",
+              "products/appliances/washing-machines/lg-fasr3a04ww/lg-fasr3a04ww/4.webp",
+              "products/appliances/washing-machines/lg-fasr3a04ww/lg-fasr3a04ww/5.webp"
+            ],
+            "descriptions": [
+              [
+                "LG FASR3A04WW Steam Washing Machine",
+                "Arm your household for the never-ending battle with dirty laundry. The LG FASR3A04WW steam washer offers several unique technologies that improve washing results. Among the biggest innovations is certainly the use of a special Direct Drive™ inverter motor, which is perfectly quiet and extremely reliable."
+              ],
+              [
+                "Key features of the LG FASR3A04WW automatic steam washer",
+                "<ul>\n<li>Large drum capacity - up to 10 kg of laundry per wash</li>\n<li>Reliable and quiet Direct Drive™ motor with 10-year warranty</li>\n<li>Steam programs of the LG FASR3A04WW washing machine - ideal for allergy sufferers and children's clothes</li>\n<li>AI DD™ technology - optimal selection of washing movements for efficient and gentle washing</li>\n<li>Durable LG FASR3A04WW washing machine door made of tempered glass</li>\n<li>Smart Diagnosis™ for troubleshooting</li>\n<li>Remote control via LG SmartThinQ™ app</li>\n<li>Energy class A</li>\n</ul>"
+              ],
+              [
+                "ThinQ™ - smart mobile application for LG FASR3A04WW washing machine",
+                "You can download and upload new washing programs via WiFi, such as Baby Care, Wool, or Cold Wash. The program menu for download is constantly updated. The mobile application also offers a clear monitoring of the energy consumption of the LG FASR3A04WW washing machine, the remaining cycle time, and remote control of the appliance. The Smart Diagnosis™ function helps identify and solve any problems."
+              ],
+              [
+                "How does AI DD™ work?",
+                "If you are not sure about choosing the right program for your clothes, AI DD™ technology will solve it for you. Just select the Cotton, Mixed or Synthetic program and put the laundry in the drum. AI DD™ artificial intelligence weighs the laundry, recognizes the softness of the fabrics and then automatically selects the most suitable washing movements. In addition, your LG FASR3A04WW washing machine will constantly learn and improve the detection of laundry with each subsequent wash thanks to learning technology. Thanks to this, it will provide up to 18% more effective care and clothes will not wear out so quickly."
+              ],
+              [
+                "ezDispense™ feature",
+                "The LG FASR3A04WW washing machine features the useful ezDispense™ feature, which automatically dispenses the exact amount of detergent and allows you to use both the fabric softener and detergent compartments together for up to 35 doses of detergent."
+              ],
+              [
+                "Perfectly washed in the LG FASR3A04WW washing machine in just 59 minutes",
+                "With TurboWash™ technology, your laundry will be thoroughly washed in just 59 minutes. How is that possible? The LG FASR3A04WW washing machine uses a JetSpray nozzle to spray clean water on your laundry, resulting in extremely efficient rinsing cycles."
+              ],
+              [
+                "LG FASR3A04WW washing machine with steam wash",
+                "To ensure that your laundry is not only perfectly clean but also healthy, the LG FASR3A04WW washing machine features Steam™ technology, which pleasantly refreshes your laundry and eliminates wrinkles. It also destroys up to 99.9% of household allergens, such as dust mites."
+              ],
+              [
+                "Extra large drum of the LG FASR3A04WW washing machine",
+                "The LG FASR3A04WW washing machine has a larger drum capacity despite its standard dimensions. Although the drum can hold 10 kg of laundry, the washing machine will fit comfortably in your bathroom and kitchen."
+              ]
+            ],
+            "stocks_available": 20,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Smart"]
+      }
+    }
   }
 }

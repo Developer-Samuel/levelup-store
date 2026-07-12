@@ -1,5 +1,38 @@
 {
   "Gaming": {
-    "Gamepads": {}
+    "Gamepads": {
+      "PlayStation 5 DualSense Wireless Controller": {
+        "brand": "Playstation",
+        "variants": {
+          "PlayStation 5 DualSense Wireless Controller - White": {
+            "price": 69,
+            "discountPrice": 5,
+            "description": "Gamepad for PS5, wireless connection, 3.5 mm Jack (on the controller), USB-C (on the controller), integrated battery, vibration, backlight, analog sticks, speaker, microphone, haptic feedback, white color.",
+            "images": [
+              "products/gaming/gamepads/playstation-5-dualsense-wireless-controller/playstation-5-dualsense-wireless-controller-white/1.webp",
+              "products/gaming/gamepads/playstation-5-dualsense-wireless-controller/playstation-5-dualsense-wireless-controller-white/2.webp",
+              "products/gaming/gamepads/playstation-5-dualsense-wireless-controller/playstation-5-dualsense-wireless-controller-white/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 25,
+            "stocks_reserved": 0
+          },
+          "PlayStation 5 DualSense Wireless Controller - Midnight Black": {
+            "price": 69,
+            "discountPrice": null,
+            "description": "Gamepad for PS5, wireless connection, 3.5 mm Jack (on the controller), USB-C (on the controller), integrated battery, vibration, backlight, analog sticks, speaker, microphone, haptic feedback, midnight black color.",
+            "images": [
+              "products/gaming/gamepads/playstation-5-dualsense-wireless-controller/playstation-5-dualsense-wireless-controller-midnight-black/1.webp",
+              "products/gaming/gamepads/playstation-5-dualsense-wireless-controller/playstation-5-dualsense-wireless-controller-midnight-black/2.webp",
+              "products/gaming/gamepads/playstation-5-dualsense-wireless-controller/playstation-5-dualsense-wireless-controller-midnight-black/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 39,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Wireless"]
+      }
+    }
   }
 }

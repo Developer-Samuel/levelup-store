@@ -1,5 +1,38 @@
 {
   "Gaming": {
-    "VR Headsets": {}
+    "VR Headsets": {
+      "Meta Quest 3": {
+        "brand": "Meta",
+        "variants": {
+          "Meta Quest 3 (512 GB)": {
+            "price": 599,
+            "discountPrice": null,
+            "description": "VR glasses - stand-alone, LCD display, 120 Hz refresh rate, with microphone, WiFi and USB-C connection, 110° field of view, Snapdragon XR2 Gen 2, 512 GB storage, 8 GB RAM, weight 0.515 kg, white color, controller included",
+            "images": [
+              "products/gaming/vr-headsets/meta-quest-3/meta-quest-3-512-gb/1.webp",
+              "products/gaming/vr-headsets/meta-quest-3/meta-quest-3-512-gb/2.webp",
+              "products/gaming/vr-headsets/meta-quest-3/meta-quest-3-512-gb/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "With the new generation of the Oculus Quest 3 headset, breathtaking gaming and multimedia experiences await you. <b>Overall, it is a complete technological leader with massive support among game and application developers.</b> This is the first headset ever to offer you full-fledged AR in addition to VR. Two color RGB cameras combined with a depth projector provide full-color, high-fidelity views of your surroundings and manage the blending of virtual and physical spaces."
+              ],
+              [
+                "Key features of the Meta Quest 3 VR glasses (512 GB)",
+                "<ul>\n<li>Resolution (total) - 4,128 × 2,208 px</li>\n<li>Resolution (per eye) - 2,064 × 2,208 px</li>\n<li>Refresh rate 120 Hz</li>\n<li>Qualcomm Snapdragon XR2 Gen2 processor</li>\n<li>RAM capacity 8 GB</li>\n<li>512GB integrated storage</li>\n<li>Bluetooth, USB-TC connection</li>\n<li>Sensors - accelerometer, magnetometer, gyroscopic sensor</li>\n<li>Suitable for virtual and augmented/mixed reality</li>\n<li>Battery life up to 3 hours on a single charge</li>\n<li>The Oculus Quest 3 includes an integrated microphone</li>\n<li>Also suitable for people who wear glasses</li>\n<li>Free Oculus app and mobile devices required for initial setup</li>\n</ul>"
+              ],
+              [
+                "Oculus Quest 3 has a 120Hz HDR display",
+                "The display is also completely new with a higher resolution of 2,208 × 2,064 pixels at 120 Hz, which is significantly more pixels compared to the previous generation. The Oculus Quest 3 can also be a great device not only for exploring virtual worlds, but also for watching movies thanks to support for displaying HDR10+ content. The new Touch Plus controllers offer a modified design based on the appearance of the Quest 3. The absence of a ring with sensors around the top of the controller will please, making the controllers smaller and better to hold. Functional innovations include the TruTouch haptic response or a pressure sensor in the thumb area, which is able to recognize how tightly you hold the controller."
+              ]
+            ],
+            "stocks_available": 15,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Standalone"]
+      }
+    }
   }
 }

@@ -1,5 +1,96 @@
 {
   "Smart": {
-    "Smartphones": {}
+    "Smartphones": {
+      "Samsung Galaxy S26 Ultra": {
+        "brand": "Samsung",
+        "variants": {
+          "Samsung Galaxy S26 Ultra 16 GB/1 TB Cobalt Violet": {
+            "price": 1999,
+            "discountPrice": null,
+            "description": "Mobile phone - 6.9\" OLED 3120 × 1440 (120 Hz), storage: 1 TB, RAM: 16 GB and more, camera: 200 Mpx (f/1.4) main + 50 Mpx wide-angle + 50 Mpx telephoto + 12 Mpx front, CPU: Qualcomm Snapdragon 8 Elite Gen 5, NFC, USB-C, 5G, Dual SIM + eSIM, fingerprint reader, IP68 waterproof, private display, 60 W fast charging, 25 W wireless charging, 5000 mAh battery, model 2026, Android",
+            "images": [
+              "products/smart/smartphones/samsung-galaxy-s26-ultra/samsung-galaxy-s26-ultra-16-GB-1-tb-cobalt-violet/1.webp",
+              "products/smart/smartphones/samsung-galaxy-s26-ultra/samsung-galaxy-s26-ultra-16-GB-1-tb-cobalt-violet/2.webp",
+              "products/smart/smartphones/samsung-galaxy-s26-ultra/samsung-galaxy-s26-ultra-16-GB-1-tb-cobalt-violet/3.webp"
+            ],
+            "descriptions": [
+              [
+                "Key features of the Samsung Galaxy S26 Ultra, 16 GB/1 TB, Cobalt Violet mobile phone",
+                "<ul>\n<li>200MP main camera (f/1.4), 50MP wide-angle + 50MP telephoto and 12MP front camera</li>\n<li>The main lens has an improved f/1.4 aperture, allowing more light to reach the camera sensor.</li>\n<li>The world's first mobile phone with privacy protection technology (Privacy Display)</li>\n<li>Supports 60W fast charging and 25W wireless charging</li>\n<li>IP68 rating protects the phone from dust and splashes of water</li>\n<li>Modern Qualcomm Snapdragon 8 Elite Gen 5 processor</li>\n<li>Android 16, model line released in 2026</li>\n</ul>"
+              ],
+              [
+                "Elegant and sophisticated design with exceptional durability",
+                "The new camera design is more natural, smoother, and aesthetically blends with the body of the Samsung Galaxy S26 Ultra for an even more graceful look. <b>The robust Armor Aluminum frame combined with Corning Gorilla Glass and water resistance ensures a solid construction and attractive design.</b> The harmonious design of the thinnest Ultra model to date not only gives it a premium look, but also ensures extremely comfortable use."
+              ],
+              [
+                "Processor customized exclusively for Galaxy",
+                "The most powerful processor for multitasking and graphics-intensive games. Unlock the full potential of Galaxy AI with the Samsung Galaxy S26 Ultra and <b>enjoy smooth images in the highest quality.</b>"
+              ]
+            ],
+            "stocks_available": 149,
+            "stocks_reserved": 7
+          },
+          "Samsung Galaxy S26 Ultra 16 GB/1 TB Black": {
+            "price": 1999,
+            "discountPrice": 100,
+            "description": "Mobile phone - 6.9\" OLED 3120 × 1440 (120 Hz), storage: 1 TB, RAM: 16 GB and more, camera: 200 Mpx (f/1.4) main + 50 Mpx wide-angle + 50 Mpx telephoto + 12 Mpx front, CPU: Qualcomm Snapdragon 8 Elite Gen 5, NFC, USB-C, 5G, Dual SIM + eSIM, fingerprint reader, IP68 waterproof, private display, 60 W fast charging, 25 W wireless charging, 5000 mAh battery, model 2026, Android",
+            "images": [
+              "products/smart/smartphones/samsung-galaxy-s26-ultra/samsung-galaxy-s26-ultra-16-GB-1-tb-black/1.webp",
+              "products/smart/smartphones/samsung-galaxy-s26-ultra/samsung-galaxy-s26-ultra-16-GB-1-tb-black/2.webp",
+              "products/smart/smartphones/samsung-galaxy-s26-ultra/samsung-galaxy-s26-ultra-16-GB-1-tb-black/3.webp"
+            ],
+            "descriptions": [
+              [
+                "Key features of the Samsung Galaxy S26 Ultra, 16 GB/1 TB, Black mobile phone",
+                "<ul>\n<li>200MP main camera (f/1.4), 50MP wide-angle + 50MP telephoto and 12MP front camera</li>\n<li>The main lens has an improved f/1.4 aperture, allowing more light to reach the camera sensor.</li>\n<li>The world's first mobile phone with privacy protection technology (Privacy Display)</li>\n<li>Supports 60W fast charging and 25W wireless charging</li>\n<li>IP68 rating protects the phone from dust and splashes of water</li>\n<li>Modern Qualcomm Snapdragon 8 Elite Gen 5 processor</li>\n<li>Android 16, model line released in 2026</li>\n</ul>"
+              ],
+              [
+                "Elegant and sophisticated design with exceptional durability",
+                "The new camera design is more natural, smoother, and aesthetically blends with the body of the Samsung Galaxy S26 Ultra for an even more graceful look. <b>The robust Armor Aluminum frame combined with Corning Gorilla Glass and water resistance ensures a solid construction and attractive design.</b> The harmonious design of the thinnest Ultra model to date not only gives it a premium look, but also ensures extremely comfortable use."
+              ],
+              [
+                "Processor customized exclusively for Galaxy",
+                "The most powerful processor for multitasking and graphics-intensive games. Unlock the full potential of Galaxy AI with the Samsung Galaxy S26 Ultra and <b>enjoy smooth images in the highest quality.</b>"
+              ]
+            ],
+            "stocks_available": 242,
+            "stocks_reserved": 14
+          }
+        },
+        "subtypes": ["Android"]
+      },
+      "iPhone 17 Pro Max": {
+        "brand": "Apple",
+        "variants": {
+          "iPhone 17 Pro Max 2TB Silver": {
+            "price": 2499,
+            "discountPrice": 300,
+            "description": "Mobile phone - 6.9\" OLED 2868 × 1320 (120 Hz), storage: 2 TB, RAM: 12 GB, camera: 48 Mpx (f/1.78) main + 48 Mpx wide-angle + 48 Mpx telephoto + 18 Mpx front, CPU: Apple A19 Pro, NFC, USB-C, 5G, dual SIM, waterproof according to IP68, fast charging 36 W, wireless charging 25 W, battery 4823 mAh, model 2025, iOS",
+            "images": [
+              "products/smart/smartphones/iphone-17-pro-max/iphone-17-pro-max-2tb-silver/1.webp",
+              "products/smart/smartphones/iphone-17-pro-max/iphone-17-pro-max-2tb-silver/2.webp",
+              "products/smart/smartphones/iphone-17-pro-max/iphone-17-pro-max-2tb-silver/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Apple iPhone 17 Pro Max pushes the boundaries of performance and expands the possibilities of creativity. Its thin unibody aluminum construction is complemented by Ceramic Shield glass, which is highly resistant to scratches. On the 6.9-inch Super Retina XDR display, you will enjoy a sharp image with a brightness of 3,000 nits, and thanks to ProMotion technology with 120Hz adaptive refresh rate, you can look forward to exceptionally smooth operation. A professional 48MP camera with features such as dual video recording, frame centering or ultra-stabilized 4K video gives you a lot of freedom when taking photos and filming. Everything is powered by the A19 Pro chip, which can easily handle demanding games or Apple Intelligence functions. Thanks to all-day battery life and fast charging, iPhone will not disappoint you even with heavy use."
+              ],
+              [
+                "Key features",
+                "<ul>\n<li>6.9-inch Super Retina XDR display with 3,000 nits of brightness</li>\n<li>Professional 48MP Fusion camera</li>\n<li>Customizable action button</li>\n<li>Apple Intelligence for intelligent assistance and productivity</li>\n<li>All-day battery life and fast charging</li>\n</ul>"
+              ],
+              [
+                "Advanced performance",
+                "At the heart of the phone is the <b>super-powerful A19 Pro chip with evaporative cooling</b>, which, combined with a <b>6-core GPU with Neural Accelerators</b>, easily handles even the most demanding tasks, whether it's playing AAA games smoothly or using smart features. Plus, with a battery that lasts all day (up to 37 hours of video playback), you don't have to worry about going out without a charger. And when you do run out of power, it only takes 20 minutes to charge to 50%."
+              ]
+            ],
+            "stocks_available": 281,
+            "stocks_reserved": 29
+          }
+        },
+        "subtypes": ["iOS"]
+      }
+    }
   }
 }

@@ -1,5 +1,25 @@
 {
   "Smart": {
-    "Smart Ring": {}
+    "Smart Ring": {
+      "Samsung Galaxy Ring": {
+        "brand": "Samsung",
+        "variants": {
+          "Samsung Galaxy Ring Gold titanium size 12": {
+            "price": 499,
+            "discountPrice": 50,
+            "description": "Smart ring - size 12, for sports activities running and walking, titanium material, blood oxygen saturation measurement, sleep monitoring, stress level measurement, menstrual cycle tracking and pulse measurement, measures ambient temperature, water resistance 100 m (10 ATM), Bluetooth wireless technology, compatible with Android OS, weight 3 g, max. battery life 168 h",
+            "images": [
+              "products/smart/smart-ring/samsung-galaxy-ring/samsung-galaxy-ring-gold-titanium-size-12/1.webp",
+              "products/smart/smart-ring/samsung-galaxy-ring/samsung-galaxy-ring-gold-titanium-size-12/2.webp",
+              "products/smart/smart-ring/samsung-galaxy-ring/samsung-galaxy-ring-gold-titanium-size-12/3.webp"
+            ],
+            "descriptions": [],
+            "stocks_available": 3,
+            "stocks_reserved": 1
+          }
+        },
+        "subtypes": ["Samsung"]
+      }
+    }
   }
 }

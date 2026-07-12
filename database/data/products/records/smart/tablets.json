@@ -1,5 +1,43 @@
 {
   "Smart": {
-    "Tablets": {}
+    "Tablets": {
+      "Lenovo Idea Tab 11\"": {
+        "brand": "Lenovo",
+        "variants": {
+          "Lenovo Idea Tab 11\" WiFi 8 GB/256 GB Polar Blue + Tab Pen + Keyboard": {
+            "price": 299,
+            "discountPrice": null,
+            "description": "Tablet - 11\" QHD 2560 × 1600 IPS display, storage: 256 GB, RAM: 8 GB, memory card up to 1000 GB, WiFi, Bluetooth, GPS, Mediatek Dimensity 6300 2.4 GHz, 8 Mpx rear camera, 5 Mpx front camera, USB-C, active stylus support, stylus included, 7040 mAh battery",
+            "images": [
+              "products/smart/tablets/lenovo-idea-tab-11/lenovo-idea-tab-11-wifi-8-gb-256-gb-polar-blue-tab-pen-keyboard/1.webp",
+              "products/smart/tablets/lenovo-idea-tab-11/lenovo-idea-tab-11-wifi-8-gb-256-gb-polar-blue-tab-pen-keyboard/2.webp",
+              "products/smart/tablets/lenovo-idea-tab-11/lenovo-idea-tab-11-wifi-8-gb-256-gb-polar-blue-tab-pen-keyboard/3.webp",
+              "products/smart/tablets/lenovo-idea-tab-11/lenovo-idea-tab-11-wifi-8-gb-256-gb-polar-blue-tab-pen-keyboard/4.webp"
+            ],
+            "descriptions": [
+              [
+                "Why buy a Lenovo Idea Tab tablet?",
+                "<ul>\n<li><b>Great display:</b> The 11-inch 2.5K screen with a 90 Hz refresh rate and 500 nits of brightness offers a perfect picture.</li>\n<li><b>Powerful hardware:</b> Dimensity 6300 octa-core processor and large RAM for smooth application operation.</li>\n<li><b>Modern system:</b> Android 15 with Lenovo ZUI 17 and a guarantee of 4 years of security updates.</li>\n<li><b>Premium sound:</b> Four speakers with Dolby Atmos will immerse you in movies, music, and games.</li>\n<li><b>Flexible accessories:</b> Included in the package are accessories that make your work and use easier, such as a <b>keyboard and an active stylus.</b></li>\n</ul>"
+              ],
+              [
+                "Stunning 2.5K display",
+                "The Lenovo Idea Tab boasts an <b>11-inch 2.5K (2560 x 1600) IPS display,</b> which offers 274 PPI, a 90Hz refresh rate for smoother images, and <b>up to 500 nits of brightness,</b> making it perfect even in direct sunlight. The display supports the <b>included Lenovo Tab Pen stylus,</b> which lets you write and draw like you would on paper."
+              ],
+              [
+                "High performance for smooth operation",
+                "The heart of the tablet is the <b>octa-core MediaTek Dimensity 6300 processor with a clock speed of up to 2.4 GHz,</b> which ensures fast and smooth application operation. The <b>8 GB RAM</b> meets the demands of the most demanding applications. The <b>storage capacity is 256 GB</b> and thanks to the microSD card slot, you can easily <b>expand it by up to 1 TB,</b> so you don't have to worry about running out of space."
+              ],
+              [
+                "Long battery life",
+                "<b>The 7,040 mAh battery offers up to 12 hours of video playback or 14 hours of web browsing.</b> It supports 20W fast charging via USB-C, so the tablet gets back into action quickly."
+              ]
+            ],
+            "stocks_available": 58,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["Android"]
+      }
+    }
   }
 }

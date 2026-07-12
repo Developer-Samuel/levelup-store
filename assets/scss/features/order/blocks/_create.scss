@@ -7,7 +7,6 @@
 
 .order {
   @include size(100%, auto);
-  @include shadow(full, 4);
 
   position: relative;
 
@@ -15,7 +14,7 @@
     position: relative;
 
     &-data {
-      @include shadow(full, 4);
+      @include shadow(full, 1);
 
       position: relative;
       height: 100%;

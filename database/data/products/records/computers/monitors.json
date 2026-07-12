@@ -1,5 +1,199 @@
 {
   "Computers": {
-    "Monitors": {}
+    "Monitors": {
+      "AOC C32G2ZE": {
+        "brand": "AOC",
+        "variants": {
+          "32\" AOC C32G2ZE/BK Gaming": {
+            "price": 199,
+            "discountPrice": 25,
+            "description": "Monitor - VA, curved, Full HD 1920 × 1080 (16:9), 240 Hz, anti-glare display, 8 bit, 0.5 ms, FreeSync, HDMI and DisplayPort, VESA",
+            "images": [
+              "products/computers/monitors/aoc-c32g2ze/32-aoc-c32g2ze-bk-gaming/1.webp",
+              "products/computers/monitors/aoc-c32g2ze/32-aoc-c32g2ze-bk-gaming/2.webp",
+              "products/computers/monitors/aoc-c32g2ze/32-aoc-c32g2ze-bk-gaming/3.webp",
+              "products/computers/monitors/aoc-c32g2ze/32-aoc-c32g2ze-bk-gaming/4.webp"
+            ],
+            "descriptions": [
+              [
+                "AOC C32G2ZE/BK gaming monitor with 240 Hz frequency and FreeSync Premium technology support",
+                "For the best gaming experience, you need a suitable display that offers a range of useful and new features. You will certainly appreciate the presence of thin frames or a <b>effectively curved screen.</b> The AOC C32G2ZE/BK monitor on a 32\" diagonal offers, for example, AMD FreeSync Premium technology, a 1 ms response time and great color rendition."
+              ],
+              [
+                "Key features of the AOC C32G2ZE/BK gaming monitor",
+                "<ul>\n<li>Well-equipped gaming monitor with Full HD resolution</li>\n<li><b>240Hz refresh rate with AMD FreeSync Premium technology support</b></li>\n<li>6 pre-set game modes for FPS, RTS or racing titles</li>\n<li>Special G-menu control software</li>\n<li>2× HDMI 2.0 and DisplayPort 1.2 connectors available</li>\n<li>Response time is held at 1 ms</li>\n<li>3.5 mm jack output for headphones</li>\n<li>The AOC C32G2ZE/BK monitor is equipped with an anti-reflective layer</li>\n</ul>"
+              ],
+              [
+                "AOC C32G2ZE/BK to offer the requested AMD FreeSync Premium feature",
+                "AMD FreeSync Premium is a technology that synchronizes the refresh rate of the AOC C32G2ZE/BK monitor with the frame rate of your graphics card. This actively <b>prevents screen tearing and latency.</b> Thanks to this, you can enjoy crystal-clear, high-resolution images and no visual artifacts in any gaming genre on the AOC C32G2ZE/BK gaming monitor."
+              ],
+              [
+                "The curved shape of the 32\" AOC C32G2ZE/BK gaming monitor",
+                "The AOC C32G2ZE/BK gaming monitor has a noticeably curved screen that envelops you and draws you right into the center of the action. The <b>1500R curvature</b> itself is quite pronounced compared to competing products."
+              ],
+              [
+                "The AOC C32G2ZE/BK gaming monitor boasts a 240 Hz frequency",
+                "The AOC C32G2ZE/BK gaming monitor features a <b>240 Hz refresh rate</b> panel. Thanks to this, you will see your enemies completely clearly and their movement will be completely smooth and without annoying blurring or tearing. This is precisely why you will be able to aim at them better when using the AOC C32G2ZE/BK monitor. Thanks to such a high refresh rate, you will enjoy the gaming experience much more."
+              ],
+              [
+                "The AOC C32G2ZE/BK PC monitor has special gaming modes",
+                "Customize your AOC C32G2ZE/BK PC monitor to your specific game with just the press of a button. You can easily <b>switch settings between integrated presets</b> for FPS, RTS or racing titles. Alternatively, you can configure your ideal conditions and save them for later use. Thanks to the well-designed OSD menu, switching modes on the AOC C32G2ZE/BK monitor takes just a few moments."
+              ],
+              [
+                "1 ms response time ensures smooth rendering",
+                "Not only a high refresh rate is an important element for ensuring the best gaming experience. The smaller the response value, the faster the image change is rendered. In the case of the AOC C32G2ZE/BK monitor, this value is even <b>1 ms.</b> All scenes and game actions will be rendered smoothly without annoying image doubling."
+              ]
+            ],
+            "stocks_available": 74,
+            "stocks_reserved": 3
+          }
+        },
+        "subtypes": ["Full HD"]
+      },
+      "Lenovo Legion 27Q-10": {
+        "brand": "Lenovo",
+        "variants": {
+          "27\" Lenovo Legion 27Q-10": {
+            "price": 175,
+            "discountPrice": null,
+            "description": "Monitor - IPS, Quad HD 2560 × 1440 (16:9), 240 Hz, anti-glare display, 8 bit, 0.5 ms, G-Sync compatible, FreeSync Premium and Adaptive-Sync, adjustable height, pivot, HDR, HDMI and DisplayPort, VESA",
+            "images": [
+              "products/computers/monitors/lenovo-legion-27q-10/27-lenovo-legion-27q-10/1.webp",
+              "products/computers/monitors/lenovo-legion-27q-10/27-lenovo-legion-27q-10/2.webp",
+              "products/computers/monitors/lenovo-legion-27q-10/27-lenovo-legion-27q-10/3.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Enjoy your favorite titles with the 27\" Lenovo LCD monitor with high-quality Quad HD (2560 × 1440) resolution. <b>The IPS panel with a refresh rate of up to 240 Hz and a response time of 0.5 ms will provide you with a smooth image, which you will appreciate, for example, when playing FPS games, action shooters, RPGs, etc. Thanks to such a low response, the reaction time is shortened, which can be a decisive advantage over gaming opponents. With the IPS panel, you get excellent color reproduction and the image remains the same quality even if you change the viewing angle. The anti-glare treatment of the display reduces glare and increases visibility in various lighting conditions. Thanks to the standard 16:9 aspect ratio, you can open two document windows side by side if necessary and work with them effectively. The IPS panel is illuminated by LEDs. The maximum brightness of 300 cd/m² is perfect for playing games in conditions without direct sunlight and is also is suitable for rooms that are not very well lit. It can be mounted using the so-called VESA 100 × 100 mount on a wall or on a stand. This way you can easily organize a gaming den with several monitors."
+              ],
+              [
+                "Key features of the 27\" Lenovo Legion 27Q-10 monitor",
+                "<ul>\n<li>Use the Lenovo 27\" LCD monitor with Quad HD resolution (2560 × 1440) for gaming</li>\n<li>It uses an IPS panel with a refresh rate of up to 240 Hz and a response time of 0.5 ms to display colors</li>\n<li>Anti-reflective display surface reduces glare and optimizes visibility in varying lighting conditions</li>\n<li><b>The standard 16:9 aspect ratio gives you accurate image reproduction</b></li>\n<li>The PC monitor is equipped with LED backlighting and 8-bit color depth.</li>\n<li>Maximum brightness of 300 cd/m² is ideal for gaming out of direct sunlight and also in dimly lit rooms</li>\n<li>Smooth image loading is ensured by G-Sync compatible, FreeSync Premium and Adaptive-Sync technology</li>\n<li>Monitor with a flat design</li>\n</ul>"
+              ],
+              [
+                "Lenovo monitor will offer you interesting features and functions",
+                "The Lenovo IPS 240Hz PC monitor brings interesting technologies. You can enjoy gaming without compromises with NVIDIA G-Sync technology, which adjusts the monitor's refresh rate according to the performance of the graphics card. The result is a smooth display without tearing. If you want to use this feature, you must have a compatible graphics card that also supports this feature. You can enjoy gaming without compromises thanks to AMD FreeSync Premium technology, which optimizes the monitor's refresh rate based on the graphics card's frame rate and also adds HDR support. This results in a smooth image display. To use this feature, you must have a compatible graphics card that also supports this feature. <b>The 27\" IPS PC monitor has a flat design that makes it easy to use multiple monitors at the same time.</b> It is equipped with a filter that reduces blue light transmission, which can help reduce eye fatigue and improve sleep quality. The HDR function will present significantly more details and better color rendition similar to what the human eye perceives. This will completely immerse you and allow you to enjoy gaming to the fullest. You can adjust the monitor to any height to match eye height and support proper posture, reducing the risk of back and shoulder pain. You can also rotate the PC monitor by 90°. Vertical mode is optimal for reading long documents, programming, and browsing websites."
+              ],
+              [
+                "Choose your monitor based on color depth and native contrast",
+                "Color depth indicates how many different colors a monitor is capable of displaying. For example, a 6-bit monitor will display almost three hundred thousand colors, while a 10-bit monitor will display more than a billion colors. With a higher color depth, colors are displayed more delicately and appear more realistic and vivid. <b>The color depth of the offered monitor for PC is 8 bit.</b> The Lenovo monitor has a native contrast of 1000:1. The native contrast ratio of a monitor reflects the difference between the lightest and darkest displayed point. If the contrast ratio of a monitor is 3000:1, then this means that the lightest point (white) is 3000 times brighter than the darkest point (black). Higher native contrast allows for improved resolution of details in both dark and light parts of the image, which is important if you play games with dark scenes. Native contrast not exceeding 1000:1 will be useful primarily for office purposes, up to 2000:1 will be appreciated when playing games and watching movies. A value above 2000:1 is typical for monitors ideal for graphic designers and video editing."
+              ]
+            ],
+            "stocks_available": 50,
+            "stocks_reserved": 2
+          }
+        },
+        "subtypes": ["QHD"]
+      },
+      "ASUS ROG Strix OLED XG27AQDMG": {
+        "brand": "ASUS",
+        "variants": {
+          "ASUS ROG Strix OLED XG27AQDMG": {
+            "price": 499,
+            "discountPrice": 50,
+            "description": "OLED monitor - Quad HD 2560 × 1440 (16:9), 240 Hz, glossy display, 10 bit, 0.03 ms, G-Sync compatible, adjustable height, pivot, HDR, HDMI and DisplayPort, USB data interface, VESA",
+            "images": [
+              "products/computers/monitors/asus-rog-strix-oled-xg27aqdmg/asus-rog-strix-oled-xg27aqdmg/1.webp",
+              "products/computers/monitors/asus-rog-strix-oled-xg27aqdmg/asus-rog-strix-oled-xg27aqdmg/2.webp",
+              "products/computers/monitors/asus-rog-strix-oled-xg27aqdmg/asus-rog-strix-oled-xg27aqdmg/3.webp"
+            ],
+            "descriptions": [
+              [
+                "Image for quick reactions",
+                "The <b>ASUS ROG Strix XG27AQDMG</b> monitor combines a <b>240 Hz refresh rate</b> and an extremely fast <b>0.03 ms</b> response time, which reduces motion blur and minimizes input lag. You'll appreciate this responsiveness in FPS and competitive titles where every image counts."
+              ],
+              [
+                "Color accuracy and contrast",
+                "Thanks to <b>WOLED technology</b> and a <b>1,500,000:1</b> contrast ratio, scenes have deep blacks and natural colors. The panel displays a wide color palette and 10-bit depth, ensuring faithful rendering for games and content creation."
+              ],
+              [
+                "Key features",
+                "<ul>\n<li>26.5\" WOLED with 2560×1440 resolution for detailed images</li>\n<li>240Hz refresh rate and 0.03ms response time for smooth competitive gaming</li>\n<li>G-SYNC Compatible and FreeSync Premium for anti-stealing</li>\n<li>VESA 100×100 mounting and ergonomic adjustment (height, pivot, tilt)</li>\n<li>Rich connectors: 1× DisplayPort 1.4, 2× HDMI 2.0, 2× USB‑A, headphone output</li>\n</ul>"
+              ]
+            ],
+            "stocks_available": 142,
+            "stocks_reserved": 14
+          }
+        },
+        "subtypes": ["QHD"]
+      },
+      "AOC AGON AG326UD": {
+        "brand": "AOC",
+        "variants": {
+          "31.5\" AOC AGON AG326UD": {
+            "price": 599,
+            "discountPrice": null,
+            "description": "Monitor - QD-OLED, 4K 3840 × 2160 (16:9), 165 Hz, anti-glare display, 10 bit, 0.03 ms, FreeSync, adjustable height, pivot, HDR, speakers, HDMI and DisplayPort, USB data interface, VESA",
+            "images": [
+              "products/computers/monitors/aoc-agon-ag326ud/31.5-aoc-agon-ag326ud/1.webp",
+              "products/computers/monitors/aoc-agon-ag326ud/31.5-aoc-agon-ag326ud/2.webp",
+              "products/computers/monitors/aoc-agon-ag326ud/31.5-aoc-agon-ag326ud/3.webp",
+              "products/computers/monitors/aoc-agon-ag326ud/31.5-aoc-agon-ag326ud/4.webp",
+              "products/computers/monitors/aoc-agon-ag326ud/31.5-aoc-agon-ag326ud/5.webp",
+              "products/computers/monitors/aoc-agon-ag326ud/31.5-aoc-agon-ag326ud/6.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "Enjoy your favorite AAA titles that support 4K (3840 × 2160) with this 31.5\" OLED monitor from AOC. To render in 4K, a high-end console or a computer with a suitable graphics card with sufficient performance is necessary. <b>A smooth image will be provided by a QD-OLED panel with a refresh rate of up to 165 Hz and a response time of 0.03 ms,</b> which you will especially appreciate when playing action shooters, RPGs, FPS games, etc. Thanks to such a low response, the reaction time is shortened, which can be a decisive advantage over gaming opponents. The QD-OLED panel displays colors best, is characterized by a stable viewing angle and a high contrast ratio, which is responsible for reproducing deeper blacks and brighter whites. The anti-glare treatment of the display reduces glare and increases visibility in various lighting conditions. Thanks to the standard aspect ratio of 16: 9 you can easily open two windows with documents next to each other and work with them efficiently. The maximum brightness of 1000 cd/m² allows for better image display when playing games in direct sunlight, but it is also possible to use the monitor in showrooms, for example. It can be attached using the so-called VESA attachment 100 × 100 to the wall or to a stand. This way you can easily organize a gaming den with several monitors."
+              ],
+              [
+                "Key features of the 31.5\" AOC AGON AG326UD monitor",
+                "<ul>\n<li>For gaming, choose the 31.5\" AOC OLED monitor with 4K resolution (3840 × 2160)</li>\n<li>It uses a QD-OLED panel with a refresh rate of up to 165 Hz and a response time of 0.03 ms to display colors</li>\n<li>Anti-reflective display surface reduces reflections and improves readability in various lighting conditions</li>\n<li><b>Standard 16:9 aspect ratio gives you precise image output</b></li>\n<li>It has 10-bit color depth</li>\n<li>Maximum brightness of 1000 cd/m² is ideal even for playing in direct sunlight and in very bright rooms</li>\n<li>FreeSync technology ensures smooth image loading</li>\n<li>Monitor with a flat design</li>\n</ul>"
+              ],
+              [
+                "The AOC monitor boasts interesting features and functions",
+                "The AOC QD-OLED 165Hz PC monitor is equipped with interesting technologies. Gaming without compromise awaits you thanks to AMD FreeSync technology, which optimizes the monitor's refresh rate based on the frame rate of the graphics card. This results in a smooth display without tearing. In order to use this feature, you must have a compatible graphics card that also supports this feature. <b>QD-OLED PC monitor 31.5\" has a flat design that makes it easy to use multiple monitors at the same time.</b> It has a filter that produces less blue light and a Flicker-free function that reduces the frequency of monitor flicker. This can help relieve eye fatigue and improve sleep quality. The PiP (Picture in Picture) function displays a small window with a second image or video on the main display. This allows you to switch between the main image and a smaller inset window, so it is not necessary to cancel the main activity on the computer screen. HDR technology renders much more details with realistic color rendering similar to what the human eye sees. This draws you into the game and allows you to enjoy gaming to the fullest. You can easily switch between two sources and watch them simultaneously. With the Picture-by-Picture (PbP) function, you can work with different applications or compare data on two separate screens. You can adjust the monitor according to your preferences to match eye level and help maintain proper posture body, which reduces the risk of back and shoulder pain. If necessary, you can change the position of the monitor on the PC by 90°. Vertical mode is optimal for reading long documents, programming and browsing websites."
+              ]
+            ],
+            "stocks_available": 47,
+            "stocks_reserved": 6
+          }
+        },
+        "subtypes": ["4K"]
+      },
+      "ASUS ProArt Display PA32KCX": {
+        "brand": "ASUS",
+        "variants": {
+          "32\" ASUS ProArt Display PA32KCX": {
+            "price": 14999,
+            "discountPrice": 4000,
+            "description": "Monitor - IPS, 8K 7680 × 4320 (16:9), 60 Hz, matte display, mini LED backlight, 10 bit, 5 ms, adjustable height, pivot, Power Delivery max. 96 W, HDR, KVM, Daisy Chain, speakers, HDMI and DisplayPort, USB and USB-C data interface, VESA",
+            "images": [
+              "products/computers/monitors/asus-proart-display-pa32kcx/32-asus-proart-display-pa32kcx/1.webp",
+              "products/computers/monitors/asus-proart-display-pa32kcx/32-asus-proart-display-pa32kcx/2.webp",
+              "products/computers/monitors/asus-proart-display-pa32kcx/32-asus-proart-display-pa32kcx/3.webp",
+              "products/computers/monitors/asus-proart-display-pa32kcx/32-asus-proart-display-pa32kcx/4.webp"
+            ],
+            "descriptions": [
+              [
+                "",
+                "This 32\" ASUS LCD monitor allows you to work in 8K (7680 × 4320) resolution, which allows for incredibly detailed viewing, ideal for watching movies with fast editing and frequent scene changes. A computer with a graphics card with sufficient performance is required to render in 8K. <b>Its IPS panel has excellent color reproduction, lower contrast, and the image remains the same quality even if you change the viewing angle.</b> The IPS panel also has a very low risk of burn-in, which contributes to its long lifespan. It displays data with 10-bit color depth. With the HDR function, it is possible to render more details, achieve greater image depth, and higher contrast, which are similar to what the human eye sees. All this will be useful not only for creating logos and banners, but also for color grading in photos or videos. The matte surface of the display does not reflect light in the room from the monitor and also helps against light from the window. Thanks to the standard ratio pages 16:9, if necessary, you can open, for example, a text entry with a graphic editor next to each other and work with them effectively. This professional PC monitor is illuminated by mini LEDs, thanks to which the monitor copies the image better, because there are more of them and they are smaller compared to classic LEDs. The maximum brightness of 1000 cd/m² ensures that the monitor will be easily readable even when working in direct sunlight, but the monitor can also be used, for example, in showrooms. It can be mounted using the so-called VESA attachment 100 × 100 on a wall or on a stand. This way you can easily install more monitors in your office."
+              ],
+              [
+                "Key features of the 32\" ASUS ProArt Display PA32KCX monitor",
+                "<ul>\n<li>Work efficiently with this 32\" ASUS LCD monitor with 8K resolution (7680 × 4320)</li>\n<li>It uses an IPS panel with a refresh rate of up to 60 Hz and a response time of 5 ms to display colors.</li>\n<li>Matte display prevents glare and reduces eye strain</li>\n<li><b>The standard 16:9 aspect ratio offers you accurate reproduction of visual content</b></li>\n<li>Its 10-bit color depth suits advanced work in graphics programs</li>\n<li>Maximum brightness of 1000 cd/m² is also suitable for working in direct sunlight and in brightly lit rooms</li>\n<li>Monitor with a flat design</li>\n</ul>"
+              ],
+              [
+                "ASUS monitor will surprise you with interesting features and functions",
+                "The 32\" IPS PC monitor <b>has a straight design that will come in handy if you plan to have multiple monitors together.</b> With the Daisy Chain function, you can connect a larger number of monitors to a single signal source, allowing you to expand your area without the need for additional video outputs. The monitor will surprise you with the KVM (Keyboard, Video, Mouse) function, with which you can use multiple computers at once without having to connect cables. Streamers choose this connection to ensure that the quality of the transmitted content will not be reduced by the load on one computer. A very useful function is fast charging using Power Delivery technology via USB-C, which allows you to efficiently charge your tablet, wireless headphones, smart watch, smaller laptop, smartphone or other small electronics with a power of up to 96 W. Power Delivery is also safe, because the device receives only as much electricity as it needs and will not suffer from overvoltage. You can tilt the monitor and adjust it to desired height so that its upper side corresponds to eye level and thus supports proper posture, which reduces cervical spine strain, prevents back pain and scoliosis. The ability to tilt the monitor will be especially appreciated by people who stand at their desks while working. The Pivot function allows you to rotate the monitor on your PC by 90°, which is practical for traders, programmers and data analysts using spreadsheets."
+              ],
+              [
+                "The ASUS monitor will pleasantly surprise you with its features",
+                "You can use HDMI and DisplayPort to connect your laptop or computer to the monitor. Thanks to Thunderbolt 4 support, it will appeal to users of Apple products and other newer devices. The built-in speakers are a convenient solution for sound and image in one device. The Kensington Lock, which includes a steel cable and a lockable mechanism, provides protection against theft. In addition to the PC monitor itself, you also get an HDMI, DisplayPort and USB-C cable in the package."
+              ],
+              [
+                "Decide on a monitor based on native contrast and color coverage",
+                "The ASUS monitor has a native contrast ratio of 1000:1. The difference between the brightest and darkest points that a monitor can display is defined by its native contrast ratio. If a monitor has a contrast ratio of 3000:1, this means that the brightest point (white) is 3000 times brighter than the darkest point (black). Adobe RGB color gamut specifies what percentage of colors from this color space a monitor can display. It is wider than the standard sRGB, which makes it especially important for photographers who work with photography from start to finish. The value can also be higher than 100%, which means that the monitor can display a wider range of colors than is typical for the space. <b>Adobe RGB color gamut is 95%.</b> The sRGB color spectrum is poorer in colors than Adobe RGB, but it is a color space that is commonly present in most monitors. This offered PC monitor has a <b>99%</b> sRGB gamut. It doesn't cover the entire natural color spectrum, but that may not play an important role when working outside of graphics."
+              ]
+            ],
+            "stocks_available": 2,
+            "stocks_reserved": 0
+          }
+        },
+        "subtypes": ["8K"]
+      }
+    }
   }
 }
