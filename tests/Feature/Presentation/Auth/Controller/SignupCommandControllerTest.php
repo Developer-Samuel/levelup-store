@@ -11,12 +11,12 @@ use Symfony\{
 
 use PHPUnit\Framework\MockObject\MockObject;
 
-use App\Core\Ports\{
-    Auth\Handler\Command\SignupHandlerContract,
-    Auth\Trackers\SignupAttemptTrackerContract
-};
+use App\Core\Ports\Auth\Handler\Command\SignupHandlerContract;
 
-use Tests\Support\Provides\DecodesJson;
+use Tests\Support\{
+    Traits\RateLimiterMockTrait,
+    Provides\DecodesJson
+};
 
 /**
  * @coversDefaultClass \App\Presentation\Auth\Controller\Command\SignupCommandController
@@ -24,6 +24,7 @@ use Tests\Support\Provides\DecodesJson;
 class SignupCommandControllerTest extends WebTestCase
 {
     use DecodesJson;
+    use RateLimiterMockTrait;
 
     private KernelBrowser $client;
 
@@ -31,7 +32,7 @@ class SignupCommandControllerTest extends WebTestCase
     {
         $this->client = static::createClient();
 
-        static::getContainer()->set(SignupAttemptTrackerContract::class, $this->createTrackerMock());
+        static::getContainer()->set('App\Infrastructure\RateLimiter\SignupRateLimiter', $this->createRateLimiterMock());
     }
 
     public function testStoreReturnsSuccessJson(): void
@@ -127,13 +128,6 @@ class SignupCommandControllerTest extends WebTestCase
             'password_confirmation' => 'Password1!',
             'terms_and_conditions'  => '1',
         ];
-    }
-
-
-
-    private function createTrackerMock(): SignupAttemptTrackerContract&MockObject
-    {
-        return $this->createMock(SignupAttemptTrackerContract::class);
     }
 
     /**

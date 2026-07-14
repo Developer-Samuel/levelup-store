@@ -1,5 +1,8 @@
+imports:
+  - { resource: 'services/rate_limiter.yaml' }
+
 services:
-  # ⚙️  Global Defaults
+  # ⚙️ Global Defaults
   _defaults:
     autowire: true
     autoconfigure: true
@@ -25,7 +28,7 @@ services:
   App\Infrastructure\: { resource: '../src/Infrastructure/' }
   App\Shared\:         { resource: '../src/Shared/' }
 
-  # 🏛️ Core - Application
+  # Application
   App\Core\Application\Shared\Encryption\HmacGenerator:
     arguments:
       $secretKey: '%env(HMAC_SECRET)%'
@@ -34,7 +37,19 @@ services:
     arguments:
       $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'
 
-  # 🔌 Adapters - External
+  App\Core\Application\Auth\Handler\Command\LoginHandler:
+    arguments:
+      $rateLimiter: '@App\Infrastructure\RateLimiter\LoginRateLimiter'
+
+  App\Core\Application\Auth\Handler\Command\SignupHandler:
+    arguments:
+      $rateLimiter: '@App\Infrastructure\RateLimiter\SignupRateLimiter'
+
+  App\Core\Application\Auth\Handler\Command\ForgotPasswordCommandHandler:
+    arguments:
+      $rateLimiter: '@App\Infrastructure\RateLimiter\ForgotPasswordRateLimiter'
+
+  # Adapters
   App\Adapters\External\Cache\RedisCacheAdapter:
     arguments:
       $redisEnabled: '%env(bool:REDIS_ENABLED)%'
@@ -48,7 +63,7 @@ services:
     arguments:
       $countryUrl: '%env(API_COUNTRY_URL)%'
 
-  # 🏗️ Infrastructure
+  # Infrastructure
   App\Infrastructure\Payment\Stripe\StripeSdk:
     arguments:
       $secretKey: '%env(STRIPE_SECRET)%'
@@ -66,7 +81,7 @@ services:
     tags:
       - { name: kernel.event_subscriber }
 
-  # 🌐 Presentation
+  # Presentation
   App\Presentation\:
     resource: '../src/Presentation/'
     tags: ['controller.service_arguments']
@@ -93,11 +108,11 @@ services:
     tags:
       - { name: twig.extension }
 
-  # ⏰ Scheduler
+  # Scheduler
   App\Scheduler\:
     resource: '../src/Scheduler/'
 
-  # 🗃️ Database
+  # Database
   Database\Fixtures\:
     resource: '../database/fixtures/'
 

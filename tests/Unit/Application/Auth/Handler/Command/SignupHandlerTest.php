@@ -12,6 +12,7 @@ use PHPUnit\{
 use App\Core\Domain\{
     Auth\Payload\SignupPayload,
     Auth\ValueObject\JwtTokenObject,
+    Exception\TooManyRequestsException,
     Segment\User\Entity\User
 };
 
@@ -23,8 +24,8 @@ use App\Core\Ports\{
     Auth\Service\Command\SignupCommandContract,
     Auth\Service\Command\VerificationCommandContract,
     Auth\Service\Query\LoginRedirectQueryContract,
-    Auth\Trackers\SignupAttemptTrackerContract,
-    Shared\Logging\AppLoggerContract
+    Shared\Logging\AppLoggerContract,
+    Shared\RateLimiter\RateLimiterContract
 };
 
 /**
@@ -36,7 +37,7 @@ class SignupHandlerTest extends TestCase
     private VerificationCommandContract&MockObject $verificationCommand;
     private LoginCommandContract&MockObject $loginCommand;
     private LoginRedirectQueryContract&MockObject $loginRedirectQuery;
-    private SignupAttemptTrackerContract&MockObject $tracker;
+    private RateLimiterContract&MockObject $rateLimiter;
     private AppLoggerContract&MockObject $logger;
     private SignupHandler $handler;
 
@@ -123,22 +124,11 @@ class SignupHandlerTest extends TestCase
 
     public function testHandleReturnsRateLimitErrorWhenTooManyRequests(): void
     {
-        $tracker = new class implements SignupAttemptTrackerContract {
-            public bool $tooManyAttempts = true;
+        $this->rateLimiter
+            ->method('track')
+            ->willThrowException(new TooManyRequestsException(60));
 
-            public function trackAttempts(): void {}
-        };
-
-        $handler = new SignupHandler(
-            $this->signupCommand,
-            $this->verificationCommand,
-            $this->loginCommand,
-            $this->loginRedirectQuery,
-            $tracker,
-            $this->logger,
-        );
-
-        $result = $handler->handle($this->buildPayload());
+        $result = $this->handler->handle($this->buildPayload());
 
         $this->assertSame('error', $result['status']);
         $this->assertSame(429, $result['code']);
@@ -175,7 +165,7 @@ class SignupHandlerTest extends TestCase
         $this->verificationCommand = $this->createMock(VerificationCommandContract::class);
         $this->loginCommand        = $this->createMock(LoginCommandContract::class);
         $this->loginRedirectQuery  = $this->createMock(LoginRedirectQueryContract::class);
-        $this->tracker             = $this->createMock(SignupAttemptTrackerContract::class);
+        $this->rateLimiter         = $this->createMock(RateLimiterContract::class);
         $this->logger              = $this->createMock(AppLoggerContract::class);
     }
 
@@ -186,7 +176,7 @@ class SignupHandlerTest extends TestCase
             $this->verificationCommand,
             $this->loginCommand,
             $this->loginRedirectQuery,
-            $this->tracker,
+            $this->rateLimiter,
             $this->logger,
         );
     }

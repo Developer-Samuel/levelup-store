@@ -9,27 +9,28 @@ use App\Core\Domain\{
     Segment\User\Entity\User
 };
 
-use App\Core\Application\Abstract\Handler\AbstractRateLimitHandler;
+use App\Core\Application\Abstract\Handler\AbstractCommandHandler;
 
 use App\Core\Ports\{
     Auth\Handler\Command\LoginHandlerContract,
     Auth\Service\Command\LoginCommandContract,
     Auth\Service\Query\LoginRedirectQueryContract,
-    Auth\Trackers\LoginAttemptTrackerContract,
     Security\Provider\PasswordHasherProviderContract,
     Segment\User\Repository\UserRepositoryContract,
-    Shared\Logging\AppLoggerContract
+    Shared\Logging\AppLoggerContract,
+    Shared\RateLimiter\RateLimiterContract
 };
 
 use App\Shared\Utils\Formatter\ApiResultFormatter;
 
-final class LoginHandler extends AbstractRateLimitHandler implements LoginHandlerContract
+final class LoginHandler extends AbstractCommandHandler implements LoginHandlerContract
 {
     /**
      * @param UserRepositoryContract $userRepository
      * @param PasswordHasherProviderContract $passwordHasherProvider
      * @param LoginCommandContract $loginCommand
-     * @param LoginAttemptTrackerContract $tracker
+     * @param LoginRedirectQueryContract $loginRedirectQuery
+     * @param RateLimiterContract $rateLimiter
      * @param AppLoggerContract $logger
     */
     public function __construct(
@@ -37,7 +38,7 @@ final class LoginHandler extends AbstractRateLimitHandler implements LoginHandle
         private readonly PasswordHasherProviderContract $passwordHasherProvider,
         private readonly LoginCommandContract $loginCommand,
         private readonly LoginRedirectQueryContract $loginRedirectQuery,
-        private readonly LoginAttemptTrackerContract $tracker,
+        private readonly RateLimiterContract $rateLimiter,
         AppLoggerContract $logger,
     ) {
         parent::__construct($logger);
@@ -50,10 +51,14 @@ final class LoginHandler extends AbstractRateLimitHandler implements LoginHandle
     */
     public function handle(LoginPayload $payload): array
     {
-        return $this->executeRateLimit($this->tracker, function () use ($payload) {
+        return $this->execute(function () use ($payload) {
+            $this->rateLimiter->track();
+
             $user = $this->validateCredentials($payload);
 
             $tokenPair = $this->loginCommand->execute($user);
+
+            $this->rateLimiter->reset();
 
             return ApiResultFormatter::success(
                 'Login successful',

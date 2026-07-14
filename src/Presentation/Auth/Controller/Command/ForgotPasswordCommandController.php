@@ -15,7 +15,6 @@ use App\Core\Domain\Auth\Payload\ForgotPasswordPayload;
 
 use App\Core\Ports\{
     Auth\Handler\Command\ForgotPasswordCommandHandlerContract,
-    Auth\Trackers\ForgotPasswordAttemptTrackerContract,
     Shared\Logging\AppLoggerContract
 };
 
@@ -28,14 +27,12 @@ class ForgotPasswordCommandController extends AbstractCrudCommandController
 {
     /**
      * @param ForgotPasswordCommandHandlerContract $forgotPasswordCommandHandler
-     * @param ForgotPasswordAttemptTrackerContract $tracker
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param AppLoggerContract $logger
      * @param ValidatorInterface $validator
     */
     public function __construct(
         private readonly ForgotPasswordCommandHandlerContract $forgotPasswordCommandHandler,
-        private readonly ForgotPasswordAttemptTrackerContract $tracker,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
         ValidatorInterface $validator,
@@ -58,7 +55,6 @@ class ForgotPasswordCommandController extends AbstractCrudCommandController
             $request,
             ForgotPasswordRequest::class,
             fn(ForgotPasswordRequest $forgotPasswordRequest): array => $this->handleStore($forgotPasswordRequest),
-            $this->tracker,
         );
     }
 

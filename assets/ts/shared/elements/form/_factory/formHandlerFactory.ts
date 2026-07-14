@@ -11,6 +11,8 @@ import { handleHttpError } from '@/ts/shared/elements/form/_handlers/httpErrorHa
 import { scrollToTop } from '@/ts/shared/utils/scroll'
 import { sleep } from '@/ts/shared/utils/sleep'
 
+import NotyfAlert from '@/ts/plugins/notyf/_components/NotyfAlert'
+
 type ServiceSubmitFn = (formData: FormData) => FormSubmitResult
 
 type FormHandlerContext = {
@@ -35,8 +37,8 @@ type FormSubmitFn = (form: HTMLFormElement, alert: FormAlert, errors: FormErrors
  */
 export const createFormAlertHandler = (serviceSubmit: ServiceSubmitFn): FormSubmitFn =>
   createFormHandler(serviceSubmit, {
-    onSuccess: (data, { alert }) => {
-      alert.display(true, data.message ?? '')
+    onSuccess: (data) => {
+      NotyfAlert.success(data.message ?? '')
     },
   })
 
@@ -64,15 +66,17 @@ export function createFormHandler(
         if (options.onSuccess) {
           options.onSuccess(data, { alert, errors })
         } else if (data.message) {
-          alert.display(true, data.message)
+          NotyfAlert.success(data.message)
         }
 
         const redirect = data.redirect && data.redirect !== 'null' ? data.redirect : options.defaultRedirect
         if (redirect) {
           if (options.redirectDelay) await sleep(options.redirectDelay)
+
           window.location.href = redirect
         } else if (options.reloadDelay) {
           await sleep(options.reloadDelay)
+
           window.location.reload()
         }
 

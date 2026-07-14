@@ -16,7 +16,6 @@ use App\Core\Domain\Auth\Payload\UpdateVerificationPayload;
 use App\Core\Ports\{
     Auth\Handler\Command\StoreVerificationHandlerContract,
     Auth\Handler\Command\UpdateVerificationHandlerContract,
-    Auth\Trackers\VerificationAttemptTrackerContract,
     Shared\Logging\AppLoggerContract
 };
 
@@ -30,14 +29,12 @@ class VerificationCommandController extends AbstractCrudCommandController
     /**
      * @param StoreVerificationHandlerContract $storeVerificationHandler
      * @param UpdateVerificationHandlerContract $updateVerificationHandler
-     * @param VerificationAttemptTrackerContract $tracker
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param AppLoggerContract $logger
     */
     public function __construct(
         private readonly StoreVerificationHandlerContract $storeVerificationHandler,
         private readonly UpdateVerificationHandlerContract $updateVerificationHandler,
-        private readonly VerificationAttemptTrackerContract $tracker,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
     ) {
@@ -58,7 +55,6 @@ class VerificationCommandController extends AbstractCrudCommandController
             $request,
             VerificationRequest::class,
             fn () => $this->storeVerificationHandler->handle(),
-            $this->tracker,
         );
     }
 

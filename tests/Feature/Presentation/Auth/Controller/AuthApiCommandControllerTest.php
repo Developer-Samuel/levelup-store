@@ -14,11 +14,13 @@ use PHPUnit\Framework\MockObject\MockObject;
 use App\Core\Ports\{
     Auth\Handler\Command\LoginHandlerContract,
     Auth\Handler\Command\LogoutHandlerContract,
-    Auth\Handler\Command\RefreshTokenHandlerContract,
-    Auth\Trackers\LoginAttemptTrackerContract
+    Auth\Handler\Command\RefreshTokenHandlerContract
 };
 
-use Tests\Support\Provides\DecodesJson;
+use Tests\Support\{
+    Traits\RateLimiterMockTrait,
+    Provides\DecodesJson
+};
 
 /**
  * @coversDefaultClass \App\Presentation\Auth\Api\Controller\Command\AuthApiCommandController
@@ -26,6 +28,7 @@ use Tests\Support\Provides\DecodesJson;
 class AuthApiCommandControllerTest extends WebTestCase
 {
     use DecodesJson;
+    use RateLimiterMockTrait;
 
     private KernelBrowser $client;
 
@@ -33,7 +36,7 @@ class AuthApiCommandControllerTest extends WebTestCase
     {
         $this->client = static::createClient();
 
-        static::getContainer()->set(LoginAttemptTrackerContract::class, $this->createTrackerMock());
+        static::getContainer()->set('App\Infrastructure\RateLimiter\LoginRateLimiter', $this->createRateLimiterMock());
     }
 
     public function testLoginReturnsSuccessJsonOnValidCredentials(): void
@@ -227,11 +230,6 @@ class AuthApiCommandControllerTest extends WebTestCase
         $this->client->request('POST', $uri, [], [], [
             'CONTENT_TYPE' => 'application/json',
         ], (string) json_encode($payload));
-    }
-
-    private function createTrackerMock(): LoginAttemptTrackerContract&MockObject
-    {
-        return $this->createMock(LoginAttemptTrackerContract::class);
     }
 
     /**

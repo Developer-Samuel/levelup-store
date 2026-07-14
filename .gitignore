@@ -38,3 +38,6 @@ phpunit.xml
 # Editor
 .vscode/
 .gitconfig
+
+# AI Tools
+.claude

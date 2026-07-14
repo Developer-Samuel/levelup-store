@@ -15,7 +15,6 @@ use App\Core\Domain\Auth\Payload\ResetPasswordPayload;
 
 use App\Core\Ports\{
     Auth\Handler\Command\ResetPasswordCommandHandlerContract,
-    Auth\Trackers\ResetPasswordAttemptTrackerContract,
     Shared\Logging\AppLoggerContract
 };
 
@@ -28,14 +27,12 @@ class ResetPasswordCommandController extends AbstractCrudCommandController
 {
     /**
      * @param ResetPasswordCommandHandlerContract $resetPasswordCommandHandler
-     * @param ResetPasswordAttemptTrackerContract $tracker
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param AppLoggerContract $logger
      * @param ValidatorInterface $validator
     */
     public function __construct(
         private readonly ResetPasswordCommandHandlerContract $resetPasswordCommandHandler,
-        private readonly ResetPasswordAttemptTrackerContract $tracker,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
         ValidatorInterface $validator,
@@ -58,7 +55,6 @@ class ResetPasswordCommandController extends AbstractCrudCommandController
             $request,
             ResetPasswordRequest::class,
             fn(ResetPasswordRequest $resetPasswordRequest): array => $this->handleStore($resetPasswordRequest),
-            $this->tracker,
         );
     }
 

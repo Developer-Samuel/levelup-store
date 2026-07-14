@@ -17,7 +17,6 @@ use App\Core\Ports\{
     Auth\Handler\Command\LoginHandlerContract,
     Auth\Handler\Command\LogoutHandlerContract,
     Auth\Handler\Command\RefreshTokenHandlerContract,
-    Auth\Trackers\LoginAttemptTrackerContract,
     Shared\Logging\AppLoggerContract
 };
 
@@ -36,7 +35,6 @@ final class AuthApiCommandController extends AbstractCrudCommandController
      * @param LoginHandlerContract $loginHandler
      * @param RefreshTokenHandlerContract $refreshTokenHandler
      * @param LogoutHandlerContract $logoutHandler
-     * @param LoginAttemptTrackerContract $tracker
      * @param RefreshTokenCookieManager $refreshTokenCookieManager
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param AppLoggerContract $logger
@@ -46,7 +44,6 @@ final class AuthApiCommandController extends AbstractCrudCommandController
         private readonly LoginHandlerContract $loginHandler,
         private readonly RefreshTokenHandlerContract $refreshTokenHandler,
         private readonly LogoutHandlerContract $logoutHandler,
-        private readonly LoginAttemptTrackerContract $tracker,
         private readonly RefreshTokenCookieManager $refreshTokenCookieManager,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
@@ -70,7 +67,6 @@ final class AuthApiCommandController extends AbstractCrudCommandController
             $loginRequest = LoginRequest::fromHttpRequest(
                 $request,
                 $this->csrfTokenManager,
-                $this->tracker,
             );
 
             $errors = $loginRequest->errors($this->validator);

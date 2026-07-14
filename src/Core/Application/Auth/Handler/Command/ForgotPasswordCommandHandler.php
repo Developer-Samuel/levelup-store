@@ -6,30 +6,30 @@ namespace App\Core\Application\Auth\Handler\Command;
 
 use App\Core\Domain\Auth\Payload\ForgotPasswordPayload;
 
-use App\Core\Application\Abstract\Handler\AbstractRateLimitHandler;
+use App\Core\Application\Abstract\Handler\AbstractCommandHandler;
 
 use App\Core\Ports\{
     Auth\Handler\Command\ForgotPasswordCommandHandlerContract,
     Auth\Service\Command\ForgotPasswordCommandContract,
-    Auth\Trackers\ForgotPasswordAttemptTrackerContract,
     Segment\User\Service\Query\UserQueryContract,
-    Shared\Logging\AppLoggerContract
+    Shared\Logging\AppLoggerContract,
+    Shared\RateLimiter\RateLimiterContract
 };
 
 use App\Shared\Utils\Formatter\ApiResultFormatter;
 
-class ForgotPasswordCommandHandler extends AbstractRateLimitHandler implements ForgotPasswordCommandHandlerContract
+class ForgotPasswordCommandHandler extends AbstractCommandHandler implements ForgotPasswordCommandHandlerContract
 {
     /**
      * @param ForgotPasswordCommandContract $forgotPasswordCommand
-     * @param ForgotPasswordAttemptTrackerContract $tracker
      * @param UserQueryContract $userQuery
+     * @param RateLimiterContract $rateLimiter
      * @param AppLoggerContract $logger
     */
     public function __construct(
         private readonly ForgotPasswordCommandContract $forgotPasswordCommand,
-        private readonly ForgotPasswordAttemptTrackerContract $tracker,
         private readonly UserQueryContract $userQuery,
+        private readonly RateLimiterContract $rateLimiter,
         AppLoggerContract $logger,
     ) {
         parent::__construct($logger);
@@ -42,10 +42,14 @@ class ForgotPasswordCommandHandler extends AbstractRateLimitHandler implements F
      */
     public function handle(ForgotPasswordPayload $payload): array
     {
-        return $this->executeRateLimit($this->tracker, function() use ($payload) {
+        return $this->execute(function() use ($payload) {
+            $this->rateLimiter->track();
+
             $user = $this->userQuery->findUserByEmailOrFail($payload->email);
 
             $this->forgotPasswordCommand->createAndSaveTokenForUser($user);
+
+            $this->rateLimiter->reset();
 
             return ApiResultFormatter::success('We have sent you an email with a link to change your password.');
         });

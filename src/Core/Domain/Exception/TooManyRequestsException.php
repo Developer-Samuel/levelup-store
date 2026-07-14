@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Core\Domain\Exception;
 
+use App\Shared\Utils\Formatter\DateTimeFormatter;
+
 class TooManyRequestsException extends \Exception
 {
     protected int $statusCode = 429;
@@ -11,8 +13,9 @@ class TooManyRequestsException extends \Exception
     /**
      * @param int $retryAfterSeconds
     */
-    public function __construct(int $retryAfterSeconds = 0)
-    {
+    public function __construct(
+        private readonly int $retryAfterSeconds = 0
+    ) {
         parent::__construct($this->buildMessage($retryAfterSeconds));
     }
 
@@ -32,7 +35,7 @@ class TooManyRequestsException extends \Exception
     private function buildMessage(int $retryAfterSeconds): string
     {
         return $retryAfterSeconds > 0
-            ? sprintf('Too many attempts, please try again in %ds.', $retryAfterSeconds)
+            ? sprintf('Too many attempts, please try again in %s.', DateTimeFormatter::formatDuration($retryAfterSeconds))
             : 'Too many attempts, please try again in a moment.';
     }
 }

@@ -89,67 +89,18 @@ abstract class AbstractRequest
     /**
      * @param Request $request
      * @param CsrfTokenManagerInterface $csrfTokenManager
-     * @param object|null $tracker
      *
      * @return static
     */
     public static function fromHttpRequest(
         Request $request,
         CsrfTokenManagerInterface $csrfTokenManager,
-        ?object $tracker = null,
     ): static {
         /** @phpstan-ignore-next-line */
         $instance = new static($csrfTokenManager);
-
-        $factory = static fn(): static => $instance;
-
-        return self::baseFromHttpRequest(
-            $request,
-            $factory,
-            self::resolveTrackerCallback($tracker),
-        );
-    }
-
-    /**
-     * @template T of self
-     *
-     * @param Request $request
-     * @param \Closure(): T $factory
-     * @param (\Closure(T): void)|null $trackerCallback
-     *
-     * @return T
-    */
-    private static function baseFromHttpRequest(
-        Request $request,
-        \Closure $factory,
-        ?callable $trackerCallback = null,
-    ): self {
-        $instance = $factory();
         $instance->csrfToken = $request->request->getString('_csrf_token', '');
-
         $instance->populateData($request);
 
-        if ($trackerCallback !== null) {
-            $trackerCallback($instance);
-        }
-
         return $instance;
-    }
-
-    /**
-     * @param object|null $tracker
-     *
-     * @return (\Closure(self): void)|null
-    */
-    private static function resolveTrackerCallback(?object $tracker): ?callable
-    {
-        if ($tracker !== null && method_exists($tracker, 'trackAttempts')) {
-            /** @param self $request */
-            return static function (self $request) use ($tracker): void {
-                $tracker->trackAttempts();
-            };
-        }
-
-        return null;
     }
 }
