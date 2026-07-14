@@ -59,7 +59,7 @@
     "position": 1,
     "value": "Terms and Conditions",
     "image": null,
-    "url": "pdf/terms-and-conditions.pdf",
+    "url": "/pdf/terms-and-conditions.pdf",
     "group": "legal",
     "target": "_blank"
   }
