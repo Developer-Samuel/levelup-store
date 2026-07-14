@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace App\Scheduler\Message;
+namespace App\Scheduler\Message\Product;
 
 final class ProductVariantEanSyncMessage {}

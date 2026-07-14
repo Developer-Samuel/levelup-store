@@ -21,8 +21,8 @@ use App\Core\Ports\{
 };
 
 use App\Scheduler\{
-    Abstract\Task\AbstractTask,
-    Message\ProductVariantEanSyncMessage
+    Abstract\AbstractTask,
+    Message\Product\ProductVariantEanSyncMessage
 };
 
 #[AsMessageHandler]

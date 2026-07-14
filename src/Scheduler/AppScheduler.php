@@ -12,9 +12,10 @@ use Symfony\{
     Contracts\Cache\CacheInterface
 };
 
-use App\Scheduler\Message\{
-    ProductVariantEanSyncMessage,
-    ProductVariantStockSyncMessage
+use App\Scheduler\{
+    Message\Country\CountrySyncMessage,
+    Message\Product\ProductVariantEanSyncMessage,
+    Message\Product\ProductVariantStockSyncMessage
 };
 
 #[AsSchedule]
@@ -44,6 +45,7 @@ class AppScheduler implements ScheduleProviderInterface
     private function buildMessages(): array
     {
         return [
+            RecurringMessage::cron('0 2 1 * *', new CountrySyncMessage()),
             RecurringMessage::every('15 minutes', new ProductVariantEanSyncMessage()),
             RecurringMessage::every('15 minutes', new ProductVariantStockSyncMessage()),
         ];

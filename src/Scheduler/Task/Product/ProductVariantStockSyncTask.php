@@ -19,8 +19,8 @@ use App\Core\Ports\{
 };
 
 use App\Scheduler\{
-    Abstract\Task\AbstractTask,
-    Message\ProductVariantStockSyncMessage
+    Abstract\AbstractTask,
+    Message\Product\ProductVariantStockSyncMessage
 };
 
 #[AsMessageHandler]
