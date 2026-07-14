@@ -89,19 +89,15 @@ final class CoreCacheQueryService implements CoreCacheQueryContract
         $adminPaths = $this->resolveAdminPaths($path);
 
         $isAdminPath = $this->isAdminPath($path);
-        $isProductPath = $this->isProductPath($path);
-        $isDiscountPath = PathChecker::isDiscountPath($path);
 
         $showHeader = $this->shouldShowHeader($path);
-        $showFooter = $this->shouldShowFooter($path, $isProductPath, $isDiscountPath);
+        $showFooter = $this->shouldShowFooter($path);
 
         return new CoreCacheObject(
             $path,
             $guestPaths,
             $adminPaths,
             $isAdminPath,
-            $isProductPath,
-            $isDiscountPath,
             $showHeader,
             $showFooter,
         );
@@ -133,16 +129,6 @@ final class CoreCacheQueryService implements CoreCacheQueryContract
     /**
      * @param string $path
      *
-     * @return bool
-    */
-    private function isProductPath(string $path): bool
-    {
-        return str_starts_with($path, PathConstants::PRODUCTS_BASE_PATH);
-    }
-
-    /**
-     * @param string $path
-     *
      * @return array<int, string>
     */
     private function resolveAdminPaths(string $path): array
@@ -165,20 +151,11 @@ final class CoreCacheQueryService implements CoreCacheQueryContract
 
     /**
      * @param string $path
-     * @param bool $isProductPage
-     * @param bool $isDiscountPage
      *
      * @return bool
     */
-    private function shouldShowFooter(
-        string $path,
-        bool $isProductPage,
-        bool $isDiscountPage,
-    ): bool {
-        return !$this->isGuestPath($path)
-            && !$this->isMustVerifyPath($path)
-            && !$isProductPage
-            && !$isDiscountPage;
+    private function shouldShowFooter(string $path): bool {
+        return !$this->isGuestPath($path) && !$this->isMustVerifyPath($path);
     }
 
     /**

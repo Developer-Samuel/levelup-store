@@ -60,8 +60,6 @@ final readonly class CoreSubscriber implements EventSubscriberInterface
                 $vars->guestPaths,
                 $vars->adminPaths,
                 $vars->isAdminPath,
-                $vars->isProductPage,
-                $vars->isDiscountPage,
                 $vars->showHeader,
                 $vars->showFooter,
             );
@@ -71,7 +69,7 @@ final readonly class CoreSubscriber implements EventSubscriberInterface
                 $throwable,
             );
 
-            $this->addGlobalVariablesToTwig('', [], [], false, false, false, false, false);
+            $this->addGlobalVariablesToTwig('', [], [], false, false, false);
         }
     }
 
@@ -80,8 +78,6 @@ final readonly class CoreSubscriber implements EventSubscriberInterface
      * @param string[] $guestPaths
      * @param string[] $adminPaths
      * @param bool $isAdminPath
-     * @param bool $isProductPage
-     * @param bool $isDiscountPage
      * @param bool $showHeader
      * @param bool $showFooter
      *
@@ -92,8 +88,6 @@ final readonly class CoreSubscriber implements EventSubscriberInterface
         array $guestPaths,
         array $adminPaths,
         bool $isAdminPath,
-        bool $isProductPage,
-        bool $isDiscountPage,
         bool $showHeader,
         bool $showFooter,
     ): void {
@@ -101,8 +95,6 @@ final readonly class CoreSubscriber implements EventSubscriberInterface
         $this->twig->addGlobal('guestPaths', $guestPaths);
         $this->twig->addGlobal('adminPaths', $adminPaths);
         $this->twig->addGlobal('isAdminPath', $isAdminPath);
-        $this->twig->addGlobal('isProductPage', $isProductPage);
-        $this->twig->addGlobal('isDiscountPage', $isDiscountPage);
         $this->twig->addGlobal('showHeader', $showHeader);
         $this->twig->addGlobal('showFooter', $showFooter);
     }

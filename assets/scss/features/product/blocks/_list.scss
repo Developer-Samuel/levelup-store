@@ -16,10 +16,9 @@
   &__filter {
     @include shadow(right, 1);
 
-    position: fixed;
     color: colors.$neutral;
     background: colors.$primary;
-    padding-bottom: 1.5em;
+    padding-bottom: 2.5em;
     overflow-y: auto;
     z-index: 10;
 
