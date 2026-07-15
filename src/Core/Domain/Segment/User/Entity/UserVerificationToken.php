@@ -40,10 +40,4 @@ class UserVerificationToken
         nullable: false,
     )]
     private User $user;
-
-    #[ORM\Column(type: 'string', length: 128, unique: true, nullable: false)]
-    private string $token;
-
-    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    private ?\DateTimeImmutable $expiresAt = null;
 }
