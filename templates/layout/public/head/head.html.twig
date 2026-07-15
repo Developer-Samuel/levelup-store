@@ -1,13 +1,13 @@
 {% macro render() %}
     {% import 'layout/public/head/meta/meta.html.twig' as Meta %}
     {% import 'layout/public/head/links/favicon.html.twig' as Favicon %}
+    {% import 'layout/public/head/links/canonical.html.twig' as Canonical %}
     {% import 'layout/public/head/assets/styles.html.twig' as Styles %}
     {% import 'layout/public/head/assets/scripts.html.twig' as Scripts %}
 
-    <title>{% block title %}LevelUp Store{% endblock %}</title>
-
     {{ Meta.render() }}
     {{ Favicon.render() }}
+    {{ Canonical.render() }}
     {{ Styles.render() }}
     {{ Scripts.render() }}
 {% endmacro %}

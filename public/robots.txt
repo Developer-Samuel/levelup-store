@@ -1,0 +1,14 @@
+User-agent: *
+
+# Allowed pages
+Allow: /$
+Allow: /products/
+Allow: /product/show/
+Allow: /discounts/
+Allow: /reviews/
+Allow: /search/find
+
+# Blocked pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dev/
