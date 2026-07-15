@@ -24,6 +24,7 @@ use App\Core\Ports\{
     Auth\Service\Command\SignupCommandContract,
     Auth\Service\Command\VerificationCommandContract,
     Auth\Service\Query\LoginRedirectQueryContract,
+    Segment\Audit\AuditLoggerContract,
     Shared\Logging\AppLoggerContract,
     Shared\RateLimiter\RateLimiterContract
 };
@@ -38,6 +39,7 @@ class SignupHandlerTest extends TestCase
     private LoginCommandContract&MockObject $loginCommand;
     private LoginRedirectQueryContract&MockObject $loginRedirectQuery;
     private RateLimiterContract&MockObject $rateLimiter;
+    private AuditLoggerContract&MockObject $audit;
     private AppLoggerContract&MockObject $logger;
     private SignupHandler $handler;
 
@@ -166,6 +168,7 @@ class SignupHandlerTest extends TestCase
         $this->loginCommand        = $this->createMock(LoginCommandContract::class);
         $this->loginRedirectQuery  = $this->createMock(LoginRedirectQueryContract::class);
         $this->rateLimiter         = $this->createMock(RateLimiterContract::class);
+        $this->audit               = $this->createMock(AuditLoggerContract::class);
         $this->logger              = $this->createMock(AppLoggerContract::class);
     }
 
@@ -177,6 +180,7 @@ class SignupHandlerTest extends TestCase
             $this->loginCommand,
             $this->loginRedirectQuery,
             $this->rateLimiter,
+            $this->audit,
             $this->logger,
         );
     }

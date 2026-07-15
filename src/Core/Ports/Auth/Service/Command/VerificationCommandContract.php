@@ -21,7 +21,7 @@ interface VerificationCommandContract
     /**
      * @param UpdateVerificationPayload $payload
      *
-     * @return bool
+     * @return User|null
     */
-    public function verifyUserByToken(UpdateVerificationPayload $payload): bool;
+    public function verifyUserByToken(UpdateVerificationPayload $payload): ?User;
 }

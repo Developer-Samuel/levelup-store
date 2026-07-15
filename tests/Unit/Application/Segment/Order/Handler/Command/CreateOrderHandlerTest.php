@@ -24,6 +24,7 @@ use App\Core\Application\Segment\Order\Handler\Command\CreateOrderHandler;
 
 use App\Core\Ports\{
     Security\Policy\SecurityPolicyContract,
+    Segment\Audit\AuditLoggerContract,
     Segment\Order\Handler\Command\CreateOrderHandlerContract,
     Segment\Order\Service\Command\OrderMutationCommandContract,
     Shared\Logging\AppLoggerContract
@@ -36,6 +37,7 @@ class CreateOrderHandlerTest extends TestCase
 {
     private SecurityPolicyContract&MockObject $securityPolicy;
     private OrderMutationCommandContract&MockObject $orderMutationCommand;
+    private AuditLoggerContract&MockObject $audit;
     private AppLoggerContract&MockObject $logger;
     private CreateOrderHandler $handler;
 
@@ -102,41 +104,36 @@ class CreateOrderHandlerTest extends TestCase
         $this->assertSame('Email not verified.', $result['message']);
     }
 
-    public function testHandleLogsOrderCreatedForCashPayment(): void
+    public function testHandleLogsAuditForCashPayment(): void
     {
         $this->setupVerifiedUser();
         $this->setupCashOrderResult(42);
 
-        $this->logger
+        $this->audit
             ->expects($this->once())
-            ->method('info');
+            ->method('log');
 
         $this->handler->handle($this->buildPayload());
     }
 
-    public function testHandleLogsOrderCreatedWithOrderIdInContext(): void
+    public function testHandleLogsAuditWithOrderId(): void
     {
         $this->setupVerifiedUser();
         $this->setupCashOrderResult(42);
 
-        $capturedContext = null;
-
-        $this->logger
-            ->method('info')
-            ->willReturnCallback(
-                function (string $message, mixed $user, array $context) use (&$capturedContext): void {
-                    $capturedContext = $context;
-                }
+        $this->audit
+            ->expects($this->once())
+            ->method('log')
+            ->with(
+                $this->anything(),
+                'Order',
+                42,
             );
 
         $this->handler->handle($this->buildPayload());
-
-        $this->assertIsArray($capturedContext);
-        $this->assertArrayHasKey('order_id', $capturedContext);
-        $this->assertSame(42, $capturedContext['order_id']);
     }
 
-    public function testHandleDoesNotLogInfoForCardPayment(): void
+    public function testHandleDoesNotLogAuditForCardPayment(): void
     {
         $this->setupVerifiedUser();
 
@@ -144,9 +141,9 @@ class CreateOrderHandlerTest extends TestCase
             ->method('createOrder')
             ->willReturn(new OrderResultObject(order: null, paymentUrl: 'https://stripe.com/pay/abc'));
 
-        $this->logger
+        $this->audit
             ->expects($this->never())
-            ->method('info');
+            ->method('log');
 
         $this->handler->handle($this->buildPayload());
     }
@@ -170,6 +167,7 @@ class CreateOrderHandlerTest extends TestCase
     {
         $this->securityPolicy       = $this->createMock(SecurityPolicyContract::class);
         $this->orderMutationCommand = $this->createMock(OrderMutationCommandContract::class);
+        $this->audit                = $this->createMock(AuditLoggerContract::class);
         $this->logger               = $this->createMock(AppLoggerContract::class);
     }
 
@@ -178,6 +176,7 @@ class CreateOrderHandlerTest extends TestCase
         $this->handler = new CreateOrderHandler(
             $this->securityPolicy,
             $this->orderMutationCommand,
+            $this->audit,
             $this->logger,
         );
     }

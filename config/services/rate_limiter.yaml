@@ -3,20 +3,20 @@ services:
     autowire: true
 
   # 🚦 Rate Limiter
-  App\Infrastructure\RateLimiter\LoginRateLimiter:
-    class: App\Infrastructure\RateLimiter\RateLimiter
+  rate_limiter.login:
+    class: App\Infrastructure\Shared\RateLimiter\RateLimiter
     arguments:
       $cache: '@cache.app'
       $keyPrefix: 'login'
 
-  App\Infrastructure\RateLimiter\SignupRateLimiter:
-    class: App\Infrastructure\RateLimiter\RateLimiter
+  rate_limiter.signup:
+    class: App\Infrastructure\Shared\RateLimiter\RateLimiter
     arguments:
       $cache: '@cache.app'
       $keyPrefix: 'signup'
 
-  App\Infrastructure\RateLimiter\ForgotPasswordRateLimiter:
-    class: App\Infrastructure\RateLimiter\RateLimiter
+  rate_limiter.forgot_password:
+    class: App\Infrastructure\Shared\RateLimiter\RateLimiter
     arguments:
       $cache: '@cache.app'
       $keyPrefix: 'forgot_password'

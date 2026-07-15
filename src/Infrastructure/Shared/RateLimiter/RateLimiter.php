@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\RateLimiter;
+namespace App\Infrastructure\Shared\RateLimiter;
 
 use Psr\{
     Cache\CacheItemInterface,
@@ -17,6 +17,8 @@ use Symfony\{
 use App\Core\Domain\Exception\TooManyRequestsException;
 
 use App\Core\Ports\Shared\RateLimiter\RateLimiterContract;
+
+use App\Infrastructure\Shared\Http\RequestMetadata;
 
 #[Autoconfigure(autowire: false)]
 final class RateLimiter implements RateLimiterContract
@@ -132,7 +134,7 @@ final class RateLimiter implements RateLimiterContract
     */
     private function buildKey(): string
     {
-        $ip = $this->requestStack->getCurrentRequest()?->getClientIp() ?? 'unknown';
+        $ip = RequestMetadata::fromRequestStack($this->requestStack)->ip;
 
         return sprintf('rate_limit_%s_%s', $this->keyPrefix, md5($ip));
     }

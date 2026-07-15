@@ -16,21 +16,6 @@ interface AppLoggerContract
      *
      * @return void
     */
-    public function emergency(
-        string $message,
-        ?\Throwable $throwable = null,
-        ?User $user = null,
-        array $context = [],
-    ): void;
-
-    /**
-     * @param string $message
-     * @param \Throwable|null $throwable
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
     public function alert(
         string $message,
         ?\Throwable $throwable = null,
@@ -91,31 +76,4 @@ interface AppLoggerContract
      * @return void
     */
     public function warning(string $message, ?User $user = null, array $context = []): void;
-
-    /**
-     * @param string $message
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
-    public function notice(string $message, ?User $user = null, array $context = []): void;
-
-    /**
-     * @param string $message
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
-    public function info(string $message, ?User $user = null, array $context = []): void;
-
-    /**
-     * @param string $message
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
-    public function debug(string $message, ?User $user = null, array $context = []): void;
 }

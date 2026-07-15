@@ -6,6 +6,7 @@ namespace App\Core\Application\Auth\Handler\Command;
 
 use App\Core\Domain\{
     Auth\Payload\LoginPayload,
+    Segment\Audit\Enum\AuditAction,
     Segment\User\Entity\User
 };
 
@@ -16,6 +17,7 @@ use App\Core\Ports\{
     Auth\Service\Command\LoginCommandContract,
     Auth\Service\Query\LoginRedirectQueryContract,
     Security\Provider\PasswordHasherProviderContract,
+    Segment\Audit\AuditLoggerContract,
     Segment\User\Repository\UserRepositoryContract,
     Shared\Logging\AppLoggerContract,
     Shared\RateLimiter\RateLimiterContract
@@ -31,6 +33,7 @@ final class LoginHandler extends AbstractCommandHandler implements LoginHandlerC
      * @param LoginCommandContract $loginCommand
      * @param LoginRedirectQueryContract $loginRedirectQuery
      * @param RateLimiterContract $rateLimiter
+     * @param AuditLoggerContract $audit
      * @param AppLoggerContract $logger
     */
     public function __construct(
@@ -39,6 +42,7 @@ final class LoginHandler extends AbstractCommandHandler implements LoginHandlerC
         private readonly LoginCommandContract $loginCommand,
         private readonly LoginRedirectQueryContract $loginRedirectQuery,
         private readonly RateLimiterContract $rateLimiter,
+        private readonly AuditLoggerContract $audit,
         AppLoggerContract $logger,
     ) {
         parent::__construct($logger);
@@ -59,6 +63,8 @@ final class LoginHandler extends AbstractCommandHandler implements LoginHandlerC
             $tokenPair = $this->loginCommand->execute($user);
 
             $this->rateLimiter->reset();
+
+            $this->audit->log(AuditAction::LOGIN, 'User', $user->getId(), [], $user);
 
             return ApiResultFormatter::success(
                 'Login successful',

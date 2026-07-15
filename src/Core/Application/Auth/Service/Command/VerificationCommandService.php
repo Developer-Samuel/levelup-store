@@ -57,24 +57,24 @@ final readonly class VerificationCommandService implements VerificationCommandCo
     /**
      * @param UpdateVerificationPayload $payload
      *
-     * @return bool
+     * @return User|null
     */
-    public function verifyUserByToken(UpdateVerificationPayload $payload): bool
+    public function verifyUserByToken(UpdateVerificationPayload $payload): ?User
     {
         $userVerificationToken = $this->verificationQuery->getValidToken($payload->token);
         if ($userVerificationToken === null) {
-            return false;
+            return null;
         }
 
         $user = $userVerificationToken->getUser();
         if (!$this->verificationQuery->isUserVerifiable($user)) {
-            return false;
+            return null;
         }
 
         $this->verifyUser($user);
         $this->tokenRepository->removeTokensByUser($user);
 
-        return true;
+        return $user;
     }
 
     /**

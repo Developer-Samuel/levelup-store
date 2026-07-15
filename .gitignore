@@ -22,7 +22,7 @@ npm-debug.log
 # Cache & Logs
 var/
 .cache/
-.phpunit.result.cache
+*.cache
 
 # Frontend Build
 assets/vendor/

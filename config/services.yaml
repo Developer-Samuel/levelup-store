@@ -39,15 +39,15 @@ services:
 
   App\Core\Application\Auth\Handler\Command\LoginHandler:
     arguments:
-      $rateLimiter: '@App\Infrastructure\RateLimiter\LoginRateLimiter'
+      $rateLimiter: '@rate_limiter.login'
 
   App\Core\Application\Auth\Handler\Command\SignupHandler:
     arguments:
-      $rateLimiter: '@App\Infrastructure\RateLimiter\SignupRateLimiter'
+      $rateLimiter: '@rate_limiter.signup'
 
   App\Core\Application\Auth\Handler\Command\ForgotPasswordCommandHandler:
     arguments:
-      $rateLimiter: '@App\Infrastructure\RateLimiter\ForgotPasswordRateLimiter'
+      $rateLimiter: '@rate_limiter.forgot_password'
 
   # Adapters
   App\Adapters\External\Cache\RedisCacheAdapter:
@@ -75,6 +75,10 @@ services:
   App\Infrastructure\Shared\Logging\AppLogger:
     arguments:
       $logger: '@monolog.logger.app_logger'
+
+  App\Infrastructure\Segment\Audit\AuditLogger:
+    arguments:
+      $enabled: '%env(bool:AUDIT_LOGS_ENABLED)%'
 
   App\Infrastructure\Shared\Subscriber\:
     resource: '../src/Infrastructure/Shared/Subscriber/'
