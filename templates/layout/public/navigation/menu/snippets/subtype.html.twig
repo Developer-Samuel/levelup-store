@@ -2,18 +2,19 @@
     {% set firstSubtypes = type.subtypes|slice(0, 8) %}
 
     {% for subtype in firstSubtypes %}
-        {% set hasVariants = subtype.hasVariants() %}
-        <div class="navigation__menu-list-item {% if not hasVariants %}empty{% endif %}">
-            <a href="{{ not hasVariants
-                ? 'javascript:void(0)'
-                : path('products_index', {
-                    'category': category.name|lower|replace({' ': '-'}),
-                    'type': type.name|lower|replace({' ': '-'}),
-                    'subtype': subtype.name|lower|replace({' ': '-'})
-                })
-            }}">
-                {{ subtype.name }}
-            </a>
-        </div>
-    {% endfor %}
+      {% set hasVariants = subtype.hasVariants() %}
+      <div class="navigation__menu-list-item {% if not hasVariants %}empty{% endif %}">
+          {% if hasVariants %}
+              <a href="{{ path('products_index', {
+                  'category': category.name|lower|replace({' ': '-'}),
+                  'type': type.name|lower|replace({' ': '-'}),
+                  'subtype': subtype.name|lower|replace({' ': '-'})
+              }) }}">
+                  {{ subtype.name }}
+              </a>
+          {% else %}
+              <span>{{ subtype.name }}</span>
+          {% endif %}
+      </div>
+  {% endfor %}
 {% endmacro %}

@@ -20,10 +20,8 @@
         {% set emptyItems = maxTypes - typeCount %}
         {% for i in range(0, emptyItems - 1) %}
             <div class="navigation__menu-item">
-                <div class="navigation__menu-title">
-                    <a href="javascript:void(0)">
-                        &nbsp;
-                    </a>
+                <div class="navigation__menu-title navigation__menu-title--empty">
+                    <span>&nbsp;</span>
                 </div>
             </div>
         {% endfor %}

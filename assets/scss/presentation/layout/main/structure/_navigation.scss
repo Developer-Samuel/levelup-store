@@ -119,7 +119,8 @@
         background: colors.$neutral-hover;
       }
 
-      a {
+      a,
+      span {
         @include flex-center;
         @include size;
         @include weights(700);
@@ -128,6 +129,11 @@
         font-size: 18px;
         padding: 0.5em 0;
         text-decoration: none;
+      }
+
+      &--empty {
+        background: colors.$neutral;
+        pointer-events: none;
       }
     }
 
@@ -143,7 +149,8 @@
 
         width: 100%;
 
-        a {
+        a,
+        span {
           @include transition('ease', 750);
           @include weights(700);
 
