@@ -9,7 +9,9 @@ use App\Core\Domain\{
     Segment\User\Entity\User
 };
 
-interface PasswordResetTokenRepositoryContract
+use App\Core\Ports\Shared\Repository\CleanableTokenRepositoryContract;
+
+interface PasswordResetTokenRepositoryContract extends CleanableTokenRepositoryContract
 {
     /**
      * @param string $token

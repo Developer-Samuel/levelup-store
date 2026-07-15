@@ -8,9 +8,10 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-use App\Core\Domain\Auth\Entity\RefreshToken;
-
-use App\Core\Domain\Segment\User\Entity\User;
+use App\Core\Domain\{
+    Auth\Entity\RefreshToken,
+    Segment\User\Entity\User
+};
 
 use App\Core\Ports\Auth\Repository\RefreshTokenRepositoryContract;
 

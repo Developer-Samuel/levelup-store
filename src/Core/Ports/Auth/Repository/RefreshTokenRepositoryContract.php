@@ -9,7 +9,9 @@ use App\Core\Domain\{
     Segment\User\Entity\User
 };
 
-interface RefreshTokenRepositoryContract
+use App\Core\Ports\Shared\Repository\CleanableTokenRepositoryContract;
+
+interface RefreshTokenRepositoryContract extends CleanableTokenRepositoryContract
 {
     /**
      * @param User $user

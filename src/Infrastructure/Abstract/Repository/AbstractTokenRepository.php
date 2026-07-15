@@ -42,6 +42,37 @@ abstract class AbstractTokenRepository extends ServiceEntityRepository
     abstract protected function getAlias(): string;
 
     /**
+     * @param User $user
+     *
+     * @return void
+    */
+    final public function removeTokensByUser(User $user): void
+    {
+        $this->getEntityManager()->createQueryBuilder()
+            ->delete($this->getEntityName(), $this->getAlias())
+            ->where(sprintf('%s.user = :user', $this->getAlias()))
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
+     * @return int
+    */
+    final public function deleteExpired(): int
+    {
+        /** @var int $deleted */
+        $deleted = $this->getEntityManager()->createQueryBuilder()
+            ->delete($this->getEntityName(), $this->getAlias())
+            ->where(sprintf('%s.expiresAt < :now', $this->getAlias()))
+            ->setParameter('now', new \DateTimeImmutable())
+            ->getQuery()
+            ->execute();
+
+        return $deleted;
+    }
+
+    /**
      * @param string $token
      *
      * @return TEntity|null
@@ -56,20 +87,5 @@ abstract class AbstractTokenRepository extends ServiceEntityRepository
         $result = $this->getResultOrNull($qb);
 
         return $result;
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return void
-    */
-    final public function removeTokensByUser(User $user): void
-    {
-        $this->getEntityManager()->createQueryBuilder()
-            ->delete($this->getEntityName(), $this->getAlias())
-            ->where(sprintf('%s.user = :user', $this->getAlias()))
-            ->setParameter('user', $user)
-            ->getQuery()
-            ->execute();
     }
 }

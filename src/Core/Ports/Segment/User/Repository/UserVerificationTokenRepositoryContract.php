@@ -9,7 +9,9 @@ use App\Core\Domain\{
     Segment\User\Entity\UserVerificationToken
 };
 
-interface UserVerificationTokenRepositoryContract
+use App\Core\Ports\Shared\Repository\CleanableTokenRepositoryContract;
+
+interface UserVerificationTokenRepositoryContract extends CleanableTokenRepositoryContract
 {
     /**
      * @param string $token

@@ -8,9 +8,11 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-use App\Core\Domain\Segment\Cart\Entity\{Cart, CartItem};
-
-use App\Core\Domain\Segment\User\Entity\User;
+use App\Core\Domain\{
+    Segment\Cart\Entity\Cart,
+    Segment\Cart\Entity\CartItem,
+    Segment\User\Entity\User
+};
 
 use App\Core\Ports\Segment\Cart\Repository\CartItemRepositoryContract;
 

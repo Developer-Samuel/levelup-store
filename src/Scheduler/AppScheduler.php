@@ -15,7 +15,8 @@ use Symfony\{
 use App\Scheduler\{
     Message\Country\CountrySyncMessage,
     Message\Product\ProductVariantEanSyncMessage,
-    Message\Product\ProductVariantStockSyncMessage
+    Message\Product\ProductVariantStockSyncMessage,
+    Message\Token\TokenCleanupMessage
 };
 
 #[AsSchedule]
@@ -48,6 +49,7 @@ class AppScheduler implements ScheduleProviderInterface
             RecurringMessage::cron('0 2 1 * *', new CountrySyncMessage()),
             RecurringMessage::every('15 minutes', new ProductVariantEanSyncMessage()),
             RecurringMessage::every('15 minutes', new ProductVariantStockSyncMessage()),
+            RecurringMessage::every('1 hours', new TokenCleanupMessage()),
         ];
     }
 }
