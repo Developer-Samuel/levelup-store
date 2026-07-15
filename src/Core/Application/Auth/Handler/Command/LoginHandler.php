@@ -81,7 +81,7 @@ final class LoginHandler extends AbstractCommandHandler implements LoginHandlerC
     {
         $user = $this->userRepository->findByEmail($payload->email);
 
-        if ($user === null || !$this->passwordHasherProvider->isPasswordValid($user, $payload->password)) {
+        if ($user === null || $user->isDeleted() || !$this->passwordHasherProvider->isPasswordValid($user, $payload->password)) {
             throw new \RuntimeException('Invalid credentials.');
         }
 

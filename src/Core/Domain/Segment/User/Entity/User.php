@@ -17,6 +17,7 @@ use App\Core\Domain\{
     Segment\User\Traits\UserEmailTrait,
     Segment\User\Traits\UserNameTrait,
     Shared\Traits\Identity\IdTrait,
+    Shared\Traits\State\SoftDeletesTrait,
     Shared\Traits\Timestamps\CreatedTimestampTrait,
     Shared\Traits\Timestamps\UpdatedTimestampTrait
 };
@@ -33,6 +34,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     use UserCoreTrait;
     use CreatedTimestampTrait;
     use UpdatedTimestampTrait;
+    use SoftDeletesTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'IDENTITY')]

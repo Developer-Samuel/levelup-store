@@ -33,4 +33,11 @@ interface RefreshTokenRepositoryContract extends CleanableTokenRepositoryContrac
      * @return void
     */
     public function revoke(RefreshToken $token): void;
+
+    /**
+     * @param User $user
+     *
+     * @return void
+    */
+    public function removeTokensByUser(User $user): void;
 }

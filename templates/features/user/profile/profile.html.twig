@@ -20,6 +20,13 @@
             {{ Alert.render() }}
 
             {{ ProfileForm.render(user, billing, shipping, countries, errors ?? []) }}
+
+            <div class="user__destroy">
+                <input type="hidden" id="csrf-profile-destroy" value="{{ csrf_token('profile_destroy') }}">
+                <button id="delete-account-btn" type="button" class="user__destroy-btn">
+                    Delete Account
+                </button>
+            </div>
         </div>
     </main>
 {% endblock %}

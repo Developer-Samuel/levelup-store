@@ -85,7 +85,7 @@
         padding: 0.25em;
         border: 0;
         background: transparent;
-        outline: none;
+        outline: 0;
 
         &:focus {
           box-shadow: none;
@@ -260,9 +260,9 @@
         position: absolute;
         right: -8px;
         top: -9px;
-        background: colors.$error;
+        background: colors.$red-900;
         color: colors.$primary;
-        border: 1px solid colors.$error;
+        border: 1px solid colors.$red-900;
         border-radius: 50%;
         overflow: hidden;
         z-index: 1;

@@ -37,7 +37,7 @@
         @include flex-col;
 
         gap: 1.5em;
-        border: 2px solid colors.$error;
+        border: 2px solid colors.$red-900;
         border-radius: 1.5em;
         padding: 1em;
       }

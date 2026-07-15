@@ -54,7 +54,7 @@ final class JwtCookieAuthenticator extends AbstractAuthenticator implements Auth
 
         $refreshToken = $this->refreshTokenRepository->findByToken($rawToken);
 
-        if ($refreshToken === null || $refreshToken->isExpired()) {
+        if ($refreshToken === null || $refreshToken->isExpired() || $refreshToken->getUser()->isDeleted()) {
             throw new CustomUserMessageAuthenticationException('Invalid or expired session.');
         }
 

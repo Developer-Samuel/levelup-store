@@ -115,10 +115,6 @@
       background: colors.$neutral;
       overflow: hidden;
 
-      &:hover {
-        background: colors.$neutral-hover;
-      }
-
       a,
       span {
         @include flex-center;
@@ -160,14 +156,6 @@
           padding: 0.75em 0;
           display: block;
           width: 100%;
-        }
-
-        &:hover {
-          background: colors.$neutral-hover;
-
-          a {
-            color: colors.$primary;
-          }
         }
 
         &.empty {
