@@ -8,15 +8,18 @@ services:
     arguments:
       $cache: '@cache.app'
       $keyPrefix: 'login'
+      $recordTtl: 86400
 
   rate_limiter.signup:
     class: App\Infrastructure\Shared\RateLimiter\RateLimiter
     arguments:
       $cache: '@cache.app'
       $keyPrefix: 'signup'
+      $recordTtl: 3600
 
   rate_limiter.forgot_password:
     class: App\Infrastructure\Shared\RateLimiter\RateLimiter
     arguments:
       $cache: '@cache.app'
       $keyPrefix: 'forgot_password'
+      $recordTtl: 86400

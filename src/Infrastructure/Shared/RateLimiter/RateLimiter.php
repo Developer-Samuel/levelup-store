@@ -31,17 +31,17 @@ final class RateLimiter implements RateLimiterContract
         5  => 60,   // 60s
     ];
 
-    private const RECORD_TTL = 7200; // 2h
-
     /**
      * @param CacheItemPoolInterface $cache
      * @param RequestStack $requestStack
      * @param string $keyPrefix
+     * @param int $recordTtl
     */
     public function __construct(
         private readonly CacheItemPoolInterface $cache,
         private readonly RequestStack $requestStack,
         private readonly string $keyPrefix,
+        private readonly int $recordTtl = 86400,
     ) {}
 
     /**
@@ -124,7 +124,7 @@ final class RateLimiter implements RateLimiterContract
     private function saveItem(CacheItemInterface $item, array $data): void
     {
         $item->set($data);
-        $item->expiresAfter(self::RECORD_TTL);
+        $item->expiresAfter($this->recordTtl);
 
         $this->cache->save($item);
     }
