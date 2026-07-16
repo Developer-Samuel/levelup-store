@@ -22,11 +22,11 @@ use App\Core\Ports\{
 
 use App\Scheduler\{
     Abstract\AbstractTask,
-    Message\Product\ProductVariantEanSyncMessage
+    Message\Product\ProductEanSyncMessage
 };
 
 #[AsMessageHandler]
-class ProductVariantEanSyncTask extends AbstractTask
+class ProductEanSyncTask extends AbstractTask
 {
     /**
      * @param ProductVariantStockRepositoryContract $stockRepository
@@ -44,11 +44,11 @@ class ProductVariantEanSyncTask extends AbstractTask
     }
 
     /**
-     * @param ProductVariantEanSyncMessage $message
+     * @param ProductEanSyncMessage $message
      *
      * @return void
     */
-    public function __invoke(ProductVariantEanSyncMessage $message): void
+    public function __invoke(ProductEanSyncMessage $message): void
     {
         $this->execute();
     }
@@ -58,7 +58,7 @@ class ProductVariantEanSyncTask extends AbstractTask
     */
     protected function getTaskName(): string
     {
-        return 'ProductVariantEanSyncTask';
+        return 'ProductEanSyncTask';
     }
 
     /**

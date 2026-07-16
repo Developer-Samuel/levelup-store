@@ -20,11 +20,11 @@ use App\Core\Ports\{
 
 use App\Scheduler\{
     Abstract\AbstractTask,
-    Message\Product\ProductVariantStockSyncMessage
+    Message\Product\ProductStockSyncMessage
 };
 
 #[AsMessageHandler]
-class ProductVariantStockSyncTask extends AbstractTask
+class ProductStockSyncTask extends AbstractTask
 {
     /**
      * @param ProductVariantStockRepositoryContract $stockRepository
@@ -40,11 +40,11 @@ class ProductVariantStockSyncTask extends AbstractTask
     }
 
     /**
-     * @param ProductVariantStockSyncMessage $message
+     * @param ProductStockSyncMessage $message
      *
      * @return void
     */
-    public function __invoke(ProductVariantStockSyncMessage $message): void
+    public function __invoke(ProductStockSyncMessage $message): void
     {
         $this->execute();
     }
@@ -54,7 +54,7 @@ class ProductVariantStockSyncTask extends AbstractTask
     */
     protected function getTaskName(): string
     {
-        return 'ProductVariantStockSyncTask';
+        return 'ProductStockSyncTask';
     }
 
     /**
