@@ -16,6 +16,7 @@ use App\Scheduler\{
     Message\Cart\CartCleanupMessage,
     Message\Cart\CartStockCleanupMessage,
     Message\Country\CountrySyncMessage,
+    Message\Product\ProductRecommendedSyncMessage,
     Message\Product\ProductVariantEanSyncMessage,
     Message\Product\ProductVariantStockSyncMessage,
     Message\Token\TokenCleanupMessage
@@ -55,12 +56,13 @@ class AppScheduler implements ScheduleProviderInterface
             // Product
             RecurringMessage::every('15 minutes', new ProductVariantEanSyncMessage()),
             RecurringMessage::every('15 minutes', new ProductVariantStockSyncMessage()),
-
-            // Country
-            RecurringMessage::cron('0 2 1 * *', new CountrySyncMessage()),
+            RecurringMessage::every('15 minutes', new ProductRecommendedSyncMessage()),
 
             // Token
             RecurringMessage::every('1 hours', new TokenCleanupMessage()),
+
+            // Country
+            RecurringMessage::cron('0 2 1 * *', new CountrySyncMessage()),
         ];
     }
 }

@@ -222,6 +222,32 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     }
 
     /**
+     * @param int[] $excludedVariantIds
+     *
+     * @return ProductVariant|null
+    */
+    public function findRandomAvailableExcluding(array $excludedVariantIds): ?ProductVariant
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
+
+        if (!empty($excludedVariantIds)) {
+            $qb->andWhere('v.id NOT IN (:excluded)')
+                ->setParameter('excluded', $excludedVariantIds);
+        }
+
+        /** @var ProductVariant[] $results */
+        $results = $qb->getQuery()->getResult();
+
+        if (empty($results)) {
+            return null;
+        }
+
+        return $results[array_rand($results)];
+    }
+
+    /**
      * @return QueryBuilder
     */
     private function createAvailableVariantsQueryBuilder(): QueryBuilder

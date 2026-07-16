@@ -78,4 +78,11 @@ interface ProductVariantRepositoryContract
      * @return ProductVariant|null
     */
     public function findById(int $id): ?ProductVariant;
+
+    /**
+     * @param int[] $excludedVariantIds
+     *
+     * @return ProductVariant|null
+    */
+    public function findRandomAvailableExcluding(array $excludedVariantIds): ?ProductVariant;
 }
