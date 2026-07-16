@@ -8,7 +8,6 @@ import type {
   FormSubmitHandler,
 } from '@/ts/shared/elements/form/types'
 import { handleHttpError } from '@/ts/shared/elements/form/_handlers/httpErrorHandler'
-import { scrollToTop } from '@/ts/shared/utils/scroll'
 import { sleep } from '@/ts/shared/utils/sleep'
 
 import NotyfAlert from '@/ts/plugins/notyf/_components/NotyfAlert'
@@ -78,10 +77,6 @@ export function createFormHandler(
           await sleep(options.reloadDelay)
 
           window.location.reload()
-        }
-
-        if (shouldScroll && alert) {
-          scrollToTop()
         }
       } else {
         alert.display(false, data.message ?? 'An error occurred.')

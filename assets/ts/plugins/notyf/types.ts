@@ -1,5 +1,6 @@
 type NotyfShape = {
   type: 'success' | 'error' | 'info'
+  duration: number
   background: string
   icon: {
     className: string
@@ -8,7 +9,6 @@ type NotyfShape = {
 }
 
 export type NotyfConfig = {
-  duration: number
   position: {
     x: 'left' | 'center' | 'right'
     y: 'top' | 'bottom'
