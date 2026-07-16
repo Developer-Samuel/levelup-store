@@ -58,6 +58,8 @@ final readonly class OrderMutationCommandService implements OrderMutationCommand
 
         $items = $this->orderQueryBuilder->orderValidatorQuery->getCartItemsOrFail($user);
 
+        $this->orderCommandBuilder->orderItemCommand->validateAllItemsInStock($items);
+
         if ($payload->paymentMethod === OrderPaymentMethod::CASH) {
             return $this->processCashOrder($user, $payload, $items);
         }

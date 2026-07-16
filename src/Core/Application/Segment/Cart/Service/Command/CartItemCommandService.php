@@ -94,13 +94,20 @@ final readonly class CartItemCommandService implements CartItemCommandContract
     */
     public function removeVariant(ProductVariant $variant, array $cartItems): void
     {
+        $cart = null;
+
         foreach ($cartItems as $cartItem) {
             if ($cartItem->hasVariant($variant)) {
+                $cart = $cart ?? $cartItem->getCart();
                 $this->entityPersistence->remove($cartItem);
             }
         }
 
         $this->entityPersistence->flush();
+
+        if ($cart !== null) {
+            $this->cartControlCommand->flushAndRefreshCart($cart);
+        }
     }
 
     /**
