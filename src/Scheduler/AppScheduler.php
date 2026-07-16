@@ -14,6 +14,7 @@ use Symfony\{
 
 use App\Scheduler\{
     Message\Cart\CartCleanupMessage,
+    Message\Cart\CartStockCleanupMessage,
     Message\Country\CountrySyncMessage,
     Message\Product\ProductVariantEanSyncMessage,
     Message\Product\ProductVariantStockSyncMessage,
@@ -47,10 +48,18 @@ class AppScheduler implements ScheduleProviderInterface
     private function buildMessages(): array
     {
         return [
+            // Cart
             RecurringMessage::cron('0 0 * * *', new CartCleanupMessage()),
-            RecurringMessage::cron('0 2 1 * *', new CountrySyncMessage()),
+            RecurringMessage::every('15 minutes', new CartStockCleanupMessage()),
+
+            // Product
             RecurringMessage::every('15 minutes', new ProductVariantEanSyncMessage()),
             RecurringMessage::every('15 minutes', new ProductVariantStockSyncMessage()),
+
+            // Country
+            RecurringMessage::cron('0 2 1 * *', new CountrySyncMessage()),
+
+            // Token
             RecurringMessage::every('1 hours', new TokenCleanupMessage()),
         ];
     }

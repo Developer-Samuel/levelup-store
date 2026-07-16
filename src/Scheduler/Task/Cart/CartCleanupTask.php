@@ -80,10 +80,26 @@ class CartCleanupTask extends AbstractTask
             $count++;
         }
 
+        $count += $this->removeEmptyCarts();
+
         if ($count > 0) {
             $this->entityManager->flush();
         }
 
         return $count;
+    }
+
+    /**
+     * @return int
+    */
+    private function removeEmptyCarts(): int
+    {
+        $emptyCarts = $this->cartRepository->findEmpty();
+
+        foreach ($emptyCarts as $cart) {
+            $this->entityManager->remove($cart);
+        }
+
+        return count($emptyCarts);
     }
 }

@@ -21,4 +21,9 @@ interface CartRepositoryContract
      * @return Cart[]
     */
     public function findInactiveSince(\DateTimeImmutable $threshold): array;
+
+    /**
+     * @return Cart[]
+    */
+    public function findEmpty(): array;
 }

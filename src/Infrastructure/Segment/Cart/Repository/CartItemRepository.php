@@ -51,4 +51,21 @@ class CartItemRepository extends ServiceEntityRepository implements CartItemRepo
     {
         return $this->findBy(['cart' => $cart]);
     }
+
+    /**
+     * @return CartItem[]
+    */
+    public function findAllWithVariant(): array
+    {
+        /** @var CartItem[] $result */
+        $result = $this->createQueryBuilder('ci')
+            ->join('ci.variant', 'v')
+            ->addSelect('v')
+            ->leftJoin('v.stock', 's')
+            ->addSelect('s')
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
 }

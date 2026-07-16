@@ -55,4 +55,20 @@ class CartRepository extends ServiceEntityRepository implements CartRepositoryCo
 
         return $result;
     }
+
+    /**
+     * @return Cart[]
+    */
+    public function findEmpty(): array
+    {
+        /** @var Cart[] $result */
+        $result = $this->createQueryBuilder('c')
+            ->leftJoin('c.items', 'i')
+            ->having('COUNT(i.id) = 0')
+            ->groupBy('c.id')
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
 }
