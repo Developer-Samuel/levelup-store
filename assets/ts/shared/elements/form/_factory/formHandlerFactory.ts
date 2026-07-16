@@ -22,6 +22,7 @@ type FormHandlerContext = {
 type CreateFormHandlerOptions = {
   onSuccess?: (data: FormResponse, ctx: FormHandlerContext) => void
   onError?: (data: FormResponse, ctx: FormHandlerContext) => void
+  onHttpError?: (error: AxiosError<FormResponse>) => void
   defaultRedirect?: string
   shouldScroll?: boolean
   redirectDelay?: number
@@ -80,15 +81,15 @@ export function createFormHandler(
         }
       } else {
         alert.display(false, data.message ?? 'An error occurred.')
-        if (data.errors) {
-          errors.show(data.errors)
-        }
-        if (options.onError) {
-          options.onError(data, { alert, errors })
-        }
+
+        if (data.errors) errors.show(data.errors)
+        if (options.onError) options.onError(data, { alert, errors })
       }
     } catch (error) {
-      handleHttpError(error as AxiosError<FormResponse>, { alert, errors }, shouldScroll)
+      const axiosError = error as AxiosError<FormResponse>
+
+      handleHttpError(axiosError, { alert, errors }, shouldScroll)
+      options.onHttpError?.(axiosError)
     }
   }
 }

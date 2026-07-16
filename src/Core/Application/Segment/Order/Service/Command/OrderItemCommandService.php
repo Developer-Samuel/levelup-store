@@ -78,7 +78,7 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
                 $this->cartItemCommand->removeVariant($variant, $cartItems);
 
                 throw new ConflictException(
-                    'Your cart has been updated. Some products are no longer in stock and have been removed. Please refresh the page.',
+                    'Your cart has been updated. Some products are no longer in stock and have been removed.',
                 );
             }
 
@@ -137,7 +137,7 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
         $stock = $variant->getStock();
         if (!$stock instanceof ProductVariantStock) {
             throw new ConflictException(
-                'Your cart has been updated. Some products are no longer in stock and have been removed. Please refresh the page.',
+                'Your cart has been updated. Some products are no longer in stock and have been removed.',
             );
         }
 
@@ -174,7 +174,7 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
             $this->cartItemCommand->removeVariant($variant, $cartItems);
 
             throw new ConflictException(
-                'Your cart has been updated. Some products are no longer in stock and have been removed. Please refresh the page.',
+                'Your cart has been updated. Some products are no longer in stock and have been removed.',
             );
         }
     }

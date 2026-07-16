@@ -13,7 +13,9 @@ use App\Core\Application\Abstract\Handler\AbstractCommandHandler;
 
 use App\Core\Ports\{
     Security\Policy\SecurityPolicyContract,
+    Security\Provider\SecurityProviderContract,
     Segment\Audit\AuditLoggerContract,
+    Segment\Cart\Service\Query\CartRenderQueryContract,
     Segment\Order\Handler\Command\CreateOrderHandlerContract,
     Segment\Order\Service\Command\OrderMutationCommandContract,
     Shared\Logging\AppLoggerContract
@@ -31,6 +33,8 @@ class CreateOrderHandler extends AbstractCommandHandler implements CreateOrderHa
     */
     public function __construct(
         private readonly SecurityPolicyContract $securityPolicy,
+        private readonly SecurityProviderContract $securityProvider,
+        private readonly CartRenderQueryContract $cartRenderQuery,
         private readonly OrderMutationCommandContract $orderMutationCommand,
         private readonly AuditLoggerContract $audit,
         AppLoggerContract $logger,
@@ -45,7 +49,7 @@ class CreateOrderHandler extends AbstractCommandHandler implements CreateOrderHa
     */
     public function handle(OrderCreatePayload $payload): array
     {
-        return $this->execute(function () use ($payload) {
+        $result = $this->execute(function () use ($payload) {
             $this->securityPolicy->checkIfEmailVerified();
 
             $result = $this->orderMutationCommand->createOrder($payload);
@@ -59,5 +63,26 @@ class CreateOrderHandler extends AbstractCommandHandler implements CreateOrderHa
 
             return ApiResultFormatter::success('Payment redirect successful', null, $result->paymentUrl);
         });
+
+        return $this->withCartOnConflict($result);
+    }
+
+    /**
+     * @param array<string, mixed> $result
+     *
+     * @return array<string, mixed>
+    */
+    private function withCartOnConflict(array $result): array
+    {
+        if (($result['code'] ?? null) !== 409) {
+            return $result;
+        }
+
+        $user = $this->securityProvider->getCurrentUser();
+        if ($user !== null) {
+            $result['cart'] = $this->cartRenderQuery->buildCartResponse($user, '');
+        }
+
+        return $result;
     }
 }

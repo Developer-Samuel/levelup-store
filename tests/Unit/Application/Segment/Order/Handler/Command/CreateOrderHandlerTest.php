@@ -24,7 +24,9 @@ use App\Core\Application\Segment\Order\Handler\Command\CreateOrderHandler;
 
 use App\Core\Ports\{
     Security\Policy\SecurityPolicyContract,
+    Security\Provider\SecurityProviderContract,
     Segment\Audit\AuditLoggerContract,
+    Segment\Cart\Service\Query\CartRenderQueryContract,
     Segment\Order\Handler\Command\CreateOrderHandlerContract,
     Segment\Order\Service\Command\OrderMutationCommandContract,
     Shared\Logging\AppLoggerContract
@@ -36,6 +38,8 @@ use App\Core\Ports\{
 class CreateOrderHandlerTest extends TestCase
 {
     private SecurityPolicyContract&MockObject $securityPolicy;
+    private SecurityProviderContract&MockObject $securityProvider;
+    private CartRenderQueryContract&MockObject $cartRenderQuery;
     private OrderMutationCommandContract&MockObject $orderMutationCommand;
     private AuditLoggerContract&MockObject $audit;
     private AppLoggerContract&MockObject $logger;
@@ -166,6 +170,8 @@ class CreateOrderHandlerTest extends TestCase
     private function initMocks(): void
     {
         $this->securityPolicy       = $this->createMock(SecurityPolicyContract::class);
+        $this->securityProvider     = $this->createMock(SecurityProviderContract::class);
+        $this->cartRenderQuery      = $this->createMock(CartRenderQueryContract::class);
         $this->orderMutationCommand = $this->createMock(OrderMutationCommandContract::class);
         $this->audit                = $this->createMock(AuditLoggerContract::class);
         $this->logger               = $this->createMock(AppLoggerContract::class);
@@ -175,6 +181,8 @@ class CreateOrderHandlerTest extends TestCase
     {
         $this->handler = new CreateOrderHandler(
             $this->securityPolicy,
+            $this->securityProvider,
+            $this->cartRenderQuery,
             $this->orderMutationCommand,
             $this->audit,
             $this->logger,
