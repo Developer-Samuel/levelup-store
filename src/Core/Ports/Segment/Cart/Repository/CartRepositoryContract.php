@@ -14,4 +14,11 @@ interface CartRepositoryContract
      * @return Cart|null
     */
     public function findCartForUser(int $userId): ?Cart;
+
+    /**
+     * @param \DateTimeImmutable $threshold
+     *
+     * @return Cart[]
+    */
+    public function findInactiveSince(\DateTimeImmutable $threshold): array;
 }

@@ -45,6 +45,8 @@ final readonly class CartControlCommandService implements CartControlCommandCont
     */
     public function flushAndRefreshCart(Cart $cart): void
     {
+        $cart->setUpdatedAt();
+
         $this->entityPersistence->flush();
 
         $this->entityPersistence->refresh($cart);
