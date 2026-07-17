@@ -9,5 +9,8 @@ function getScrollContainer(): Element {
 }
 
 export function scrollToTop(): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+export function scrollToContainer(): void {
   getScrollContainer().scrollTo({ top: 0, behavior: 'smooth' })
 }

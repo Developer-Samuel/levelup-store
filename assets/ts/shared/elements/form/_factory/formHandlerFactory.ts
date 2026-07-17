@@ -9,7 +9,7 @@ import type {
 } from '@/ts/shared/elements/form/types'
 import { handleHttpError } from '@/ts/shared/elements/form/_handlers/httpErrorHandler'
 import { sleep } from '@/ts/shared/utils/sleep'
-import { scrollToTop } from '@/ts/shared/utils/scroll'
+import { scrollToContainer } from '@/ts/shared/utils/scroll'
 
 import NotyfAlert from '@/ts/plugins/notyf/_components/NotyfAlert'
 
@@ -83,7 +83,7 @@ export function createFormHandler(
       } else {
         alert.display(false, data.message ?? 'An error occurred.')
 
-        scrollToTop()
+        scrollToContainer()
         if (data.errors) errors.show(data.errors)
         if (options.onError) options.onError(data, { alert, errors })
       }
