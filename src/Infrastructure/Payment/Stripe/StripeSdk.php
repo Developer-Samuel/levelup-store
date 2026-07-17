@@ -19,11 +19,13 @@ final class StripeSdk implements StripeSdkContract
 
     /**
      * @return void
+     *
+     * @throws \LogicException
     */
     public function initialize(): void
     {
         if (empty($this->secretKey) || trim($this->secretKey) === '') {
-            throw new \RuntimeException('Stripe secret key is not set.');
+            throw new \LogicException('Stripe secret key is not set.');
         }
 
         Stripe::setApiKey($this->secretKey);

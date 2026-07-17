@@ -177,13 +177,13 @@ final class StripePaymentAdapter implements StripePaymentGatewayContract
      *
      * @return string
      *
-     * @throws \RuntimeException
+     * @throws \Exception
     */
     private function extractCheckoutUrl(StripeSession $session): string
     {
         $url = $session->url;
         if (!is_string($url) || $url === '') {
-            throw new \RuntimeException('Stripe checkout session URL is missing or invalid.');
+            throw new \Exception('Stripe checkout session URL is missing or invalid.');
         }
 
         return $url;

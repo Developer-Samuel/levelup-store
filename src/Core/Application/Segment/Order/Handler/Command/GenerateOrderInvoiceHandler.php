@@ -46,7 +46,7 @@ final readonly class GenerateOrderInvoiceHandler implements GenerateOrderInvoice
             $pdfContent = $this->orderInvoiceAdapter->generate($data);
 
             if ($pdfContent === '') {
-                throw new \RuntimeException('Failed to read generated PDF file.');
+                throw new \Exception('Failed to read generated PDF file.');
             }
 
             $tmpFile = $this->tempFileManager->create($pdfContent, 'invoice_', '.pdf');

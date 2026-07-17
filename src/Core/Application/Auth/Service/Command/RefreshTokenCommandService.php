@@ -28,14 +28,14 @@ final readonly class RefreshTokenCommandService implements RefreshTokenCommandCo
      *
      * @return JwtTokenObject
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function execute(string $refreshToken): JwtTokenObject
     {
         $token = $this->refreshTokenRepository->findByToken($refreshToken);
 
         if ($token === null || $token->isExpired()) {
-            throw new \RuntimeException('Invalid or expired refresh token.');
+            throw new \DomainException('Invalid or expired refresh token.');
         }
 
         $user = $token->getUser();

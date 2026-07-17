@@ -81,14 +81,14 @@ final class LoginHandler extends AbstractCommandHandler implements LoginHandlerC
      *
      * @return User
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     private function validateCredentials(LoginPayload $payload): User
     {
         $user = $this->userRepository->findByEmail($payload->email);
 
         if ($user === null || $user->isDeleted() || !$this->passwordHasherProvider->isPasswordValid($user, $payload->password)) {
-            throw new \RuntimeException('Invalid credentials.');
+            throw new \DomainException('Invalid credentials.');
         }
 
         return $user;

@@ -14,12 +14,12 @@ final class CacheAssertion
      *
      * @return T
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     public static function assertValidType(mixed $data, string $className): object
     {
         if (!$data instanceof $className) {
-            throw new \RuntimeException(
+            throw new \LogicException(
                 sprintf('Cache returned invalid data type. Expected %s.', $className),
             );
         }

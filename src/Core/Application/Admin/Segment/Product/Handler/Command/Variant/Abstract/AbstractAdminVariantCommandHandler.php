@@ -78,14 +78,14 @@ abstract class AbstractAdminVariantCommandHandler extends AbstractAdminFormComma
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     protected function assertPayloadType(object $payload): void
     {
         $expectedClass = $this->getPayloadClass();
 
         if (!$payload instanceof $expectedClass) {
-            throw new \RuntimeException(
+            throw new \LogicException(
                 sprintf('Invalid payload type. Expected %s, got %s.', $expectedClass, get_class($payload)),
             );
         }

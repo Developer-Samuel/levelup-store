@@ -17,7 +17,7 @@ interface AdminOrderValidationQueryContract
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function checkSameStatus(Order $order, AdminOrderStatusPayload $payload): void;
 
@@ -26,7 +26,7 @@ interface AdminOrderValidationQueryContract
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function checkRefundedStatus(Order $order): void;
 
@@ -36,7 +36,7 @@ interface AdminOrderValidationQueryContract
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function checkCompletedStatus(Order $order, AdminOrderStatusPayload $payload): void;
 }

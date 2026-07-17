@@ -36,8 +36,6 @@ final class ProductVariantResource
      * @param float|null $averageRating
      *
      * @return ResourceArray
-     *
-     * @throws \LogicException
     */
     public static function toArray(
         ProductVariant $variant,

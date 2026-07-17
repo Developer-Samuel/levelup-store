@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Core\Application\Segment\Order\Service\Query;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 use Kit\Assertion\Domain\Product\Variant\ProductVariantAssertion;
 
 use App\Core\Domain\{
@@ -93,7 +95,7 @@ final class OrderItemQueryService implements OrderItemQueryContract
      *
      * @return StripeLineItemObject
      *
-     * @throws \LogicException
+     * @throws NotFoundHttpException
     */
     private function buildLineItem(ProductVariant $variant, int $quantity): StripeLineItemObject
     {

@@ -20,12 +20,12 @@ final class AdminOrderValidationQueryService implements AdminOrderValidationQuer
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function checkSameStatus(Order $order, AdminOrderStatusPayload $payload): void
     {
         if ($order->getStatus() === $payload->status) {
-            throw new \RuntimeException(
+            throw new \DomainException(
                 'The status is already set to the requested value.',
             );
         }
@@ -36,12 +36,12 @@ final class AdminOrderValidationQueryService implements AdminOrderValidationQuer
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function checkRefundedStatus(Order $order): void
     {
         if ($order->getStatus() === OrderStatus::REFUNDED) {
-            throw new \RuntimeException(
+            throw new \DomainException(
                 'Refunded orders cannot be modified.',
             );
         }
@@ -53,12 +53,12 @@ final class AdminOrderValidationQueryService implements AdminOrderValidationQuer
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function checkCompletedStatus(Order $order, AdminOrderStatusPayload $payload): void
     {
         if ($order->getStatus() === OrderStatus::COMPLETED && $payload->status !== OrderStatus::REFUNDED) {
-            throw new \RuntimeException(
+            throw new \DomainException(
                 'Completed orders can only be set to REFUNDED.',
             );
         }

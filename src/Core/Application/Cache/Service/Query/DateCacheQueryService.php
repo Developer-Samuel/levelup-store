@@ -36,7 +36,7 @@ final class DateCacheQueryService implements DateCacheQueryContract
     /**
      * @return DateCacheObject
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     public function getCurrentData(): DateCacheObject
     {

@@ -126,7 +126,7 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws ConflictException
     */
     private function createOrderItemsForVariant(
         Order $order,

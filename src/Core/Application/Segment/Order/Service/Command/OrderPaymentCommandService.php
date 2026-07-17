@@ -84,7 +84,7 @@ final readonly class OrderPaymentCommandService implements OrderPaymentCommandCo
                 $user,
             );
 
-            throw new \LogicException(
+            throw new \RuntimeException(
                 'An error occurred while processing the payment.',
                 0,
                 $throwable,

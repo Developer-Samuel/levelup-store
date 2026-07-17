@@ -132,7 +132,7 @@ final readonly class CountryApiAdapter implements CountryApiGatewayContract
      *
      * @return array<int, CountryItem>
      *
-     * @throws \LogicException
+     * @throws \RuntimeException
     */
     private function getResponseData(ResponseInterface $response): array
     {
@@ -141,7 +141,7 @@ final readonly class CountryApiAdapter implements CountryApiGatewayContract
 
             $rawData = json_decode($content, true);
             if (!is_array($rawData)) {
-                throw new \LogicException('Invalid JSON response.');
+                throw new \RuntimeException('Invalid JSON response.');
             }
 
             $data = CountryAssertion::assertResponseFormat($rawData);
