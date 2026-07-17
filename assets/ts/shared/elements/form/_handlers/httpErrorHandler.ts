@@ -42,6 +42,6 @@ export function handleHttpError(
   } else {
     alert.display(false, data.message ?? 'An error occurred.')
 
-    if (shouldScroll) scrollToTop()
+    scrollToTop()
   }
 }
