@@ -1,7 +1,8 @@
 import { BREAKPOINT_LG } from '@/ts/shared/constants/breakpoints'
 import { toggleClass } from '@/ts/shared/utils/dom/classes'
 
-import { NAV_LIST_SCROLLED, SCROLL_THRESHOLD } from '@/ts/presentation/layout/navigation/constants'
+import { SCROLL_THRESHOLD } from '@/ts/presentation/layout/common/constants'
+import { NAV_LIST_SCROLLED } from '@/ts/presentation/layout/navigation/constants'
 
 export function toggleScrolledClass(element: HTMLElement | null): void {
   if (!element) return
