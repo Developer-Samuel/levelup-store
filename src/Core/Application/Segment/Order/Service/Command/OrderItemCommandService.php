@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Core\Application\Segment\Order\Service\Command;
 
 use App\Core\Domain\{
-    Exception\ConflictException,
+    Shared\Exception\ConflictException,
     Segment\Cart\Entity\CartItem,
     Segment\Order\Entity\Order,
     Segment\Order\Entity\OrderItem,

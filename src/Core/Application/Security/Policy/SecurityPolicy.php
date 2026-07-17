@@ -7,7 +7,7 @@ namespace App\Core\Application\Security\Policy;
 use Kit\Utils\Shared\Normalizer\StringNormalizer;
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
+    Shared\Exception\AccessDeniedException,
     Segment\User\Entity\User,
     Segment\User\Enum\UserRole
 };

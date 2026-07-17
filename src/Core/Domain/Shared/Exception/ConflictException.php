@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Exception;
+namespace App\Core\Domain\Shared\Exception;
 
-class AccessDeniedException extends \Exception
+class ConflictException extends \RuntimeException
 {
-    protected int $statusCode = 403;
+    protected int $statusCode = 409;
 
     /**
      * @param string $message
     */
     public function __construct(
-        string $message = 'Access denied.',
+        string $message = 'Conflict occurred.',
     ) {
         parent::__construct($message);
     }

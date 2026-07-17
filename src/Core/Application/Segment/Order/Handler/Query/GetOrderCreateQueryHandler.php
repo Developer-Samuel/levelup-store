@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Core\Application\Segment\Order\Handler\Query;
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
+    Shared\Exception\AccessDeniedException,
     Segment\Cart\Entity\Cart,
     Segment\Cart\Entity\CartItem,
     Segment\Order\Enum\OrderPaymentMethod,

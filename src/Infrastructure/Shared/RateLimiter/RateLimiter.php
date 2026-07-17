@@ -14,7 +14,7 @@ use Symfony\{
     Component\HttpFoundation\RequestStack
 };
 
-use App\Core\Domain\Exception\TooManyRequestsException;
+use App\Core\Domain\Shared\Exception\TooManyRequestsException;
 
 use App\Core\Ports\Shared\RateLimiter\RateLimiterContract;
 

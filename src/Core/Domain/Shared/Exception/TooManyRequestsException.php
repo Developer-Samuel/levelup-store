@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Exception;
+namespace App\Core\Domain\Shared\Exception;
 
 use App\Shared\Utils\Formatter\DateTimeFormatter;
 

@@ -10,7 +10,7 @@ use PHPUnit\{
 };
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
+    Shared\Exception\AccessDeniedException,
     Segment\User\Entity\User
 };
 

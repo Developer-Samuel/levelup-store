@@ -12,7 +12,7 @@ use PHPUnit\{
 use App\Core\Domain\{
     Auth\Payload\LoginPayload,
     Auth\ValueObject\JwtTokenObject,
-    Exception\TooManyRequestsException,
+    Shared\Exception\TooManyRequestsException,
     Segment\User\Entity\User
 };
 

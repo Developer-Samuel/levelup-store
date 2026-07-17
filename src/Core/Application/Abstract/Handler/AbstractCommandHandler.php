@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Core\Application\Abstract\Handler;
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
-    Exception\ConflictException,
-    Exception\NotFoundException,
-    Exception\TooManyRequestsException
+    Shared\Exception\AccessDeniedException,
+    Shared\Exception\ConflictException,
+    Shared\Exception\NotFoundException,
+    Shared\Exception\TooManyRequestsException
 };
 
 use App\Core\Ports\Shared\Logging\AppLoggerContract;
