@@ -157,16 +157,6 @@
           display: block;
           width: 100%;
         }
-
-        &.empty {
-          &:hover {
-            background: colors.$light-300;
-
-            a {
-              color: colors.$neutral;
-            }
-          }
-        }
       }
     }
 
