@@ -1,6 +1,8 @@
 import { BREAKPOINT_LG } from '@/ts/shared/constants/breakpoints'
 import { toggleClass } from '@/ts/shared/utils/dom/classes'
+
 import { SCROLL_THRESHOLD } from '@/ts/presentation/layout/common/constants'
+import { dispatchHeaderToggle } from '@/ts/presentation/layout/header/_events/toggle'
 
 let lastScrollY = 0
 
@@ -13,7 +15,10 @@ export function handleScroll(headerMain: HTMLElement): void {
     const header = headerMain.parentElement
     if (header) {
       const scrollingDown = currentScrollY > lastScrollY
-      toggleClass(header, 'header--hidden', scrollingDown && currentScrollY > SCROLL_THRESHOLD)
+      const hidden = scrollingDown && currentScrollY > SCROLL_THRESHOLD
+
+      toggleClass(header, 'header--hidden', hidden)
+      dispatchHeaderToggle(header, hidden)
     }
   }
 

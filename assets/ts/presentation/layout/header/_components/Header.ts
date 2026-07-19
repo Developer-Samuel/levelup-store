@@ -6,6 +6,7 @@ import { attachMobileIconListener } from '@/ts/presentation/layout/header/_liste
 import { attachScrollListener } from '@/ts/presentation/layout/header/_listeners/scrollListener'
 
 export class Header implements HeaderInstance {
+  readonly header: HTMLElement | null
   readonly mobileNavigation: HTMLElement | null
   readonly searchPanel: HTMLElement | null
   readonly logoImage: HTMLImageElement | null
@@ -17,6 +18,7 @@ export class Header implements HeaderInstance {
     this.mobileNavigation = query<HTMLElement>(navigationSelector)
     this.searchPanel = query<HTMLElement>(searchPanelSelector)
     this.headerMain = query<HTMLElement>('.header__main')
+    this.header = this.headerMain?.parentElement ?? null
     this.logoImage = document.getElementById('logo') as HTMLImageElement | null
 
     this.initListeners()

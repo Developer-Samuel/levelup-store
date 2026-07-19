@@ -2,6 +2,7 @@ import type { ProductListInstance } from '@/ts/features/products/list/types'
 import { parseInitialPage, updateDataset } from '@/ts/features/products/list/_utils/pagination'
 import { checkLoadMoreVisibility } from '@/ts/features/products/list/_ui/loadMore'
 import { attachFilterListener } from '@/ts/features/products/list/_listeners/filterListener'
+import { attachScrollListener } from '@/ts/features/products/list/_listeners/scrollListener'
 import { setupMobileFilter } from '@/ts/features/products/list/_interactions/mobileFilter'
 
 /**
@@ -28,6 +29,7 @@ export default class ProductList implements ProductListInstance {
     attachFilterListener(this)
     updateDataset(this.productsWrapper, this.page, this.maxPages)
     checkLoadMoreVisibility(this.page, this.maxPages, this.productsWrapper)
+    attachScrollListener()
     setupMobileFilter()
   }
 }

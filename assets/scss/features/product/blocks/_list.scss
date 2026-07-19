@@ -25,11 +25,15 @@
     &-mobile {
       @include size(100%, 32.5px);
       @include shadow(bottom, 1);
+      @include transition('ease-in-out', 300);
 
       position: fixed;
       background: colors.$white;
-      display: none;
       z-index: 1;
+
+      &--header-hidden {
+        top: 40px !important;
+      }
 
       &-icon {
         @include size(20px, 20px);
@@ -229,6 +233,7 @@
 
     &-options {
       @include flex-between-center;
+      @include transition('ease-in-out', 300);
 
       position: sticky;
       height: 40px;
@@ -236,6 +241,10 @@
       border-bottom: 1px solid colors.$border-primary;
       overflow: hidden;
       z-index: 1;
+
+      &--header-hidden {
+        top: 0 !important;
+      }
 
       &-list {
         @include flex-center-y;

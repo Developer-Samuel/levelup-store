@@ -9,6 +9,8 @@ import {
   attachNavScrollListener,
   attachNavResizeListener,
 } from '@/ts/presentation/layout/navigation/_listeners/domListener'
+import { attachOutsideClickListener } from '@/ts/presentation/layout/navigation/_listeners/outsideClickListener'
+import { attachHeaderToggleListener } from '@/ts/presentation/layout/navigation/_listeners/headerToggleListener'
 import { activateMenu } from '@/ts/presentation/layout/navigation/_interactions/menu'
 import { setupObservers } from '@/ts/presentation/layout/navigation/_interactions/observers'
 
@@ -46,6 +48,8 @@ export class Navigation implements NavigationInstance {
 
     attachNavListMouseListeners(this.navList, this)
     attachNavMenuMouseListeners(this.navMenu, this)
+    attachOutsideClickListener(this)
+    attachHeaderToggleListener(this.mobileContainer)
 
     window.addEventListener('resize', (): void => updateMobileItemVisibility(this))
   }
