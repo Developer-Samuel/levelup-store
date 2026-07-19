@@ -30,6 +30,12 @@
   }
 }
 
+@include resolution(lg, min) {
+  .footer {
+    top: 150px;
+  }
+}
+
 @include resolution(md, min) {
   @include resolution(lg, max) {
     .footer {
@@ -39,35 +45,31 @@
 }
 
 @include resolution(md, min) {
-  .footer {
-    top: 150px;
+  .footer__card {
+    gap: 3em;
 
-    &__card {
-      gap: 3em;
+    &-top {
+      gap: 1em;
 
-      &-top {
-        gap: 1em;
-
-        &-group {
-          gap: 2em;
-        }
-
-        &-heading {
-          font-size: 16px;
-        }
+      &-group {
+        gap: 2em;
       }
 
-      &-item {
-        font-size: 16px;
-
-        img {
-          @include size(20px, 20px);
-        }
-      }
-
-      &-demo {
+      &-heading {
         font-size: 16px;
       }
+    }
+
+    &-item {
+      font-size: 16px;
+
+      img {
+        @include size(20px, 20px);
+      }
+    }
+
+    &-demo {
+      font-size: 16px;
     }
   }
 }
