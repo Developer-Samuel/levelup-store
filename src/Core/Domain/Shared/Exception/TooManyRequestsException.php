@@ -14,7 +14,7 @@ class TooManyRequestsException extends \Exception
      * @param int $retryAfterSeconds
     */
     public function __construct(
-        private readonly int $retryAfterSeconds = 0
+        int $retryAfterSeconds = 0,
     ) {
         parent::__construct($this->buildMessage($retryAfterSeconds));
     }

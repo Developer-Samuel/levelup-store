@@ -101,7 +101,7 @@ class OrderInvoiceAdapterTest extends TestCase
     private function initMocks(): void
     {
         $this->pdfGenerator = $this->createMock(SnappyPdfGeneratorGatewayContract::class);
-        $this->renderer     = $this->createMock(OrderInvoiceRendererContract::class);
+        $this->renderer = $this->createMock(OrderInvoiceRendererContract::class);
     }
 
     private function initAdapter(): void

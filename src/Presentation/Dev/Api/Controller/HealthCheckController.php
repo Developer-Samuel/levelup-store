@@ -20,7 +20,7 @@ use Symfony\{
 
 class HealthCheckController extends AbstractController
 {
-    private const DISK_MIN_FREE_BYTES = 1 * 1024 * 1024 * 1024;
+    private const DISK_MIN_FREE_BYTES = 1024 * 1024 * 1024;
     private const MAILER_TIMEOUT = 3;
 
     /**

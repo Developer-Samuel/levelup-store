@@ -32,7 +32,7 @@ class RefreshTokenCookieManagerTest extends TestCase
     protected function setUp(): void
     {
         $this->cookieGateway = $this->createMock(CookieGatewayContract::class);
-        $this->manager       = new RefreshTokenCookieManager($this->cookieGateway, 3600);
+        $this->manager = new RefreshTokenCookieManager($this->cookieGateway, 3600);
     }
 
     public function testCreateReturnsCookieFromGateway(): void
@@ -75,7 +75,7 @@ class RefreshTokenCookieManagerTest extends TestCase
     {
         $this->cookieGateway->expects($this->never())->method('apply');
 
-        $result   = ['access_token' => 'access-xyz'];
+        $result = ['access_token' => 'access-xyz'];
         $response = new JsonResponse($result);
 
         $this->manager->attach($result, $response, false);
@@ -87,7 +87,7 @@ class RefreshTokenCookieManagerTest extends TestCase
     {
         $this->cookieGateway->expects($this->never())->method('apply');
 
-        $result   = ['refresh_token' => 123, 'access_token' => 'access-xyz'];
+        $result = ['refresh_token' => 123, 'access_token' => 'access-xyz'];
         $response = new JsonResponse($result);
 
         $this->manager->attach($result, $response, false);
@@ -128,7 +128,7 @@ class RefreshTokenCookieManagerTest extends TestCase
     {
         $this->cookieGateway->method('apply')->willReturn($this->buildCookie());
 
-        $result   = ['refresh_token' => 'token-abc', 'access_token' => 'access-xyz'];
+        $result = ['refresh_token' => 'token-abc', 'access_token' => 'access-xyz'];
         $response = new JsonResponse($result);
 
         $this->manager->attach($result, $response, false);

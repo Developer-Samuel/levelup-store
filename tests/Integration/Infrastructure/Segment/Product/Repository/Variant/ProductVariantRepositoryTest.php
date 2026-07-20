@@ -40,7 +40,7 @@ class ProductVariantRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -161,8 +161,8 @@ class ProductVariantRepositoryTest extends KernelTestCase
     public function testFindAvailableVariantsByTypesReturnsVariants(): void
     {
         $variant = $this->createAndPersistVariant('SKU-TYPE-001', 'Variant Type', 'variant-type-001');
-        $typeId  = $variant->getProduct()->getType()->getId();
-        $type    = $this->em->find(Type::class, $typeId);
+        $typeId = $variant->getProduct()->getType()->getId();
+        $type = $this->em->find(Type::class, $typeId);
 
         $this->assertNotNull($type);
 
@@ -174,7 +174,7 @@ class ProductVariantRepositoryTest extends KernelTestCase
 
     public function testFindAvailableVariantsPaginatedWithBrandFilter(): void
     {
-        $variant   = $this->createAndPersistVariant('SKU-BRAND-001', 'Variant Brand', 'variant-brand-001');
+        $variant = $this->createAndPersistVariant('SKU-BRAND-001', 'Variant Brand', 'variant-brand-001');
         $brandName = $variant->getProduct()->getBrand()->getName();
 
         $filter = new ProductFilterObject(
@@ -191,7 +191,7 @@ class ProductVariantRepositoryTest extends KernelTestCase
 
     public function testFindAvailableVariantsPaginatedWithCategoryFilter(): void
     {
-        $variant      = $this->createAndPersistVariant('SKU-CAT-001', 'Variant Category', 'variant-cat-001');
+        $variant = $this->createAndPersistVariant('SKU-CAT-001', 'Variant Category', 'variant-cat-001');
         $categoryName = $variant->getProduct()->getCategory()->getName();
 
         $filter = new ProductFilterObject(
@@ -209,7 +209,7 @@ class ProductVariantRepositoryTest extends KernelTestCase
 
     public function testFindAvailableVariantsPaginatedWithTypeFilter(): void
     {
-        $variant  = $this->createAndPersistVariant('SKU-TYPE-F-001', 'Variant Type Filter', 'variant-type-f-001');
+        $variant = $this->createAndPersistVariant('SKU-TYPE-F-001', 'Variant Type Filter', 'variant-type-f-001');
         $typeName = $variant->getProduct()->getType()->getName();
 
         $filter = new ProductFilterObject(
@@ -301,7 +301,7 @@ class ProductVariantRepositoryTest extends KernelTestCase
 
         $filter = $this->defaultFilter();
 
-        $result = $this->repository->findAvailableVariantsPaginated($filter, 1, 12, null);
+        $result = $this->repository->findAvailableVariantsPaginated($filter, 1, 12);
 
         $this->assertArrayHasKey('items', $result);
         $this->assertIsArray($result['items']);
@@ -340,7 +340,7 @@ class ProductVariantRepositoryTest extends KernelTestCase
     public function testFindAvailableVariantsPaginatedPageTwoReturnsOffset(): void
     {
         for ($i = 1; $i <= 5; $i++) {
-            $this->createAndPersistVariant("SKU-PAGE-00{$i}", "Page Variant {$i}", "page-variant-00{$i}");
+            $this->createAndPersistVariant('SKU-PAGE-00' . $i, 'Page Variant ' . $i, 'page-variant-00' . $i);
         }
 
         $filter = $this->defaultFilter();
@@ -379,7 +379,7 @@ class ProductVariantRepositoryTest extends KernelTestCase
         $this->assertNotNull($fresh);
 
         $allVariants = $this->repository->findAll();
-        $allIds      = array_map(fn(ProductVariant $v) => (int) $v->getId(), $allVariants);
+        $allIds = array_map(fn(ProductVariant $v) => $v->getId(), $allVariants);
 
         $result = $this->repository->findRandomAvailableExcluding($allIds);
 
@@ -393,8 +393,8 @@ class ProductVariantRepositoryTest extends KernelTestCase
 
         $this->em->clear();
 
-        $idA    = $this->repository->findOneByUrl('random-a')?->getId();
-        $idB    = $this->repository->findOneByUrl('random-b')?->getId();
+        $idA = $this->repository->findOneByUrl('random-a')?->getId();
+        $idB = $this->repository->findOneByUrl('random-b')?->getId();
 
         $this->assertNotNull($idA);
         $this->assertNotNull($idB);
@@ -446,8 +446,8 @@ class ProductVariantRepositoryTest extends KernelTestCase
     private function createAndPersistProduct(): Product
     {
         $category = (new Category())->setName(substr(md5(uniqid('', true)), 0, 20));
-        $type     = (new Type())->setName('Type ' . uniqid('', true))->setCategory($category);
-        $brand    = (new Brand())->setName('Brand ' . uniqid('', true));
+        $type = (new Type())->setName('Type ' . uniqid('', true))->setCategory($category);
+        $brand = (new Brand())->setName('Brand ' . uniqid('', true));
 
         $this->em->persist($category);
         $this->em->persist($type);

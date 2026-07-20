@@ -145,13 +145,13 @@ class LoginHandlerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->userRepository         = $this->createMock(UserRepositoryContract::class);
+        $this->userRepository = $this->createMock(UserRepositoryContract::class);
         $this->passwordHasherProvider = $this->createMock(PasswordHasherProviderContract::class);
-        $this->loginCommand           = $this->createMock(LoginCommandContract::class);
-        $this->loginRedirectQuery     = $this->createMock(LoginRedirectQueryContract::class);
-        $this->rateLimiter            = $this->createMock(RateLimiterContract::class);
-        $this->audit                  = $this->createMock(AuditLoggerContract::class);
-        $this->logger                 = $this->createMock(AppLoggerContract::class);
+        $this->loginCommand = $this->createMock(LoginCommandContract::class);
+        $this->loginRedirectQuery = $this->createMock(LoginRedirectQueryContract::class);
+        $this->rateLimiter = $this->createMock(RateLimiterContract::class);
+        $this->audit = $this->createMock(AuditLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void
@@ -168,8 +168,8 @@ class LoginHandlerTest extends TestCase
     }
 
     private function setupSuccess(
-        string $accessToken   = 'access-abc',
-        string $refreshToken  = 'refresh-xyz',
+        string $accessToken = 'access-abc',
+        string $refreshToken = 'refresh-xyz',
         string $redirectRoute = '/dashboard',
     ): void {
         $user = $this->createMock(User::class);
@@ -181,7 +181,7 @@ class LoginHandlerTest extends TestCase
     }
 
     private function buildPayload(
-        string $email    = 'test@example.com',
+        string $email = 'test@example.com',
         string $password = 'secret',
     ): LoginPayload {
         return new LoginPayload(

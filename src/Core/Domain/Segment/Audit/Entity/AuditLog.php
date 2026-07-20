@@ -57,11 +57,11 @@ class AuditLog
         array $metadata = [],
         ?User $user = null,
     ) {
-        $this->action   = $action->value;
-        $this->entity   = $entity;
+        $this->action = $action->value;
+        $this->entity = $entity;
         $this->entityId = $entityId;
         $this->metadata = $metadata !== [] ? json_encode($metadata, JSON_THROW_ON_ERROR) : null;
-        $this->user     = $user;
+        $this->user = $user;
     }
 
     /**

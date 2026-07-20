@@ -165,9 +165,8 @@ trait VariantFactory
     {
         $slug = StringNormalizer::toLowerCase($name);
         $slug = (string) preg_replace('/[^a-z0-9]+/', '-', $slug);
-        $slug = trim($slug, '-');
 
-        return $slug;
+        return trim($slug, '-');
     }
 
     /**

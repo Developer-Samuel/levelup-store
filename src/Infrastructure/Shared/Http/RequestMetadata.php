@@ -6,15 +6,15 @@ namespace App\Infrastructure\Shared\Http;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
-final class RequestMetadata
+final readonly class RequestMetadata
 {
     /**
      * @param string $ip
      * @param string $userAgent
     */
     public function __construct(
-        public readonly string $ip,
-        public readonly string $userAgent,
+        public string $ip,
+        public string $userAgent,
     ) {}
 
     /**

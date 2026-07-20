@@ -101,7 +101,7 @@ class RefreshTokenHandlerTest extends TestCase
     private function initMocks(): void
     {
         $this->refreshTokenCommand = $this->createMock(RefreshTokenCommandContract::class);
-        $this->logger              = $this->createMock(AppLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void

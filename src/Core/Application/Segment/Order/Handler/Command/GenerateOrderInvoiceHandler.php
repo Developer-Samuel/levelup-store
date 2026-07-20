@@ -42,7 +42,7 @@ final readonly class GenerateOrderInvoiceHandler implements GenerateOrderInvoice
         try {
             OrderAssertion::assertOrderCode($code);
 
-            $data       = $this->orderInvoiceQuery->getInvoiceDetails($code);
+            $data = $this->orderInvoiceQuery->getInvoiceDetails($code);
             $pdfContent = $this->orderInvoiceAdapter->generate($data);
 
             if ($pdfContent === '') {

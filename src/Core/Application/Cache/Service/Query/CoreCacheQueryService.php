@@ -7,7 +7,6 @@ namespace App\Core\Application\Cache\Service\Query;
 use App\Core\Domain\Cache\ValueObject\CoreCacheObject;
 
 use App\Core\Application\{
-    Segment\Product\Utils\PathChecker,
     Shared\Constants\CacheTTLConstants
 };
 

@@ -201,9 +201,9 @@ class OrderValidatorQueryServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->cartRepository   = $this->createMock(CartRepositoryContract::class);
+        $this->cartRepository = $this->createMock(CartRepositoryContract::class);
         $this->countryRepository = $this->createMock(CountryRepositoryContract::class);
-        $this->cartItemQuery    = $this->createMock(CartItemQueryContract::class);
+        $this->cartItemQuery = $this->createMock(CartItemQueryContract::class);
     }
 
     private function initService(): void
@@ -228,7 +228,7 @@ class OrderValidatorQueryServiceTest extends TestCase
     */
     private function withCartAndItems(): array
     {
-        $cart  = $this->createMock(Cart::class);
+        $cart = $this->createMock(Cart::class);
         $items = [$this->createMock(CartItem::class)];
 
         $this->cartRepository->method('findCartForUser')->willReturn($cart);

@@ -38,7 +38,7 @@ class CartRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -131,8 +131,8 @@ class CartRepositoryTest extends KernelTestCase
 
     public function testFindEmptyDoesNotReturnCartWithItems(): void
     {
-        $user    = $this->createAndPersistUser('notempty@example.com');
-        $cart    = $this->createAndPersistCart($user);
+        $user = $this->createAndPersistUser('notempty@example.com');
+        $cart = $this->createAndPersistCart($user);
         $variant = $this->createAndPersistVariant('SKU-NE-001', 'Variant Not Empty', 'variant-ne-001');
 
         $this->createAndPersistCartItem($cart, $variant);
@@ -148,13 +148,13 @@ class CartRepositoryTest extends KernelTestCase
         $userB = $this->createAndPersistUser('empty-b@example.com');
 
         $emptyCart = $this->createAndPersistCart($userA);
-        $fullCart  = $this->createAndPersistCart($userB);
-        $variant   = $this->createAndPersistVariant('SKU-OE-001', 'Variant Only Empty', 'variant-oe-001');
+        $fullCart = $this->createAndPersistCart($userB);
+        $variant = $this->createAndPersistVariant('SKU-OE-001', 'Variant Only Empty', 'variant-oe-001');
 
         $this->createAndPersistCartItem($fullCart, $variant);
 
         $result = $this->repository->findEmpty();
-        $ids    = $this->extractIds($result);
+        $ids = $this->extractIds($result);
 
         $this->assertContains($emptyCart->getId(), $ids);
         $this->assertNotContains($fullCart->getId(), $ids);
@@ -173,7 +173,7 @@ class CartRepositoryTest extends KernelTestCase
     private function forceUpdatedAt(Cart $cart, \DateTimeImmutable $date): void
     {
         $this->em->createQuery(
-            'UPDATE ' . Cart::class . ' c SET c.updatedAt = :date WHERE c.id = :id'
+            'UPDATE ' . Cart::class . ' c SET c.updatedAt = :date WHERE c.id = :id',
         )
         ->setParameter('date', $date)
         ->setParameter('id', $cart->getId())

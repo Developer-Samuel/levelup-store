@@ -172,9 +172,9 @@ class ProductQueryServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->brandRepository      = $this->createMock(BrandRepositoryContract::class);
-        $this->variantRepository    = $this->createMock(ProductVariantRepositoryContract::class);
-        $this->productVariantQuery  = $this->createMock(ProductVariantQueryContract::class);
+        $this->brandRepository = $this->createMock(BrandRepositoryContract::class);
+        $this->variantRepository = $this->createMock(ProductVariantRepositoryContract::class);
+        $this->productVariantQuery = $this->createMock(ProductVariantQueryContract::class);
         $this->productCategoryQuery = $this->createMock(ProductCategoryQueryContract::class);
     }
 
@@ -201,9 +201,9 @@ class ProductQueryServiceTest extends TestCase
     }
 
     private function buildFilter(
-        ?string $category      = null,
-        ?string $type          = null,
-        bool $isDiscountRoute  = false,
+        ?string $category = null,
+        ?string $type = null,
+        bool $isDiscountRoute = false,
     ): ProductFilterObject {
         return new ProductFilterObject(
             isDiscountRoute: $isDiscountRoute,

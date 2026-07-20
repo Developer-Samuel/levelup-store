@@ -38,7 +38,7 @@ class RefreshTokenRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -94,7 +94,7 @@ class RefreshTokenRepositoryTest extends KernelTestCase
 
     public function testRevokeRemovesToken(): void
     {
-        $token      = $this->repository->create($this->user);
+        $token = $this->repository->create($this->user);
         $tokenValue = $token->getToken();
 
         $this->repository->revoke($token);

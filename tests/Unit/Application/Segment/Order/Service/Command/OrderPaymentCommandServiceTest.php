@@ -96,9 +96,9 @@ class OrderPaymentCommandServiceTest extends TestCase
 
     public function testProcessSuccessCallsBuildCommandWithUserPayloadAndItems(): void
     {
-        $user    = $this->setupVerifiedUser();
+        $user = $this->setupVerifiedUser();
         $payload = $this->buildPayload();
-        $items   = [$this->createMock(CartItem::class)];
+        $items = [$this->createMock(CartItem::class)];
 
         $this->orderPaymentQuery->method('retrieveCheckoutSession')->willReturn($this->buildSession());
         $this->orderPaymentQuery->method('extractPayloadFromMetadata')->willReturn($payload);
@@ -157,14 +157,14 @@ class OrderPaymentCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->entityPersistence  = $this->createMock(EntityPersistenceContract::class);
-        $this->securityPolicy     = $this->createMock(SecurityPolicyContract::class);
-        $this->orderBuildCommand  = $this->createMock(OrderBuildCommandContract::class);
-        $this->notifier           = $this->createMock(OrderConfirmationNotifierContract::class);
-        $this->logger             = $this->createMock(AppLoggerContract::class);
-        $this->orderPaymentQuery  = $this->createMock(OrderPaymentQueryContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
+        $this->securityPolicy = $this->createMock(SecurityPolicyContract::class);
+        $this->orderBuildCommand = $this->createMock(OrderBuildCommandContract::class);
+        $this->notifier = $this->createMock(OrderConfirmationNotifierContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
+        $this->orderPaymentQuery = $this->createMock(OrderPaymentQueryContract::class);
         $this->orderValidatorQuery = $this->createMock(OrderValidatorQueryContract::class);
-        $this->orderItemCommand   = $this->createMock(OrderItemCommandContract::class);
+        $this->orderItemCommand = $this->createMock(OrderItemCommandContract::class);
     }
 
     private function initService(): void
@@ -205,9 +205,9 @@ class OrderPaymentCommandServiceTest extends TestCase
 
     private function setupPaymentProcessing(
         bool $shouldProcessPayment = false,
-        ?string $paymentIntent     = null,
+        ?string $paymentIntent = null,
     ): Order&MockObject {
-        $user  = $this->setupVerifiedUser();
+        $user = $this->setupVerifiedUser();
         $order = $this->createMock(Order::class);
         $order->method('getUser')->willReturn($user);
 

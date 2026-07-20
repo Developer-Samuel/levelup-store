@@ -153,7 +153,7 @@ class CartSummaryQueryServiceTest extends TestCase
     {
         $discount = $this->createMock(ProductVariantDiscount::class);
 
-        $variant  = $this->createVariantWithStock(5);
+        $variant = $this->createVariantWithStock(5);
         $variant->method('getId')->willReturn(1);
         $variant->method('getDiscountedPrice')->willReturn(39.99);
         $variant->method('getPrice')->willReturn(49.99);
@@ -184,7 +184,7 @@ class CartSummaryQueryServiceTest extends TestCase
     private function initMocks(): void
     {
         $this->cartRepository = $this->createMock(CartRepositoryContract::class);
-        $this->reviewQuery    = $this->createMock(ReviewQueryContract::class);
+        $this->reviewQuery = $this->createMock(ReviewQueryContract::class);
     }
 
     private function initService(): void
@@ -198,7 +198,7 @@ class CartSummaryQueryServiceTest extends TestCase
     private function assertCartSkipsVariant(?int $quantity): void
     {
         $variant = $this->createVariantWithStock($quantity);
-        $cart    = $this->createCartWithItems([$this->createItemWithVariant($variant)]);
+        $cart = $this->createCartWithItems([$this->createItemWithVariant($variant)]);
 
         $this->cartRepository->method('findCartForUser')->willReturn($cart);
 

@@ -42,9 +42,9 @@ class AuthApiCommandControllerTest extends WebTestCase
     public function testLoginReturnsSuccessJsonOnValidCredentials(): void
     {
         $this->postLogin([
-            'status' => 'success',
-            'access_token' => 'access-token-abc',
-            'refresh_token' => 'refresh-token-xyz'
+            'status'        => 'success',
+            'access_token'  => 'access-token-abc',
+            'refresh_token' => 'refresh-token-xyz',
         ]);
 
         $this->assertResponseIsSuccessful();
@@ -55,9 +55,9 @@ class AuthApiCommandControllerTest extends WebTestCase
     public function testLoginSetsRefreshTokenCookie(): void
     {
         $this->postLogin([
-            'status' => 'success',
-            'access_token' => 'access-token-abc',
-            'refresh_token' => 'refresh-token-xyz'
+            'status'        => 'success',
+            'access_token'  => 'access-token-abc',
+            'refresh_token' => 'refresh-token-xyz',
         ]);
 
         $this->assertNotNull($this->client->getCookieJar()->get('refresh_token'));
@@ -66,9 +66,9 @@ class AuthApiCommandControllerTest extends WebTestCase
     public function testLoginDoesNotReturnRefreshTokenInBody(): void
     {
         $this->postLogin([
-            'status' => 'success',
-            'access_token' => 'access-token-abc',
-            'refresh_token' => 'refresh-token-xyz'
+            'status'        => 'success',
+            'access_token'  => 'access-token-abc',
+            'refresh_token' => 'refresh-token-xyz',
         ]);
 
         $this->assertArrayNotHasKey('refresh_token', $this->decodeJson());
@@ -89,9 +89,9 @@ class AuthApiCommandControllerTest extends WebTestCase
     public function testLoginReturnsSuccessResponseBody(): void
     {
         $this->postLogin([
-            'status' => 'success',
-            'access_token' => 'access-token-abc',
-            'refresh_token' => 'refresh-token-xyz'
+            'status'        => 'success',
+            'access_token'  => 'access-token-abc',
+            'refresh_token' => 'refresh-token-xyz',
         ]);
 
         $this->assertArrayHasKey('access_token', $this->decodeJson());
@@ -100,9 +100,9 @@ class AuthApiCommandControllerTest extends WebTestCase
     public function testRefreshReturnsSuccessJson(): void
     {
         $this->postRefresh([
-            'status' => 'success',
-            'access_token' => 'new-access-token',
-            'refresh_token' => 'new-refresh-token'
+            'status'        => 'success',
+            'access_token'  => 'new-access-token',
+            'refresh_token' => 'new-refresh-token',
         ]);
 
         $this->assertResponseIsSuccessful();
@@ -112,9 +112,9 @@ class AuthApiCommandControllerTest extends WebTestCase
     public function testRefreshSetsNewRefreshTokenCookie(): void
     {
         $this->postRefresh([
-            'status' => 'success',
-            'access_token' => 'new-access-token',
-            'refresh_token' => 'new-refresh-token'
+            'status'        => 'success',
+            'access_token'  => 'new-access-token',
+            'refresh_token' => 'new-refresh-token',
         ]);
 
         $this->assertResponseIsSuccessful();
@@ -183,7 +183,7 @@ class AuthApiCommandControllerTest extends WebTestCase
     {
         static::getContainer()->set(
             LoginHandlerContract::class,
-            $this->createLoginHandlerMock($returnValue)
+            $this->createLoginHandlerMock($returnValue),
         );
 
         $this->postJson('/api/auth/login', [
@@ -199,7 +199,7 @@ class AuthApiCommandControllerTest extends WebTestCase
     {
         static::getContainer()->set(
             RefreshTokenHandlerContract::class,
-            $this->createRefreshHandlerMock($returnValue)
+            $this->createRefreshHandlerMock($returnValue),
         );
 
         $this->client->request('POST', '/api/auth/refresh', [], [], [
@@ -214,7 +214,7 @@ class AuthApiCommandControllerTest extends WebTestCase
     {
         static::getContainer()->set(
             LogoutHandlerContract::class,
-            $this->createLogoutHandlerMock($returnValue)
+            $this->createLogoutHandlerMock($returnValue),
         );
 
         $this->client->request('POST', '/api/auth/logout', [], [], [

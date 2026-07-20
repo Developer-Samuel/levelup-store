@@ -148,7 +148,7 @@ class ProductQueryControllerTest extends WebTestCase
 
         $stock = $this->createMock(ProductVariantStock::class);
 
-        $price  = new ProductPriceObject(99.99, 89.99, true);
+        $price = new ProductPriceObject(99.99, 89.99, true);
         $detail = new ProductDetailObject($variant, [], $stock, $price, [], false);
 
         $handler = $this->createMock(ProductDetailQueryHandlerContract::class);

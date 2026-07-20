@@ -143,9 +143,9 @@ class ProductCacheQueryServiceTest extends TestCase
     {
         $this->productTitleQuery = $this->createMock(ProductTitleQueryContract::class);
         $this->productRouteQuery = $this->createMock(ProductRouteQueryContract::class);
-        $this->titleCache        = $this->createMock(CacheProxyContract::class);
-        $this->routeCache        = $this->createMock(CacheProxyContract::class);
-        $this->cacheGateway      = $this->createMock(CacheGatewayContract::class);
+        $this->titleCache = $this->createMock(CacheProxyContract::class);
+        $this->routeCache = $this->createMock(CacheProxyContract::class);
+        $this->cacheGateway = $this->createMock(CacheGatewayContract::class);
 
         $this->cacheGateway
             ->method('getCache')

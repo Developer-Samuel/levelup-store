@@ -40,7 +40,7 @@ class OrderCommandControllerTest extends WebTestCase
     protected function setUp(): void
     {
         $this->client = static::createClient();
-        $this->em     = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->em->beginTransaction();
 
         $this->user = $this->createUser();
@@ -146,7 +146,7 @@ class OrderCommandControllerTest extends WebTestCase
 
         static::getContainer()->set(
             CreateOrderHandlerContract::class,
-            $this->createHandlerMock($returnValue)
+            $this->createHandlerMock($returnValue),
         );
     }
 

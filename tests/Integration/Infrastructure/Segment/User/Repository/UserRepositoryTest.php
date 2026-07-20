@@ -37,7 +37,7 @@ class UserRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();

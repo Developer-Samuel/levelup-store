@@ -53,7 +53,7 @@ final readonly class AuditLogger implements AuditLoggerContract
 
         $meta = RequestMetadata::fromRequestStack($this->requestStack);
 
-        $metadata['ip']         = $meta->ip;
+        $metadata['ip'] = $meta->ip;
         $metadata['user_agent'] = $meta->userAgent;
 
         $auditLog = new AuditLog($action, $entity, $entityId, $metadata, $user);

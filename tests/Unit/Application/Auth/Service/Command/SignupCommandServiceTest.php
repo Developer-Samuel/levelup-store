@@ -115,7 +115,7 @@ class SignupCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->entityPersistence      = $this->createMock(EntityPersistenceContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
         $this->passwordHasherProvider = $this->createMock(PasswordHasherProviderContract::class);
     }
 

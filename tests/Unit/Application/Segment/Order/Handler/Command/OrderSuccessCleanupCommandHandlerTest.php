@@ -147,11 +147,11 @@ class OrderSuccessCleanupCommandHandlerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->entityPersistence  = $this->createMock(EntityPersistenceContract::class);
-        $this->cartControlQuery   = $this->createMock(CartControlQueryContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
+        $this->cartControlQuery = $this->createMock(CartControlQueryContract::class);
         $this->cartControlCommand = $this->createMock(CartControlCommandContract::class);
         $this->orderPaymentCommand = $this->createMock(OrderPaymentCommandContract::class);
-        $this->logger             = $this->createMock(AppLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void

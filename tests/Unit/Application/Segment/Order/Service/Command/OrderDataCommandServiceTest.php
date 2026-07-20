@@ -179,10 +179,10 @@ class OrderDataCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->entityPersistence   = $this->createMock(EntityPersistenceContract::class);
-        $this->countryRepository   = $this->createMock(CountryRepositoryContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
+        $this->countryRepository = $this->createMock(CountryRepositoryContract::class);
         $this->orderValidatorQuery = $this->createMock(OrderValidatorQueryContract::class);
-        $this->orderCountryQuery   = $this->createMock(OrderCountryQueryContract::class);
+        $this->orderCountryQuery = $this->createMock(OrderCountryQueryContract::class);
     }
 
     private function initService(): void

@@ -45,7 +45,7 @@ class CartItemRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -69,7 +69,7 @@ class CartItemRepositoryTest extends KernelTestCase
     public function testGetItemReturnsCartItemWhenExists(): void
     {
         $variant = $this->createAndPersistVariant('SKU-GET-001', 'Variant Get', 'variant-get');
-        $item    = $this->createAndPersistCartItem($this->cart, $variant);
+        $item = $this->createAndPersistCartItem($this->cart, $variant);
 
         $itemId = $item->getId();
         assert($itemId !== null);
@@ -142,8 +142,8 @@ class CartItemRepositoryTest extends KernelTestCase
 
     public function testFindByCartReturnsOnlyItemsForGivenCart(): void
     {
-        $userB    = $this->createAndPersistUser('2-test@example.com');
-        $cartB    = $this->createAndPersistCart($userB);
+        $userB = $this->createAndPersistUser('2-test@example.com');
+        $cartB = $this->createAndPersistCart($userB);
         $variantA = $this->createAndPersistVariant('SKU-MC-A', 'Variant MC A', 'variant-mc-a');
         $variantB = $this->createAndPersistVariant('SKU-MC-B', 'Variant MC B', 'variant-mc-b');
 

@@ -300,7 +300,7 @@ class StripePaymentAdapterTest extends TestCase
     public function testMapLineItemsWithNonSequentialKeys(): void
     {
         $lineItems = [
-            5 => new StripeLineItemObject(new StripeLineItemPriceObject('eur', 'Product A', 1000), 1),
+            5  => new StripeLineItemObject(new StripeLineItemPriceObject('eur', 'Product A', 1000), 1),
             10 => new StripeLineItemObject(new StripeLineItemPriceObject('eur', 'Product B', 2000), 1),
         ];
 
@@ -409,7 +409,7 @@ class StripePaymentAdapterTest extends TestCase
                 $params,
                 $hasFile,
                 $apiMode = 'v1',
-                $maxNetworkRetries = null
+                $maxNetworkRetries = null,
             ): array {
                 return [(string) json_encode($this->responseData), 200, []];
             }

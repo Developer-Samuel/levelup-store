@@ -44,7 +44,7 @@ class OrderItemRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -66,9 +66,9 @@ class OrderItemRepositoryTest extends KernelTestCase
 
     public function testFindByOrderReturnsItemsForOrder(): void
     {
-        $order   = $this->createAndPersistOrder($this->user, 'ORDER-ITEM-001');
+        $order = $this->createAndPersistOrder($this->user, 'ORDER-ITEM-001');
         $variant = $this->createAndPersistVariant('SKU-ITEM-001', 'Variant Item Test', 'variant-item-test');
-        $ean     = $this->createAndPersistEan($variant, '1234567890123');
+        $ean = $this->createAndPersistEan($variant, '1234567890123');
 
         $this->createAndPersistOrderItem($order, $variant, $ean);
 
@@ -94,8 +94,8 @@ class OrderItemRepositoryTest extends KernelTestCase
 
         $variantA = $this->createAndPersistVariant('SKU-MULTI-A', 'Variant Multi A', 'variant-multi-a');
         $variantB = $this->createAndPersistVariant('SKU-MULTI-B', 'Variant Multi B', 'variant-multi-b');
-        $eanA     = $this->createAndPersistEan($variantA, '1111111111111');
-        $eanB     = $this->createAndPersistEan($variantB, '2222222222222');
+        $eanA = $this->createAndPersistEan($variantA, '1111111111111');
+        $eanB = $this->createAndPersistEan($variantB, '2222222222222');
 
         $this->createAndPersistOrderItem($orderA, $variantA, $eanA);
         $this->createAndPersistOrderItem($orderB, $variantB, $eanB);
@@ -108,9 +108,9 @@ class OrderItemRepositoryTest extends KernelTestCase
 
     public function testHasPurchasedVariantReturnsTrueWhenPurchased(): void
     {
-        $order   = $this->createAndPersistOrder($this->user, 'ORDER-PURCH-001', OrderStatus::COMPLETED);
+        $order = $this->createAndPersistOrder($this->user, 'ORDER-PURCH-001', OrderStatus::COMPLETED);
         $variant = $this->createAndPersistVariant('SKU-PURCH-001', 'Variant Purchased', 'variant-purchased');
-        $ean     = $this->createAndPersistEan($variant, '3333333333333');
+        $ean = $this->createAndPersistEan($variant, '3333333333333');
 
         $this->createAndPersistOrderItem($order, $variant, $ean, price: 49.99);
 
@@ -121,9 +121,9 @@ class OrderItemRepositoryTest extends KernelTestCase
 
     public function testHasPurchasedVariantReturnsFalseWhenOrderNotCompleted(): void
     {
-        $order   = $this->createAndPersistOrder($this->user, 'ORDER-PEND-001', OrderStatus::PROCESSED);
+        $order = $this->createAndPersistOrder($this->user, 'ORDER-PEND-001', OrderStatus::PROCESSED);
         $variant = $this->createAndPersistVariant('SKU-PEND-001', 'Variant Pending', 'variant-pending');
-        $ean     = $this->createAndPersistEan($variant, '4444444444444');
+        $ean = $this->createAndPersistEan($variant, '4444444444444');
 
         $this->createAndPersistOrderItem($order, $variant, $ean);
 
@@ -134,11 +134,11 @@ class OrderItemRepositoryTest extends KernelTestCase
 
     public function testHasPurchasedVariantReturnsFalseForDifferentUser(): void
     {
-        $userA   = $this->createAndPersistUser('1-test@example.com');
-        $userB   = $this->createAndPersistUser('2-test@example.com');
-        $order   = $this->createAndPersistOrder($userA, 'ORDER-DIFF-001', OrderStatus::COMPLETED);
+        $userA = $this->createAndPersistUser('1-test@example.com');
+        $userB = $this->createAndPersistUser('2-test@example.com');
+        $order = $this->createAndPersistOrder($userA, 'ORDER-DIFF-001', OrderStatus::COMPLETED);
         $variant = $this->createAndPersistVariant('SKU-DIFF-001', 'Variant Diff', 'variant-diff');
-        $ean     = $this->createAndPersistEan($variant, '5555555555555');
+        $ean = $this->createAndPersistEan($variant, '5555555555555');
 
         $this->createAndPersistOrderItem($order, $variant, $ean);
 

@@ -61,7 +61,7 @@ class OrderBuildCommandServiceTest extends TestCase
         $this->initMocks();
         $this->initService();
 
-        $this->user    = $this->createMock(User::class);
+        $this->user = $this->createMock(User::class);
         $this->payload = $this->buildPayload();
     }
 
@@ -161,12 +161,12 @@ class OrderBuildCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->entityPersistence       = $this->createMock(EntityPersistenceContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
         $this->orderPreparationCommand = $this->createMock(OrderPreparationCommandContract::class);
-        $this->orderDataCommand        = $this->createMock(OrderDataCommandContract::class);
-        $this->orderItemQuery          = $this->createMock(OrderItemQueryContract::class);
-        $this->orderPriceQuery         = $this->createMock(OrderPriceQueryContract::class);
-        $this->orderCacheCommand       = $this->createMock(OrderCacheCommandContract::class);
+        $this->orderDataCommand = $this->createMock(OrderDataCommandContract::class);
+        $this->orderItemQuery = $this->createMock(OrderItemQueryContract::class);
+        $this->orderPriceQuery = $this->createMock(OrderPriceQueryContract::class);
+        $this->orderCacheCommand = $this->createMock(OrderCacheCommandContract::class);
     }
 
     private function initService(): void

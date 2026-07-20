@@ -88,8 +88,8 @@ final class JwtCookieAuthenticator extends AbstractAuthenticator implements Auth
         }
 
         return new JsonResponse([
-            'code' => 401,
-            'message' => $exception->getMessageKey()
+            'code'    => 401,
+            'message' => $exception->getMessageKey(),
         ], Response::HTTP_UNAUTHORIZED);
     }
 
@@ -102,8 +102,8 @@ final class JwtCookieAuthenticator extends AbstractAuthenticator implements Auth
     public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
         return new JsonResponse([
-            'code' => 401,
-            'message' => 'Authentication required.'
+            'code'    => 401,
+            'message' => 'Authentication required.',
         ], Response::HTTP_UNAUTHORIZED);
     }
 }

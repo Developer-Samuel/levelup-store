@@ -168,7 +168,7 @@ class CreateOrderHandlerTest extends TestCase
     {
         $this->setupCreateOrderThrows(new ConflictException('Cart updated.'));
 
-        $user     = $this->createMock(User::class);
+        $user = $this->createMock(User::class);
         $cartData = ['html' => '<div>cart</div>', 'totalItems' => 1];
 
         $this->securityProvider->method('getCurrentUser')->willReturn($user);
@@ -215,12 +215,12 @@ class CreateOrderHandlerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->securityPolicy       = $this->createMock(SecurityPolicyContract::class);
-        $this->securityProvider     = $this->createMock(SecurityProviderContract::class);
-        $this->cartRenderQuery      = $this->createMock(CartRenderQueryContract::class);
+        $this->securityPolicy = $this->createMock(SecurityPolicyContract::class);
+        $this->securityProvider = $this->createMock(SecurityProviderContract::class);
+        $this->cartRenderQuery = $this->createMock(CartRenderQueryContract::class);
         $this->orderMutationCommand = $this->createMock(OrderMutationCommandContract::class);
-        $this->audit                = $this->createMock(AuditLoggerContract::class);
-        $this->logger               = $this->createMock(AppLoggerContract::class);
+        $this->audit = $this->createMock(AuditLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void

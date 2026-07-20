@@ -63,12 +63,12 @@ class CartRenderQueryServiceTest extends TestCase
             ->method('buildSuccessResponse')
             ->with('Item added.', '<div></div>', $summary)
             ->willReturn([
-                'html' => '<div></div>',
+                'html'       => '<div></div>',
                 'totalItems' => 0,
                 'totalPrice' => '0 €',
-                'message' => 'Item added.',
-                'success' => true,
-                'status' => null
+                'message'    => 'Item added.',
+                'success'    => true,
+                'status'     => null,
             ]);
 
         $result = $this->service->buildCartResponse($this->user, 'Item added.');
@@ -88,12 +88,12 @@ class CartRenderQueryServiceTest extends TestCase
             ->method('buildErrorResponse')
             ->with('Error.', '<div></div>', $summary, 400)
             ->willReturn([
-                'html' => '<div></div>',
+                'html'       => '<div></div>',
                 'totalItems' => 0,
                 'totalPrice' => '0 €',
-                'message' => 'Error.',
-                'success' => false,
-                'status' => 400
+                'message'    => 'Error.',
+                'success'    => false,
+                'status'     => 400,
             ]);
 
         $result = $this->service->buildCartResponse($this->user, 'Error.', true);
@@ -105,19 +105,19 @@ class CartRenderQueryServiceTest extends TestCase
     public function testBuildCartResponseCallsRenderCartWithTransformedItems(): void
     {
         $variant = $this->createMock(ProductVariant::class);
-        $item    = new CartItemObject(1, 1, $variant, '10,00 €', false, 0.0);
+        $item = new CartItemObject(1, 1, $variant, '10,00 €', false, 0.0);
 
         $this->cartSummaryQuery->method('findCartItemsForUser')->willReturn([$item]);
         $this->cartPriceQuery->method('calculateTotalPrice')->willReturn(10.0);
         $this->cartSummaryQuery
             ->method('buildSuccessResponse')
             ->willReturn([
-                'html' => '<div>item</div>',
+                'html'       => '<div>item</div>',
                 'totalItems' => 1,
                 'totalPrice' => '10,00 €',
-                'message' => 'ok',
-                'success' => true,
-                'status' => null,
+                'message'    => 'ok',
+                'success'    => true,
+                'status'     => null,
             ]);
 
         $this->cartRenderer
@@ -136,12 +136,12 @@ class CartRenderQueryServiceTest extends TestCase
         $this->cartSummaryQuery
             ->method('buildSuccessResponse')
             ->willReturn([
-                'html' => '',
+                'html'       => '',
                 'totalItems' => 0,
                 'totalPrice' => '0 €',
-                'message' => 'ok',
-                'success' => true,
-                'status' => null,
+                'message'    => 'ok',
+                'success'    => true,
+                'status'     => null,
             ]);
 
         $this->cartPriceQuery
@@ -155,8 +155,8 @@ class CartRenderQueryServiceTest extends TestCase
     private function initMocks(): void
     {
         $this->cartSummaryQuery = $this->createMock(CartSummaryQueryContract::class);
-        $this->cartPriceQuery   = $this->createMock(CartPriceQueryContract::class);
-        $this->cartRenderer     = $this->createMock(CartRendererContract::class);
+        $this->cartPriceQuery = $this->createMock(CartPriceQueryContract::class);
+        $this->cartRenderer = $this->createMock(CartRendererContract::class);
     }
 
     private function initService(): void

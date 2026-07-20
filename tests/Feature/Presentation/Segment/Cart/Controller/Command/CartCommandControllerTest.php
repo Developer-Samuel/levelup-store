@@ -174,9 +174,9 @@ class CartCommandControllerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->csrfTokenManager    = $this->createMock(CsrfTokenManagerInterface::class);
+        $this->csrfTokenManager = $this->createMock(CsrfTokenManagerInterface::class);
         $this->cartMutationCommand = $this->createMock(CartMutationCommandContract::class);
-        $this->logger              = $this->createMock(AppLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initController(): void

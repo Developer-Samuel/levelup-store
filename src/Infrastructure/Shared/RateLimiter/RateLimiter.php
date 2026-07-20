@@ -21,7 +21,7 @@ use App\Core\Ports\Shared\RateLimiter\RateLimiterContract;
 use App\Infrastructure\Shared\Http\RequestMetadata;
 
 #[Autoconfigure(autowire: false)]
-final class RateLimiter implements RateLimiterContract
+final readonly class RateLimiter implements RateLimiterContract
 {
     private const LOCKOUT_THRESHOLDS = [
         25 => 1800, // 30min
@@ -38,10 +38,10 @@ final class RateLimiter implements RateLimiterContract
      * @param int $recordTtl
     */
     public function __construct(
-        private readonly CacheItemPoolInterface $cache,
-        private readonly RequestStack $requestStack,
-        private readonly string $keyPrefix,
-        private readonly int $recordTtl = 86400,
+        private CacheItemPoolInterface $cache,
+        private RequestStack $requestStack,
+        private string $keyPrefix,
+        private int $recordTtl = 86400,
     ) {}
 
     /**
@@ -106,7 +106,7 @@ final class RateLimiter implements RateLimiterContract
         }
 
         $maxThreshold = array_key_first(self::LOCKOUT_THRESHOLDS);
-        $step         = array_key_last(self::LOCKOUT_THRESHOLDS);
+        $step = array_key_last(self::LOCKOUT_THRESHOLDS);
 
         if ($attempts > $maxThreshold && $attempts % $step === 0) {
             return self::LOCKOUT_THRESHOLDS[$maxThreshold];

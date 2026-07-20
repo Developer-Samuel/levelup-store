@@ -88,7 +88,7 @@ class LogoutHandlerTest extends TestCase
     private function initMocks(): void
     {
         $this->logoutCommand = $this->createMock(LogoutCommandContract::class);
-        $this->logger        = $this->createMock(AppLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void

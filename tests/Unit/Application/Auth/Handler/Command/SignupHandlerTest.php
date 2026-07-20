@@ -163,13 +163,13 @@ class SignupHandlerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->signupCommand       = $this->createMock(SignupCommandContract::class);
+        $this->signupCommand = $this->createMock(SignupCommandContract::class);
         $this->verificationCommand = $this->createMock(VerificationCommandContract::class);
-        $this->loginCommand        = $this->createMock(LoginCommandContract::class);
-        $this->loginRedirectQuery  = $this->createMock(LoginRedirectQueryContract::class);
-        $this->rateLimiter         = $this->createMock(RateLimiterContract::class);
-        $this->audit               = $this->createMock(AuditLoggerContract::class);
-        $this->logger              = $this->createMock(AppLoggerContract::class);
+        $this->loginCommand = $this->createMock(LoginCommandContract::class);
+        $this->loginRedirectQuery = $this->createMock(LoginRedirectQueryContract::class);
+        $this->rateLimiter = $this->createMock(RateLimiterContract::class);
+        $this->audit = $this->createMock(AuditLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void
@@ -189,8 +189,8 @@ class SignupHandlerTest extends TestCase
      * @return array<string, mixed>
     */
     private function handleSuccessfully(
-        string $accessToken   = 'access-abc',
-        string $refreshToken  = 'refresh-xyz',
+        string $accessToken = 'access-abc',
+        string $refreshToken = 'refresh-xyz',
         string $redirectRoute = '/dashboard',
     ): array {
         $this->setupSuccess($accessToken, $refreshToken, $redirectRoute);
@@ -199,8 +199,8 @@ class SignupHandlerTest extends TestCase
     }
 
     private function setupSuccess(
-        string $accessToken   = 'access-abc',
-        string $refreshToken  = 'refresh-xyz',
+        string $accessToken = 'access-abc',
+        string $refreshToken = 'refresh-xyz',
         string $redirectRoute = '/dashboard',
     ): void {
         $user = $this->createMock(User::class);
@@ -209,7 +209,7 @@ class SignupHandlerTest extends TestCase
         $this->verificationCommand->method('createAndSaveTokenForUser');
 
         $this->loginCommand->method('execute')->willReturn(
-            new JwtTokenObject($accessToken, $refreshToken)
+            new JwtTokenObject($accessToken, $refreshToken),
         );
 
         $this->loginRedirectQuery->method('getRedirectRoute')->willReturn($redirectRoute);

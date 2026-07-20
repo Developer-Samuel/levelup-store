@@ -111,7 +111,7 @@ class SignupCommandControllerTest extends WebTestCase
     {
         static::getContainer()->set(
             SignupHandlerContract::class,
-            $this->createSignupHandlerMock($returnValue)
+            $this->createSignupHandlerMock($returnValue),
         );
     }
 
