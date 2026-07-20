@@ -11,7 +11,6 @@ test.describe('Signup Page', () => {
     signupPage = new SignupPage(page)
 
     await signupPage.goto()
-    await signupPage.dismissCookies()
   })
 
   // ── Page load ──────────────────────────────────────────────────────────────

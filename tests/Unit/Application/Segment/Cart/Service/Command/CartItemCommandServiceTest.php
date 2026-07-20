@@ -202,6 +202,32 @@ class CartItemCommandServiceTest extends TestCase
         $this->service->removeVariant($this->variant, []);
     }
 
+    public function testRemoveVariantRefreshesCartWhenMatchingItemHasCart(): void
+    {
+        $item = $this->createMock(CartItem::class);
+        $item->method('hasVariant')->willReturn(true);
+        $item->method('getCart')->willReturn($this->cart);
+
+        $this->cartControlCommand
+            ->expects($this->once())
+            ->method('flushAndRefreshCart')
+            ->with($this->cart);
+
+        $this->service->removeVariant($this->variant, [$item]);
+    }
+
+    public function testRemoveVariantDoesNotRefreshCartWhenNoItemsMatch(): void
+    {
+        $item = $this->createMock(CartItem::class);
+        $item->method('hasVariant')->willReturn(false);
+
+        $this->cartControlCommand
+            ->expects($this->never())
+            ->method('flushAndRefreshCart');
+
+        $this->service->removeVariant($this->variant, [$item]);
+    }
+
     private function initMocks(): void
     {
         $this->entityPersistence  = $this->createMock(EntityPersistenceContract::class);

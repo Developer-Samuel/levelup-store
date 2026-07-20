@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use App\Core\Domain\{
     Segment\Cart\Entity\Cart,
     Segment\Cart\Entity\CartItem,
+    Segment\Product\Entity\Variant\ProductVariant,
     Segment\User\Entity\User
 };
 
@@ -105,6 +106,40 @@ class CartItemRepositoryTest extends KernelTestCase
         $this->assertEmpty($result);
     }
 
+    public function testFindAllWithVariantReturnsCartItems(): void
+    {
+        $variant = $this->createAndPersistVariant('SKU-FAV-001', 'Variant FAV', 'variant-fav');
+        $this->createAndPersistCartItem($this->cart, $variant);
+
+        $result = $this->repository->findAllWithVariant();
+
+        $this->assertNotEmpty($result);
+        $this->assertContainsOnlyInstancesOf(CartItem::class, $result);
+    }
+
+    public function testFindAllWithVariantReturnsEmptyWhenNoItems(): void
+    {
+        $result = $this->repository->findAllWithVariant();
+
+        $this->assertEmpty($result);
+    }
+
+    public function testFindAllWithVariantEagerLoadsVariantAndStock(): void
+    {
+        $variant = $this->createAndPersistVariant('SKU-FAV-002', 'Variant FAV Stock', 'variant-fav-stock');
+        $this->createAndPersistCartItem($this->cart, $variant);
+
+        $this->em->clear();
+
+        $result = $this->repository->findAllWithVariant();
+
+        $this->assertNotEmpty($result);
+
+        $loadedVariant = $result[0]->getVariant();
+
+        $this->assertInstanceOf(ProductVariant::class, $loadedVariant);
+    }
+
     public function testFindByCartReturnsOnlyItemsForGivenCart(): void
     {
         $userB    = $this->createAndPersistUser('2-test@example.com');
@@ -118,8 +153,10 @@ class CartItemRepositoryTest extends KernelTestCase
         $result = $this->repository->findByCart($this->cart);
 
         $this->assertCount(1, $result);
+
         $cart = $result[0]->getCart();
         assert($cart !== null);
+        
         $this->assertSame($this->cart->getId(), $cart->getId());
     }
 

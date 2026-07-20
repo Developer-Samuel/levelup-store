@@ -149,7 +149,7 @@ class OrderPaymentCommandServiceTest extends TestCase
             ->method('critical')
             ->with($this->stringContains('Failed to process payment'));
 
-        $this->expectException(\LogicException::class);
+        $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('An error occurred while processing the payment.');
 
         $this->service->processSuccess('sess_abc');

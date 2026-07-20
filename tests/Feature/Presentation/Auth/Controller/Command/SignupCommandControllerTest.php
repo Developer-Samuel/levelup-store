@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Presentation\Auth\Controller;
+namespace Tests\Feature\Presentation\Auth\Controller\Command;
 
 use Symfony\{
     Bundle\FrameworkBundle\KernelBrowser,
@@ -41,7 +41,7 @@ class SignupCommandControllerTest extends WebTestCase
             'status'        => 'success',
             'access_token'  => 'access-token-abc',
             'refresh_token' => 'refresh-token-xyz',
-            'redirect'      => '/dashboard',
+            'redirect'      => '/',
         ]);
 
         $this->client->request('POST', '/signup/store', $this->buildPayload());
@@ -56,7 +56,7 @@ class SignupCommandControllerTest extends WebTestCase
             'status'        => 'success',
             'access_token'  => 'access-token-abc',
             'refresh_token' => 'refresh-token-xyz',
-            'redirect'      => '/dashboard',
+            'redirect'      => '/',
         ]);
 
         $this->client->request('POST', '/signup/store', $this->buildPayload());
@@ -70,7 +70,7 @@ class SignupCommandControllerTest extends WebTestCase
             'status'        => 'success',
             'access_token'  => 'access-token-abc',
             'refresh_token' => 'refresh-token-xyz',
-            'redirect'      => '/dashboard',
+            'redirect'      => '/',
         ]);
 
         $this->client->request('POST', '/signup/store', $this->buildPayload());

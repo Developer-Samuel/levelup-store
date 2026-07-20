@@ -153,7 +153,7 @@ class SignupHandlerTest extends TestCase
     {
         $this->signupCommand
             ->method('signup')
-            ->willThrowException(new \RuntimeException('Email already taken'));
+            ->willThrowException(new \DomainException('Email already taken'));
 
         $result = $this->handler->handle($this->buildPayload());
 

@@ -73,7 +73,7 @@ class RefreshTokenCommandServiceTest extends TestCase
             ->method('findByToken')
             ->willReturn(null);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\DomainException::class);
 
         $this->service->execute('non-existing-token');
     }
@@ -87,7 +87,7 @@ class RefreshTokenCommandServiceTest extends TestCase
             ->method('findByToken')
             ->willReturn($token);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\DomainException::class);
 
         $this->service->execute('expired-token');
     }

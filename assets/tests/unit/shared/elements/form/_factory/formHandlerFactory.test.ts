@@ -14,20 +14,21 @@ vi.mock('@/ts/shared/elements/form/_handlers/httpErrorHandler', () => ({
 
 import type { StringRecord, StringListRecord } from '@/ts/shared/types'
 import type { FormAlert, FormErrorsHandler, FormResponse } from '@/ts/shared/elements/form/types'
-import { scrollToTop } from '@/ts/shared/utils/scroll'
+import { scrollToContainer } from '@/ts/shared/utils/scroll'
 import { sleep } from '@/ts/shared/utils/sleep'
 import { handleHttpError } from '@/ts/shared/elements/form/_handlers/httpErrorHandler'
-import NotyfAlert from '@/ts/plugins/notyf/_components/NotyfAlert'
 import {
   createFormHandler,
   createFormAlertHandler,
   createSubmitHandler,
 } from '@/ts/shared/elements/form/_factory/formHandlerFactory'
 
+import NotyfAlert from '@/ts/plugins/notyf/_components/NotyfAlert'
+
 const mockedSleep = vi.mocked(sleep)
 const mockedNotyfSuccess = vi.mocked(NotyfAlert.success)
 
-const mockedScrollToTop = vi.mocked(scrollToTop)
+const mockedScrollToContainer = vi.mocked(scrollToContainer)
 const mockedHandleHttpError = vi.mocked(handleHttpError)
 
 function buildAlert(): FormAlert & { calls: { success: boolean; message: string }[] } {
@@ -132,12 +133,12 @@ describe('createFormHandler()', () => {
   })
 
   it('should call scrollToTop on success when shouldScroll is true', async () => {
-    const service = vi.fn<() => Promise<FormResponse>>().mockResolvedValueOnce({ success: true })
+    const service = vi.fn<() => Promise<FormResponse>>().mockResolvedValueOnce({ success: false })
     const handler = createFormHandler(service, { shouldScroll: true })
 
     await handler(buildForm(), buildAlert(), buildErrors())
 
-    expect(mockedScrollToTop).toHaveBeenCalledTimes(1)
+    expect(mockedScrollToContainer).toHaveBeenCalledTimes(1)
   })
 
   it('should not call scrollToTop when shouldScroll is false', async () => {
@@ -146,7 +147,7 @@ describe('createFormHandler()', () => {
 
     await handler(buildForm(), buildAlert(), buildErrors())
 
-    expect(mockedScrollToTop).not.toHaveBeenCalled()
+    expect(mockedScrollToContainer).not.toHaveBeenCalled()
   })
 
   it('should display error message via alert on failed response', async () => {

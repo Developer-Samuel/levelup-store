@@ -213,6 +213,74 @@ class OrderItemCommandServiceTest extends TestCase
         $this->service->processOrderItems($this->order, $cartItems);
     }
 
+    public function testValidateAllItemsInStockThrowsAndRemovesWhenVariantHasNoStock(): void
+    {
+        [$cartItem, $variant] = $this->buildCartItemWithoutStock();
+
+        $this->cartItemCommand
+            ->expects($this->once())
+            ->method('removeVariant')
+            ->with($variant);
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessageMatches('/stock/i');
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
+    public function testValidateAllItemsInStockThrowsAndRemovesWhenStockUnavailable(): void
+    {
+        [$cartItem, $variant] = $this->buildCartItemWithStockMock();
+
+        $this->setupStockCheck(isAvailable: false, eans: []);
+
+        $this->cartItemCommand
+            ->expects($this->once())
+            ->method('removeVariant')
+            ->with($variant);
+
+        $this->expectException(\RuntimeException::class);
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
+    public function testValidateAllItemsInStockThrowsWhenNoEansAvailable(): void
+    {
+        [$cartItem] = $this->buildCartItemWithStockMock();
+
+        $this->setupStockCheck(isAvailable: true, eans: []);
+
+        $this->expectException(\RuntimeException::class);
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
+    public function testValidateAllItemsInStockThrowsWhenCartQuantityExceedsAvailableEans(): void
+    {
+        [, $variant] = $this->buildCartItemWithStockMock();
+
+        $cartItems = [
+            $this->buildCartItemMock($variant),
+            $this->buildCartItemMock($variant),
+        ];
+
+        $this->setupStockCheck(isAvailable: true, eans: [$this->createMock(ProductVariantEan::class)]);
+
+        $this->expectException(\RuntimeException::class);
+
+        $this->service->validateAllItemsInStock($cartItems);
+    }
+
+    public function testValidateAllItemsInStockPassesWhenStockIsAvailable(): void
+    {
+        [$cartItem] = $this->buildValidCartItemWithStock();
+        $this->withAvailableEan();
+
+        $this->expectNotToPerformAssertions();
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
     private function initMocks(): void
     {
         $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
@@ -263,6 +331,42 @@ class OrderItemCommandServiceTest extends TestCase
         return [$cartItem, $stock];
     }
 
+    /**
+     * @return array{0: CartItem&MockObject, 1: ProductVariant&MockObject}
+    */
+    private function buildCartItemWithoutStock(): array
+    {
+        $variant  = $this->buildVariantMock(stock: null);
+        $cartItem = $this->buildCartItemMock($variant);
+
+        return [$cartItem, $variant];
+    }
+
+    /**
+     * @return array{
+     *     0: CartItem&MockObject,
+     *     1: ProductVariant&MockObject,
+     *     2: ProductVariantStock&MockObject
+     * }
+    */
+    private function buildCartItemWithStockMock(): array
+    {
+        $stock    = $this->createMock(ProductVariantStock::class);
+        $variant  = $this->buildVariantMock(stock: $stock);
+        $cartItem = $this->buildCartItemMock($variant);
+
+        return [$cartItem, $variant, $stock];
+    }
+
+    /**
+     * @param ProductVariantEan[] $eans
+    */
+    private function setupStockCheck(bool $isAvailable, array $eans): void
+    {
+        $this->orderItemQuery->method('isStockAvailable')->willReturn($isAvailable);
+        $this->eanRepository->method('findAvailableByVariant')->willReturn($eans);
+    }
+
     private function withAvailableEan(?ProductVariantEan $ean = null): void
     {
         $this->eanRepository
@@ -274,7 +378,7 @@ class OrderItemCommandServiceTest extends TestCase
 
     /**
      * @param CartItem[] $cartItems
-     * 
+     *
      * @return object[]
     */
     private function capturePersistedOnProcess(array $cartItems): array

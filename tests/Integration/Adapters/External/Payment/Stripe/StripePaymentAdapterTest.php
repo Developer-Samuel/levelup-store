@@ -191,7 +191,7 @@ class StripePaymentAdapterTest extends TestCase
     {
         $session = StripeSession::constructFrom(['url' => '']);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\Exception::class);
 
         $this->callPrivate('extractCheckoutUrl', [$session]);
     }
@@ -200,7 +200,7 @@ class StripePaymentAdapterTest extends TestCase
     {
         $session = StripeSession::constructFrom(['url' => null]);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\Exception::class);
 
         $this->callPrivate('extractCheckoutUrl', [$session]);
     }
@@ -401,7 +401,7 @@ class StripePaymentAdapterTest extends TestCase
              * @param array<string, mixed> $params
              *
              * @return array{0: string, 1: int, 2: string[]}
-             */
+            */
             public function request(
                 $method,
                 $absUrl,

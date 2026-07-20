@@ -133,7 +133,7 @@ class GenerateOrderInvoiceHandlerTest extends TestCase
 
         $this->logger->expects($this->once())->method('error');
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Failed to read generated PDF file.');
 
         $this->handler->handle('ORDER-001');

@@ -17,7 +17,11 @@ use App\Core\Domain\{
     Segment\Cart\ValueObject\CartItemObject,
     Segment\Product\Entity\Variant\ProductVariant,
     Segment\Product\Entity\Variant\ProductVariantDiscount,
-    Segment\Product\Entity\Variant\ProductVariantStock
+    Segment\Product\Entity\Variant\ProductVariantEan,
+    Segment\Product\Entity\Variant\ProductVariantStock,
+    Segment\Product\Enum\ProductStockStatus,
+    Segment\Product\Enum\Variant\ProductVariantEanStatus,
+    Segment\Product\Enum\Variant\ProductVariantStatus
 };
 
 use App\Core\Application\Segment\Cart\Service\Query\CartSummaryQueryService;
@@ -209,10 +213,29 @@ class CartSummaryQueryServiceTest extends TestCase
 
         if ($quantity === null) {
             $variant->method('getInStock')->willReturn(null);
+            $variant->method('getStock')->willReturn(null);
+            $variant->method('getStatus')->willReturn(ProductVariantStatus::AVAILABLE);
+            $variant->method('getEans')->willReturn(new ArrayCollection([]));
+        } elseif ($quantity === 0) {
+            $stock = $this->createMock(ProductVariantStock::class);
+            $stock->method('getQuantityAvailable')->willReturn(0);
+            $stock->method('getStatus')->willReturn(ProductStockStatus::IN_STOCK);
+            $variant->method('getInStock')->willReturn(null);
+            $variant->method('getStock')->willReturn($stock);
+            $variant->method('getStatus')->willReturn(ProductVariantStatus::AVAILABLE);
+            $variant->method('getEans')->willReturn(new ArrayCollection([]));
         } else {
             $stock = $this->createMock(ProductVariantStock::class);
             $stock->method('getQuantityAvailable')->willReturn($quantity);
+            $stock->method('getStatus')->willReturn(ProductStockStatus::IN_STOCK);
+
+            $ean = $this->createMock(ProductVariantEan::class);
+            $ean->method('getStatus')->willReturn(ProductVariantEanStatus::ACTIVE);
+
             $variant->method('getInStock')->willReturn($stock);
+            $variant->method('getStock')->willReturn($stock);
+            $variant->method('getStatus')->willReturn(ProductVariantStatus::AVAILABLE);
+            $variant->method('getEans')->willReturn(new ArrayCollection([$ean]));
         }
 
         return $variant;

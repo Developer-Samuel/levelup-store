@@ -359,6 +359,53 @@ class ProductVariantRepositoryTest extends KernelTestCase
         $this->assertNull($result);
     }
 
+    public function testFindRandomAvailableExcludingReturnsAvailableVariant(): void
+    {
+        $this->createAndPersistVariant('SKU-RAND-001', 'Random Variant', 'random-variant-001');
+
+        $result = $this->repository->findRandomAvailableExcluding([]);
+
+        $this->assertInstanceOf(ProductVariant::class, $result);
+    }
+
+    public function testFindRandomAvailableExcludingReturnsNullWhenAllExcluded(): void
+    {
+        $variant = $this->createAndPersistVariant('SKU-RAND-EX-001', 'Excluded Variant', 'rand-excluded-001');
+
+        $this->em->clear();
+
+        $fresh = $this->repository->findById($variant->getId());
+
+        $this->assertNotNull($fresh);
+
+        $allVariants = $this->repository->findAll();
+        $allIds      = array_map(fn(ProductVariant $v) => (int) $v->getId(), $allVariants);
+
+        $result = $this->repository->findRandomAvailableExcluding($allIds);
+
+        $this->assertNull($result);
+    }
+
+    public function testFindRandomAvailableExcludingRespectsExcludedIds(): void
+    {
+        $this->createAndPersistVariant('SKU-RAND-A', 'Random A', 'random-a');
+        $this->createAndPersistVariant('SKU-RAND-B', 'Random B', 'random-b');
+
+        $this->em->clear();
+
+        $idA    = $this->repository->findOneByUrl('random-a')?->getId();
+        $idB    = $this->repository->findOneByUrl('random-b')?->getId();
+
+        $this->assertNotNull($idA);
+        $this->assertNotNull($idB);
+
+        $result = $this->repository->findRandomAvailableExcluding([$idA]);
+
+        if ($result !== null) {
+            $this->assertNotSame($idA, $result->getId());
+        }
+    }
+
     private function defaultFilter(): ProductFilterObject
     {
         return new ProductFilterObject(

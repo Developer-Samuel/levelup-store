@@ -82,13 +82,13 @@ class OrderInvoiceQueryServiceTest extends TestCase
 
     public function testGetInvoiceDetailsThrowsWhenItemsMissing(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\LogicException::class);
         $this->fetchInvoice($this->buildOrder(withItems: false));
     }
 
     public function testGetInvoiceDetailsThrowsWhenShippingFlagSetButAddressMissing(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\LogicException::class);
         $this->fetchInvoice($this->buildOrder(sendShipping: true, withShipping: false));
     }
 

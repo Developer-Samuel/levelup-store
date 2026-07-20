@@ -1,8 +1,9 @@
 import NOTYF_CONFIG from '@/ts/plugins/notyf/config'
 
 describe('NOTYF_CONFIG', () => {
-  it('should have duration 7500', () => {
-    expect(NOTYF_CONFIG.duration).toBe(7500)
+  it('should have duration 7500 for error type', () => {
+    const error = NOTYF_CONFIG.types?.find((t) => t.type === 'error')
+    expect(error?.duration).toBe(7500)
   })
 
   it('should have position center top', () => {

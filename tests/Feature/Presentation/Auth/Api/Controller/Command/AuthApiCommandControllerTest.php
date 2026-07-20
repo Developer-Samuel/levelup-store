@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Presentation\Auth\Controller;
+namespace Tests\Feature\Presentation\Auth\Api\Controller\Command;
 
 use Symfony\{
     Bundle\FrameworkBundle\KernelBrowser,

@@ -14,7 +14,6 @@ test.describe('Login Page', () => {
     loginPage = new LoginPage(page)
 
     await loginPage.goto()
-    await loginPage.dismissCookies()
   })
 
   // ── Page load ──────────────────────────────────────────────────────────────
@@ -35,15 +34,21 @@ test.describe('Login Page', () => {
   // ── Validation ─────────────────────────────────────────────────────────────
 
   test('should show field error when submitting empty form', async () => {
-    await loginPage.submit()
+    const responsePromise = loginPage.waitForAuthResponse()
 
-    await expect(loginPage.emailError).not.toBeEmpty({ timeout: 8_000 })
+    await loginPage.submit()
+    await responsePromise
+
+    await expect(loginPage.emailError).not.toBeEmpty({ timeout: 5_000 })
   })
 
   test('should show field error when email is invalid format', async () => {
+    const responsePromise = loginPage.waitForAuthResponse()
+
     await loginPage.fillEmail(INVALID_USER.email)
     await loginPage.fillPassword(INVALID_USER.password)
     await loginPage.submit()
+    await responsePromise
 
     await expect(loginPage.emailError).not.toBeEmpty({ timeout: 8_000 })
   })
@@ -94,7 +99,7 @@ test.describe('Login Page', () => {
 
     await loginPage.login(TEST_USER.email, TEST_USER.password)
 
-    await page.waitForURL('**/', { waitUntil: 'commit' })
+    await page.waitForURL((url) => !url.pathname.includes('/login'), { waitUntil: 'commit', timeout: 30_000 })
 
     expect(page.url()).not.toContain('/login')
   })

@@ -77,7 +77,7 @@ class LogoutHandlerTest extends TestCase
     {
         $this->logoutCommand
             ->method('execute')
-            ->willThrowException(new \RuntimeException('Something went wrong'));
+            ->willThrowException(new \DomainException('Something went wrong'));
 
         $result = $this->handler->handle(self::TOKEN);
 

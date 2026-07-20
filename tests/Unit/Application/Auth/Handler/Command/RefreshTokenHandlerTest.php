@@ -90,7 +90,7 @@ class RefreshTokenHandlerTest extends TestCase
     {
         $this->refreshTokenCommand
             ->method('execute')
-            ->willThrowException(new \RuntimeException('Token expired'));
+            ->willThrowException(new \DomainException('Token expired'));
 
         $result = $this->handler->handle('expired-token');
 
