@@ -8,8 +8,8 @@ doctrine:
     # 💾 MySQL (uncomment to use)
     #server_version: '10.4.32'
 
-    options:
-      1002: "SET time_zone = '+02:00'"
+    init_commands:
+      session_timezone: "SET time_zone = '+02:00'"
 
     profiling_collect_backtrace: '%kernel.debug%'
     use_savepoints: true
