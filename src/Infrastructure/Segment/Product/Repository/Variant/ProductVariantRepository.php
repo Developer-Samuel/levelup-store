@@ -305,19 +305,19 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
         }
 
         if ($brands) {
-            $qb->andWhere('LOWER(b.name) IN (:brands)')->setParameter('brands', $brands);
+            $qb->andWhere("REPLACE(LOWER(b.name), ' ', '-') IN (:brands)")->setParameter('brands', $brands);
         }
 
         if ($subtypes) {
-            $qb->andWhere('LOWER(st.name) IN (:subtypes)')->setParameter('subtypes', $subtypes);
+            $qb->andWhere("REPLACE(LOWER(st.name), ' ', '-') IN (:subtypes)")->setParameter('subtypes', $subtypes);
         }
 
         if ($category) {
-            $qb->andWhere('LOWER(c.name) = :category')->setParameter('category', $category);
+            $qb->andWhere("REPLACE(LOWER(c.name), ' ', '-') = :category")->setParameter('category', $category);
         }
 
         if ($type) {
-            $qb->andWhere('LOWER(t.name) = :type')->setParameter('type', $type);
+            $qb->andWhere("REPLACE(LOWER(t.name), ' ', '-') = :type")->setParameter('type', $type);
         }
 
         if ($filter->minPrice !== null) {
@@ -352,9 +352,7 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     private function normalizeArray(array $items): array
     {
         $normalized = array_map(
-            static fn($item): string => StringNormalizer::toLowerCase(
-                str_replace('-', ' ', $item),
-            ),
+            static fn($item): string => StringNormalizer::toLowerCase($item),
             $items,
         );
 
@@ -372,7 +370,7 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
             return null;
         }
 
-        return StringNormalizer::toLowerCase(str_replace('-', ' ', $value));
+        return StringNormalizer::toLowerCase($value);
     }
 
     /**

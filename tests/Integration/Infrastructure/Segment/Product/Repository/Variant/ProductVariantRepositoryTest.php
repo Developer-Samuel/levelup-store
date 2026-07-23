@@ -175,54 +175,84 @@ class ProductVariantRepositoryTest extends KernelTestCase
     public function testFindAvailableVariantsPaginatedWithBrandFilter(): void
     {
         $variant = $this->createAndPersistVariant('SKU-BRAND-001', 'Variant Brand', 'variant-brand-001');
-        $brandName = $variant->getProduct()->getBrand()->getName();
+        $brandSlug = $this->toSlug($variant->getProduct()->getBrand()->getName());
 
         $filter = new ProductFilterObject(
             isDiscountRoute: false,
             subtypes:        [],
-            brands:          [$brandName],
+            brands:          [$brandSlug],
         );
 
         $result = $this->repository->findAvailableVariantsPaginated($filter, 1, 12);
 
         $this->assertArrayHasKey('items', $result);
-        $this->assertIsArray($result['items']);
+        $this->assertNotEmpty($result['items']);
+    }
+
+    public function testFindAvailableVariantsPaginatedWithBrandFilterHyphenatedName(): void
+    {
+        [$name, $slug, $suffix] = $this->uniqueBrand('Inter-Tech');
+
+        $this->createAndPersistVariantWithBrand('SKU-INTER-TECH-' . $suffix, 'variant-inter-tech-' . $suffix, $name);
+
+        $result = $this->repository->findAvailableVariantsPaginated(
+            new ProductFilterObject(isDiscountRoute: false, subtypes: [], brands: [$slug]),
+            1, 12,
+        );
+
+        $this->assertArrayHasKey('items', $result);
+        $this->assertNotEmpty($result['items']);
+    }
+
+    public function testFindAvailableVariantsPaginatedWithBrandFilterNoHyphenInName(): void
+    {
+        [$name, $slug, $suffix] = $this->uniqueBrand('MSI');
+
+        $this->createAndPersistVariantWithBrand('SKU-MSI-' . $suffix, 'variant-msi-' . $suffix, $name);
+
+        $result = $this->repository->findAvailableVariantsPaginated(
+            new ProductFilterObject(isDiscountRoute: false, subtypes: [], brands: [$slug]),
+            1, 12,
+        );
+
+        $this->assertArrayHasKey('items', $result);
+        $this->assertNotEmpty($result['items']);
     }
 
     public function testFindAvailableVariantsPaginatedWithCategoryFilter(): void
     {
         $variant = $this->createAndPersistVariant('SKU-CAT-001', 'Variant Category', 'variant-cat-001');
-        $categoryName = $variant->getProduct()->getCategory()->getName();
+        $categorySlug = $this->toSlug($variant->getProduct()->getCategory()->getName());
 
         $filter = new ProductFilterObject(
             isDiscountRoute: false,
             subtypes:        [],
             brands:          [],
-            category:        $categoryName,
+            category:        $categorySlug,
         );
 
         $result = $this->repository->findAvailableVariantsPaginated($filter, 1, 12);
 
         $this->assertArrayHasKey('items', $result);
-        $this->assertIsArray($result['items']);
+        $this->assertNotEmpty($result['items']);
     }
 
     public function testFindAvailableVariantsPaginatedWithTypeFilter(): void
     {
         $variant = $this->createAndPersistVariant('SKU-TYPE-F-001', 'Variant Type Filter', 'variant-type-f-001');
-        $typeName = $variant->getProduct()->getType()->getName();
+        $typeSlug = $this->toSlug($variant->getProduct()->getType()->getName());
 
         $filter = new ProductFilterObject(
             isDiscountRoute: false,
             subtypes:        [],
             brands:          [],
-            type:            $typeName,
+            type:            $typeSlug,
         );
 
         $result = $this->repository->findAvailableVariantsPaginated($filter, 1, 12);
 
         $this->assertArrayHasKey('items', $result);
-        $this->assertIsArray($result['items']);
+        $this->assertNotEmpty($result['items']);
     }
 
     public function testFindAvailableVariantsPaginatedWithPriceRangeFilter(): void
@@ -406,6 +436,26 @@ class ProductVariantRepositoryTest extends KernelTestCase
         }
     }
 
+    private function toSlug(string $name): string
+    {
+        return strtolower(str_replace(' ', '-', $name));
+    }
+
+    /**
+     * @return array{
+     *     0: string,
+     *     1: string,
+     *     2: string
+     * }
+    */
+    private function uniqueBrand(string $prefix): array
+    {
+        $suffix = substr(uniqid('', true), 0, 6);
+        $name = $prefix . '-' . $suffix;
+
+        return [$name, $this->toSlug($name), $suffix];
+    }
+
     private function defaultFilter(): ProductFilterObject
     {
         return new ProductFilterObject(
@@ -423,6 +473,49 @@ class ProductVariantRepositoryTest extends KernelTestCase
             ->setProduct($product)
             ->setSku($sku)
             ->setName($name)
+            ->setUrl($url)
+            ->setPrice(99.99);
+
+        $stock = (new ProductVariantStock())
+            ->setVariant($variant)
+            ->setQuantityAvailable(10);
+
+        $ean = (new ProductVariantEan())
+            ->setVariant($variant)
+            ->setCode(substr(md5(uniqid('', true)), 0, 13));
+
+        $this->em->persist($variant);
+        $this->em->persist($stock);
+        $this->em->persist($ean);
+        $this->em->flush();
+        $this->em->clear();
+
+        return $variant;
+    }
+
+    private function createAndPersistVariantWithBrand(string $sku, string $url, string $brandName): ProductVariant
+    {
+        $category = (new Category())->setName(substr(md5(uniqid('', true)), 0, 20));
+        $type = (new Type())->setName('Type ' . uniqid('', true))->setCategory($category);
+        $brand = (new Brand())->setName($brandName);
+
+        $this->em->persist($category);
+        $this->em->persist($type);
+        $this->em->persist($brand);
+
+        $product = (new Product())
+            ->setName('Product ' . uniqid('', true))
+            ->setCategory($category)
+            ->setType($type)
+            ->setBrand($brand)
+            ->setCatalogCode('CAT-' . substr(uniqid('', true), 0, 45));
+
+        $this->em->persist($product);
+
+        $variant = (new ProductVariant())
+            ->setProduct($product)
+            ->setSku($sku)
+            ->setName('Variant ' . $brandName)
             ->setUrl($url)
             ->setPrice(99.99);
 
