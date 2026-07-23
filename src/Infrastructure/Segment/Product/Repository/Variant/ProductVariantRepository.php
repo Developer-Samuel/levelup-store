@@ -17,8 +17,7 @@ use App\Core\Domain\{
     Segment\Product\Enum\ProductSortOption,
     Segment\Product\Specification\ProductVariantAvailabilitySpecification,
     Segment\Product\ValueObject\ProductFilterObject,
-    Segment\Review\Entity\Review,
-    Segment\Type\Entity\Type
+    Segment\Review\Entity\Review
 };
 
 use App\Core\Ports\Segment\Product\Repository\Variant\ProductVariantRepositoryContract;
@@ -125,31 +124,6 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
         $qb = $this->createQueryBuilder('v')
             ->andWhere('v.product = :product')
             ->setParameter('product', $product);
-
-        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
-
-        /** @var ProductVariant[] $results */
-        $results = $this->getOrderedResults($qb, 'v', ProductVariant::class);
-
-        return $results;
-    }
-
-    /**
-     * @param Type[] $types
-     *
-     * @return ProductVariant[]
-    */
-    public function findAvailableVariantsByTypes(array $types): array
-    {
-        if (empty($types)) {
-            return [];
-        }
-
-        $products = $this->extractProductsFromTypes($types);
-
-        $qb = $this->createQueryBuilder('v')
-            ->andWhere('v.product IN (:products)')
-            ->setParameter('products', $products);
 
         ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
 
@@ -400,22 +374,5 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     {
         $qb->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit);
-    }
-
-    /**
-     * @param Type[] $types
-     *
-     * @return Product[]
-    */
-    private function extractProductsFromTypes(array $types): array
-    {
-        $products = [];
-        foreach ($types as $type) {
-            foreach ($type->getProducts() as $product) {
-                $products[] = $product;
-            }
-        }
-
-        return $products;
     }
 }

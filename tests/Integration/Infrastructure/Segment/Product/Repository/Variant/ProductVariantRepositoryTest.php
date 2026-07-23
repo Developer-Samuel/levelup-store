@@ -151,27 +151,6 @@ class ProductVariantRepositoryTest extends KernelTestCase
         $this->assertContainsOnlyInstancesOf(ProductVariant::class, $result);
     }
 
-    public function testFindAvailableVariantsByTypesReturnsEmptyForEmptyInput(): void
-    {
-        $result = $this->repository->findAvailableVariantsByTypes([]);
-
-        $this->assertEmpty($result);
-    }
-
-    public function testFindAvailableVariantsByTypesReturnsVariants(): void
-    {
-        $variant = $this->createAndPersistVariant('SKU-TYPE-001', 'Variant Type', 'variant-type-001');
-        $typeId = $variant->getProduct()->getType()->getId();
-        $type = $this->em->find(Type::class, $typeId);
-
-        $this->assertNotNull($type);
-
-        $result = $this->repository->findAvailableVariantsByTypes([$type]);
-
-        $this->assertNotEmpty($result);
-        $this->assertContainsOnlyInstancesOf(ProductVariant::class, $result);
-    }
-
     public function testFindAvailableVariantsPaginatedWithBrandFilter(): void
     {
         $variant = $this->createAndPersistVariant('SKU-BRAND-001', 'Variant Brand', 'variant-brand-001');
