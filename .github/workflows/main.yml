@@ -266,8 +266,26 @@ jobs:
             sleep 1
           done
 
+      - name: Smoke test login API
+        run: |
+          echo "Testing login API..."
+          RESPONSE=$(curl -sf -X POST http://127.0.0.1:8000/api/auth/login \
+            -H "Content-Type: application/json" \
+            -d '{"email":"test@example.com","password":"Test123@"}' \
+            --max-time 10 || echo "CURL_FAILED")
+          echo "Login API response: $RESPONSE"
+          if echo "$RESPONSE" | grep -q '"status":"error"'; then
+            echo "ERROR: Login API returned error status — check PHP log below"
+            cat var/log/test.log 2>/dev/null || echo "No test.log found"
+            exit 1
+          fi
+
       - name: Run Playwright (Chromium - auth only)
         run: pnpm e2e assets/tests/e2e/specs/auth/login.spec.ts --project=chromium --grep "should redirect after successful login"
+
+      - name: Show PHP log on failure
+        if: failure()
+        run: cat var/log/test.log 2>/dev/null || echo "No test.log found"
 
       - uses: actions/upload-artifact@v4
         if: failure()
