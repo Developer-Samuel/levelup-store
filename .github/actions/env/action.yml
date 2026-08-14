@@ -15,5 +15,7 @@ runs:
       run: |
         cp ${{ inputs.source }} .env
         echo "APP_SECRET=$(php -r "echo bin2hex(random_bytes(32));")" >> .env
+        sed -i '/^DATABASE_URL=/d' .env
         echo "DATABASE_URL=${DATABASE_URL}" >> .env
+        sed -i '/^REDIS_URL=/d' .env
         echo "REDIS_URL=${REDIS_URL}" >> .env
