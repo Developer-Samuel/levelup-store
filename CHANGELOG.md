@@ -1,3 +1,49 @@
+## [v1.1.0] - 2026-08-14
+
+## [1.1.0] - 2026-08-14
+
+### 🚀 Features
+- Live cart updates on stock conflicts with automatic cleanup scheduler
+- Cart stock validation before payment and order creation
+- Recommended products sync scheduler for out-of-stock variants
+- Expired token and country sync scheduled tasks
+- Soft deletes for users with full profile destroy flow
+- Audit logging with request metadata extraction
+- Smart header hide/show on mobile scroll
+- Health-check endpoint
+- Privacy policy, updated Terms & Conditions
+- Demo disclaimer in footer
+- Cart cleanup scheduler with updated_at tracking on mutations
+
+### 🏗️ Architecture
+- Domain exceptions unified under `Shared\Exception` namespace
+- `DomainException` enforced for business validations
+- Rate limiter rewritten to IP-based cache strategy with configurable TTL per endpoint and Retry-After header
+- Scheduler messages and tasks renamed for clarity
+
+### ♻️ Refactoring
+- Form handlers simplified, per-type notyf duration, removed scroll on success
+- SEO metadata, title block and accessibility improvements
+- ORM mapping moved to traits with enforced non-nullable expires
+
+### 📦 Infrastructure
+- GitHub Actions CI/CD: `main`, `pull-request`, `release` pipelines
+- Composite actions for PHP, Node, Postgres, Redis, env
+- PHPUnit matrix across PHP 8.2 and 8.3
+
+### 🧪 Tests
+- PHPUnit, Vitest extended
+- Playwright E2E
+
+### 🐛 Fixes
+- Product filter slug matching for hyphenated names
+- Product detail responsive layout and anchor links on mobile
+- Sticky elements, filter, and navigation on mobile
+- Form error scroll for custom scroll containers
+- Footer offset, background, and copyright year
+- Out-of-stock removal from cart on order create
+- Empty navigation links remove
+
 ## [1.0.0] - 2026-07-12
 
 ### 🚀 Features
