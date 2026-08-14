@@ -17,7 +17,11 @@ use App\Core\Domain\{
     Segment\Cart\ValueObject\CartItemObject,
     Segment\Product\Entity\Variant\ProductVariant,
     Segment\Product\Entity\Variant\ProductVariantDiscount,
-    Segment\Product\Entity\Variant\ProductVariantStock
+    Segment\Product\Entity\Variant\ProductVariantEan,
+    Segment\Product\Entity\Variant\ProductVariantStock,
+    Segment\Product\Enum\ProductStockStatus,
+    Segment\Product\Enum\Variant\ProductVariantEanStatus,
+    Segment\Product\Enum\Variant\ProductVariantStatus
 };
 
 use App\Core\Application\Segment\Cart\Service\Query\CartSummaryQueryService;
@@ -149,7 +153,7 @@ class CartSummaryQueryServiceTest extends TestCase
     {
         $discount = $this->createMock(ProductVariantDiscount::class);
 
-        $variant  = $this->createVariantWithStock(5);
+        $variant = $this->createVariantWithStock(5);
         $variant->method('getId')->willReturn(1);
         $variant->method('getDiscountedPrice')->willReturn(39.99);
         $variant->method('getPrice')->willReturn(49.99);
@@ -180,7 +184,7 @@ class CartSummaryQueryServiceTest extends TestCase
     private function initMocks(): void
     {
         $this->cartRepository = $this->createMock(CartRepositoryContract::class);
-        $this->reviewQuery    = $this->createMock(ReviewQueryContract::class);
+        $this->reviewQuery = $this->createMock(ReviewQueryContract::class);
     }
 
     private function initService(): void
@@ -194,7 +198,7 @@ class CartSummaryQueryServiceTest extends TestCase
     private function assertCartSkipsVariant(?int $quantity): void
     {
         $variant = $this->createVariantWithStock($quantity);
-        $cart    = $this->createCartWithItems([$this->createItemWithVariant($variant)]);
+        $cart = $this->createCartWithItems([$this->createItemWithVariant($variant)]);
 
         $this->cartRepository->method('findCartForUser')->willReturn($cart);
 
@@ -209,10 +213,29 @@ class CartSummaryQueryServiceTest extends TestCase
 
         if ($quantity === null) {
             $variant->method('getInStock')->willReturn(null);
+            $variant->method('getStock')->willReturn(null);
+            $variant->method('getStatus')->willReturn(ProductVariantStatus::AVAILABLE);
+            $variant->method('getEans')->willReturn(new ArrayCollection([]));
+        } elseif ($quantity === 0) {
+            $stock = $this->createMock(ProductVariantStock::class);
+            $stock->method('getQuantityAvailable')->willReturn(0);
+            $stock->method('getStatus')->willReturn(ProductStockStatus::IN_STOCK);
+            $variant->method('getInStock')->willReturn(null);
+            $variant->method('getStock')->willReturn($stock);
+            $variant->method('getStatus')->willReturn(ProductVariantStatus::AVAILABLE);
+            $variant->method('getEans')->willReturn(new ArrayCollection([]));
         } else {
             $stock = $this->createMock(ProductVariantStock::class);
             $stock->method('getQuantityAvailable')->willReturn($quantity);
+            $stock->method('getStatus')->willReturn(ProductStockStatus::IN_STOCK);
+
+            $ean = $this->createMock(ProductVariantEan::class);
+            $ean->method('getStatus')->willReturn(ProductVariantEanStatus::ACTIVE);
+
             $variant->method('getInStock')->willReturn($stock);
+            $variant->method('getStock')->willReturn($stock);
+            $variant->method('getStatus')->willReturn(ProductVariantStatus::AVAILABLE);
+            $variant->method('getEans')->willReturn(new ArrayCollection([$ean]));
         }
 
         return $variant;

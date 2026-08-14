@@ -36,7 +36,7 @@ class OrderInvoiceCommandControllerTest extends WebTestCase
     protected function setUp(): void
     {
         $this->client = static::createClient();
-        $this->em     = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->em->beginTransaction();
 
         $this->user = $this->createUser();

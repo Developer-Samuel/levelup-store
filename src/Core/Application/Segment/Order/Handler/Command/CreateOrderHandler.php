@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace App\Core\Application\Segment\Order\Handler\Command;
 
 use App\Core\Domain\{
-    Segment\Order\Payload\OrderCreatePayload,
-    Segment\Order\Entity\Order
+    Segment\Audit\Enum\AuditAction,
+    Segment\Order\Payload\OrderCreatePayload
 };
 
 use App\Core\Application\Abstract\Handler\AbstractCommandHandler;
 
 use App\Core\Ports\{
     Security\Policy\SecurityPolicyContract,
+    Security\Provider\SecurityProviderContract,
+    Segment\Audit\AuditLoggerContract,
+    Segment\Cart\Service\Query\CartRenderQueryContract,
     Segment\Order\Handler\Command\CreateOrderHandlerContract,
     Segment\Order\Service\Command\OrderMutationCommandContract,
     Shared\Logging\AppLoggerContract
@@ -25,11 +28,15 @@ class CreateOrderHandler extends AbstractCommandHandler implements CreateOrderHa
     /**
      * @param SecurityPolicyContract $securityPolicy
      * @param OrderMutationCommandContract $orderMutationCommand
+     * @param AuditLoggerContract $audit
      * @param AppLoggerContract $logger
     */
     public function __construct(
         private readonly SecurityPolicyContract $securityPolicy,
+        private readonly SecurityProviderContract $securityProvider,
+        private readonly CartRenderQueryContract $cartRenderQuery,
         private readonly OrderMutationCommandContract $orderMutationCommand,
+        private readonly AuditLoggerContract $audit,
         AppLoggerContract $logger,
     ) {
         parent::__construct($logger);
@@ -42,32 +49,40 @@ class CreateOrderHandler extends AbstractCommandHandler implements CreateOrderHa
     */
     public function handle(OrderCreatePayload $payload): array
     {
-        return $this->execute(function () use ($payload) {
+        $result = $this->execute(function () use ($payload) {
             $this->securityPolicy->checkIfEmailVerified();
 
             $result = $this->orderMutationCommand->createOrder($payload);
 
             if ($result->order !== null) {
-                $this->logOrderCreated($result->order);
+                $order = $result->order;
+                $this->audit->log(AuditAction::ORDER_CREATED, 'Order', $order->getId(), [], $order->getUser());
 
                 return ApiResultFormatter::success('Order created successfully', null, 'success');
             }
 
             return ApiResultFormatter::success('Payment redirect successful', null, $result->paymentUrl);
         });
+
+        return $this->withCartOnConflict($result);
     }
 
     /**
-     * @param Order $order
+     * @param array<string, mixed> $result
      *
-     * @return void
+     * @return array<string, mixed>
     */
-    private function logOrderCreated(Order $order): void
+    private function withCartOnConflict(array $result): array
     {
-        $user = $order->getUser();
+        if (($result['code'] ?? null) !== 409) {
+            return $result;
+        }
 
-        $this->logger->info('Order created successfully', $user, [
-            'order_id' => $order->getId(),
-        ]);
+        $user = $this->securityProvider->getCurrentUser();
+        if ($user !== null) {
+            $result['cart'] = $this->cartRenderQuery->buildCartResponse($user, '');
+        }
+
+        return $result;
     }
 }

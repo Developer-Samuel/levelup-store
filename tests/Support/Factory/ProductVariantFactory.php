@@ -35,8 +35,8 @@ trait ProductVariantFactory
     private function createAndPersistProduct(): Product
     {
         $category = (new Category())->setName(substr(md5(uniqid('', true)), 0, 20));
-        $type     = (new Type())->setName('Type ' . uniqid('', true))->setCategory($category);
-        $brand    = (new Brand())->setName('Brand ' . uniqid('', true));
+        $type = (new Type())->setName('Type ' . uniqid('', true))->setCategory($category);
+        $brand = (new Brand())->setName('Brand ' . uniqid('', true));
 
         $this->em->persist($category);
         $this->em->persist($type);

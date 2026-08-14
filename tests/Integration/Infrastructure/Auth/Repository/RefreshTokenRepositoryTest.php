@@ -8,9 +8,10 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-use App\Core\Domain\Auth\Entity\RefreshToken;
-
-use App\Core\Domain\Segment\User\Entity\User;
+use App\Core\Domain\{
+    Auth\Entity\RefreshToken,
+    Segment\User\Entity\User
+};
 
 use App\Core\Ports\Auth\Repository\RefreshTokenRepositoryContract;
 
@@ -37,7 +38,7 @@ class RefreshTokenRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -93,7 +94,7 @@ class RefreshTokenRepositoryTest extends KernelTestCase
 
     public function testRevokeRemovesToken(): void
     {
-        $token      = $this->repository->create($this->user);
+        $token = $this->repository->create($this->user);
         $tokenValue = $token->getToken();
 
         $this->repository->revoke($token);

@@ -19,4 +19,9 @@ return function (RoutingConfigurator $routes) {
     $routes->add('profile_update', '/profile/update')
         ->controller([ProfileCommandController::class, 'update'])
         ->methods(['POST']);
+
+    // Route for deleting user profile
+    $routes->add('profile_destroy', '/profile/destroy')
+        ->controller([ProfileCommandController::class, 'destroy'])
+        ->methods(['POST']);
 };

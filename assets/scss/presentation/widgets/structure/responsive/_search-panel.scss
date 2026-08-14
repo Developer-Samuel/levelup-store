@@ -23,7 +23,7 @@
   @include resolution(lg, max) {
     .search-panel {
       top: 170px;
-      height: calc(100% - 170px);
+      height: calc(100dvh - 170px);
 
       &__card {
         margin: 2em auto 0;
@@ -43,7 +43,7 @@
 @include resolution(md, max) {
   .search-panel {
     top: 155px;
-    height: calc(100% - 155px);
+    height: calc(100dvh - 155px);
   }
 }
 

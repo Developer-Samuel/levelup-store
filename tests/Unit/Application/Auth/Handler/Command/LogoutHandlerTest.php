@@ -77,7 +77,7 @@ class LogoutHandlerTest extends TestCase
     {
         $this->logoutCommand
             ->method('execute')
-            ->willThrowException(new \RuntimeException('Something went wrong'));
+            ->willThrowException(new \DomainException('Something went wrong'));
 
         $result = $this->handler->handle(self::TOKEN);
 
@@ -88,7 +88,7 @@ class LogoutHandlerTest extends TestCase
     private function initMocks(): void
     {
         $this->logoutCommand = $this->createMock(LogoutCommandContract::class);
-        $this->logger        = $this->createMock(AppLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void

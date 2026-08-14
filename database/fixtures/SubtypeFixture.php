@@ -96,8 +96,10 @@ class SubtypeFixture extends AbstractFixture implements DependentFixtureInterfac
     {
         $category = $this->findCategoryOrLog($data['categoryName']);
         if ($category === null) return;
+
         $type = $this->findTypeOrLog($category, $data['typeName']);
         if ($type === null) return;
+
         $this->createSubtypes($manager, $category, $type, $data['subtypes']);
     }
 

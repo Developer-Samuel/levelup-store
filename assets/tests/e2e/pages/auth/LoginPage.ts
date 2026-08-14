@@ -1,4 +1,4 @@
-import type { Locator } from '@playwright/test'
+import type { Locator, Response } from '@playwright/test'
 import { expect } from '@playwright/test'
 
 import { BasePage } from '@/tests/e2e/pages/abstracts/BasePage'
@@ -60,6 +60,10 @@ export class LoginPage extends BasePage {
     await this.fillEmail(email)
     await this.fillPassword(password)
     await this.submit()
+  }
+
+  waitForAuthResponse(timeout = 30_000): Promise<Response> {
+    return this._page.waitForResponse((res) => res.url().includes('/api/auth/login'), { timeout })
   }
 
   getFieldError(fieldName: string): Locator {

@@ -142,7 +142,10 @@ final readonly class ReviewQueryService implements ReviewQueryContract
     */
     private function canUserReview(?User $user, int $variantId): bool
     {
-        if (!$user instanceof User) return false;
+        if (!$user instanceof User) {
+            return false;
+        }
+
         $hasPurchased = $this->orderItemRepository->hasPurchasedVariant($user, $variantId);
 
         return $hasPurchased && !$this->reviewRepository->existsByVariantAndUser($variantId, $user);

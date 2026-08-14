@@ -48,8 +48,8 @@ class CartItemCommandServiceTest extends TestCase
         $this->initMocks();
         $this->initService();
 
-        $this->user    = $this->createMock(User::class);
-        $this->cart    = $this->createMock(Cart::class);
+        $this->user = $this->createMock(User::class);
+        $this->cart = $this->createMock(Cart::class);
         $this->variant = $this->createMock(ProductVariant::class);
     }
 
@@ -64,12 +64,12 @@ class CartItemCommandServiceTest extends TestCase
         $this->cartItemPolicy->method('isAvailable')->willReturn(false);
 
         $expected = [
-            'html' => '',
+            'html'       => '',
             'totalItems' => 0,
             'totalPrice' => '0,00 €',
-            'message' => 'This product is no longer in stock.',
-            'success' => false,
-            'status' => 400
+            'message'    => 'This product is no longer in stock.',
+            'success'    => false,
+            'status'     => 400,
         ];
 
         $this->cartRenderQuery
@@ -202,12 +202,38 @@ class CartItemCommandServiceTest extends TestCase
         $this->service->removeVariant($this->variant, []);
     }
 
+    public function testRemoveVariantRefreshesCartWhenMatchingItemHasCart(): void
+    {
+        $item = $this->createMock(CartItem::class);
+        $item->method('hasVariant')->willReturn(true);
+        $item->method('getCart')->willReturn($this->cart);
+
+        $this->cartControlCommand
+            ->expects($this->once())
+            ->method('flushAndRefreshCart')
+            ->with($this->cart);
+
+        $this->service->removeVariant($this->variant, [$item]);
+    }
+
+    public function testRemoveVariantDoesNotRefreshCartWhenNoItemsMatch(): void
+    {
+        $item = $this->createMock(CartItem::class);
+        $item->method('hasVariant')->willReturn(false);
+
+        $this->cartControlCommand
+            ->expects($this->never())
+            ->method('flushAndRefreshCart');
+
+        $this->service->removeVariant($this->variant, [$item]);
+    }
+
     private function initMocks(): void
     {
-        $this->entityPersistence  = $this->createMock(EntityPersistenceContract::class);
-        $this->cartItemPolicy     = $this->createMock(CartItemAvailabilityPolicyContract::class);
-        $this->cartItemQuery      = $this->createMock(CartItemQueryContract::class);
-        $this->cartRenderQuery    = $this->createMock(CartRenderQueryContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
+        $this->cartItemPolicy = $this->createMock(CartItemAvailabilityPolicyContract::class);
+        $this->cartItemQuery = $this->createMock(CartItemQueryContract::class);
+        $this->cartRenderQuery = $this->createMock(CartRenderQueryContract::class);
         $this->cartControlCommand = $this->createMock(CartControlCommandContract::class);
     }
 

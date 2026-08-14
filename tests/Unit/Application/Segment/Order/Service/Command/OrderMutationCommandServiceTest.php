@@ -130,7 +130,7 @@ class OrderMutationCommandServiceTest extends TestCase
     {
         $this->setupUserWithCartItems();
 
-        $user  = $this->securityProvider->getCurrentUser();
+        $user = $this->securityProvider->getCurrentUser();
         $order = $this->createMock(Order::class);
         $order->method('getUser')->willReturn($user);
 
@@ -160,7 +160,7 @@ class OrderMutationCommandServiceTest extends TestCase
     {
         $this->setupUserWithCartItems();
 
-        $user  = $this->securityProvider->getCurrentUser();
+        $user = $this->securityProvider->getCurrentUser();
         $order = $this->createMock(Order::class);
         $order->method('getUser')->willReturn($user);
 
@@ -179,14 +179,14 @@ class OrderMutationCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->securityProvider    = $this->createMock(SecurityProviderContract::class);
-        $this->orderBuildCommand   = $this->createMock(OrderBuildCommandContract::class);
-        $this->notifier            = $this->createMock(OrderConfirmationNotifierContract::class);
-        $this->entityPersistence   = $this->createMock(EntityPersistenceContract::class);
+        $this->securityProvider = $this->createMock(SecurityProviderContract::class);
+        $this->orderBuildCommand = $this->createMock(OrderBuildCommandContract::class);
+        $this->notifier = $this->createMock(OrderConfirmationNotifierContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
         $this->orderValidatorQuery = $this->createMock(OrderValidatorQueryContract::class);
-        $this->orderItemQuery      = $this->createMock(OrderItemQueryContract::class);
-        $this->orderPaymentQuery   = $this->createMock(OrderPaymentQueryContract::class);
-        $this->orderItemCommand    = $this->createMock(OrderItemCommandContract::class);
+        $this->orderItemQuery = $this->createMock(OrderItemQueryContract::class);
+        $this->orderPaymentQuery = $this->createMock(OrderPaymentQueryContract::class);
+        $this->orderItemCommand = $this->createMock(OrderItemCommandContract::class);
     }
 
     private function initService(): void

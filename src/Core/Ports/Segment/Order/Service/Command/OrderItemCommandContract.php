@@ -18,4 +18,11 @@ interface OrderItemCommandContract
      * @return void
     */
     public function processOrderItems(Order $order, array $cartItems): void;
+
+    /**
+     * @param CartItem[] $cartItems
+     *
+     * @return void
+    */
+    public function validateAllItemsInStock(array $cartItems): void;
 }

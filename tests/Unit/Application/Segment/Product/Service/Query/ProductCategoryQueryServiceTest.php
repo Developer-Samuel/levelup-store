@@ -94,7 +94,7 @@ class ProductCategoryQueryServiceTest extends TestCase
     public function testGetTypesForCategoryReturnsSubtypesWhenTypeFound(): void
     {
         $subtype = $this->createMock(Subtype::class);
-        $type    = $this->buildTypeMock(subtypes: [$subtype]);
+        $type = $this->buildTypeMock(subtypes: [$subtype]);
 
         $this->withCategoryFound($this->buildCategoryMock(types: [$type]));
         $this->typeRepository->method('findByCategoryAndName')->willReturn($type);
@@ -107,7 +107,7 @@ class ProductCategoryQueryServiceTest extends TestCase
     public function testFindTypeByNameAndCategoryDelegatesToRepository(): void
     {
         $category = $this->createMock(Category::class);
-        $type     = $this->createMock(Type::class);
+        $type = $this->createMock(Type::class);
 
         $this->typeRepository
             ->expects($this->once())
@@ -149,7 +149,7 @@ class ProductCategoryQueryServiceTest extends TestCase
 
     public function testResolveTypesForCategoryReturnsAllTypesWhenNoTypeName(): void
     {
-        $type     = $this->createMock(Type::class);
+        $type = $this->createMock(Type::class);
         $category = $this->buildCategoryMock(types: [$type]);
 
         $result = $this->service->resolveTypesForCategory($category, null);
@@ -160,7 +160,7 @@ class ProductCategoryQueryServiceTest extends TestCase
 
     public function testResolveTypesForCategoryReturnsSingleTypeWhenTypeNameProvided(): void
     {
-        $type     = $this->createMock(Type::class);
+        $type = $this->createMock(Type::class);
         $category = $this->buildCategoryMock(types: []);
 
         $this->typeRepository->method('findByCategoryAndName')->willReturn($type);
@@ -219,7 +219,7 @@ class ProductCategoryQueryServiceTest extends TestCase
     private function initMocks(): void
     {
         $this->categoryRepository = $this->createMock(CategoryRepositoryContract::class);
-        $this->typeRepository     = $this->createMock(TypeRepositoryContract::class);
+        $this->typeRepository = $this->createMock(TypeRepositoryContract::class);
     }
 
     private function initService(): void

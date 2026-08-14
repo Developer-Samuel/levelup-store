@@ -90,7 +90,7 @@ class RefreshTokenHandlerTest extends TestCase
     {
         $this->refreshTokenCommand
             ->method('execute')
-            ->willThrowException(new \RuntimeException('Token expired'));
+            ->willThrowException(new \DomainException('Token expired'));
 
         $result = $this->handler->handle('expired-token');
 
@@ -101,7 +101,7 @@ class RefreshTokenHandlerTest extends TestCase
     private function initMocks(): void
     {
         $this->refreshTokenCommand = $this->createMock(RefreshTokenCommandContract::class);
-        $this->logger              = $this->createMock(AppLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void

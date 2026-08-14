@@ -63,7 +63,7 @@ final class FilterCacheQueryService implements FilterCacheQueryContract
      *
      * @return FilterCacheObject
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     private function fetchCachedData(string $cacheKey, string $query): FilterCacheObject
     {

@@ -7,7 +7,7 @@ namespace App\Core\Application\Segment\Review\Service\Command;
 use Kit\Assertion\Domain\Review\ReviewAssertion;
 
 use App\Core\Domain\{
-    Exception\NotFoundException,
+    Shared\Exception\NotFoundException,
     Segment\Review\Entity\Review,
     Segment\Review\Entity\ReviewRating,
     Segment\Review\Enum\ReviewRatingType,

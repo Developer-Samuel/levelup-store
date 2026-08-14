@@ -9,7 +9,9 @@ use App\Core\Domain\{
     Segment\User\Entity\User
 };
 
-interface RefreshTokenRepositoryContract
+use App\Core\Ports\Shared\Repository\CleanableTokenRepositoryContract;
+
+interface RefreshTokenRepositoryContract extends CleanableTokenRepositoryContract
 {
     /**
      * @param User $user
@@ -31,4 +33,11 @@ interface RefreshTokenRepositoryContract
      * @return void
     */
     public function revoke(RefreshToken $token): void;
+
+    /**
+     * @param User $user
+     *
+     * @return void
+    */
+    public function removeTokensByUser(User $user): void;
 }

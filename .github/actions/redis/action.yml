@@ -1,0 +1,35 @@
+name: Setup Redis
+description: Setup dynamic REDIS_URL and wait for Redis to be ready
+
+inputs:
+  redis-port:
+    description: Host port mapped to Redis 6379 (use different ports per job to avoid conflicts in act)
+    required: false
+    default: '6379'
+
+runs:
+  using: composite
+  steps:
+    - name: Install redis-tools
+      shell: bash
+      run: sudo apt-get update && sudo apt-get install -y redis-tools
+
+    - name: Setup dynamic REDIS_URL
+      shell: bash
+      run: |
+        if [ "$ACT" = "true" ]; then
+          echo "REDIS_URL=redis://127.0.0.1:${{ inputs.redis-port }}" >> $GITHUB_ENV
+          echo "REDIS_URL_HOST=127.0.0.1" >> $GITHUB_ENV
+        else
+          echo "REDIS_URL=redis://redis:6379" >> $GITHUB_ENV
+          echo "REDIS_URL_HOST=redis" >> $GITHUB_ENV
+        fi
+
+    - name: Wait for Redis
+      shell: bash
+      run: |
+        echo "Waiting for Redis to be ready..."
+        until redis-cli -h $REDIS_URL_HOST -p ${{ inputs.redis-port }} ping | grep PONG; do
+          echo "Redis is not ready yet..."
+          sleep 2
+        done

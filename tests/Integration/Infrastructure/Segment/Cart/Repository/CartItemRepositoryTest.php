@@ -8,9 +8,12 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-use App\Core\Domain\Segment\Cart\Entity\{Cart, CartItem};
-
-use App\Core\Domain\Segment\User\Entity\User;
+use App\Core\Domain\{
+    Segment\Cart\Entity\Cart,
+    Segment\Cart\Entity\CartItem,
+    Segment\Product\Entity\Variant\ProductVariant,
+    Segment\User\Entity\User
+};
 
 use App\Core\Ports\Segment\Cart\Repository\CartItemRepositoryContract;
 
@@ -42,7 +45,7 @@ class CartItemRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -66,7 +69,7 @@ class CartItemRepositoryTest extends KernelTestCase
     public function testGetItemReturnsCartItemWhenExists(): void
     {
         $variant = $this->createAndPersistVariant('SKU-GET-001', 'Variant Get', 'variant-get');
-        $item    = $this->createAndPersistCartItem($this->cart, $variant);
+        $item = $this->createAndPersistCartItem($this->cart, $variant);
 
         $itemId = $item->getId();
         assert($itemId !== null);
@@ -103,10 +106,44 @@ class CartItemRepositoryTest extends KernelTestCase
         $this->assertEmpty($result);
     }
 
+    public function testFindAllWithVariantReturnsCartItems(): void
+    {
+        $variant = $this->createAndPersistVariant('SKU-FAV-001', 'Variant FAV', 'variant-fav');
+        $this->createAndPersistCartItem($this->cart, $variant);
+
+        $result = $this->repository->findAllWithVariant();
+
+        $this->assertNotEmpty($result);
+        $this->assertContainsOnlyInstancesOf(CartItem::class, $result);
+    }
+
+    public function testFindAllWithVariantReturnsEmptyWhenNoItems(): void
+    {
+        $result = $this->repository->findAllWithVariant();
+
+        $this->assertEmpty($result);
+    }
+
+    public function testFindAllWithVariantEagerLoadsVariantAndStock(): void
+    {
+        $variant = $this->createAndPersistVariant('SKU-FAV-002', 'Variant FAV Stock', 'variant-fav-stock');
+        $this->createAndPersistCartItem($this->cart, $variant);
+
+        $this->em->clear();
+
+        $result = $this->repository->findAllWithVariant();
+
+        $this->assertNotEmpty($result);
+
+        $loadedVariant = $result[0]->getVariant();
+
+        $this->assertInstanceOf(ProductVariant::class, $loadedVariant);
+    }
+
     public function testFindByCartReturnsOnlyItemsForGivenCart(): void
     {
-        $userB    = $this->createAndPersistUser('2-test@example.com');
-        $cartB    = $this->createAndPersistCart($userB);
+        $userB = $this->createAndPersistUser('2-test@example.com');
+        $cartB = $this->createAndPersistCart($userB);
         $variantA = $this->createAndPersistVariant('SKU-MC-A', 'Variant MC A', 'variant-mc-a');
         $variantB = $this->createAndPersistVariant('SKU-MC-B', 'Variant MC B', 'variant-mc-b');
 
@@ -116,8 +153,10 @@ class CartItemRepositoryTest extends KernelTestCase
         $result = $this->repository->findByCart($this->cart);
 
         $this->assertCount(1, $result);
+
         $cart = $result[0]->getCart();
         assert($cart !== null);
+        
         $this->assertSame($this->cart->getId(), $cart->getId());
     }
 

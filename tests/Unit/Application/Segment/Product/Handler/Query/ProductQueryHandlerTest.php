@@ -158,7 +158,7 @@ class ProductQueryHandlerTest extends TestCase
     public function testHandlePassesCustomPageAndSort(): void
     {
         $filter = $this->buildFilter();
-        $sort   = ProductSortOption::CHEAPEST;
+        $sort = ProductSortOption::CHEAPEST;
 
         $this->productQuery
             ->expects($this->once())
@@ -172,7 +172,7 @@ class ProductQueryHandlerTest extends TestCase
     private function initMocks(): void
     {
         $this->productQuery = $this->createMock(ProductQueryContract::class);
-        $this->reviewQuery  = $this->createMock(ReviewQueryContract::class);
+        $this->reviewQuery = $this->createMock(ReviewQueryContract::class);
     }
 
     private function initHandler(): void

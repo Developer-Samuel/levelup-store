@@ -6,6 +6,7 @@ namespace App\Core\Application\Admin\Segment\Order\Handler\Command;
 
 use App\Core\Domain\{
     Admin\Segment\Order\Payload\AdminOrderStatusPayload,
+    Segment\Audit\Enum\AuditAction,
     Segment\Order\Entity\Order
 };
 
@@ -16,6 +17,7 @@ use App\Core\Ports\{
     Admin\Segment\Order\Service\Command\AdminOrderCommandContract,
     Admin\Segment\Order\Service\Query\AdminOrderValidationQueryContract,
     Security\Policy\SecurityPolicyContract,
+    Segment\Audit\AuditLoggerContract,
     Segment\Order\Service\Query\OrderFetchQueryContract,
     Shared\Logging\AppLoggerContract
 };
@@ -27,7 +29,8 @@ class AdminOrderCommandHandler extends AbstractAdminFormCommandHandler implement
     /**
      * @param OrderFetchQueryContract $orderFetchQuery
      * @param AdminOrderCommandContract $adminOrderCommand
-     * @param AdminOrderValidationQueryContract $adminOrderValidationQuery,
+     * @param AdminOrderValidationQueryContract $adminOrderValidationQuery
+     * @param AuditLoggerContract $audit
      * @param SecurityPolicyContract $securityPolicy
      * @param AppLoggerContract $logger
     */
@@ -35,6 +38,7 @@ class AdminOrderCommandHandler extends AbstractAdminFormCommandHandler implement
         private readonly OrderFetchQueryContract $orderFetchQuery,
         private readonly AdminOrderCommandContract $adminOrderCommand,
         private readonly AdminOrderValidationQueryContract $adminOrderValidationQuery,
+        private readonly AuditLoggerContract $audit,
         SecurityPolicyContract $securityPolicy,
         AppLoggerContract $logger,
     ) {
@@ -57,6 +61,10 @@ class AdminOrderCommandHandler extends AbstractAdminFormCommandHandler implement
             $this->assertStatusCanBeUpdated($order, $payload);
 
             $this->adminOrderCommand->updateOrderStatus($order, $payload);
+
+            $this->audit->log(AuditAction::ORDER_STATUS_CHANGE, 'Order', $order->getId(), [
+                'status' => $payload->status,
+            ], $order->getUser());
 
             return ApiResultFormatter::success('Order status updated successfully.');
         });

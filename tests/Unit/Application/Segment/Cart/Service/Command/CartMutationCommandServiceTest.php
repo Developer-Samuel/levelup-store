@@ -171,10 +171,10 @@ class CartMutationCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->securityPolicy     = $this->createMock(SecurityPolicyContract::class);
-        $this->cartControlQuery   = $this->createMock(CartControlQueryContract::class);
+        $this->securityPolicy = $this->createMock(SecurityPolicyContract::class);
+        $this->cartControlQuery = $this->createMock(CartControlQueryContract::class);
         $this->cartControlCommand = $this->createMock(CartControlCommandContract::class);
-        $this->cartItemCommand    = $this->createMock(CartItemCommandContract::class);
+        $this->cartItemCommand = $this->createMock(CartItemCommandContract::class);
     }
 
     private function initService(): void

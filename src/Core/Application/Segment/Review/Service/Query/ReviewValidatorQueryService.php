@@ -7,8 +7,8 @@ namespace App\Core\Application\Segment\Review\Service\Query;
 use App\Core\Domain\Segment\User\Entity\User;
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
-    Exception\ConflictException
+    Shared\Exception\AccessDeniedException,
+    Shared\Exception\ConflictException
 };
 
 use App\Core\Ports\{

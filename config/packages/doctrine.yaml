@@ -26,6 +26,10 @@ doctrine:
 
     naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
 
+    dql:
+      string_functions:
+        REPLACE: App\Infrastructure\Shared\Doctrine\DQL\Replace
+
     identity_generation_preferences:
       Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
 

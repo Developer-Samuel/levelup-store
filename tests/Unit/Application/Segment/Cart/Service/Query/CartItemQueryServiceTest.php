@@ -74,9 +74,9 @@ class CartItemQueryServiceTest extends TestCase
 
     public function testGetItemsReturnsCartItems(): void
     {
-        $user    = $this->createUserWithId(1);
-        $item    = $this->createMock(CartItem::class);
-        $cart    = $this->createCartWithItems([$item]);
+        $user = $this->createUserWithId(1);
+        $item = $this->createMock(CartItem::class);
+        $cart = $this->createCartWithItems([$item]);
 
         $this->cartRepository->method('findCartForUser')->willReturn($cart);
 
@@ -88,10 +88,10 @@ class CartItemQueryServiceTest extends TestCase
 
     public function testGetCartAndVariantReturnsCartAndVariant(): void
     {
-        $user    = $this->createUserWithId(1);
+        $user = $this->createUserWithId(1);
         $variant = $this->createMock(ProductVariant::class);
         $variant->method('getId')->willReturn(10);
-        $cart    = $this->createMock(Cart::class);
+        $cart = $this->createMock(Cart::class);
 
         $this->variantRepository->method('findById')->with(10)->willReturn($variant);
         $this->cartControlQuery
@@ -151,7 +151,7 @@ class CartItemQueryServiceTest extends TestCase
 
     public function testGetExistingQuantityCountsMatchingVariants(): void
     {
-        $cart  = $this->createMock(Cart::class);
+        $cart = $this->createMock(Cart::class);
 
         $itemA = $this->createMock(CartItem::class);
         $itemB = $this->createMock(CartItem::class);
@@ -188,12 +188,12 @@ class CartItemQueryServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->variantRepository    = $this->createMock(ProductVariantRepositoryContract::class);
+        $this->variantRepository = $this->createMock(ProductVariantRepositoryContract::class);
         $this->variantEanRepository = $this->createMock(ProductVariantEanRepositoryContract::class);
-        $this->cartRepository       = $this->createMock(CartRepositoryContract::class);
-        $this->cartControlQuery     = $this->createMock(CartControlQueryContract::class);
-        $this->cartItemRepository   = $this->createMock(CartItemRepositoryContract::class);
-        $this->cartRenderQuery      = $this->createMock(CartRenderQueryContract::class);
+        $this->cartRepository = $this->createMock(CartRepositoryContract::class);
+        $this->cartControlQuery = $this->createMock(CartControlQueryContract::class);
+        $this->cartItemRepository = $this->createMock(CartItemRepositoryContract::class);
+        $this->cartRenderQuery = $this->createMock(CartRenderQueryContract::class);
     }
 
     private function initService(): void

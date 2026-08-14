@@ -43,7 +43,6 @@ abstract class AbstractCrudCommandController extends AbstractCommandController
      * @param Request $request
      * @param string $requestClass
      * @param callable $handler
-     * @param mixed|null $tracker
      * @param bool $redirect
      *
      * @return JsonResponse
@@ -52,14 +51,11 @@ abstract class AbstractCrudCommandController extends AbstractCommandController
         Request $request,
         string $requestClass,
         callable $handler,
-        mixed $tracker = null,
         bool $redirect = false,
     ): JsonResponse {
-        return $this->handleCommand(function () use ($request, $requestClass, $handler, $tracker, $redirect) {
+        return $this->handleCommand(function () use ($request, $requestClass, $handler, $redirect) {
             /** @var AbstractRequest $crudRequest */
-            $crudRequest = $tracker === null
-                ? $requestClass::fromHttpRequest($request, $this->csrfTokenManager)
-                : $requestClass::fromHttpRequest($request, $this->csrfTokenManager, $tracker);
+            $crudRequest = $requestClass::fromHttpRequest($request, $this->csrfTokenManager);
 
             $errors = RequestProcessor::process($crudRequest, $this->validator);
             if ($errors !== null) {

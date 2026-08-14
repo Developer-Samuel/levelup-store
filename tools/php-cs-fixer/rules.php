@@ -8,7 +8,7 @@ return [
     'blank_line_after_namespace' => false,
     'single_line_empty_body' => true,
     'no_extra_blank_lines' => [
-        'tokens' => ['extra', 'return', 'throw', 'curly_brace_block', 'square_brace_block', 'parenthesis_brace_block'],
+        'tokens' => ['throw', 'curly_brace_block', 'square_brace_block', 'parenthesis_brace_block'],
     ],
     'array_syntax' => ['syntax' => 'short'],
     'binary_operator_spaces' => [

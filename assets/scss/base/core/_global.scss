@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-tap-highlight-color: transparent; // Remove tap highlight on iOS / Android WebKit
+}
+
 body {
   scroll-behavior: smooth;
   color: colors.$neutral;

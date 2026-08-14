@@ -8,13 +8,12 @@ import { makeFormAlert, makeFormErrorsHandler } from '@/tests/_support/fakers/fo
 import type { AxiosError } from 'axios'
 
 import type { FormResponse } from '@/ts/shared/elements/form/types'
-import { scrollToTop } from '@/ts/shared/utils/scroll'
+import { scrollToContainer } from '@/ts/shared/utils/scroll'
 import { query } from '@/ts/shared/utils/dom/query'
-
 import { handleHttpError } from '@/ts/shared/elements/form/_handlers/httpErrorHandler'
 
 const mockedQuery = vi.mocked(query)
-const mockedScrollToTop = vi.mocked(scrollToTop)
+const mockedScrollToContainer = vi.mocked(scrollToContainer)
 
 function makeError(status: number, data: FormResponse): AxiosError<FormResponse> {
   return {
@@ -111,13 +110,13 @@ describe('handleHttpError()', () => {
   it('should call scrollToTop on non-400 status by default', () => {
     handleHttpError(makeError(422, { message: 'Unprocessable.' }), { alert: makeFormAlert() })
 
-    expect(mockedScrollToTop).toHaveBeenCalledTimes(1)
+    expect(mockedScrollToContainer).toHaveBeenCalledTimes(1)
   })
 
   it('should not call scrollToTop on non-400 when shouldScroll=false', () => {
     handleHttpError(makeError(422, { message: 'Unprocessable.' }), { alert: makeFormAlert() }, false)
 
-    expect(mockedScrollToTop).not.toHaveBeenCalled()
+    expect(mockedScrollToContainer).not.toHaveBeenCalled()
   })
 
   it('should not scroll when errors object is empty', () => {

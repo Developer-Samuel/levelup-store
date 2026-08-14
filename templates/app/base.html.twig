@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <title>LevelUp Store | {% block title %}Home{% endblock %}</title>
         {% import 'layout/public/head/head.html.twig' as Head %}
         {{ Head.render() }}
     </head>
@@ -13,12 +14,12 @@
         {% if not adminPaths %}
             {% import 'app/init/cookies.html.twig' as Cookies %}
             {% import 'app/init/reviews.html.twig' as Reviews %}
-            {% import 'app/init/show-header.html.twig' as ShowHeader %}
-            {% import 'app/init/show-footer.html.twig' as ShowFooter %}
+            {% import 'app/init/header.html.twig' as Header %}
+            {% import 'app/init/footer.html.twig' as Footer %}
 
             {{ Cookies.render(app.request) }}
             {{ Reviews.render(app.request, variant|default(null)) }}
-            {{ ShowHeader.render(showHeader) }}
+            {{ Header.render(showHeader) }}
 
             <div id="scroll-to-top" role="button" aria-label="Scroll to top">
                 <img src="{{ asset('img/icons/elements/arrow.png') }}" alt="Scroll to top">
@@ -26,7 +27,7 @@
 
             {% block body %}{% endblock %}
 
-            {{ ShowFooter.render(showFooter) }}
+            {{ Footer.render(showFooter) }}
         {% elseif adminPaths %}
             {% import 'app/init/admin-structure.html.twig' as AdminLayout %}
 

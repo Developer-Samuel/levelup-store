@@ -38,4 +38,37 @@ class CartRepository extends ServiceEntityRepository implements CartRepositoryCo
     {
         return $this->findOneBy(['user' => $userId]);
     }
+
+    /**
+     * @param \DateTimeImmutable $threshold
+     *
+     * @return Cart[]
+    */
+    public function findInactiveSince(\DateTimeImmutable $threshold): array
+    {
+        /** @var Cart[] $result */
+        $result = $this->createQueryBuilder('c')
+            ->where('c.updatedAt < :threshold')
+            ->setParameter('threshold', $threshold)
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
+
+    /**
+     * @return Cart[]
+    */
+    public function findEmpty(): array
+    {
+        /** @var Cart[] $result */
+        $result = $this->createQueryBuilder('c')
+            ->leftJoin('c.items', 'i')
+            ->having('COUNT(i.id) = 0')
+            ->groupBy('c.id')
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
 }

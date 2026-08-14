@@ -11,7 +11,7 @@ interface DateCacheQueryContract
     /**
      * @return DateCacheObject
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     public function getCurrentData(): DateCacheObject;
 }

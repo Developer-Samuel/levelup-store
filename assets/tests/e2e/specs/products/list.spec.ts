@@ -11,7 +11,6 @@ test.describe('Products List Page', () => {
     listPage = new ProductsListPage(page)
 
     await listPage.goto()
-    await listPage.dismissCookies()
   })
 
   // ── Page load ──────────────────────────────────────────────────────────────
@@ -299,8 +298,6 @@ test.describe('Products List Page', () => {
     await page.setViewportSize({ width: 768, height: 1024 })
 
     await listPage.goto()
-    await listPage.dismissCookies()
-
     const mobileBtn = listPage.mobileFilterBtn
     const isMobileBtnVisible = await mobileBtn.isVisible()
     if (!isMobileBtnVisible) {

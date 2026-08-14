@@ -6,6 +6,7 @@ import { updateSearchIcons } from '@/ts/features/search/_ui/panel'
 import { updateSearch } from '@/ts/features/search/_ui/search'
 import { hide } from '@/ts/features/search/_ui/visibility'
 import { attachOutsideClickListener } from '@/ts/features/search/_listeners/outsideClickListener'
+import { attachHeaderToggleListener } from '@/ts/features/search/_listeners/headerToggleListener'
 import { observeResize } from '@/ts/features/search/_observers/resizeObserver'
 import { setupButton } from '@/ts/features/search/_interactions/button'
 import { bindMobileHeader } from '@/ts/features/search/_interactions/mobileHeader'
@@ -101,6 +102,7 @@ export default class Search implements SearchInstance {
     })
 
     attachOutsideClickListener({ instance: this, inputs: this.inputs })
+    attachHeaderToggleListener(this.panel)
 
     observeResize({
       instance: this,

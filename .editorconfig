@@ -10,9 +10,9 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
-[*.{ts, scss, html, yml, yaml, json, sh, md}]
+[*.{ts,scss,twig,yml,yaml,json,sh,md}]
 indent_style = space
 indent_size = 2
 
-[*.{md, mmd}]
+[*.{md,mmd}]
 trim_trailing_whitespace = false

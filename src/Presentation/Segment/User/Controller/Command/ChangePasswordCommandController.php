@@ -15,7 +15,6 @@ use App\Core\Domain\Segment\User\Payload\ChangePasswordPayload;
 
 use App\Core\Ports\{
     Segment\User\Handler\Command\ChangePasswordCommandHandlerContract,
-    Segment\User\Trackers\ChangePasswordAttemptTrackerContract,
     Shared\Logging\AppLoggerContract
 };
 
@@ -28,14 +27,12 @@ class ChangePasswordCommandController extends AbstractCrudCommandController
 {
     /**
      * @param ChangePasswordCommandHandlerContract $changePasswordCommandHandler
-     * @param ChangePasswordAttemptTrackerContract $tracker
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param AppLoggerContract $logger
      * @param ValidatorInterface $validator
     */
     public function __construct(
         private readonly ChangePasswordCommandHandlerContract $changePasswordCommandHandler,
-        private readonly ChangePasswordAttemptTrackerContract $tracker,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
         ValidatorInterface $validator,
@@ -57,7 +54,6 @@ class ChangePasswordCommandController extends AbstractCrudCommandController
             $request,
             ChangePasswordRequest::class,
             fn(ChangePasswordRequest $changePasswordRequest): array => $this->handleUpdate($changePasswordRequest),
-            $this->tracker,
         );
     }
 

@@ -14,13 +14,14 @@ use Symfony\{
 use App\Core\Domain\Segment\User\Payload\ProfilePayload;
 
 use App\Core\Ports\{
+    Segment\User\Handler\Command\DestroyProfileHandlerContract,
     Segment\User\Handler\Command\UpdateProfileHandlerContract,
-    Segment\User\Trackers\ProfileAttemptTrackerContract,
     Shared\Logging\AppLoggerContract
 };
 
 use App\Presentation\{
     Abstract\Controller\Command\AbstractCrudCommandController,
+    Segment\User\Request\DestroyProfileRequest,
     Segment\User\Request\ProfileRequest
 };
 
@@ -30,14 +31,14 @@ class ProfileCommandController extends AbstractCrudCommandController
 {
     /**
      * @param UpdateProfileHandlerContract $updateProfileHandler
-     * @param ProfileAttemptTrackerContract $tracker
+     * @param DestroyProfileHandlerContract $destroyProfileHandler
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param AppLoggerContract $logger
      * @param ValidatorInterface $validator
     */
     public function __construct(
         private readonly UpdateProfileHandlerContract $updateProfileHandler,
-        private readonly ProfileAttemptTrackerContract $tracker,
+        private readonly DestroyProfileHandlerContract $destroyProfileHandler,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
         ValidatorInterface $validator,
@@ -60,7 +61,6 @@ class ProfileCommandController extends AbstractCrudCommandController
             $request,
             ProfileRequest::class,
             fn (ProfileRequest $request) => $this->handleUpdate($request),
-            $this->tracker,
         );
     }
 
@@ -74,6 +74,20 @@ class ProfileCommandController extends AbstractCrudCommandController
         $payload = $this->createPayload($request);
 
         return $this->updateProfileHandler->handle($payload);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+    */
+    public function destroy(Request $request): JsonResponse
+    {
+        return $this->executeCommand(
+            $request,
+            DestroyProfileRequest::class,
+            fn () => $this->destroyProfileHandler->handle(),
+        );
     }
 
     /**

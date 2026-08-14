@@ -13,7 +13,7 @@ final class ResourceMapper
      *
      * @return list<array<string, mixed>>
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     public static function collection(array $entities, string $class, mixed ...$extra): array
     {
@@ -32,7 +32,7 @@ final class ResourceMapper
      *
      * @return array<string, mixed>
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     private static function mapEntity(object $entity, string $class, mixed ...$extra): array
     {
@@ -40,7 +40,7 @@ final class ResourceMapper
 
         $result = $class::toArray($entity, ...$extra);
         if (!is_array($result)) {
-            throw new \RuntimeException(sprintf('Method %s::toArray must return an array.', $class));
+            throw new \LogicException(sprintf('Method %s::toArray must return an array.', $class));
         }
 
         return self::ensureStringKeys($result, $class);
@@ -51,12 +51,12 @@ final class ResourceMapper
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     private static function validateCallback(string $class): void
     {
         if (!method_exists($class, 'toArray')) {
-            throw new \RuntimeException(sprintf('Method %s::toArray does not exist.', $class));
+            throw new \LogicException(sprintf('Method %s::toArray does not exist.', $class));
         }
     }
 
@@ -66,7 +66,7 @@ final class ResourceMapper
      *
      * @return array<string, mixed>
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     private static function ensureStringKeys(array $data, string $class): array
     {
@@ -74,7 +74,7 @@ final class ResourceMapper
 
         foreach ($data as $key => $value) {
             if (!is_string($key)) {
-                throw new \RuntimeException(sprintf('Method %s::toArray returned a non-string key.', $class));
+                throw new \LogicException(sprintf('Method %s::toArray returned a non-string key.', $class));
             }
 
             $validatedData[$key] = $value;

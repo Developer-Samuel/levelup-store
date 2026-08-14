@@ -10,8 +10,8 @@ use Kit\{
 };
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
-    Exception\NotFoundException,
+    Shared\Exception\AccessDeniedException,
+    Shared\Exception\NotFoundException,
     Segment\Product\Entity\Variant\ProductVariant,
     Segment\Review\Payload\ReviewCreatePayload,
     Segment\Review\Entity\Review,

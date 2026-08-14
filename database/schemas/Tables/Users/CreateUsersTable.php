@@ -57,6 +57,7 @@ final class CreateUsersTable
         self::addBooleanColumn($table);
         self::addDateTimeColumn($table);
         self::addTimestamps($table);
+        self::addSoftDeleteColumn($table);
     }
 
     /**
@@ -126,6 +127,18 @@ final class CreateUsersTable
     {
         TimestampMacro::created($table);
         TimestampMacro::updated($table, false);
+    }
+
+    /**
+     * Add soft delete column to the table.
+     *
+     * @param Table $table
+     *
+     * @return void
+    */
+    private static function addSoftDeleteColumn(Table $table): void
+    {
+        DateMacro::datetime($table, 'deleted_at');
     }
 
     /**

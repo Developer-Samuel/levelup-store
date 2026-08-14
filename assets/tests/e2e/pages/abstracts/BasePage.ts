@@ -26,23 +26,12 @@ export abstract class BasePage {
     ])
 
     await this._page.goto(path, { waitUntil: 'load' })
+    await this._page.waitForLoadState('networkidle', { timeout: 8_000 }).catch(() => {})
   }
 
   async disableNativeValidation(form: Locator): Promise<void> {
     await form.evaluate((f) => {
       ;(f as HTMLFormElement).noValidate = true
     })
-  }
-
-  async dismissCookies(): Promise<void> {
-    const cookieModal = this._page.locator('.modal.cookies')
-    const isVisible = await cookieModal.isVisible().catch(() => false)
-
-    if (!isVisible) return
-
-    const cookieBtn = cookieModal.locator('button').first()
-
-    await cookieBtn.click({ force: true, timeout: 5_000 }).catch(() => {})
-    await cookieModal.waitFor({ state: 'hidden', timeout: 5_000 }).catch(() => {})
   }
 }

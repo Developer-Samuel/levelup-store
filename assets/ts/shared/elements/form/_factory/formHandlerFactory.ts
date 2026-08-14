@@ -8,8 +8,10 @@ import type {
   FormSubmitHandler,
 } from '@/ts/shared/elements/form/types'
 import { handleHttpError } from '@/ts/shared/elements/form/_handlers/httpErrorHandler'
-import { scrollToTop } from '@/ts/shared/utils/scroll'
 import { sleep } from '@/ts/shared/utils/sleep'
+import { scrollToContainer } from '@/ts/shared/utils/scroll'
+
+import NotyfAlert from '@/ts/plugins/notyf/_components/NotyfAlert'
 
 type ServiceSubmitFn = (formData: FormData) => FormSubmitResult
 
@@ -21,6 +23,7 @@ type FormHandlerContext = {
 type CreateFormHandlerOptions = {
   onSuccess?: (data: FormResponse, ctx: FormHandlerContext) => void
   onError?: (data: FormResponse, ctx: FormHandlerContext) => void
+  onHttpError?: (error: AxiosError<FormResponse>) => void
   defaultRedirect?: string
   shouldScroll?: boolean
   redirectDelay?: number
@@ -35,8 +38,8 @@ type FormSubmitFn = (form: HTMLFormElement, alert: FormAlert, errors: FormErrors
  */
 export const createFormAlertHandler = (serviceSubmit: ServiceSubmitFn): FormSubmitFn =>
   createFormHandler(serviceSubmit, {
-    onSuccess: (data, { alert }) => {
-      alert.display(true, data.message ?? '')
+    onSuccess: (data) => {
+      NotyfAlert.success(data.message ?? '')
     },
   })
 
@@ -64,32 +67,31 @@ export function createFormHandler(
         if (options.onSuccess) {
           options.onSuccess(data, { alert, errors })
         } else if (data.message) {
-          alert.display(true, data.message)
+          NotyfAlert.success(data.message)
         }
 
         const redirect = data.redirect && data.redirect !== 'null' ? data.redirect : options.defaultRedirect
         if (redirect) {
           if (options.redirectDelay) await sleep(options.redirectDelay)
+
           window.location.href = redirect
         } else if (options.reloadDelay) {
           await sleep(options.reloadDelay)
-          window.location.reload()
-        }
 
-        if (shouldScroll && alert) {
-          scrollToTop()
+          window.location.reload()
         }
       } else {
         alert.display(false, data.message ?? 'An error occurred.')
-        if (data.errors) {
-          errors.show(data.errors)
-        }
-        if (options.onError) {
-          options.onError(data, { alert, errors })
-        }
+
+        scrollToContainer()
+        if (data.errors) errors.show(data.errors)
+        if (options.onError) options.onError(data, { alert, errors })
       }
     } catch (error) {
-      handleHttpError(error as AxiosError<FormResponse>, { alert, errors }, shouldScroll)
+      const axiosError = error as AxiosError<FormResponse>
+
+      handleHttpError(axiosError, { alert, errors }, shouldScroll)
+      options.onHttpError?.(axiosError)
     }
   }
 }

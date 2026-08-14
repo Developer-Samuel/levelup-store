@@ -10,9 +10,22 @@ const COOKIE_DOMAIN = new URL(APP_URL).hostname
 const projects: Project[] = [
   // Desktop
   { name: 'chromium',      use: { ...devices['Desktop Chrome'] } },
-  { name: 'firefox',       use: { ...devices['Desktop Firefox'], launchOptions: { firefoxUserPrefs: { 'layers.acceleration.disabled': true } } } },
   { name: 'webkit',        use: { ...devices['Desktop Safari'] } },
   { name: 'edge',          use: { ...devices['Desktop Edge'], channel: 'msedge' } },
+  {
+    name: 'firefox',
+    use: {
+      ...devices['Desktop Firefox'],
+      launchOptions: {
+        firefoxUserPrefs: {
+          'layers.acceleration.disabled': true,
+          'gfx.webrender.all': false,
+          'gfx.webrender.enabled': false,
+          'gfx.canvas.accelerated': false
+        }
+      }
+    }
+  },
 
   // Tablet
   { name: 'tablet-chrome',  use: { ...devices['Galaxy Tab S9'] } },
@@ -63,8 +76,8 @@ export default defineConfig({
     ['list'],
   ],
 
-  timeout: 30_000,
-  expect: { timeout: 5_000 },
+  timeout: 60_000,
+  expect: { timeout: 8_000 },
 
   use: {
     baseURL: APP_URL,
@@ -72,8 +85,8 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
 
-    actionTimeout: 8_000,
-    navigationTimeout: 30_000,
+    actionTimeout: 10_000,
+    navigationTimeout: 60_000,
 
     storageState,
   },

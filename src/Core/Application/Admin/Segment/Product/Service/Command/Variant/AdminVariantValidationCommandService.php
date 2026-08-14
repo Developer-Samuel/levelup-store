@@ -15,7 +15,7 @@ class AdminVariantValidationCommandService implements AdminVariantValidationComm
      *
      * @return int
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function extractAndValidateId(object $payload, string $field = 'id'): int
     {
@@ -29,7 +29,7 @@ class AdminVariantValidationCommandService implements AdminVariantValidationComm
      *
      * @return int
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function extractAndValidateVariantId(object $payload): int
     {
@@ -44,12 +44,12 @@ class AdminVariantValidationCommandService implements AdminVariantValidationComm
      *
      * @return int
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     private function validatePositiveInt(mixed $value, string $name): int
     {
         if (!is_int($value) || $value <= 0) {
-            throw new \RuntimeException(sprintf('Invalid %s.', $name));
+            throw new \DomainException(sprintf('Invalid %s.', $name));
         }
 
         return $value;

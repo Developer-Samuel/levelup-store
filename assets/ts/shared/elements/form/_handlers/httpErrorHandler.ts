@@ -3,7 +3,7 @@ import type { AxiosError } from 'axios'
 import type { StringListRecord } from '@/ts/shared/types'
 import type { FormAlert, FormErrorsHandler, FormResponse } from '@/ts/shared/elements/form/types'
 import { query } from '@/ts/shared/utils/dom/query'
-import { scrollToTop } from '@/ts/shared/utils/scroll'
+import { scrollToContainer } from '@/ts/shared/utils/scroll'
 
 type HttpError = {
   alert: FormAlert
@@ -41,6 +41,7 @@ export function handleHttpError(
     if (shouldScroll) scrollToError(data.errors)
   } else {
     alert.display(false, data.message ?? 'An error occurred.')
-    if (shouldScroll) scrollToTop()
+
+    if (shouldScroll) scrollToContainer()
   }
 }

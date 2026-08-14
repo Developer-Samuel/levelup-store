@@ -24,4 +24,9 @@ interface CartItemRepositoryContract
      * @return CartItem[]
     */
     public function findByCart(Cart $cart): array;
+
+    /**
+     * @return CartItem[]
+    */
+    public function findAllWithVariant(): array;
 }

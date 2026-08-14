@@ -22,7 +22,7 @@ npm-debug.log
 # Cache & Logs
 var/
 .cache/
-.phpunit.result.cache
+*.cache
 
 # Frontend Build
 assets/vendor/
@@ -38,3 +38,6 @@ phpunit.xml
 # Editor
 .vscode/
 .gitconfig
+
+# AI Tools
+.claude

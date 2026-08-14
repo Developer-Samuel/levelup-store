@@ -18,7 +18,6 @@ trait UserFactory
      *   last_name: string,
      *   password: string,
      *   role: string,
-     *   email_verified_at: string
      *  } $data
      *
      * @return User
@@ -33,7 +32,7 @@ trait UserFactory
             ->setLastName($data['last_name'])
             ->setPassword($this->hashPassword($user, $data['password']))
             ->setRole($this->getRoleFromString($data['role']))
-            ->setEmailVerifiedAt($this->parseDateTime($data['email_verified_at']));
+            ->setEmailVerifiedAt(new \DateTimeImmutable());
     }
 
     /**
@@ -64,15 +63,5 @@ trait UserFactory
         }
 
         return $enum;
-    }
-
-    /**
-     * @param string $dateTime
-     *
-     * @return \DateTimeImmutable
-    */
-    private function parseDateTime(string $dateTime): \DateTimeImmutable
-    {
-        return new \DateTimeImmutable($dateTime);
     }
 }

@@ -12,6 +12,7 @@ use PHPUnit\{
 use App\Core\Domain\{
     Auth\Payload\LoginPayload,
     Auth\ValueObject\JwtTokenObject,
+    Shared\Exception\TooManyRequestsException,
     Segment\User\Entity\User
 };
 
@@ -21,10 +22,11 @@ use App\Core\Ports\{
     Auth\Handler\Command\LoginHandlerContract,
     Auth\Service\Command\LoginCommandContract,
     Auth\Service\Query\LoginRedirectQueryContract,
-    Auth\Trackers\LoginAttemptTrackerContract,
     Security\Provider\PasswordHasherProviderContract,
+    Segment\Audit\AuditLoggerContract,
     Segment\User\Repository\UserRepositoryContract,
-    Shared\Logging\AppLoggerContract
+    Shared\Logging\AppLoggerContract,
+    Shared\RateLimiter\RateLimiterContract
 };
 
 /**
@@ -36,7 +38,8 @@ class LoginHandlerTest extends TestCase
     private PasswordHasherProviderContract&MockObject $passwordHasherProvider;
     private LoginCommandContract&MockObject $loginCommand;
     private LoginRedirectQueryContract&MockObject $loginRedirectQuery;
-    private LoginAttemptTrackerContract&MockObject $tracker;
+    private RateLimiterContract&MockObject $rateLimiter;
+    private AuditLoggerContract&MockObject $audit;
     private AppLoggerContract&MockObject $logger;
     private LoginHandler $handler;
 
@@ -130,22 +133,11 @@ class LoginHandlerTest extends TestCase
 
     public function testHandleReturnsRateLimitErrorWhenTooManyRequests(): void
     {
-        $tracker = new class implements LoginAttemptTrackerContract {
-            public bool $tooManyAttempts = true;
+        $this->rateLimiter
+            ->method('track')
+            ->willThrowException(new TooManyRequestsException(60));
 
-            public function trackAttempts(): void {}
-        };
-
-        $handler = new LoginHandler(
-            $this->userRepository,
-            $this->passwordHasherProvider,
-            $this->loginCommand,
-            $this->loginRedirectQuery,
-            $tracker,
-            $this->logger,
-        );
-
-        $result = $handler->handle($this->buildPayload());
+        $result = $this->handler->handle($this->buildPayload());
 
         $this->assertSame('error', $result['status']);
         $this->assertSame(429, $result['code']);
@@ -153,12 +145,13 @@ class LoginHandlerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->userRepository         = $this->createMock(UserRepositoryContract::class);
+        $this->userRepository = $this->createMock(UserRepositoryContract::class);
         $this->passwordHasherProvider = $this->createMock(PasswordHasherProviderContract::class);
-        $this->loginCommand           = $this->createMock(LoginCommandContract::class);
-        $this->loginRedirectQuery     = $this->createMock(LoginRedirectQueryContract::class);
-        $this->tracker                = $this->createMock(LoginAttemptTrackerContract::class);
-        $this->logger                 = $this->createMock(AppLoggerContract::class);
+        $this->loginCommand = $this->createMock(LoginCommandContract::class);
+        $this->loginRedirectQuery = $this->createMock(LoginRedirectQueryContract::class);
+        $this->rateLimiter = $this->createMock(RateLimiterContract::class);
+        $this->audit = $this->createMock(AuditLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void
@@ -168,14 +161,15 @@ class LoginHandlerTest extends TestCase
             $this->passwordHasherProvider,
             $this->loginCommand,
             $this->loginRedirectQuery,
-            $this->tracker,
+            $this->rateLimiter,
+            $this->audit,
             $this->logger,
         );
     }
 
     private function setupSuccess(
-        string $accessToken   = 'access-abc',
-        string $refreshToken  = 'refresh-xyz',
+        string $accessToken = 'access-abc',
+        string $refreshToken = 'refresh-xyz',
         string $redirectRoute = '/dashboard',
     ): void {
         $user = $this->createMock(User::class);
@@ -187,7 +181,7 @@ class LoginHandlerTest extends TestCase
     }
 
     private function buildPayload(
-        string $email    = 'test@example.com',
+        string $email = 'test@example.com',
         string $password = 'secret',
     ): LoginPayload {
         return new LoginPayload(

@@ -111,7 +111,7 @@ class ProductVariantQueryServiceTest extends TestCase
     public function testMapVariantsToDataReturnsProductVariantObjects(): void
     {
         $variant = $this->createMock(ProductVariant::class);
-        $object  = $this->buildVariantObject();
+        $object = $this->buildVariantObject();
 
         $this->assembler
             ->method('toObject')
@@ -150,9 +150,9 @@ class ProductVariantQueryServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->reviewQuery       = $this->createMock(ReviewQueryContract::class);
+        $this->reviewQuery = $this->createMock(ReviewQueryContract::class);
         $this->variantRepository = $this->createMock(ProductVariantRepositoryContract::class);
-        $this->assembler         = $this->createMock(ProductVariantAssemblerContract::class);
+        $this->assembler = $this->createMock(ProductVariantAssemblerContract::class);
     }
 
     private function initService(): void

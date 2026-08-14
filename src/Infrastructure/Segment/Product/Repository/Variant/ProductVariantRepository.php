@@ -17,8 +17,7 @@ use App\Core\Domain\{
     Segment\Product\Enum\ProductSortOption,
     Segment\Product\Specification\ProductVariantAvailabilitySpecification,
     Segment\Product\ValueObject\ProductFilterObject,
-    Segment\Review\Entity\Review,
-    Segment\Type\Entity\Type
+    Segment\Review\Entity\Review
 };
 
 use App\Core\Ports\Segment\Product\Repository\Variant\ProductVariantRepositoryContract;
@@ -135,31 +134,6 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     }
 
     /**
-     * @param Type[] $types
-     *
-     * @return ProductVariant[]
-    */
-    public function findAvailableVariantsByTypes(array $types): array
-    {
-        if (empty($types)) {
-            return [];
-        }
-
-        $products = $this->extractProductsFromTypes($types);
-
-        $qb = $this->createQueryBuilder('v')
-            ->andWhere('v.product IN (:products)')
-            ->setParameter('products', $products);
-
-        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
-
-        /** @var ProductVariant[] $results */
-        $results = $this->getOrderedResults($qb, 'v', ProductVariant::class);
-
-        return $results;
-    }
-
-    /**
      * @param ProductFilterObject $filter
      *
      * @return float
@@ -222,6 +196,32 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     }
 
     /**
+     * @param int[] $excludedVariantIds
+     *
+     * @return ProductVariant|null
+    */
+    public function findRandomAvailableExcluding(array $excludedVariantIds): ?ProductVariant
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        ProductVariantAvailabilitySpecification::applyInStock($qb, 'v');
+
+        if (!empty($excludedVariantIds)) {
+            $qb->andWhere('v.id NOT IN (:excluded)')
+                ->setParameter('excluded', $excludedVariantIds);
+        }
+
+        /** @var ProductVariant[] $results */
+        $results = $qb->getQuery()->getResult();
+
+        if (empty($results)) {
+            return null;
+        }
+
+        return $results[array_rand($results)];
+    }
+
+    /**
      * @return QueryBuilder
     */
     private function createAvailableVariantsQueryBuilder(): QueryBuilder
@@ -279,19 +279,19 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
         }
 
         if ($brands) {
-            $qb->andWhere('LOWER(b.name) IN (:brands)')->setParameter('brands', $brands);
+            $qb->andWhere("REPLACE(LOWER(b.name), ' ', '-') IN (:brands)")->setParameter('brands', $brands);
         }
 
         if ($subtypes) {
-            $qb->andWhere('LOWER(st.name) IN (:subtypes)')->setParameter('subtypes', $subtypes);
+            $qb->andWhere("REPLACE(LOWER(st.name), ' ', '-') IN (:subtypes)")->setParameter('subtypes', $subtypes);
         }
 
         if ($category) {
-            $qb->andWhere('LOWER(c.name) = :category')->setParameter('category', $category);
+            $qb->andWhere("REPLACE(LOWER(c.name), ' ', '-') = :category")->setParameter('category', $category);
         }
 
         if ($type) {
-            $qb->andWhere('LOWER(t.name) = :type')->setParameter('type', $type);
+            $qb->andWhere("REPLACE(LOWER(t.name), ' ', '-') = :type")->setParameter('type', $type);
         }
 
         if ($filter->minPrice !== null) {
@@ -326,9 +326,7 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     private function normalizeArray(array $items): array
     {
         $normalized = array_map(
-            static fn($item): string => StringNormalizer::toLowerCase(
-                str_replace('-', ' ', $item),
-            ),
+            static fn($item): string => StringNormalizer::toLowerCase($item),
             $items,
         );
 
@@ -346,7 +344,7 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
             return null;
         }
 
-        return StringNormalizer::toLowerCase(str_replace('-', ' ', $value));
+        return StringNormalizer::toLowerCase($value);
     }
 
     /**
@@ -376,22 +374,5 @@ class ProductVariantRepository extends AbstractRepository implements ProductVari
     {
         $qb->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit);
-    }
-
-    /**
-     * @param Type[] $types
-     *
-     * @return Product[]
-    */
-    private function extractProductsFromTypes(array $types): array
-    {
-        $products = [];
-        foreach ($types as $type) {
-            foreach ($type->getProducts() as $product) {
-                $products[] = $product;
-            }
-        }
-
-        return $products;
     }
 }

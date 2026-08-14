@@ -10,7 +10,8 @@ use PHPUnit\{
 };
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
+    Shared\Exception\AccessDeniedException,
+    Shared\Exception\ConflictException,
     Segment\Order\Entity\Order,
     Segment\Order\Enum\OrderPaymentMethod,
     Segment\Order\Payload\OrderCreatePayload,
@@ -24,6 +25,9 @@ use App\Core\Application\Segment\Order\Handler\Command\CreateOrderHandler;
 
 use App\Core\Ports\{
     Security\Policy\SecurityPolicyContract,
+    Security\Provider\SecurityProviderContract,
+    Segment\Audit\AuditLoggerContract,
+    Segment\Cart\Service\Query\CartRenderQueryContract,
     Segment\Order\Handler\Command\CreateOrderHandlerContract,
     Segment\Order\Service\Command\OrderMutationCommandContract,
     Shared\Logging\AppLoggerContract
@@ -35,7 +39,10 @@ use App\Core\Ports\{
 class CreateOrderHandlerTest extends TestCase
 {
     private SecurityPolicyContract&MockObject $securityPolicy;
+    private SecurityProviderContract&MockObject $securityProvider;
+    private CartRenderQueryContract&MockObject $cartRenderQuery;
     private OrderMutationCommandContract&MockObject $orderMutationCommand;
+    private AuditLoggerContract&MockObject $audit;
     private AppLoggerContract&MockObject $logger;
     private CreateOrderHandler $handler;
 
@@ -102,41 +109,36 @@ class CreateOrderHandlerTest extends TestCase
         $this->assertSame('Email not verified.', $result['message']);
     }
 
-    public function testHandleLogsOrderCreatedForCashPayment(): void
+    public function testHandleLogsAuditForCashPayment(): void
     {
         $this->setupVerifiedUser();
         $this->setupCashOrderResult(42);
 
-        $this->logger
+        $this->audit
             ->expects($this->once())
-            ->method('info');
+            ->method('log');
 
         $this->handler->handle($this->buildPayload());
     }
 
-    public function testHandleLogsOrderCreatedWithOrderIdInContext(): void
+    public function testHandleLogsAuditWithOrderId(): void
     {
         $this->setupVerifiedUser();
         $this->setupCashOrderResult(42);
 
-        $capturedContext = null;
-
-        $this->logger
-            ->method('info')
-            ->willReturnCallback(
-                function (string $message, mixed $user, array $context) use (&$capturedContext): void {
-                    $capturedContext = $context;
-                }
+        $this->audit
+            ->expects($this->once())
+            ->method('log')
+            ->with(
+                $this->anything(),
+                'Order',
+                42,
             );
 
         $this->handler->handle($this->buildPayload());
-
-        $this->assertIsArray($capturedContext);
-        $this->assertArrayHasKey('order_id', $capturedContext);
-        $this->assertSame(42, $capturedContext['order_id']);
     }
 
-    public function testHandleDoesNotLogInfoForCardPayment(): void
+    public function testHandleDoesNotLogAuditForCardPayment(): void
     {
         $this->setupVerifiedUser();
 
@@ -144,20 +146,16 @@ class CreateOrderHandlerTest extends TestCase
             ->method('createOrder')
             ->willReturn(new OrderResultObject(order: null, paymentUrl: 'https://stripe.com/pay/abc'));
 
-        $this->logger
+        $this->audit
             ->expects($this->never())
-            ->method('info');
+            ->method('log');
 
         $this->handler->handle($this->buildPayload());
     }
 
     public function testHandleReturnsErrorWhenMutationCommandThrows(): void
     {
-        $this->setupVerifiedUser();
-
-        $this->orderMutationCommand
-            ->method('createOrder')
-            ->willThrowException(new \RuntimeException('Cart is empty.'));
+        $this->setupCreateOrderThrows(new \DomainException('Cart is empty.'));
 
         $result = $this->handler->handle($this->buildPayload());
 
@@ -166,18 +164,73 @@ class CreateOrderHandlerTest extends TestCase
         $this->assertSame('Cart is empty.', $result['message']);
     }
 
+    public function testHandleReturnsCartDataOnConflictWhenUserIsAuthenticated(): void
+    {
+        $this->setupCreateOrderThrows(new ConflictException('Cart updated.'));
+
+        $user = $this->createMock(User::class);
+        $cartData = ['html' => '<div>cart</div>', 'totalItems' => 1];
+
+        $this->securityProvider->method('getCurrentUser')->willReturn($user);
+
+        $this->cartRenderQuery
+            ->expects($this->once())
+            ->method('buildCartResponse')
+            ->with($user, '')
+            ->willReturn($cartData);
+
+        $result = $this->handler->handle($this->buildPayload());
+
+        $this->assertSame('error', $result['status']);
+        $this->assertSame(409, $result['code']);
+        $this->assertSame($cartData, $result['cart']);
+    }
+
+    public function testHandleReturnsNoCartDataOnConflictWhenUserIsNull(): void
+    {
+        $this->setupCreateOrderThrows(new ConflictException('Cart updated.'));
+
+        $this->securityProvider->method('getCurrentUser')->willReturn(null);
+
+        $this->cartRenderQuery->expects($this->never())->method('buildCartResponse');
+
+        $result = $this->handler->handle($this->buildPayload());
+
+        $this->assertSame('error', $result['status']);
+        $this->assertSame(409, $result['code']);
+        $this->assertArrayNotHasKey('cart', $result);
+    }
+
+    public function testHandleLogsErrorWhenUnexpectedExceptionOccurs(): void
+    {
+        $this->setupCreateOrderThrows(new \RuntimeException('Unexpected failure.'));
+
+        $this->logger->expects($this->once())->method('error');
+
+        $result = $this->handler->handle($this->buildPayload());
+
+        $this->assertSame('error', $result['status']);
+        $this->assertSame(500, $result['code']);
+    }
+
     private function initMocks(): void
     {
-        $this->securityPolicy       = $this->createMock(SecurityPolicyContract::class);
+        $this->securityPolicy = $this->createMock(SecurityPolicyContract::class);
+        $this->securityProvider = $this->createMock(SecurityProviderContract::class);
+        $this->cartRenderQuery = $this->createMock(CartRenderQueryContract::class);
         $this->orderMutationCommand = $this->createMock(OrderMutationCommandContract::class);
-        $this->logger               = $this->createMock(AppLoggerContract::class);
+        $this->audit = $this->createMock(AuditLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void
     {
         $this->handler = new CreateOrderHandler(
             $this->securityPolicy,
+            $this->securityProvider,
+            $this->cartRenderQuery,
             $this->orderMutationCommand,
+            $this->audit,
             $this->logger,
         );
     }
@@ -196,6 +249,15 @@ class CreateOrderHandlerTest extends TestCase
         $this->securityPolicy
             ->method('checkIfEmailVerified')
             ->willReturn($this->createMock(User::class));
+    }
+
+    private function setupCreateOrderThrows(\Throwable $exception): void
+    {
+        $this->setupVerifiedUser();
+
+        $this->orderMutationCommand
+            ->method('createOrder')
+            ->willThrowException($exception);
     }
 
     private function setupCashOrderResult(int $orderId): void

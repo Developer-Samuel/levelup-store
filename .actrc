@@ -1,0 +1,4 @@
+--container-architecture linux/amd64
+--no-cache-server
+--pull=false
+--network host

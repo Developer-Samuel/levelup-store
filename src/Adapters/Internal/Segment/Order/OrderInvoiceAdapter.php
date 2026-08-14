@@ -33,7 +33,7 @@ final readonly class OrderInvoiceAdapter implements OrderInvoiceGatewayContract
 
             return $this->pdfGeneratorAdapter->generateFromHtml($html);
         } catch (\Throwable $throwable) {
-            throw new \RuntimeException(
+            throw new \Exception(
                 'Invoice generation failed: ' . $throwable->getMessage(),
                 500,
                 $throwable,

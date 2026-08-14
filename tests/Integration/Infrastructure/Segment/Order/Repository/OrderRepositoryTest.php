@@ -44,7 +44,7 @@ class OrderRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em         = $this->getEntityManager();
+        $this->em = $this->getEntityManager();
         $this->repository = $this->getRepository();
 
         $this->em->beginTransaction();
@@ -116,8 +116,8 @@ class OrderRepositoryTest extends KernelTestCase
 
     public function testFindAllForUserReturnsOnlyUserOrders(): void
     {
-        $userA  = $this->createAndPersistUser('1-test@example.com');
-        $userB  = $this->createAndPersistUser('2-test@example.com');
+        $userA = $this->createAndPersistUser('1-test@example.com');
+        $userB = $this->createAndPersistUser('2-test@example.com');
 
         $this->createAndPersistOrder($userA, 'ORDER-USERA-001');
         $this->createAndPersistOrder($userA, 'ORDER-USERA-002');

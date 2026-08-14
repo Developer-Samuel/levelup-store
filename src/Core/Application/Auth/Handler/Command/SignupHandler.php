@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Core\Application\Auth\Handler\Command;
 
-use App\Core\Domain\Auth\Payload\SignupPayload;
+use App\Core\Domain\{
+    Auth\Payload\SignupPayload,
+    Segment\Audit\Enum\AuditAction
+};
 
-use App\Core\Application\Abstract\Handler\AbstractRateLimitHandler;
+use App\Core\Application\Abstract\Handler\AbstractCommandHandler;
 
 use App\Core\Ports\{
     Auth\Handler\Command\SignupHandlerContract,
@@ -14,20 +17,22 @@ use App\Core\Ports\{
     Auth\Service\Command\SignupCommandContract,
     Auth\Service\Command\VerificationCommandContract,
     Auth\Service\Query\LoginRedirectQueryContract,
-    Auth\Trackers\SignupAttemptTrackerContract,
-    Shared\Logging\AppLoggerContract
+    Segment\Audit\AuditLoggerContract,
+    Shared\Logging\AppLoggerContract,
+    Shared\RateLimiter\RateLimiterContract
 };
 
 use App\Shared\Utils\Formatter\ApiResultFormatter;
 
-class SignupHandler extends AbstractRateLimitHandler implements SignupHandlerContract
+class SignupHandler extends AbstractCommandHandler implements SignupHandlerContract
 {
     /**
      * @param SignupCommandContract $signupCommand
      * @param VerificationCommandContract $verificationCommand
      * @param LoginCommandContract $loginCommand
      * @param LoginRedirectQueryContract $loginRedirectQuery
-     * @param SignupAttemptTrackerContract $tracker
+     * @param RateLimiterContract $rateLimiter
+     * @param AuditLoggerContract $audit
      * @param AppLoggerContract $logger
     */
     public function __construct(
@@ -35,7 +40,8 @@ class SignupHandler extends AbstractRateLimitHandler implements SignupHandlerCon
         private readonly VerificationCommandContract $verificationCommand,
         private readonly LoginCommandContract $loginCommand,
         private readonly LoginRedirectQueryContract $loginRedirectQuery,
-        private readonly SignupAttemptTrackerContract $tracker,
+        private readonly RateLimiterContract $rateLimiter,
+        private readonly AuditLoggerContract $audit,
         AppLoggerContract $logger,
     ) {
         parent::__construct($logger);
@@ -48,12 +54,18 @@ class SignupHandler extends AbstractRateLimitHandler implements SignupHandlerCon
     */
     public function handle(SignupPayload $payload): array
     {
-        return $this->executeRateLimit($this->tracker, function() use ($payload) {
+        return $this->execute(function() use ($payload) {
+            $this->rateLimiter->track();
+
             $user = $this->signupCommand->signup($payload);
 
             $this->verificationCommand->createAndSaveTokenForUser($user);
 
             $tokenPair = $this->loginCommand->execute($user);
+
+            $this->rateLimiter->reset();
+
+            $this->audit->log(AuditAction::SIGNUP, 'User', $user->getId(), [], $user);
 
             return ApiResultFormatter::success(
                 'User registered and verification email sent.',

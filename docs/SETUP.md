@@ -44,7 +44,7 @@ Core variables to check / configure:
   SMTP / email service configuration.
 
 - **Payments**  
-  `STRIPE_PUBLIC`, `STRIPE_SECRET`
+  `STRIPE_SECRET`
 
 - **PDF Generation (wkhtmltopdf)**  
   `WKHTMLTOPDF_PATH`

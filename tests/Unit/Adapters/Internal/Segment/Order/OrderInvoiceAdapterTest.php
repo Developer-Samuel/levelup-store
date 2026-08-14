@@ -60,12 +60,12 @@ class OrderInvoiceAdapterTest extends TestCase
         $this->assertSame($binary, $result);
     }
 
-    public function testGenerateWrapsRendererExceptionIntoRuntimeException(): void
+    public function testGenerateWrapsRendererExceptionIntoException(): void
     {
         $this->assertRendererThrowableWrapped(new \RuntimeException('Template not found'));
     }
 
-    public function testGenerateWrapsPdfGeneratorExceptionIntoRuntimeException(): void
+    public function testGenerateWrapsPdfGeneratorExceptionIntoException(): void
     {
         $this->renderer->method('render')->willReturn('<h1>Invoice</h1>');
 
@@ -78,7 +78,7 @@ class OrderInvoiceAdapterTest extends TestCase
         $this->adapter->generate([]);
     }
 
-    public function testGenerateWrapsAnyThrowableIntoRuntimeException(): void
+    public function testGenerateWrapsAnyThrowableIntoException(): void
     {
         $this->assertRendererThrowableWrapped(new \Error('Fatal error'));
     }
@@ -92,7 +92,7 @@ class OrderInvoiceAdapterTest extends TestCase
         try {
             $this->adapter->generate([]);
 
-            $this->fail('RuntimeException expected');
+            $this->fail('Exception expected');
         } catch (\Exception $exception) {
             $this->assertSame($original, $exception->getPrevious());
         }
@@ -101,7 +101,7 @@ class OrderInvoiceAdapterTest extends TestCase
     private function initMocks(): void
     {
         $this->pdfGenerator = $this->createMock(SnappyPdfGeneratorGatewayContract::class);
-        $this->renderer     = $this->createMock(OrderInvoiceRendererContract::class);
+        $this->renderer = $this->createMock(OrderInvoiceRendererContract::class);
     }
 
     private function initAdapter(): void
@@ -120,7 +120,7 @@ class OrderInvoiceAdapterTest extends TestCase
 
     private function expectInvoiceGenerationFailure(string $cause): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Invoice generation failed: ' . $cause);
         $this->expectExceptionCode(500);
     }

@@ -8,8 +8,7 @@ use App\Core\Domain\{
     Segment\Product\Entity\Product,
     Segment\Product\Entity\Variant\ProductVariant,
     Segment\Product\Enum\ProductSortOption,
-    Segment\Product\ValueObject\ProductFilterObject,
-    Segment\Type\Entity\Type
+    Segment\Product\ValueObject\ProductFilterObject
 };
 
 interface ProductVariantRepositoryContract
@@ -45,13 +44,6 @@ interface ProductVariantRepositoryContract
     public function findAllByProduct(Product $product): array;
 
     /**
-     * @param Type[] $types
-     *
-     * @return ProductVariant[]
-    */
-    public function findAvailableVariantsByTypes(array $types): array;
-
-    /**
      * @param ProductFilterObject $filter
      *
      * @return float
@@ -78,4 +70,11 @@ interface ProductVariantRepositoryContract
      * @return ProductVariant|null
     */
     public function findById(int $id): ?ProductVariant;
+
+    /**
+     * @param int[] $excludedVariantIds
+     *
+     * @return ProductVariant|null
+    */
+    public function findRandomAvailableExcluding(array $excludedVariantIds): ?ProductVariant;
 }

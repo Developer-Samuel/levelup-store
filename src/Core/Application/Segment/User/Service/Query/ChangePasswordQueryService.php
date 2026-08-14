@@ -66,7 +66,7 @@ final readonly class ChangePasswordQueryService implements ChangePasswordQueryCo
      * @return void
      *
      * @throws \InvalidArgumentException
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     private function checkPassword(User $user, mixed $password, bool $shouldBeDifferent, string $errorMessage): void
     {
@@ -77,7 +77,7 @@ final readonly class ChangePasswordQueryService implements ChangePasswordQueryCo
         $isValid = $this->passwordHasherProxy->isPasswordValid($user, $password);
 
         if ($shouldBeDifferent === $isValid) {
-            throw new \RuntimeException($errorMessage);
+            throw new \DomainException($errorMessage);
         }
     }
 }

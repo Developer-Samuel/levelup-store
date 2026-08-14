@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Core\Application\Segment\Order\Service\Command;
 
 use App\Core\Domain\{
+    Shared\Exception\ConflictException,
     Segment\Cart\Entity\CartItem,
     Segment\Order\Entity\Order,
     Segment\Order\Entity\OrderItem,
@@ -60,6 +61,36 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
     /**
      * @param CartItem[] $cartItems
      *
+     * @return void
+     *
+     * @throws ConflictException
+    */
+    public function validateAllItemsInStock(array $cartItems): void
+    {
+        $variantCounts = $this->aggregateVariants($cartItems);
+
+        foreach ($variantCounts as $variantData) {
+            $variant = $variantData['variant'];
+            $quantityInCart = $variantData['count'];
+
+            $stock = $variant->getStock();
+            if (!$stock instanceof ProductVariantStock) {
+                $this->cartItemCommand->removeVariant($variant, $cartItems);
+
+                throw new ConflictException(
+                    'Your cart has been updated. Some products are no longer in stock and have been removed.',
+                );
+            }
+
+            $availableEans = $this->eanRepository->findAvailableByVariant($variant);
+
+            $this->validateStockOrRemove($variant, $cartItems, $stock, $availableEans, $quantityInCart);
+        }
+    }
+
+    /**
+     * @param CartItem[] $cartItems
+     *
      * @return array<int, array{
      *     variant: ProductVariant,
      *     count: int
@@ -95,7 +126,7 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws ConflictException
     */
     private function createOrderItemsForVariant(
         Order $order,
@@ -105,7 +136,9 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
     ): void {
         $stock = $variant->getStock();
         if (!$stock instanceof ProductVariantStock) {
-            throw new \RuntimeException('No stocks available for some product.');
+            throw new ConflictException(
+                'Your cart has been updated. Some products are no longer in stock and have been removed.',
+            );
         }
 
         $availableEans = $this->eanRepository->findAvailableByVariant($variant);
@@ -119,30 +152,29 @@ final readonly class OrderItemCommandService implements OrderItemCommandContract
     /**
      * @param ProductVariant $variant
      * @param CartItem[] $cartItems
-     * @param ProductVariantStock|null $stock
+     * @param ProductVariantStock $stock
      * @param ProductVariantEan[] $availableEans
      * @param int $quantityInCart
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws ConflictException
     */
     private function validateStockOrRemove(
         ProductVariant $variant,
         array $cartItems,
-        ?ProductVariantStock $stock,
+        ProductVariantStock $stock,
         array $availableEans,
         int $quantityInCart,
     ): void {
-        if (!$stock instanceof ProductVariantStock
-            || !$this->orderItemQuery->isStockAvailable($stock)
+        if (!$this->orderItemQuery->isStockAvailable($stock)
             || empty($availableEans)
             || $quantityInCart > count($availableEans)
         ) {
             $this->cartItemCommand->removeVariant($variant, $cartItems);
 
-            throw new \RuntimeException(
-                'Some products in your cart are out of stock and have been removed. Refresh the page to see the updated cart.',
+            throw new ConflictException(
+                'Your cart has been updated. Some products are no longer in stock and have been removed.',
             );
         }
     }

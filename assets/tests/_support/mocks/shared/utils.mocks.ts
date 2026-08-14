@@ -20,6 +20,7 @@ export function mockUtilsQuery(): void {
 export function mockUtilsScroll(): void {
   vi.mock('@/ts/shared/utils/scroll', () => ({
     scrollToTop: vi.fn(),
+    scrollToContainer: vi.fn(),
   }))
 }
 

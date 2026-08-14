@@ -11,6 +11,8 @@
 @include resolution(xl, min) {
   .products {
     &__filter {
+      position: sticky;
+      top: 150px;
       width: 350px;
       height: calc(100vh - 150px);
 
@@ -67,9 +69,8 @@
     }
 
     &__card {
-      position: absolute;
-      left: 350px;
-      width: calc(100% - 350px);
+      flex: 1;
+      min-width: 0;
 
       &-options {
         top: 150px;
@@ -139,6 +140,7 @@
     &__filter {
       @include size(100%, 100dvh);
 
+      position: fixed;
       top: 0;
       z-index: 99999;
       display: none;

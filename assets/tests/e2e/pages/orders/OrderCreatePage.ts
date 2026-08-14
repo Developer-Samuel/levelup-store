@@ -105,6 +105,7 @@ export class OrderCreatePage extends BasePage {
 
   async toggleSendShipping(enable: boolean): Promise<void> {
     const checked = await this.sendShippingCheckbox.isChecked()
+
     if (enable === checked) return
 
     await this.sendShippingCheckbox.evaluate((el, en) => {

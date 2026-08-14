@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Core\Application\Segment\Order\Handler\Query;
 
 use App\Core\Domain\{
+    Shared\Exception\AccessDeniedException,
     Segment\Order\Enum\OrderStatus,
     Segment\Order\Entity\Order,
     Segment\Order\Utils\OrderStatusResolver,
@@ -77,13 +78,15 @@ final readonly class GetOrderDetailQueryHandler implements GetOrderDetailQueryHa
      * @param User|null $user
      *
      * @return void
+     *
+     * @throws AccessDeniedException
     */
     private function authorizeUser(Order $order, ?User $user): void
     {
         if ($user !== null) {
             $this->securityPolicy->checkIfEmailVerified();
             if (!$order->isOwnedBy($user)) {
-                throw new \RuntimeException('User does not own this order.');
+                throw new AccessDeniedException('User does not own this order.');
             }
 
             return;

@@ -17,9 +17,9 @@
   }
 
   &__action {
+    @include flex-center-x;
+
     position: relative;
-    display: flex;
-    justify-content: center;
 
     &-link {
       @include transition('linear');
@@ -115,6 +115,22 @@
 
       &:hover {
         background: colors.$secondary-hover;
+      }
+    }
+  }
+
+  &__destroy {
+    @include flex-end-x;
+
+    &-btn {
+      @include weights(600);
+
+      background: none;
+      color: colors.$red-900;
+      outline: 0;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

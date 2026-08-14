@@ -11,8 +11,6 @@ final readonly class CoreCacheObject
      * @param array<int, string> $guestPaths
      * @param array<int, string> $adminPaths
      * @param bool $isAdminPath
-     * @param bool $isProductPage
-     * @param bool $isDiscountPage
      * @param bool $showHeader
      * @param bool $showFooter
     */
@@ -21,8 +19,6 @@ final readonly class CoreCacheObject
         public array $guestPaths,
         public array $adminPaths,
         public bool $isAdminPath,
-        public bool $isProductPage,
-        public bool $isDiscountPage,
         public bool $showHeader,
         public bool $showFooter,
     ) {}

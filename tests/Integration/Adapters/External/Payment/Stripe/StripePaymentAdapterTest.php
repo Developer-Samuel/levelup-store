@@ -191,7 +191,7 @@ class StripePaymentAdapterTest extends TestCase
     {
         $session = StripeSession::constructFrom(['url' => '']);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\Exception::class);
 
         $this->callPrivate('extractCheckoutUrl', [$session]);
     }
@@ -200,7 +200,7 @@ class StripePaymentAdapterTest extends TestCase
     {
         $session = StripeSession::constructFrom(['url' => null]);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\Exception::class);
 
         $this->callPrivate('extractCheckoutUrl', [$session]);
     }
@@ -300,7 +300,7 @@ class StripePaymentAdapterTest extends TestCase
     public function testMapLineItemsWithNonSequentialKeys(): void
     {
         $lineItems = [
-            5 => new StripeLineItemObject(new StripeLineItemPriceObject('eur', 'Product A', 1000), 1),
+            5  => new StripeLineItemObject(new StripeLineItemPriceObject('eur', 'Product A', 1000), 1),
             10 => new StripeLineItemObject(new StripeLineItemPriceObject('eur', 'Product B', 2000), 1),
         ];
 
@@ -401,7 +401,7 @@ class StripePaymentAdapterTest extends TestCase
              * @param array<string, mixed> $params
              *
              * @return array{0: string, 1: int, 2: string[]}
-             */
+            */
             public function request(
                 $method,
                 $absUrl,
@@ -409,7 +409,7 @@ class StripePaymentAdapterTest extends TestCase
                 $params,
                 $hasFile,
                 $apiMode = 'v1',
-                $maxNetworkRetries = null
+                $maxNetworkRetries = null,
             ): array {
                 return [(string) json_encode($this->responseData), 200, []];
             }

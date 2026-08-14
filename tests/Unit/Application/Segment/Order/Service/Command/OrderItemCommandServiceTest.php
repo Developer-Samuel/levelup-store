@@ -60,7 +60,7 @@ class OrderItemCommandServiceTest extends TestCase
 
     public function testProcessOrderItemsThrowsWhenVariantHasNoStock(): void
     {
-        $variant  = $this->buildVariantMock(stock: null);
+        $variant = $this->buildVariantMock(stock: null);
         $cartItem = $this->buildCartItemMock($variant);
 
         $this->expectException(\RuntimeException::class);
@@ -71,8 +71,8 @@ class OrderItemCommandServiceTest extends TestCase
 
     public function testProcessOrderItemsThrowsAndRemovesCartItemsWhenOutOfStock(): void
     {
-        $stock    = $this->createMock(ProductVariantStock::class);
-        $variant  = $this->buildVariantMock(stock: $stock);
+        $stock = $this->createMock(ProductVariantStock::class);
+        $variant = $this->buildVariantMock(stock: $stock);
         $cartItem = $this->buildCartItemMock($variant);
 
         $this->orderItemQuery->method('isStockAvailable')->willReturn(false);
@@ -90,8 +90,8 @@ class OrderItemCommandServiceTest extends TestCase
 
     public function testProcessOrderItemsThrowsWhenNoEansAvailable(): void
     {
-        $stock    = $this->createMock(ProductVariantStock::class);
-        $variant  = $this->buildVariantMock(stock: $stock);
+        $stock = $this->createMock(ProductVariantStock::class);
+        $variant = $this->buildVariantMock(stock: $stock);
         $cartItem = $this->buildCartItemMock($variant);
 
         $this->orderItemQuery->method('isStockAvailable')->willReturn(true);
@@ -104,7 +104,7 @@ class OrderItemCommandServiceTest extends TestCase
 
     public function testProcessOrderItemsThrowsWhenInsufficientEans(): void
     {
-        $stock   = $this->createMock(ProductVariantStock::class);
+        $stock = $this->createMock(ProductVariantStock::class);
         $variant = $this->buildVariantMock(stock: $stock);
 
         $cartItems = [
@@ -151,7 +151,7 @@ class OrderItemCommandServiceTest extends TestCase
         $stock = $this->createMock(ProductVariantStock::class);
         $stock->expects($this->once())->method('reserveQuantity')->with(1);
 
-        $variant  = $this->buildVariantMock(stock: $stock);
+        $variant = $this->buildVariantMock(stock: $stock);
         $cartItem = $this->buildCartItemMock($variant);
 
         $this->withAvailableEan();
@@ -161,8 +161,8 @@ class OrderItemCommandServiceTest extends TestCase
 
     public function testProcessOrderItemsThrowsWhenStockUnavailableEvenWithAvailableEans(): void
     {
-        $stock    = $this->createMock(ProductVariantStock::class);
-        $variant  = $this->buildVariantMock(stock: $stock);
+        $stock = $this->createMock(ProductVariantStock::class);
+        $variant = $this->buildVariantMock(stock: $stock);
         $cartItem = $this->buildCartItemMock($variant);
 
         $this->orderItemQuery->method('isStockAvailable')->willReturn(false);
@@ -213,12 +213,80 @@ class OrderItemCommandServiceTest extends TestCase
         $this->service->processOrderItems($this->order, $cartItems);
     }
 
+    public function testValidateAllItemsInStockThrowsAndRemovesWhenVariantHasNoStock(): void
+    {
+        [$cartItem, $variant] = $this->buildCartItemWithoutStock();
+
+        $this->cartItemCommand
+            ->expects($this->once())
+            ->method('removeVariant')
+            ->with($variant);
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessageMatches('/stock/i');
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
+    public function testValidateAllItemsInStockThrowsAndRemovesWhenStockUnavailable(): void
+    {
+        [$cartItem, $variant] = $this->buildCartItemWithStockMock();
+
+        $this->setupStockCheck(isAvailable: false, eans: []);
+
+        $this->cartItemCommand
+            ->expects($this->once())
+            ->method('removeVariant')
+            ->with($variant);
+
+        $this->expectException(\RuntimeException::class);
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
+    public function testValidateAllItemsInStockThrowsWhenNoEansAvailable(): void
+    {
+        [$cartItem] = $this->buildCartItemWithStockMock();
+
+        $this->setupStockCheck(isAvailable: true, eans: []);
+
+        $this->expectException(\RuntimeException::class);
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
+    public function testValidateAllItemsInStockThrowsWhenCartQuantityExceedsAvailableEans(): void
+    {
+        [, $variant] = $this->buildCartItemWithStockMock();
+
+        $cartItems = [
+            $this->buildCartItemMock($variant),
+            $this->buildCartItemMock($variant),
+        ];
+
+        $this->setupStockCheck(isAvailable: true, eans: [$this->createMock(ProductVariantEan::class)]);
+
+        $this->expectException(\RuntimeException::class);
+
+        $this->service->validateAllItemsInStock($cartItems);
+    }
+
+    public function testValidateAllItemsInStockPassesWhenStockIsAvailable(): void
+    {
+        [$cartItem] = $this->buildValidCartItemWithStock();
+        $this->withAvailableEan();
+
+        $this->expectNotToPerformAssertions();
+
+        $this->service->validateAllItemsInStock([$cartItem]);
+    }
+
     private function initMocks(): void
     {
         $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
-        $this->eanRepository     = $this->createMock(ProductVariantEanRepositoryContract::class);
-        $this->orderItemQuery    = $this->createMock(OrderItemQueryContract::class);
-        $this->cartItemCommand   = $this->createMock(CartItemCommandContract::class);
+        $this->eanRepository = $this->createMock(ProductVariantEanRepositoryContract::class);
+        $this->orderItemQuery = $this->createMock(OrderItemQueryContract::class);
+        $this->cartItemCommand = $this->createMock(CartItemCommandContract::class);
     }
 
     private function initService(): void
@@ -257,10 +325,46 @@ class OrderItemCommandServiceTest extends TestCase
         $stock = $this->createMock(ProductVariantStock::class);
         $stock->method('reserveQuantity');
 
-        $variant  = $this->buildVariantMock(stock: $stock);
+        $variant = $this->buildVariantMock(stock: $stock);
         $cartItem = $this->buildCartItemMock($variant);
 
         return [$cartItem, $stock];
+    }
+
+    /**
+     * @return array{0: CartItem&MockObject, 1: ProductVariant&MockObject}
+    */
+    private function buildCartItemWithoutStock(): array
+    {
+        $variant = $this->buildVariantMock(stock: null);
+        $cartItem = $this->buildCartItemMock($variant);
+
+        return [$cartItem, $variant];
+    }
+
+    /**
+     * @return array{
+     *     0: CartItem&MockObject,
+     *     1: ProductVariant&MockObject,
+     *     2: ProductVariantStock&MockObject
+     * }
+    */
+    private function buildCartItemWithStockMock(): array
+    {
+        $stock = $this->createMock(ProductVariantStock::class);
+        $variant = $this->buildVariantMock(stock: $stock);
+        $cartItem = $this->buildCartItemMock($variant);
+
+        return [$cartItem, $variant, $stock];
+    }
+
+    /**
+     * @param ProductVariantEan[] $eans
+    */
+    private function setupStockCheck(bool $isAvailable, array $eans): void
+    {
+        $this->orderItemQuery->method('isStockAvailable')->willReturn($isAvailable);
+        $this->eanRepository->method('findAvailableByVariant')->willReturn($eans);
     }
 
     private function withAvailableEan(?ProductVariantEan $ean = null): void
@@ -274,7 +378,7 @@ class OrderItemCommandServiceTest extends TestCase
 
     /**
      * @param CartItem[] $cartItems
-     * 
+     *
      * @return object[]
     */
     private function capturePersistedOnProcess(array $cartItems): array

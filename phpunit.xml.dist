@@ -9,6 +9,7 @@
         convertDeprecationsToExceptions="false"
         convertErrorsToExceptions="true"
         convertWarningsToExceptions="true"
+        cacheResultFile="var/tools/php-unit/.phpunit.result.cache"
 >
     <php>
         <ini name="display_errors" value="1" />
@@ -36,6 +37,9 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <report>
+            <text outputFile="php://stdout" showUncoveredFiles="false" showOnlySummary="true"/>
+        </report>
     </coverage>
 
     <listeners>

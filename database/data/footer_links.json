@@ -55,11 +55,19 @@
     "group": "connect",
     "target": "_blank"
   },
-  "legal_terms": {
+  "legal_terms_and_conditions": {
     "position": 1,
     "value": "Terms and Conditions",
     "image": null,
-    "url": "pdf/terms-and-conditions.pdf",
+    "url": "/pdf/terms-and-conditions.pdf",
+    "group": "legal",
+    "target": "_blank"
+  },
+  "legal_privacy_policy": {
+    "position": 2,
+    "value": "Privacy Policy",
+    "image": null,
+    "url": "/pdf/privacy-policy.pdf",
     "group": "legal",
     "target": "_blank"
   }

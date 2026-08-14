@@ -59,22 +59,31 @@ src/
 > 📁 **Sample uploads recommended** - download banners and images from [developer-samuel/levelup-store-uploads](https://github.com/developer-samuel/levelup-store-uploads) and place the `uploads/` folder into `public/`.
 
 ```bash
+# Quick start
+make setup
+
+# or step by step:
+
 # 1. Install dependencies
+make install
+# or
 composer install
 
-npm install
-# or
 pnpm install
+# or
+npm install
 
 # 2. Setup database
 composer db-setup
 
 # 3. Run application
+make serve
+# or
 composer serve
 
-npm run dev
-# or
 pnpm dev
+# or
+npm run dev
 ```
 
 → Full installation guide: [docs/INSTALL.md](docs/INSTALL.md)  

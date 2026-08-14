@@ -11,7 +11,7 @@ interface AdminVariantValidationCommandContract
      *
      * @return int
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function extractAndValidateId(object $payload, string $field = 'id'): int;
 
@@ -20,7 +20,7 @@ interface AdminVariantValidationCommandContract
      *
      * @return int
      *
-     * @throws \RuntimeException
+     * @throws \DomainException
     */
     public function extractAndValidateVariantId(object $payload): int;
 }

@@ -73,7 +73,7 @@ class RefreshTokenCommandServiceTest extends TestCase
             ->method('findByToken')
             ->willReturn(null);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\DomainException::class);
 
         $this->service->execute('non-existing-token');
     }
@@ -87,7 +87,7 @@ class RefreshTokenCommandServiceTest extends TestCase
             ->method('findByToken')
             ->willReturn($token);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\DomainException::class);
 
         $this->service->execute('expired-token');
     }
@@ -148,7 +148,7 @@ class RefreshTokenCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->jwtGateway             = $this->createMock(JwtGatewayContract::class);
+        $this->jwtGateway = $this->createMock(JwtGatewayContract::class);
         $this->refreshTokenRepository = $this->createMock(RefreshTokenRepositoryContract::class);
     }
 
@@ -161,8 +161,8 @@ class RefreshTokenCommandServiceTest extends TestCase
     }
 
     private function executeWithValidToken(
-        string $accessToken      = 'new-access-token',
-        string $newRefreshToken  = 'new-refresh-token',
+        string $accessToken = 'new-access-token',
+        string $newRefreshToken = 'new-refresh-token',
     ): JwtTokenObject {
         $this->mockValidToken('old-refresh-token', $this->user);
 

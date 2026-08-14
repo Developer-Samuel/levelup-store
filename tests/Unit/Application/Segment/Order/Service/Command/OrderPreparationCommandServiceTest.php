@@ -134,7 +134,7 @@ class OrderPreparationCommandServiceTest extends TestCase
 
     private function setupPreparationQueryStubs(
         float $totalPrice = 99.99,
-        OrderPaymentMethod $paymentMethod  = OrderPaymentMethod::CASH,
+        OrderPaymentMethod $paymentMethod = OrderPaymentMethod::CASH,
     ): void {
         $this->orderPreparationQuery->method('validateUserId')->willReturn(1);
         $this->orderPreparationQuery->method('getCartSummary')->willReturn(['total' => $totalPrice]);

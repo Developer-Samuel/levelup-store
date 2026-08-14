@@ -1,6 +1,8 @@
 import { mockUtilsScroll } from '@/tests/_support/mocks/shared/utils.mocks'
+import { mockNotyfAlert } from '@/tests/_support/mocks/plugins/notyf.mocks'
 
 mockUtilsScroll()
+mockNotyfAlert()
 
 vi.mock('@/ts/shared/utils/sleep', () => ({
   sleep: vi.fn().mockResolvedValue(undefined),
@@ -12,7 +14,7 @@ vi.mock('@/ts/shared/elements/form/_handlers/httpErrorHandler', () => ({
 
 import type { StringRecord, StringListRecord } from '@/ts/shared/types'
 import type { FormAlert, FormErrorsHandler, FormResponse } from '@/ts/shared/elements/form/types'
-import { scrollToTop } from '@/ts/shared/utils/scroll'
+import { scrollToContainer } from '@/ts/shared/utils/scroll'
 import { sleep } from '@/ts/shared/utils/sleep'
 import { handleHttpError } from '@/ts/shared/elements/form/_handlers/httpErrorHandler'
 import {
@@ -21,9 +23,12 @@ import {
   createSubmitHandler,
 } from '@/ts/shared/elements/form/_factory/formHandlerFactory'
 
-const mockedSleep = vi.mocked(sleep)
+import NotyfAlert from '@/ts/plugins/notyf/_components/NotyfAlert'
 
-const mockedScrollToTop = vi.mocked(scrollToTop)
+const mockedSleep = vi.mocked(sleep)
+const mockedNotyfSuccess = vi.mocked(NotyfAlert.success)
+
+const mockedScrollToContainer = vi.mocked(scrollToContainer)
 const mockedHandleHttpError = vi.mocked(handleHttpError)
 
 function buildAlert(): FormAlert & { calls: { success: boolean; message: string }[] } {
@@ -88,15 +93,13 @@ describe('createFormHandler()', () => {
     expect(onSuccess).toHaveBeenCalledTimes(1)
   })
 
-  it('should display success message via alert when no onSuccess callback', async () => {
+  it('should display success message via NotyfAlert when no onSuccess callback', async () => {
     const service = vi.fn<() => Promise<FormResponse>>().mockResolvedValueOnce({ success: true, message: 'Saved!' })
     const handler = createFormHandler(service)
-    const alert = buildAlert()
-    const errors = buildErrors()
 
-    await handler(buildForm(), alert, errors)
+    await handler(buildForm(), buildAlert(), buildErrors())
 
-    expect(alert.calls[0]).toEqual({ success: true, message: 'Saved!' })
+    expect(mockedNotyfSuccess).toHaveBeenCalledWith('Saved!')
   })
 
   it('should redirect to data.redirect on success', async () => {
@@ -130,12 +133,12 @@ describe('createFormHandler()', () => {
   })
 
   it('should call scrollToTop on success when shouldScroll is true', async () => {
-    const service = vi.fn<() => Promise<FormResponse>>().mockResolvedValueOnce({ success: true })
+    const service = vi.fn<() => Promise<FormResponse>>().mockResolvedValueOnce({ success: false })
     const handler = createFormHandler(service, { shouldScroll: true })
 
     await handler(buildForm(), buildAlert(), buildErrors())
 
-    expect(mockedScrollToTop).toHaveBeenCalledTimes(1)
+    expect(mockedScrollToContainer).toHaveBeenCalledTimes(1)
   })
 
   it('should not call scrollToTop when shouldScroll is false', async () => {
@@ -144,7 +147,7 @@ describe('createFormHandler()', () => {
 
     await handler(buildForm(), buildAlert(), buildErrors())
 
-    expect(mockedScrollToTop).not.toHaveBeenCalled()
+    expect(mockedScrollToContainer).not.toHaveBeenCalled()
   })
 
   it('should display error message via alert on failed response', async () => {
@@ -237,24 +240,22 @@ describe('createFormHandler()', () => {
 })
 
 describe('createFormAlertHandler()', () => {
-  it('should display empty string via alert when message is undefined', async () => {
+  it('should display empty string via NotyfAlert when message is undefined', async () => {
     const service = vi.fn<() => Promise<FormResponse>>().mockResolvedValueOnce({ success: true })
     const handler = createFormAlertHandler(service)
-    const alert = buildAlert()
 
-    await handler(buildForm(), alert, buildErrors())
+    await handler(buildForm(), buildAlert(), buildErrors())
 
-    expect(alert.calls[0]).toEqual({ success: true, message: '' })
+    expect(mockedNotyfSuccess).toHaveBeenCalledWith('')
   })
 
-  it('should display success message via alert on success', async () => {
+  it('should display success message via NotyfAlert on success', async () => {
     const service = vi.fn<() => Promise<FormResponse>>().mockResolvedValueOnce({ success: true, message: 'Done!' })
     const handler = createFormAlertHandler(service)
-    const alert = buildAlert()
 
-    await handler(buildForm(), alert, buildErrors())
+    await handler(buildForm(), buildAlert(), buildErrors())
 
-    expect(alert.calls[0]).toEqual({ success: true, message: 'Done!' })
+    expect(mockedNotyfSuccess).toHaveBeenCalledWith('Done!')
   })
 })
 

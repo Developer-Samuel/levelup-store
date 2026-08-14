@@ -12,6 +12,7 @@ use PHPUnit\{
 use App\Core\Domain\{
     Auth\Payload\SignupPayload,
     Auth\ValueObject\JwtTokenObject,
+    Shared\Exception\TooManyRequestsException,
     Segment\User\Entity\User
 };
 
@@ -23,8 +24,9 @@ use App\Core\Ports\{
     Auth\Service\Command\SignupCommandContract,
     Auth\Service\Command\VerificationCommandContract,
     Auth\Service\Query\LoginRedirectQueryContract,
-    Auth\Trackers\SignupAttemptTrackerContract,
-    Shared\Logging\AppLoggerContract
+    Segment\Audit\AuditLoggerContract,
+    Shared\Logging\AppLoggerContract,
+    Shared\RateLimiter\RateLimiterContract
 };
 
 /**
@@ -36,7 +38,8 @@ class SignupHandlerTest extends TestCase
     private VerificationCommandContract&MockObject $verificationCommand;
     private LoginCommandContract&MockObject $loginCommand;
     private LoginRedirectQueryContract&MockObject $loginRedirectQuery;
-    private SignupAttemptTrackerContract&MockObject $tracker;
+    private RateLimiterContract&MockObject $rateLimiter;
+    private AuditLoggerContract&MockObject $audit;
     private AppLoggerContract&MockObject $logger;
     private SignupHandler $handler;
 
@@ -123,22 +126,11 @@ class SignupHandlerTest extends TestCase
 
     public function testHandleReturnsRateLimitErrorWhenTooManyRequests(): void
     {
-        $tracker = new class implements SignupAttemptTrackerContract {
-            public bool $tooManyAttempts = true;
+        $this->rateLimiter
+            ->method('track')
+            ->willThrowException(new TooManyRequestsException(60));
 
-            public function trackAttempts(): void {}
-        };
-
-        $handler = new SignupHandler(
-            $this->signupCommand,
-            $this->verificationCommand,
-            $this->loginCommand,
-            $this->loginRedirectQuery,
-            $tracker,
-            $this->logger,
-        );
-
-        $result = $handler->handle($this->buildPayload());
+        $result = $this->handler->handle($this->buildPayload());
 
         $this->assertSame('error', $result['status']);
         $this->assertSame(429, $result['code']);
@@ -161,7 +153,7 @@ class SignupHandlerTest extends TestCase
     {
         $this->signupCommand
             ->method('signup')
-            ->willThrowException(new \RuntimeException('Email already taken'));
+            ->willThrowException(new \DomainException('Email already taken'));
 
         $result = $this->handler->handle($this->buildPayload());
 
@@ -171,12 +163,13 @@ class SignupHandlerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->signupCommand       = $this->createMock(SignupCommandContract::class);
+        $this->signupCommand = $this->createMock(SignupCommandContract::class);
         $this->verificationCommand = $this->createMock(VerificationCommandContract::class);
-        $this->loginCommand        = $this->createMock(LoginCommandContract::class);
-        $this->loginRedirectQuery  = $this->createMock(LoginRedirectQueryContract::class);
-        $this->tracker             = $this->createMock(SignupAttemptTrackerContract::class);
-        $this->logger              = $this->createMock(AppLoggerContract::class);
+        $this->loginCommand = $this->createMock(LoginCommandContract::class);
+        $this->loginRedirectQuery = $this->createMock(LoginRedirectQueryContract::class);
+        $this->rateLimiter = $this->createMock(RateLimiterContract::class);
+        $this->audit = $this->createMock(AuditLoggerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void
@@ -186,7 +179,8 @@ class SignupHandlerTest extends TestCase
             $this->verificationCommand,
             $this->loginCommand,
             $this->loginRedirectQuery,
-            $this->tracker,
+            $this->rateLimiter,
+            $this->audit,
             $this->logger,
         );
     }
@@ -195,8 +189,8 @@ class SignupHandlerTest extends TestCase
      * @return array<string, mixed>
     */
     private function handleSuccessfully(
-        string $accessToken   = 'access-abc',
-        string $refreshToken  = 'refresh-xyz',
+        string $accessToken = 'access-abc',
+        string $refreshToken = 'refresh-xyz',
         string $redirectRoute = '/dashboard',
     ): array {
         $this->setupSuccess($accessToken, $refreshToken, $redirectRoute);
@@ -205,8 +199,8 @@ class SignupHandlerTest extends TestCase
     }
 
     private function setupSuccess(
-        string $accessToken   = 'access-abc',
-        string $refreshToken  = 'refresh-xyz',
+        string $accessToken = 'access-abc',
+        string $refreshToken = 'refresh-xyz',
         string $redirectRoute = '/dashboard',
     ): void {
         $user = $this->createMock(User::class);
@@ -215,7 +209,7 @@ class SignupHandlerTest extends TestCase
         $this->verificationCommand->method('createAndSaveTokenForUser');
 
         $this->loginCommand->method('execute')->willReturn(
-            new JwtTokenObject($accessToken, $refreshToken)
+            new JwtTokenObject($accessToken, $refreshToken),
         );
 
         $this->loginRedirectQuery->method('getRedirectRoute')->willReturn($redirectRoute);

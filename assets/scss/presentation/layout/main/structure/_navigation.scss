@@ -115,11 +115,8 @@
       background: colors.$neutral;
       overflow: hidden;
 
-      &:hover {
-        background: colors.$neutral-hover;
-      }
-
-      a {
+      a,
+      span {
         @include flex-center;
         @include size;
         @include weights(700);
@@ -128,6 +125,11 @@
         font-size: 18px;
         padding: 0.5em 0;
         text-decoration: none;
+      }
+
+      &--empty {
+        background: colors.$neutral;
+        pointer-events: none;
       }
     }
 
@@ -143,7 +145,8 @@
 
         width: 100%;
 
-        a {
+        a,
+        span {
           @include transition('ease', 750);
           @include weights(700);
 
@@ -153,24 +156,6 @@
           padding: 0.75em 0;
           display: block;
           width: 100%;
-        }
-
-        &:hover {
-          background: colors.$neutral-hover;
-
-          a {
-            color: colors.$primary;
-          }
-        }
-
-        &.empty {
-          &:hover {
-            background: colors.$light-300;
-
-            a {
-              color: colors.$neutral;
-            }
-          }
         }
       }
     }
@@ -188,13 +173,17 @@
   }
 
   &__mobile {
-    @include size(100%, calc(100% - 90px));
+    @include size(100%, calc(100dvh - 90px));
     @include rgba('black', 50);
-    @include backdrop-filter;
+    @include backdrop-filter(4);
     @include transition;
     @include visibility;
 
     position: fixed;
+
+    &--header-hidden {
+      height: 100dvh;
+    }
 
     &-content {
       position: relative;

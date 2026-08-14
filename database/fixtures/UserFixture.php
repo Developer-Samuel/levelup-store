@@ -59,7 +59,6 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface
      *     last_name: string,
      *     password: string,
      *     role: string,
-     *     email_verified_at: string
      * } $data
      * @param ObjectManager $manager
      *

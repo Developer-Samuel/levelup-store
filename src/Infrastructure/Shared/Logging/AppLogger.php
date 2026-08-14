@@ -27,23 +27,6 @@ final readonly class AppLogger implements AppLoggerContract
      *
      * @return void
     */
-    public function emergency(
-        string $message,
-        ?\Throwable $throwable = null,
-        ?User $user = null,
-        array $context = [],
-    ): void {
-        $this->log('emergency', $message, $throwable, $user, $context);
-    }
-
-    /**
-     * @param string $message
-     * @param \Throwable|null $throwable
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
     public function alert(
         string $message,
         ?\Throwable $throwable = null,
@@ -119,42 +102,6 @@ final readonly class AppLogger implements AppLoggerContract
     public function warning(string $message, ?User $user = null, array $context = []): void
     {
         $this->log('warning', $message, null, $user, $context);
-    }
-
-    /**
-     * @param string $message
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
-    public function notice(string $message, ?User $user = null, array $context = []): void
-    {
-        $this->log('notice', $message, null, $user, $context);
-    }
-
-    /**
-     * @param string $message
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
-    public function info(string $message, ?User $user = null, array $context = []): void
-    {
-        $this->log('info', $message, null, $user, $context);
-    }
-
-    /**
-     * @param string $message
-     * @param User|null $user
-     * @param array<string, mixed> $context
-     *
-     * @return void
-    */
-    public function debug(string $message, ?User $user = null, array $context = []): void
-    {
-        $this->log('debug', $message, null, $user, $context);
     }
 
     /**

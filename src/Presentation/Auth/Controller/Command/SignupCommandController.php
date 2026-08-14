@@ -15,7 +15,6 @@ use App\Core\Domain\Auth\Payload\SignupPayload;
 
 use App\Core\Ports\{
     Auth\Handler\Command\SignupHandlerContract,
-    Auth\Trackers\SignupAttemptTrackerContract,
     Shared\Logging\AppLoggerContract
 };
 
@@ -31,7 +30,6 @@ class SignupCommandController extends AbstractCrudCommandController
 {
     /**
      * @param SignupHandlerContract $signupHandler
-     * @param SignupAttemptTrackerContract $tracker
      * @param RefreshTokenCookieManager $refreshTokenCookieManager
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param AppLoggerContract $logger
@@ -39,7 +37,6 @@ class SignupCommandController extends AbstractCrudCommandController
     */
     public function __construct(
         private readonly SignupHandlerContract $signupHandler,
-        private readonly SignupAttemptTrackerContract $tracker,
         private readonly RefreshTokenCookieManager $refreshTokenCookieManager,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
@@ -60,7 +57,7 @@ class SignupCommandController extends AbstractCrudCommandController
     public function store(Request $request): JsonResponse
     {
         return $this->handleCommand(function () use ($request) {
-            $signupRequest = SignupRequest::fromHttpRequest($request, $this->csrfTokenManager, $this->tracker);
+            $signupRequest = SignupRequest::fromHttpRequest($request, $this->csrfTokenManager);
 
             $validationResponse = RequestProcessor::process($signupRequest, $this->validator);
             if ($validationResponse !== null) {

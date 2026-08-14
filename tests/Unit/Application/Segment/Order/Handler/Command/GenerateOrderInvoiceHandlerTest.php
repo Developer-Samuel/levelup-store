@@ -10,7 +10,7 @@ use PHPUnit\{
 };
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
+    Shared\Exception\AccessDeniedException,
     Segment\User\Entity\User
 };
 
@@ -133,7 +133,7 @@ class GenerateOrderInvoiceHandlerTest extends TestCase
 
         $this->logger->expects($this->once())->method('error');
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Failed to read generated PDF file.');
 
         $this->handler->handle('ORDER-001');
@@ -170,7 +170,7 @@ class GenerateOrderInvoiceHandlerTest extends TestCase
             ->willReturnCallback(
                 function (string $message, \Throwable $throwable, mixed $user, array $context) use (&$capturedContext): void {
                     $capturedContext = $context;
-                }
+                },
             );
 
         try {
@@ -197,11 +197,11 @@ class GenerateOrderInvoiceHandlerTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->securityPolicy      = $this->createMock(SecurityPolicyContract::class);
+        $this->securityPolicy = $this->createMock(SecurityPolicyContract::class);
         $this->orderInvoiceAdapter = $this->createMock(OrderInvoiceGatewayContract::class);
-        $this->orderInvoiceQuery   = $this->createMock(OrderInvoiceQueryContract::class);
-        $this->tempFileManager     = $this->createMock(TempFileManagerContract::class);
-        $this->logger              = $this->createMock(AppLoggerContract::class);
+        $this->orderInvoiceQuery = $this->createMock(OrderInvoiceQueryContract::class);
+        $this->tempFileManager = $this->createMock(TempFileManagerContract::class);
+        $this->logger = $this->createMock(AppLoggerContract::class);
     }
 
     private function initHandler(): void

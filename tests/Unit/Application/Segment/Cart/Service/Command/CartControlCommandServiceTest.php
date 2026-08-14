@@ -120,7 +120,7 @@ class CartControlCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->entityPersistence  = $this->createMock(EntityPersistenceContract::class);
+        $this->entityPersistence = $this->createMock(EntityPersistenceContract::class);
         $this->cartItemRepository = $this->createMock(CartItemRepositoryContract::class);
     }
 

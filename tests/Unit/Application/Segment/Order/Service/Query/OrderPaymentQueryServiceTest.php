@@ -67,7 +67,7 @@ class OrderPaymentQueryServiceTest extends TestCase
                 quantity: 1,
             ),
         ];
-        $payload   = $this->buildPayload();
+        $payload = $this->buildPayload();
 
         $this->stripePaymentAdapter
             ->expects($this->once())
@@ -200,7 +200,7 @@ class OrderPaymentQueryServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->cartRepository       = $this->createMock(CartRepositoryContract::class);
+        $this->cartRepository = $this->createMock(CartRepositoryContract::class);
         $this->stripePaymentAdapter = $this->createMock(StripePaymentGatewayContract::class);
     }
 

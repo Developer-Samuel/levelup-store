@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Core\Application\Abstract\Handler;
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
-    Exception\NotFoundException
+    Shared\Exception\AccessDeniedException,
+    Shared\Exception\ConflictException,
+    Shared\Exception\NotFoundException,
+    Shared\Exception\TooManyRequestsException
 };
 
 use App\Core\Ports\Shared\Logging\AppLoggerContract;
@@ -55,11 +57,12 @@ abstract class AbstractCommandHandler
     private function mapExceptionToApiResponse(\Throwable $throwable): array
     {
         return match (true) {
-            $throwable instanceof \RuntimeException     => ApiResultFormatter::error(400, $throwable->getMessage()),
-            $throwable instanceof AccessDeniedException => ApiResultFormatter::error(403, $throwable->getMessage()),
-            $throwable instanceof NotFoundException     => ApiResultFormatter::error(404, $throwable->getMessage()),
-            $throwable instanceof \LogicException       => ApiResultFormatter::error(500, $throwable->getMessage()),
-            default                                     => ApiResultFormatter::error(
+            $throwable instanceof AccessDeniedException    => ApiResultFormatter::error(403, $throwable->getMessage()),
+            $throwable instanceof NotFoundException        => ApiResultFormatter::error(404, $throwable->getMessage()),
+            $throwable instanceof ConflictException        => ApiResultFormatter::error(409, $throwable->getMessage()),
+            $throwable instanceof TooManyRequestsException => ApiResultFormatter::error(429, $throwable->getMessage()),
+            $throwable instanceof \DomainException         => ApiResultFormatter::error(400, $throwable->getMessage()),
+            default                                        => ApiResultFormatter::error(
                 500,
                 'Unexpected error occurred. Please check your internet connection and try again.',
             ),

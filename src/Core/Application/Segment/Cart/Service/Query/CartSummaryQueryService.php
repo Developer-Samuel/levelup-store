@@ -13,6 +13,7 @@ use App\Core\Domain\{
     Segment\Cart\Entity\CartItem,
     Segment\Cart\ValueObject\CartItemObject,
     Segment\Product\Entity\Variant\ProductVariant,
+    Segment\Product\Specification\ProductVariantAvailabilitySpecification,
     Segment\Product\Utils\ProductToolkit
 };
 
@@ -130,9 +131,7 @@ final readonly class CartSummaryQueryService implements CartSummaryQueryContract
     */
     private function hasAvailableStock(ProductVariant $variant): bool
     {
-        $inStock = $variant->getInStock();
-
-        return $inStock && $inStock->getQuantityAvailable() > 0;
+        return ProductVariantAvailabilitySpecification::findOneInStock($variant) !== null;
     }
 
     /**

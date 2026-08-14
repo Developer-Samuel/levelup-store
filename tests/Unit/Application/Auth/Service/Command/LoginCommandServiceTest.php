@@ -99,7 +99,7 @@ class LoginCommandServiceTest extends TestCase
 
     private function initMocks(): void
     {
-        $this->jwtGateway             = $this->createMock(JwtGatewayContract::class);
+        $this->jwtGateway = $this->createMock(JwtGatewayContract::class);
         $this->refreshTokenRepository = $this->createMock(RefreshTokenRepositoryContract::class);
     }
 
@@ -112,7 +112,7 @@ class LoginCommandServiceTest extends TestCase
     }
 
     private function executeForUser(
-        string $accessToken  = 'access-token-abc',
+        string $accessToken = 'access-token-abc',
         string $refreshToken = 'refresh-token-xyz',
     ): JwtTokenObject {
         $this->jwtGateway

@@ -84,7 +84,6 @@ final class CreateReviewsTable
     private static function addAdditionalColumns(Table $table): void
     {
         SmallIntegerMacro::smallInteger($table, 'value', 1, [
-            'notnull' => true,
             'comment' => 'Review value must be between 1 and 5',
         ]);
         StringMacro::string($table, 'body', 250, ['notnull' => false]);

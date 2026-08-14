@@ -7,7 +7,7 @@ namespace App\Core\Application\Security\Policy;
 use Kit\Utils\Shared\Normalizer\StringNormalizer;
 
 use App\Core\Domain\{
-    Exception\AccessDeniedException,
+    Shared\Exception\AccessDeniedException,
     Segment\User\Entity\User,
     Segment\User\Enum\UserRole
 };
@@ -55,13 +55,13 @@ final readonly class SecurityPolicy implements SecurityPolicyContract
      *
      * @return User
      *
-     * @throws \RuntimeException
+     * @throws AccessDeniedException
     */
     private function runChecks(array $checks): User
     {
         $user = $this->securityProvider->getCurrentUser();
         if (!$user) {
-            throw new \RuntimeException('No current user found.');
+            throw new AccessDeniedException('No user found.');
         }
 
         foreach ($checks as $check) {
@@ -97,12 +97,12 @@ final readonly class SecurityPolicy implements SecurityPolicyContract
      *
      * @return User
      *
-     * @throws \RuntimeException
+     * @throws AccessDeniedException
     */
     private function validateEmailVerified(User $user): User
     {
         if ($user->getEmailVerifiedAt() === null) {
-            throw new \RuntimeException('Email not verified.');
+            throw new AccessDeniedException('Email not verified.');
         }
 
         return $user;
@@ -113,12 +113,12 @@ final readonly class SecurityPolicy implements SecurityPolicyContract
      *
      * @return User
      *
-     * @throws \RuntimeException
+     * @throws AccessDeniedException
     */
     private function validateAdminRole(User $user): User
     {
         if (!$this->validateRoles($user, [UserRole::ADMIN->value])) {
-            throw new \RuntimeException('Admin role required.');
+            throw new AccessDeniedException('Admin role required.');
         }
 
         return $user;

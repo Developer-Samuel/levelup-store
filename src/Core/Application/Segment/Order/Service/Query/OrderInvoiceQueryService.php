@@ -48,7 +48,7 @@ final readonly class OrderInvoiceQueryService implements OrderInvoiceQueryContra
      *
      * @return void
      *
-     * @throws \RuntimeException
+     * @throws \LogicException
     */
     private function assertOrderIntegrity(Order $order): void
     {
@@ -56,11 +56,11 @@ final readonly class OrderInvoiceQueryService implements OrderInvoiceQueryContra
         OrderBillingAssertion::assertExists($order->getBilling());
 
         if ($order->getSendShipping() && $order->getShipping() === null) {
-            throw new \RuntimeException('Shipping address is missing.');
+            throw new \LogicException('Shipping address is missing.');
         }
 
         if ($order->getItems()->isEmpty()) {
-            throw new \RuntimeException('Order has no products.');
+            throw new \LogicException('Order has no products.');
         }
     }
 }
