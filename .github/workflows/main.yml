@@ -95,7 +95,7 @@ jobs:
         image: postgres:17
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: secret
           POSTGRES_DB: levelup_store_test
         ports:
           - 5432:5432
@@ -121,7 +121,7 @@ jobs:
         with:
           db-name: levelup_store_test
           db-port: '5432'
-          db-password: ${{ secrets.POSTGRES_PASSWORD }}
+          db-password: secret
 
       - uses: ./.github/actions/redis
         with:
@@ -171,3 +171,91 @@ jobs:
         with:
           name: vitest-coverage
           path: var/tools/vitest
+
+  # ─── Playwright E2E Tests ─────────────────────────────────────────────────
+  e2e:
+    name: 🎭 Playwright E2E
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: levelup_store
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7
+        ports:
+          - 6380:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: ./.github/actions/postgres
+        with:
+          db-name: levelup_store
+          db-port: '5433'
+          db-password: secret
+
+      - uses: ./.github/actions/redis
+        with:
+          redis-port: '6380'
+
+      - uses: ./.github/actions/env
+
+      - uses: ./.github/actions/php
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: pdo_pgsql, redis
+
+      - uses: ./.github/actions/node
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          install-flags: '--ignore-scripts'
+
+      - name: Rebuild native modules
+        run: pnpm rebuild esbuild @parcel/watcher
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: playwright-chromium-
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Database warmup
+        run: |
+          php bin/console doctrine:database:create --if-not-exists
+          php bin/console doctrine:migrations:migrate --no-interaction
+          php bin/console doctrine:fixtures:load --no-interaction --purge-with-truncate
+
+      - name: Cache warmup
+        run: php bin/console cache:warmup
+
+      - name: Build Frontend
+        run: pnpm build
+
+      - name: Run Playwright (Chromium - auth only)
+        run: pnpm e2e assets/tests/e2e/specs/auth/login.spec.ts --project=chromium --grep "should redirect after successful login"
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: var/tools/playwright
