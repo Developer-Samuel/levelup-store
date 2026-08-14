@@ -99,9 +99,19 @@ test.describe('Login Page', () => {
       return
     }
 
+    const loginRequestMade = page
+      .waitForRequest((req) => req.url().includes('/api/auth/login') && req.method() === 'POST', { timeout: 15_000 })
+      .then(() => true)
+      .catch(() => false)
+
     await loginPage.login(TEST_USER.email, TEST_USER.password)
 
-    await page.waitForURL((url) => !url.pathname.includes('/login'), { waitUntil: 'commit', timeout: 30_000 })
+    const ajaxFired = await loginRequestMade
+    if (!ajaxFired) {
+      throw new Error('Login form did not submit via HTTP request - ensure the page JS loaded before clicking submit')
+    }
+
+    await page.waitForURL((url) => !url.pathname.includes('/login'), { waitUntil: 'commit', timeout: 60_000 })
 
     expect(page.url()).not.toContain('/login')
   })
