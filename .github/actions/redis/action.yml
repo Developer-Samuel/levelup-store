@@ -17,19 +17,14 @@ runs:
     - name: Setup dynamic REDIS_URL
       shell: bash
       run: |
-        if [ "$ACT" = "true" ]; then
-          echo "REDIS_URL=redis://127.0.0.1:${{ inputs.redis-port }}" >> $GITHUB_ENV
-          echo "REDIS_URL_HOST=127.0.0.1" >> $GITHUB_ENV
-        else
-          echo "REDIS_URL=redis://redis:6379" >> $GITHUB_ENV
-          echo "REDIS_URL_HOST=redis" >> $GITHUB_ENV
-        fi
+        echo "REDIS_URL=redis://127.0.0.1:${{ inputs.redis-port }}" >> $GITHUB_ENV
+        echo "REDIS_URL_HOST=127.0.0.1" >> $GITHUB_ENV
 
     - name: Wait for Redis
       shell: bash
       run: |
         echo "Waiting for Redis to be ready..."
-        until redis-cli -h $REDIS_URL_HOST -p ${{ inputs.redis-port }} ping | grep PONG; do
+        until redis-cli -h 127.0.0.1 -p ${{ inputs.redis-port }} ping | grep PONG; do
           echo "Redis is not ready yet..."
           sleep 2
         done

@@ -95,7 +95,7 @@ jobs:
         image: postgres:17
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: secret
           POSTGRES_DB: levelup_store_test
         ports:
           - 5432:5432
@@ -121,7 +121,7 @@ jobs:
         with:
           db-name: levelup_store_test
           db-port: '5432'
-          db-password: ${{ secrets.POSTGRES_PASSWORD }}
+          db-password: secret
 
       - uses: ./.github/actions/redis
         with:
@@ -144,6 +144,10 @@ jobs:
 
       - name: Run PHPUnit
         run: composer php-unit
+
+      - name: Show test log on failure
+        if: failure()
+        run: cat var/log/test.log 2>/dev/null || echo "No test log found"
 
       - uses: actions/upload-artifact@v4
         if: failure()
