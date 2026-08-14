@@ -145,6 +145,10 @@ jobs:
       - name: Run PHPUnit
         run: composer php-unit
 
+      - name: Show test log on failure
+        if: failure()
+        run: cat var/log/test.log 2>/dev/null || echo "No test log found"
+
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
