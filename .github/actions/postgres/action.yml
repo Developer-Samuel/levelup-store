@@ -24,24 +24,14 @@ runs:
     - name: Setup dynamic DATABASE_URL
       shell: bash
       run: |
-        if [ "$ACT" = "true" ]; then
-          echo "DATABASE_URL_HOST=127.0.0.1" >> $GITHUB_ENV
-          echo "DATABASE_URL=pgsql://postgres:${{ inputs.db-password }}@127.0.0.1:${{ inputs.db-port }}/${{ inputs.db-name }}" >> $GITHUB_ENV
-        else
-          echo "DATABASE_URL_HOST=postgres" >> $GITHUB_ENV
-          echo "DATABASE_URL=pgsql://postgres:${{ inputs.db-password }}@postgres:5432/${{ inputs.db-name }}" >> $GITHUB_ENV
-        fi
+        echo "DATABASE_URL_HOST=127.0.0.1" >> $GITHUB_ENV
+        echo "DATABASE_URL=pgsql://postgres:${{ inputs.db-password }}@127.0.0.1:${{ inputs.db-port }}/${{ inputs.db-name }}" >> $GITHUB_ENV
 
     - name: Wait for Postgres
       shell: bash
       run: |
         echo "Waiting for Postgres to be ready..."
-        if [ "$ACT" = "true" ]; then
-          PG_PORT=${{ inputs.db-port }}
-        else
-          PG_PORT=5432
-        fi
-        until pg_isready -h $DATABASE_URL_HOST -p $PG_PORT -U postgres; do
+        until pg_isready -h 127.0.0.1 -p ${{ inputs.db-port }} -U postgres; do
           echo "Postgres is not ready yet..."
           sleep 3
         done
