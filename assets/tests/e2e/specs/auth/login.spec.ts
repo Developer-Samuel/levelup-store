@@ -99,17 +99,20 @@ test.describe('Login Page', () => {
       return
     }
 
-    const loginRequestMade = page
-      .waitForRequest((req) => req.url().includes('/api/auth/login') && req.method() === 'POST', { timeout: 15_000 })
-      .then(() => true)
-      .catch(() => false)
+    const loginResponsePromise = page.waitForResponse(
+      (res) => res.url().includes('/api/auth/login') && res.request().method() === 'POST',
+      { timeout: 15_000 },
+    )
 
     await loginPage.login(TEST_USER.email, TEST_USER.password)
 
-    const ajaxFired = await loginRequestMade
-    if (!ajaxFired) {
+    const loginResponse = await loginResponsePromise.catch(() => null)
+    if (!loginResponse) {
       throw new Error('Login form did not submit via HTTP request - ensure the page JS loaded before clicking submit')
     }
+
+    const loginBody = await loginResponse.text()
+    console.log(`[e2e] login response: HTTP ${loginResponse.status()} — ${loginBody}`)
 
     await page.waitForURL((url) => !url.pathname.includes('/login'), { waitUntil: 'commit', timeout: 60_000 })
 
