@@ -41,6 +41,9 @@ const webServer: PlaywrightTestConfig['webServer'] = {
   port: 8000,
   reuseExistingServer: true,
   timeout: 30_000,
+  env: {
+    PHP_CLI_SERVER_WORKERS: '4',
+  },
 }
 
 type StorageState = Exclude<BrowserContextOptions['storageState'], string | undefined>
