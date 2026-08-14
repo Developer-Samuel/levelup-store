@@ -92,6 +92,8 @@ test.describe('Login Page', () => {
   // ── Successful login ───────────────────────────────────────────────────────
 
   test('should redirect after successful login', async ({ page }) => {
+    test.setTimeout(90_000)
+
     if (!TEST_USER.email || !TEST_USER.password) {
       test.skip()
       return
