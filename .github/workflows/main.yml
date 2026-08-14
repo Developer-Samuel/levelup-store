@@ -219,6 +219,8 @@ jobs:
           redis-port: '6380'
 
       - uses: ./.github/actions/env
+        with:
+          source: .env.test
 
       - uses: ./.github/actions/php
         with:
