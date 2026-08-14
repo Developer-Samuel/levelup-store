@@ -1,0 +1,47 @@
+name: Setup Postgres
+description: Setup dynamic DATABASE_URL and wait for Postgres to be ready
+
+inputs:
+  db-name:
+    description: PostgreSQL database name
+    required: true
+  db-port:
+    description: Host port mapped to Postgres 5432 (use different ports per job to avoid conflicts in act)
+    required: false
+    default: '5432'
+  db-password:
+    description: PostgreSQL password
+    required: false
+    default: 'secret'
+
+runs:
+  using: composite
+  steps:
+    - name: Install PostgreSQL client
+      shell: bash
+      run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+    - name: Setup dynamic DATABASE_URL
+      shell: bash
+      run: |
+        if [ "$ACT" = "true" ]; then
+          echo "DATABASE_URL_HOST=127.0.0.1" >> $GITHUB_ENV
+          echo "DATABASE_URL=pgsql://postgres:${{ inputs.db-password }}@127.0.0.1:${{ inputs.db-port }}/${{ inputs.db-name }}" >> $GITHUB_ENV
+        else
+          echo "DATABASE_URL_HOST=postgres" >> $GITHUB_ENV
+          echo "DATABASE_URL=pgsql://postgres:${{ inputs.db-password }}@postgres:5432/${{ inputs.db-name }}" >> $GITHUB_ENV
+        fi
+
+    - name: Wait for Postgres
+      shell: bash
+      run: |
+        echo "Waiting for Postgres to be ready..."
+        if [ "$ACT" = "true" ]; then
+          PG_PORT=${{ inputs.db-port }}
+        else
+          PG_PORT=5432
+        fi
+        until pg_isready -h $DATABASE_URL_HOST -p $PG_PORT -U postgres; do
+          echo "Postgres is not ready yet..."
+          sleep 3
+        done

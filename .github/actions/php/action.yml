@@ -1,0 +1,43 @@
+name: Setup PHP
+description: Setup PHP, Composer cache and install dependencies
+
+inputs:
+  php-version:
+    description: PHP version to use
+    required: false
+    default: '8.3'
+  extensions:
+    description: PHP extensions to install
+    required: false
+    default: ''
+  coverage:
+    description: Coverage driver
+    required: false
+    default: none
+
+runs:
+  using: composite
+  steps:
+    - uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+        extensions: ${{ inputs.extensions }}
+        tools: composer
+        coverage: ${{ inputs.coverage }}
+
+    - uses: actions/cache@v3
+      with:
+        path: ~/.composer/cache
+        key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+
+    - name: Ensure vendor exists
+      shell: bash
+      run: mkdir -p vendor
+
+    - name: Make scripts executable
+      shell: bash
+      run: find scripts -name "*.sh" -exec chmod +x {} +
+
+    - name: Install PHP dependencies
+      shell: bash
+      run: composer install --prefer-dist --no-interaction

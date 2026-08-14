@@ -1,0 +1,28 @@
+name: Setup Node
+description: Setup Node.js, pnpm, and install dependencies
+
+inputs:
+  node-version:
+    description: Node.js version to use
+    required: false
+    default: '22'
+  install-flags:
+    description: pnpm install flags
+    required: false
+    default: '--ignore-scripts'
+
+runs:
+  using: composite
+  steps:
+    - uses: pnpm/action-setup@v6
+      with:
+        version: latest
+
+    - uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: pnpm
+
+    - name: Install Node dependencies
+      shell: bash
+      run: pnpm install ${{ inputs.install-flags }}

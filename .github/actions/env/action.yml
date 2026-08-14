@@ -1,0 +1,19 @@
+name: Prepare Environment
+description: Copy env file and inject runtime secrets
+
+inputs:
+  source:
+    description: Source env file to copy (.env.example or .env.test)
+    required: false
+    default: '.env.example'
+
+runs:
+  using: composite
+  steps:
+    - name: Prepare environment
+      shell: bash
+      run: |
+        cp ${{ inputs.source }} .env
+        echo "APP_SECRET=$(php -r "echo bin2hex(random_bytes(32));")" >> .env
+        echo "DATABASE_URL=${DATABASE_URL}" >> .env
+        echo "REDIS_URL=${REDIS_URL}" >> .env

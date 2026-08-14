@@ -41,6 +41,7 @@ This document provides a comprehensive overview of the technologies, frameworks,
 - **PDF Generation:** wkhtmltopdf
 - **Error Monitoring:** Sentry
 - **Monitoring:** Prometheus & Grafana
+- **CI/CD:** GitHub Actions (configured via `act`)
 
 ---
 
