@@ -5,5 +5,5 @@ export function attachTouchListeners(track: HTMLElement, carousel: ImageCarousel
   track.addEventListener('touchstart', (e: TouchEvent) => handleDragStart(e, carousel))
   track.addEventListener('touchend', () => handleDragEnd(carousel))
   track.addEventListener('touchcancel', () => handleDragEnd(carousel))
-  track.addEventListener('touchmove', (e: TouchEvent) => handleDragAction(e, carousel))
+  track.addEventListener('touchmove', (e: TouchEvent) => handleDragAction(e, carousel), { passive: false })
 }

@@ -6,7 +6,9 @@ export type ImageCarouselInstance = {
   currentIndex: number
   total: number
   isDragging: boolean
+  isHorizontalSwipe: boolean | null
   startX: number
+  startY: number
   currentTranslate: number
   prevTranslate: number
   animationID: number

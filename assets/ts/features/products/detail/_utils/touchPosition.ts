@@ -5,3 +5,11 @@ export function getPositionX(event: MouseEvent | TouchEvent): number {
 
   return event.clientX
 }
+
+export function getPositionY(event: MouseEvent | TouchEvent): number {
+  if (event instanceof TouchEvent) {
+    return event.touches[0]?.clientY ?? 0
+  }
+
+  return event.clientY
+}

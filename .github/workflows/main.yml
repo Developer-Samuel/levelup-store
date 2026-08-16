@@ -275,7 +275,7 @@ jobs:
             --max-time 10 || echo "CURL_FAILED")
           echo "Login API response: $RESPONSE"
           if echo "$RESPONSE" | grep -q '"status":"error"'; then
-            echo "ERROR: Login API returned error status — check PHP log below"
+            echo "ERROR: Login API returned error status - check PHP log below"
             cat var/log/test.log 2>/dev/null || echo "No test.log found"
             exit 1
           fi

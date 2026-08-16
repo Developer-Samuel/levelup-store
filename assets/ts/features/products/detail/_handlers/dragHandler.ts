@@ -1,5 +1,5 @@
 import type { ImageCarouselInstance } from '@/ts/features/products/detail/types'
-import { getPositionX } from '@/ts/features/products/detail/_utils/touchPosition'
+import { getPositionX, getPositionY } from '@/ts/features/products/detail/_utils/touchPosition'
 import { applyDraggingStyles, removeDraggingStyles } from '@/ts/features/products/detail/_ui/dragging'
 import { slideTo, setSliderPosition } from '@/ts/features/products/detail/_ui/slider'
 
@@ -7,7 +7,9 @@ const SWIPE_THRESHOLD = 50
 
 export function handleDragStart(event: MouseEvent | TouchEvent, carousel: ImageCarouselInstance): void {
   carousel.isDragging = true
+  carousel.isHorizontalSwipe = null
   carousel.startX = getPositionX(event)
+  carousel.startY = getPositionY(event)
 
   cancelAnimationFrame(carousel.animationID)
 
@@ -17,10 +19,19 @@ export function handleDragStart(event: MouseEvent | TouchEvent, carousel: ImageC
 export function handleDragAction(event: MouseEvent | TouchEvent, carousel: ImageCarouselInstance): void {
   if (!carousel.isDragging) return
 
-  const currentPosition = getPositionX(event)
-  const diff = currentPosition - carousel.startX
+  const currentX = getPositionX(event)
+  const currentY = getPositionY(event)
+  const diffX = currentX - carousel.startX
+  const diffY = currentY - carousel.startY
 
-  carousel.currentTranslate = carousel.prevTranslate + diff
+  if (carousel.isHorizontalSwipe === null && (Math.abs(diffX) > 5 || Math.abs(diffY) > 5)) {
+    carousel.isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY)
+  }
+
+  if (!carousel.isHorizontalSwipe) return
+
+  event.preventDefault()
+  carousel.currentTranslate = carousel.prevTranslate + diffX
   setSliderPosition(carousel)
 }
 
@@ -28,6 +39,7 @@ export function handleDragEnd(carousel: ImageCarouselInstance): void {
   if (!carousel.isDragging) return
 
   carousel.isDragging = false
+  carousel.isHorizontalSwipe = null
   removeDraggingStyles(carousel.track)
 
   const movedBy = carousel.currentTranslate - carousel.prevTranslate

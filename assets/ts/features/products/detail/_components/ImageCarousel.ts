@@ -13,7 +13,9 @@ export default class ImageCarousel implements ImageCarouselInstance {
   currentIndex: number
   total: number
   isDragging: boolean
+  isHorizontalSwipe: boolean | null
   startX: number
+  startY: number
   currentTranslate: number
   prevTranslate: number
   animationID: number
@@ -29,7 +31,9 @@ export default class ImageCarousel implements ImageCarouselInstance {
     this.currentIndex = 0
     this.total = this.thumbs.length
     this.isDragging = false
+    this.isHorizontalSwipe = null
     this.startX = 0
+    this.startY = 0
     this.currentTranslate = 0
     this.prevTranslate = 0
     this.animationID = 0
