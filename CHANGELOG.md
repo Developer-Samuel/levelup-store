@@ -1,3 +1,12 @@
+## [v1.1.1] - 2026-08-16
+
+## [1.1.1] - 2026-08-16
+
+### 🐛 Fixes 
+- Product detail gallery height chain on mobile and tablet (responsive breakpoints)
+- Product detail swipe now correctly ignores vertical scroll via gesture direction detection
+- Search input no longer strips spaces while typing
+
 ## [v1.1.0] - 2026-08-14
 
 ## [1.1.0] - 2026-08-14
