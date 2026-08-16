@@ -22,13 +22,11 @@ type BindSearchFlowOptions = {
 }
 
 export function setSearchTermFlow(instance: SearchInstance, val: string): void {
-  const value = val.trim()
-
-  if (value.length === 0) {
+  if (val.trim().length === 0) {
     hide(instance.panel)
   }
 
-  updateSearch(instance, value)
+  updateSearch(instance, val)
 }
 
 export function performSearchFlow(instance: SearchInstance): void {
