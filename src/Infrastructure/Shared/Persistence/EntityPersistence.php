@@ -62,6 +62,18 @@ final readonly class EntityPersistence implements EntityPersistenceContract
     }
 
     /**
+     * @template T
+     *
+     * @param callable(): T $callback
+     *
+     * @return T
+    */
+    public function wrapInTransaction(callable $callback): mixed
+    {
+        return $this->entityManager->wrapInTransaction($callback);
+    }
+
+    /**
      * @param bool $flush
      *
      * @return void

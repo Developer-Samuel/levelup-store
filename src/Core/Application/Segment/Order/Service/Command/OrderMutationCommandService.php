@@ -76,12 +76,15 @@ final readonly class OrderMutationCommandService implements OrderMutationCommand
     */
     private function processCashOrder(User $user, OrderCreatePayload $payload, array $items): OrderResultObject
     {
-        $order = $this->orderBuildCommand->build($user, $payload, $items);
+        $order = $this->entityPersistence->wrapInTransaction(function () use ($user, $payload, $items) {
+            $order = $this->orderBuildCommand->build($user, $payload, $items);
 
-        $this->orderCommandBuilder->orderItemCommand->processOrderItems($order, $items);
-        $this->entityPersistence->flush();
+            $this->orderCommandBuilder->orderItemCommand->processOrderItems($order, $items);
 
-        $this->notifier->send($order);
+            $this->notifier->send($order);
+
+            return $order;
+        });
 
         return new OrderResultObject(order: $order, paymentUrl: null);
     }

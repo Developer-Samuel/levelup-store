@@ -34,4 +34,13 @@ interface EntityPersistenceContract
      * @return void
     */
     public function flush(): void;
+
+    /**
+     * @template T
+     *
+     * @param callable(): T $callback
+     *
+     * @return T
+    */
+    public function wrapInTransaction(callable $callback): mixed;
 }

@@ -142,6 +142,10 @@ class OrderMutationCommandServiceTest extends TestCase
         $this->orderItemCommand->method('processOrderItems');
         $this->notifier->method('send');
 
+        $this->entityPersistence
+            ->method('wrapInTransaction')
+            ->willReturnCallback(fn (callable $cb) => $cb());
+
         $this->service->createOrder($this->buildPayload(OrderPaymentMethod::CASH));
     }
 
@@ -167,6 +171,10 @@ class OrderMutationCommandServiceTest extends TestCase
         $this->orderBuildCommand->method('build')->willReturn($order);
         $this->orderItemCommand->method('processOrderItems');
         $this->notifier->method('send');
+
+        $this->entityPersistence
+            ->method('wrapInTransaction')
+            ->willReturnCallback(fn (callable $cb) => $cb());
     }
 
     private function setupCardPaymentInitiation(string $paymentUrl = 'https://stripe.com/pay/test'): void
