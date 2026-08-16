@@ -10,6 +10,12 @@
     &__gallery {
       height: 100%;
 
+      &-image-zoom {
+        @include size(48px, 48px);
+
+        padding: 0.75em;
+      }
+
       &-arrow {
         height: 101px;
         padding: 0.5em;
@@ -158,6 +164,13 @@
 
 @include resolution(md, min) {
   .product-detail {
+    &__gallery-image-zoom {
+      @include size(32px, 32px);
+
+      bottom: 1.25em;
+      padding: 0.5em;
+    }
+
     &__gallery-image-dots {
       bottom: 1.25em;
 
@@ -183,7 +196,7 @@
 
         p {
           font-size: 16px;
-          max-height: 150px;
+          max-height: 152.5px;
           overflow-y: auto;
         }
       }
@@ -241,6 +254,13 @@
 @include resolution(md, max) {
   .product-detail {
     &__gallery-image {
+      &-zoom {
+        @include size(24px, 24px);
+
+        bottom: 1em;
+        padding: 6px
+      }
+
       &-dots {
         bottom: 1em;
 

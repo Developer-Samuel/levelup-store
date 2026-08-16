@@ -1,5 +1,6 @@
+import { show, hide } from '@/ts/shared/elements/modal/_ui/visibility'
+
 import type { ReviewModalInstance } from '@/ts/features/reviews/modal/types'
-import { show, hide } from '@/ts/features/reviews/modal/_ui/visibility'
 import { focusFirst } from '@/ts/features/reviews/modal/_ui/focus'
 import { attachKeydownListener, detachKeydownListener } from '@/ts/features/reviews/modal/_listeners/keydownListener'
 

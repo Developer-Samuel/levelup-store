@@ -10,6 +10,13 @@
                 {% endif %}
             </div>
             {% endif %}
+            <div class="product-detail__gallery-image-zoom">
+                <img
+                    src="{{ asset('img/icons/actions/zoom-in.png') }}"
+                    alt="Zoom"
+                    class="product-detail__gallery-image-zoom-icon"
+                >
+            </div>
             <div class="product-detail__gallery-image-track">
                 {% for image in variant.images %}
                     <div class="product-detail__gallery-image-track-item">
