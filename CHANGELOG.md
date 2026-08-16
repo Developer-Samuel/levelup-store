@@ -1,3 +1,15 @@
+## [v1.2.0] - 2026-08-16
+
+## [1.2.0] - 2026-08-16
+
+### 🚀 Features
+- Zoom image modal on product detail gallery with full-screen image preview
+
+### 🏗️ Architecture
+- Shared base modal layer (`shared/elements/modal`) with generic show/hide, Escape key and backdrop click handling
+- Reviews modal and zoom modal unified under common base
+- Zoom modal template moved to `components/modals/zoom` and rendered at body level via `app/init`
+
 ## [v1.1.1] - 2026-08-16
 
 ## [1.1.1] - 2026-08-16
