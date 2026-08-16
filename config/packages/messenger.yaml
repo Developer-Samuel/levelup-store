@@ -6,13 +6,17 @@ framework:
       async:
         dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
         options:
-          use_notify: true
-          check_delayed_interval: 60000
+          exchange:
+            name: levelup_store
+            type: direct
+          queues:
+            levelup_store_emails:
+              binding_keys: [emails]
         retry_strategy:
           max_retries: 3
           multiplier: 2
+          delay: 1000
       failed: 'doctrine://default?queue_name=failed'
-      # sync: 'sync://'
 
     default_bus: messenger.bus.default
 

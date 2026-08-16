@@ -43,6 +43,14 @@ x-env-redis: &env-redis
   REDIS_HOST: ${REDIS_HOST}
   REDIS_PORT: ${REDIS_PORT}
 
+# RabbitMQ Settings
+x-env-rabbitmq: &env-rabbitmq
+  RABBITMQ_HOST: ${RABBITMQ_HOST}
+  RABBITMQ_PORT: ${RABBITMQ_PORT}
+  RABBITMQ_USER: ${RABBITMQ_USER}
+  RABBITMQ_PASS: ${RABBITMQ_PASS}
+  RABBITMQ_VHOST: ${RABBITMQ_VHOST}
+
 # ──────────────────────────────────────────────────────────────────────────────────────────────
 # 🌍 Application-Wide Environment
 # ──────────────────────────────────────────────────────────────────────────────────────────────
@@ -54,6 +62,7 @@ x-app-environment: &app-environment
   <<:
     - *env-database
     - *env-redis
+    - *env-rabbitmq
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────
 # ⚙️ Health Check Configuration
@@ -128,6 +137,8 @@ x-service-app: &service-app
       condition: service_healthy
     redis:
       condition: service_healthy
+    rabbitmq:
+      condition: service_healthy
   environment:
     <<: *app-environment
   deploy:
@@ -144,12 +155,14 @@ x-service-app-setup: &service-app-setup
       condition: service_healthy
     redis:
       condition: service_healthy
+    rabbitmq:
+      condition: service_healthy
   environment:
     <<: *app-environment
   deploy:
     <<: *app-deploy
 
-# Cron / Scheduler Service (The 15-minute automation)
+# Cron / Scheduler Service
 x-service-cron: &service-cron
   <<: *app-base
   container_name: levelup_store_cron
@@ -159,9 +172,27 @@ x-service-cron: &service-cron
       condition: service_healthy
     redis:
       condition: service_healthy
+    rabbitmq:
+      condition: service_healthy
   environment:
     <<: *app-environment
   entrypoint: ["/usr/local/bin/scripts/entrypoints/app/cron/run-cron.sh"]
+
+# Messenger Worker Service (consumes async queue)
+x-service-worker: &service-worker
+  <<: *app-base
+  container_name: levelup_store_worker
+  restart: unless-stopped
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+    rabbitmq:
+      condition: service_healthy
+  environment:
+    <<: *app-environment
+  entrypoint: ["/usr/local/bin/scripts/entrypoints/app/worker/run-worker.sh"]
 
 # Nginx as a webserver proxy for the app
 x-service-webserver: &service-webserver
@@ -196,6 +227,26 @@ x-service-vite: &service-vite
     - app-network
   depends_on:
     - app
+
+# RabbitMQ Blueprint
+x-service-rabbitmq: &service-rabbitmq
+  image: rabbitmq:3-management
+  container_name: levelup_store_rabbitmq
+  restart: unless-stopped
+  environment:
+    RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+    RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+    RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
+  ports:
+    - '${RABBITMQ_PORT}:5672'
+    - '15672:15672'
+  volumes:
+    - rabbitmq_data:/var/lib/rabbitmq
+  networks:
+    - app-network
+  healthcheck:
+    test: ['CMD', 'rabbitmq-diagnostics', 'ping']
+    <<: *app-healthcheck
 
 # Adminer (latest) Blueprint
 x-service-adminer: &service-adminer
@@ -253,6 +304,10 @@ services:
   redis:
     <<: *service-redis
 
+  # RabbitMQ Service
+  rabbitmq:
+    <<: *service-rabbitmq
+
   # PHP Service
   app:
     <<: *service-app
@@ -264,6 +319,10 @@ services:
   # Cron / Scheduler Service
   cron:
     <<: *service-cron
+
+  # Messenger Worker Service
+  worker:
+    <<: *service-worker
 
   # Nginx Service
   webserver:
@@ -303,4 +362,6 @@ volumes:
   prometheus_data:
     driver: local
   grafana_data:
+    driver: local
+  rabbitmq_data:
     driver: local

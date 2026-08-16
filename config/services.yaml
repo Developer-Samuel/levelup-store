@@ -55,6 +55,15 @@ services:
       $redisEnabled: '%env(bool:REDIS_ENABLED)%'
       $redisUrl: '%env(REDIS_URL)%'
 
+  App\Adapters\External\MessageBroker\RabbitMQ\RabbitMQAdapter:
+    arguments:
+      $enabled: '%env(bool:RABBITMQ_ENABLED)%'
+      $host: '%env(RABBITMQ_HOST)%'
+      $port: '%env(int:RABBITMQ_PORT)%'
+      $user: '%env(RABBITMQ_USER)%'
+      $pass: '%env(RABBITMQ_PASS)%'
+      $vhost: '%env(RABBITMQ_VHOST)%'
+
   App\Adapters\External\Pdf\SnappyPdfGeneratorAdapter:
     arguments:
       $wkhtmltopdfEnabled: '%env(bool:WKHTMLTOPDF_ENABLED)%'

@@ -24,6 +24,7 @@
     "sentry/sentry-symfony": "^5.10",
     "snc/redis-bundle": "^4.9",
     "stripe/stripe-php": "19.1",
+    "symfony/amqp-messenger": "7.4.*",
     "symfony/asset": "7.4.*",
     "symfony/asset-mapper": "7.4.*",
     "symfony/console": "7.4.*",
