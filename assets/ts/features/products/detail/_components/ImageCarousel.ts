@@ -1,4 +1,5 @@
 import type { HtmlElList } from '@/ts/shared/types'
+import { query } from '@/ts/shared/utils/dom/query'
 
 import type { ImageCarouselInstance } from '@/ts/features/products/detail/types'
 import { getImageCarouselElements } from '@/ts/features/products/detail/_ui/elements'
@@ -6,6 +7,7 @@ import { slideTo, updateWidth } from '@/ts/features/products/detail/_ui/slider'
 import { attachArrowClickListener } from '@/ts/features/products/detail/_listeners/arrowClickListener'
 import { attachMouseListeners } from '@/ts/features/products/detail/_listeners/mouseListener'
 import { attachTouchListeners } from '@/ts/features/products/detail/_listeners/touchListener'
+import ZoomModal from '@/ts/features/products/detail/zoom/_components/ZoomModal'
 
 export default class ImageCarousel implements ImageCarouselInstance {
   track: HTMLElement
@@ -41,6 +43,7 @@ export default class ImageCarousel implements ImageCarouselInstance {
 
     this.initListeners()
     this.initArrows()
+    this.initZoom()
 
     updateWidth(this)
     slideTo(this, this.currentIndex, false)
@@ -56,6 +59,18 @@ export default class ImageCarousel implements ImageCarouselInstance {
     attachMouseListeners(this.track, this)
     attachTouchListeners(this.track, this)
     window.addEventListener('resize', () => updateWidth(this))
+  }
+
+  private initZoom(): void {
+    const trigger = query('.product-detail__gallery-image-zoom')
+    if (!trigger) return
+
+    new ZoomModal(trigger, () => {
+      const activeImg = this.track.querySelectorAll('.product-detail__gallery-image-track-item img')[
+        this.currentIndex
+      ] as HTMLImageElement | undefined
+      return activeImg?.src ?? ''
+    })
   }
 
   private initArrows(): void {

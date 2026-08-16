@@ -1,5 +1,7 @@
 import { query, queryAll } from '@/ts/shared/utils/dom/query'
 
+import { attachBackdropListener } from '@/ts/shared/elements/modal/_listeners/backdropListener'
+
 import type { ReviewModalOptions, ReviewModalInstance } from '@/ts/features/reviews/modal/types'
 import { SELECTORS } from '@/ts/features/reviews/modal/constants'
 import { resetModal } from '@/ts/features/reviews/modal/_ui/modal'
@@ -73,6 +75,7 @@ export default class ReviewModal implements ReviewModalInstance {
 
     attachBodyCounterListener(this)
     attachTriggerListener(triggers, (el) => toggleModal(this, el))
+    attachBackdropListener(this.modal, '.reviews-modal__body', () => closeModal(this))
     closeBtn?.addEventListener('click', () => closeModal(this))
     this.writeReview?.addEventListener('click', () => toggleReviewMode(this, true))
     this.justRate?.addEventListener('click', () => toggleReviewMode(this, false))

@@ -1,0 +1,7 @@
+{% macro render(request) %}
+    {% if request.pathinfo starts with '/product/show/' %}
+        {% import 'components/modals/zoom/zoom.html.twig' as ZoomModal %}
+
+        {{ ZoomModal.render() }}
+    {% endif %}
+{% endmacro %}

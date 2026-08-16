@@ -29,6 +29,25 @@
       overflow: hidden;
       cursor: pointer;
 
+      &-zoom {
+        @include flex-center;
+
+        position: absolute;
+        right: 1em;
+        z-index: 2;
+        border-radius: 50%;
+        background: colors.$secondary;
+        opacity: 0.85;
+        cursor: pointer;
+
+        &-icon {
+          @include size;
+
+          object-fit: contain;
+          filter: invert(100%);
+        }
+      }
+
       &-dots {
         @include flex;
         @include user-select;
