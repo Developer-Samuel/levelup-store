@@ -114,7 +114,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
       rabbitmq:
-        image: rabbitmq:4-management
+        image: rabbitmq:3-management
         ports:
           - 5672:5672
         options: >-
@@ -218,7 +218,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
       rabbitmq:
-        image: rabbitmq:4-management
+        image: rabbitmq:3-management
         ports:
           - 5672:5672
         options: >-
