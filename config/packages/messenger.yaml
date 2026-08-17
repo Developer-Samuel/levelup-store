@@ -6,16 +6,16 @@ framework:
       async:
         dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
 
-        options:
-          # RabbitMQ/AMQP options
-          exchange:
-            name: levelup_store
-            type: direct
-          queues:
-            levelup_store_emails:
-              binding_keys: [emails]
+        #options:
+          # RabbitMQ/AMQP options - uncomment when using AMQP transport
+          #exchange:
+            #name: levelup_store
+            #type: direct
+          #queues:
+            #levelup_store_emails:
+            #binding_keys: [emails]
 
-          # Doctrine transport options
+          # Doctrine transport options - uncomment when using Doctrine transport
           #use_notify: true
           #check_delayed_interval: 60000
 
