@@ -11,6 +11,8 @@ use Symfony\{
     Component\Security\Csrf\CsrfTokenManagerInterface
 };
 
+use App\Presentation\Auth\Manager\RefreshTokenCookieManager;
+
 use App\Core\Domain\Auth\Payload\UpdateVerificationPayload;
 
 use App\Core\Ports\{
@@ -35,6 +37,7 @@ class VerificationCommandController extends AbstractCrudCommandController
     public function __construct(
         private readonly StoreVerificationHandlerContract $storeVerificationHandler,
         private readonly UpdateVerificationHandlerContract $updateVerificationHandler,
+        private readonly RefreshTokenCookieManager $refreshTokenCookieManager,
         CsrfTokenManagerInterface $csrfTokenManager,
         AppLoggerContract $logger,
     ) {
@@ -69,10 +72,17 @@ class VerificationCommandController extends AbstractCrudCommandController
             token: $request->query->getString('token'),
         );
 
-        $verified = $this->updateVerificationHandler->handle($payload);
+        $tokenPair = $this->updateVerificationHandler->handle($payload);
 
-        return $verified
-            ? $this->redirectToRoute('home')
-            : $this->redirectToRoute('must_verify');
+        if ($tokenPair === null) {
+            return $this->redirectToRoute('must_verify');
+        }
+
+        $response = $this->redirectToRoute('home');
+        $response->headers->setCookie(
+            $this->refreshTokenCookieManager->create($tokenPair->refreshToken, $request->isSecure()),
+        );
+
+        return $response;
     }
 }

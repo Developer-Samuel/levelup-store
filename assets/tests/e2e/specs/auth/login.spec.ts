@@ -112,7 +112,7 @@ test.describe('Login Page', () => {
     }
 
     const loginBody = await loginResponse.text()
-    console.log(`[e2e] login response: HTTP ${loginResponse.status()} — ${loginBody}`)
+    console.log(`[e2e] login response: HTTP ${loginResponse.status()} - ${loginBody}`)
 
     await page.waitForURL((url) => !url.pathname.includes('/login'), { waitUntil: 'commit', timeout: 60_000 })
 

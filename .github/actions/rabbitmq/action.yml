@@ -1,0 +1,35 @@
+name: Setup RabbitMQ
+description: Setup dynamic RABBITMQ_URL and wait for RabbitMQ to be ready
+
+inputs:
+  rabbitmq-port:
+    description: Host port mapped to RabbitMQ 5672 (use different ports per job to avoid conflicts in act)
+    required: false
+    default: '5672'
+  rabbitmq-user:
+    description: RabbitMQ username
+    required: false
+    default: 'guest'
+  rabbitmq-password:
+    description: RabbitMQ password
+    required: false
+    default: 'guest'
+
+runs:
+  using: composite
+  steps:
+    - name: Setup dynamic RABBITMQ_URL
+      shell: bash
+      run: |
+        echo "RABBITMQ_URL=amqp://${{ inputs.rabbitmq-user }}:${{ inputs.rabbitmq-password }}@127.0.0.1:${{ inputs.rabbitmq-port }}/%2f" >> $GITHUB_ENV
+        echo "RABBITMQ_HOST=127.0.0.1" >> $GITHUB_ENV
+
+    - name: Wait for RabbitMQ
+      shell: bash
+      run: |
+        echo "Waiting for RabbitMQ to be ready..."
+        until nc -z 127.0.0.1 ${{ inputs.rabbitmq-port }}; do
+          echo "RabbitMQ is not ready yet..."
+          sleep 2
+        done
+        echo "RabbitMQ is ready on port ${{ inputs.rabbitmq-port }}."

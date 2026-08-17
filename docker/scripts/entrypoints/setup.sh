@@ -23,3 +23,7 @@ echo "✅ Migrations and seeding finished."
 
 echo "🔍 Checking frontend build (npm run build)..."
 /usr/local/bin/scripts/entrypoints/app/build.sh
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "✅ App is ready at http://localhost:8000"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

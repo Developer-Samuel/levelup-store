@@ -1,6 +1,7 @@
 graph TD
     %% Subgraph styles
     style DatabaseCache fill:#eceff1, stroke:#000, stroke-width:2px;
+    style MessageBroker fill:#eceff1, stroke:#000, stroke-width:2px;
     style App fill:#eceff1, stroke:#000, stroke-width:2px;
     style Web fill:#eceff1, stroke:#000, stroke-width:2px;
     style Monitoring fill:#eceff1, stroke:#000, stroke-width:2px;
@@ -25,11 +26,17 @@ graph TD
         Redis[🟧 Redis]
     end
 
+    %% Message Broker
+    subgraph MessageBroker["Message Broker"]
+        RabbitMQ[🐇 RabbitMQ]
+    end
+
     %% App Layer
     subgraph App["Application"]
         AppMain[🟪 PHP App]
         AppSetup[🟪 App Setup]
         Cron[⏱️ Cron/Scheduler]
+        Worker[⚙️ Messenger Worker]
     end
 
     %% Web Layer
@@ -47,18 +54,21 @@ graph TD
 
     %% Classes
     class Postgres,Redis database_cache;
-    class AppMain,AppSetup,Cron app;
+    class AppMain,AppSetup,Cron,Worker app;
     class Nginx,Vite web;
     class Adminer,Prometheus,Grafana monitoring;
 
     %% Connections
     Docker --> DatabaseCache
+    Docker --> MessageBroker
     Docker --> App
     Docker --> Web
     Docker --> Monitoring
 
     Postgres --> AppMain
     Redis --> AppMain
+    RabbitMQ --> AppMain
+    RabbitMQ --> Worker
     AppSetup --> Postgres
     AppMain --> Cron
     Nginx --> AppMain

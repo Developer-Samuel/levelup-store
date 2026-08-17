@@ -23,6 +23,14 @@ interface CartRepositoryContract
     public function findInactiveSince(\DateTimeImmutable $threshold): array;
 
     /**
+     * @param \DateTimeImmutable $from
+     * @param \DateTimeImmutable $to
+     *
+     * @return Cart[]
+    */
+    public function findAbandonedForReminder(\DateTimeImmutable $from, \DateTimeImmutable $to): array;
+
+    /**
      * @return Cart[]
     */
     public function findEmpty(): array;

@@ -113,6 +113,15 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+          - 5672:5672
+        options: >-
+          --health-cmd "rabbitmq-diagnostics -q ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v6
@@ -126,6 +135,10 @@ jobs:
       - uses: ./.github/actions/redis
         with:
           redis-port: '6379'
+
+      - uses: ./.github/actions/rabbitmq
+        with:
+          rabbitmq-port: '5672'
 
       - uses: ./.github/actions/env
         with:
@@ -204,6 +217,15 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+          - 5672:5672
+        options: >-
+          --health-cmd "rabbitmq-diagnostics -q ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v6
@@ -217,6 +239,10 @@ jobs:
       - uses: ./.github/actions/redis
         with:
           redis-port: '6379'
+
+      - uses: ./.github/actions/rabbitmq
+        with:
+          rabbitmq-port: '5672'
 
       - uses: ./.github/actions/env
         with:

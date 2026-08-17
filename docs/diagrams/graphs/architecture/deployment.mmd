@@ -2,6 +2,7 @@ graph TD
     %% Subgraph styles
     style Entrypoints fill:#eceff1, stroke:#000, stroke-width:2px;
     style DBCache fill:#eceff1, stroke:#000, stroke-width:2px;
+    style Broker fill:#eceff1, stroke:#000, stroke-width:2px;
     style ApiServices fill:#eceff1, stroke:#000, stroke-width:2px;
     style MonitoringLayer fill:#eceff1, stroke:#000, stroke-width:2px;
 
@@ -27,6 +28,11 @@ graph TD
         Cache[⚡ Redis Cache]:::db_cache
     end
 
+    %% Message Broker
+    subgraph Broker["Message Broker"]
+        Queue[🐇 RabbitMQ]:::api_service
+    end
+
     %% External APIs / Services
     subgraph ApiServices["External APIs & Services"]
         API[🌍 External API]:::api_service
@@ -46,6 +52,7 @@ graph TD
 
     App --> DB
     App --> Cache
+    App --> Queue
 
     App --> API
     App --> Stripe

@@ -10,6 +10,7 @@ use Doctrine\{
 };
 
 use Database\{
+    Macros\DateMacro,
     Macros\ForeignKeyMacro,
     Macros\IdMacro,
     Macros\IndexMacro,
@@ -63,6 +64,7 @@ final class CreateCartsTable
     private static function addStandardColumn(Table $table): void
     {
         BigIntegerMacro::unsignedBigInteger($table, 'user_id');
+        DateMacro::datetime($table, 'reminder_sent_at');
     }
 
     /**
