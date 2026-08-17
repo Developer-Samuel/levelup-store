@@ -119,6 +119,73 @@ class CartRepositoryTest extends KernelTestCase
         $this->assertEmpty($result);
     }
 
+    public function testFindAbandonedForReminderReturnsCartInWindow(): void
+    {
+        $user = $this->createAndPersistUser('abandoned@example.com');
+        $cart = $this->createAndPersistCart($user);
+        $variant = $this->createAndPersistVariant('SKU-AB-001', 'Variant Abandoned', 'variant-ab-001');
+        $this->createAndPersistCartItem($cart, $variant);
+
+        $this->forceUpdatedAt($cart, new \DateTimeImmutable('-2 days'));
+
+        $from = new \DateTimeImmutable('-1 day');
+        $to   = new \DateTimeImmutable('-7 days');
+
+        $result = $this->repository->findAbandonedForReminder($from, $to);
+
+        $this->assertContains($cart->getId(), $this->extractIds($result));
+    }
+
+    public function testFindAbandonedForReminderExcludesAlreadyReminded(): void
+    {
+        $user = $this->createAndPersistUser('reminded@example.com');
+        $cart = $this->createAndPersistCart($user);
+        $variant = $this->createAndPersistVariant('SKU-AB-002', 'Variant Reminded', 'variant-ab-002');
+        $this->createAndPersistCartItem($cart, $variant);
+
+        $this->forceUpdatedAt($cart, new \DateTimeImmutable('-2 days'));
+        $this->forceReminderSentAt($cart, new \DateTimeImmutable('-1 day'));
+
+        $from = new \DateTimeImmutable('-1 day');
+        $to   = new \DateTimeImmutable('-7 days');
+
+        $result = $this->repository->findAbandonedForReminder($from, $to);
+
+        $this->assertNotContains($cart->getId(), $this->extractIds($result));
+    }
+
+    public function testFindAbandonedForReminderExcludesEmptyCarts(): void
+    {
+        $user = $this->createAndPersistUser('emptyabandoned@example.com');
+        $cart = $this->createAndPersistCart($user);
+
+        $this->forceUpdatedAt($cart, new \DateTimeImmutable('-2 days'));
+
+        $from = new \DateTimeImmutable('-1 day');
+        $to   = new \DateTimeImmutable('-7 days');
+
+        $result = $this->repository->findAbandonedForReminder($from, $to);
+
+        $this->assertNotContains($cart->getId(), $this->extractIds($result));
+    }
+
+    public function testFindAbandonedForReminderExcludesRecentCarts(): void
+    {
+        $user = $this->createAndPersistUser('recent2@example.com');
+        $cart = $this->createAndPersistCart($user);
+        $variant = $this->createAndPersistVariant('SKU-AB-003', 'Variant Recent', 'variant-ab-003');
+        $this->createAndPersistCartItem($cart, $variant);
+
+        $this->forceUpdatedAt($cart, new \DateTimeImmutable('-30 minutes'));
+
+        $from = new \DateTimeImmutable('-1 day');
+        $to   = new \DateTimeImmutable('-7 days');
+
+        $result = $this->repository->findAbandonedForReminder($from, $to);
+
+        $this->assertNotContains($cart->getId(), $this->extractIds($result));
+    }
+
     public function testFindEmptyReturnsCartWithNoItems(): void
     {
         $user = $this->createAndPersistUser('empty@example.com');
@@ -174,6 +241,16 @@ class CartRepositoryTest extends KernelTestCase
     {
         $this->em->createQuery(
             'UPDATE ' . Cart::class . ' c SET c.updatedAt = :date WHERE c.id = :id',
+        )
+        ->setParameter('date', $date)
+        ->setParameter('id', $cart->getId())
+        ->execute();
+    }
+
+    private function forceReminderSentAt(Cart $cart, \DateTimeImmutable $date): void
+    {
+        $this->em->createQuery(
+            'UPDATE ' . Cart::class . ' c SET c.reminderSentAt = :date WHERE c.id = :id',
         )
         ->setParameter('date', $date)
         ->setParameter('id', $cart->getId())

@@ -44,6 +44,9 @@ class Cart
     #[ORM\Column(type: 'bigint', options: ['unsigned' => true])]
     private int $id;
 
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $reminderSentAt = null;
+
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(
         name: 'user_id',
@@ -73,5 +76,23 @@ class Cart
         $this->user = $user;
 
         $this->items = new ArrayCollection();
+    }
+
+    /**
+     * @return \DateTimeImmutable|null
+    */
+    public function getReminderSentAt(): ?\DateTimeImmutable
+    {
+        return $this->reminderSentAt;
+    }
+
+    /**
+     * @return self
+    */
+    public function markReminderSent(): self
+    {
+        $this->reminderSentAt = new \DateTimeImmutable();
+
+        return $this;
     }
 }

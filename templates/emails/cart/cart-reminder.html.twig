@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>You left something behind</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; }
+        .button {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            background-color: #0143f7;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 16px;
+        }
+        .warning { color: #cc0000; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Did you forget something? 🛒</h2>
+
+    <p>Hi {{ user.getFirstName() }},</p>
+
+    <p>We noticed you have items in your cart waiting for you.</p>
+
+    <p>Don't miss out — your items are still available. Complete your order before they're gone.</p>
+
+    <p class="warning">
+        ⚠️ Reminder: your cart will be automatically deleted in {{ daysRemaining }} day{{ daysRemaining != 1 ? 's' : '' }}.
+    </p>
+
+    <p>
+        <a href="{{ cartUrl }}" class="button" style="color: #fff;">View My Cart →</a>
+    </p>
+
+    <p>If you changed your mind, you don't need to do anything.</p>
+
+    <p>
+        Thanks,<br>
+        LevelUp Store
+    </p>
+</body>
+</html>

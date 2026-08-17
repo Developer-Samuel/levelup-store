@@ -57,6 +57,29 @@ class CartRepository extends ServiceEntityRepository implements CartRepositoryCo
     }
 
     /**
+     * @param \DateTimeImmutable $from
+     * @param \DateTimeImmutable $to
+     *
+     * @return Cart[]
+    */
+    public function findAbandonedForReminder(\DateTimeImmutable $from, \DateTimeImmutable $to): array
+    {
+        /** @var Cart[] $result */
+        $result = $this->createQueryBuilder('c')
+            ->innerJoin('c.items', 'i')
+            ->where('c.updatedAt < :from')
+            ->andWhere('c.updatedAt > :to')
+            ->andWhere('c.reminderSentAt IS NULL')
+            ->setParameter('from', $from)
+            ->setParameter('to', $to)
+            ->groupBy('c.id')
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
+
+    /**
      * @return Cart[]
     */
     public function findEmpty(): array

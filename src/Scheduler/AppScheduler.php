@@ -14,6 +14,7 @@ use Symfony\{
 
 use App\Scheduler\{
     Message\Cart\CartCleanupMessage,
+    Message\Cart\CartReminderMessage,
     Message\Cart\CartStockCleanupMessage,
     Message\Country\CountrySyncMessage,
     Message\Product\ProductRecommendedSyncMessage,
@@ -52,6 +53,7 @@ class AppScheduler implements ScheduleProviderInterface
             // Cart
             RecurringMessage::cron('0 0 * * *', new CartCleanupMessage()),
             RecurringMessage::every('15 minutes', new CartStockCleanupMessage()),
+            RecurringMessage::every('15 minutes', new CartReminderMessage()),
 
             // Product
             RecurringMessage::every('15 minutes', new ProductEanSyncMessage()),
