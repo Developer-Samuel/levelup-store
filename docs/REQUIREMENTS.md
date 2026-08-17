@@ -47,6 +47,6 @@ These improve developer experience, monitoring, or enable optional features. Not
 
 - `Docker` is optional; all services can run locally if preferred
 - `wkhtmltopdf` must be installed either locally or in Docker for PDF generation
-- Optional services (Redis, RabbitMQ, Adminer, Prometheus, Grafana) improve developer experience or monitoring but are not required to run the app — when disabled, Symfony Messenger falls back to a Doctrine-based queue
+- Optional services (Redis, RabbitMQ, Adminer, Prometheus, Grafana) improve developer experience or monitoring but are not required to run the app - when disabled, Symfony Messenger falls back to a Doctrine-based queue
 - SMTP and Stripe can be sandbox/test accounts for development
 - **For a comprehensive overview of the full [Tech Stack](docs/TECHSTACK.md), architecture, and all Quality Assurance tools, please refer to the documentation.**

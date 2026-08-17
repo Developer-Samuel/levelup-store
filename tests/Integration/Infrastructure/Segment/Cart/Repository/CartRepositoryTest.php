@@ -129,7 +129,7 @@ class CartRepositoryTest extends KernelTestCase
         $this->forceUpdatedAt($cart, new \DateTimeImmutable('-2 days'));
 
         $from = new \DateTimeImmutable('-1 day');
-        $to   = new \DateTimeImmutable('-7 days');
+        $to = new \DateTimeImmutable('-7 days');
 
         $result = $this->repository->findAbandonedForReminder($from, $to);
 
@@ -147,7 +147,7 @@ class CartRepositoryTest extends KernelTestCase
         $this->forceReminderSentAt($cart, new \DateTimeImmutable('-1 day'));
 
         $from = new \DateTimeImmutable('-1 day');
-        $to   = new \DateTimeImmutable('-7 days');
+        $to = new \DateTimeImmutable('-7 days');
 
         $result = $this->repository->findAbandonedForReminder($from, $to);
 
@@ -162,7 +162,7 @@ class CartRepositoryTest extends KernelTestCase
         $this->forceUpdatedAt($cart, new \DateTimeImmutable('-2 days'));
 
         $from = new \DateTimeImmutable('-1 day');
-        $to   = new \DateTimeImmutable('-7 days');
+        $to = new \DateTimeImmutable('-7 days');
 
         $result = $this->repository->findAbandonedForReminder($from, $to);
 
@@ -179,7 +179,7 @@ class CartRepositoryTest extends KernelTestCase
         $this->forceUpdatedAt($cart, new \DateTimeImmutable('-30 minutes'));
 
         $from = new \DateTimeImmutable('-1 day');
-        $to   = new \DateTimeImmutable('-7 days');
+        $to = new \DateTimeImmutable('-7 days');
 
         $result = $this->repository->findAbandonedForReminder($from, $to);
 

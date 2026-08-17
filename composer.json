@@ -195,13 +195,13 @@
       "Composer\\Config::disableProcessTimeout",
       "php scripts/tools/pdepend/launcher.php"
     ],
-    "rector:fix": [
-      "Composer\\Config::disableProcessTimeout",
-      "rector process"
-    ],
     "php-cs-fixer:fix": [
       "Composer\\Config::disableProcessTimeout",
       "php scripts/tools/php-cs-fixer/launcher.php"
+    ],
+    "rector:fix": [
+      "Composer\\Config::disableProcessTimeout",
+      "rector process"
     ],
     "php-unit": [
       "Composer\\Config::disableProcessTimeout",

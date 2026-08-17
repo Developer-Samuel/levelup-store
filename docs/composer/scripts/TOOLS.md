@@ -54,16 +54,6 @@ This file documents all custom Composer scripts related to static analysis, metr
 
 ---
 
-## 🛠️ Refactoring
-
-### rector:fix
-
-- **Command**: `rector process`
-- **Purpose**: Performs automated code refactoring and modernization.
-- **Timeout Disabled** via `Composer\\Config::disableProcessTimeout`: for long-running refactoring tasks.
-
----
-
 ## 🎨 Formatting
 
 ### php-cs-fixer:fix
@@ -71,6 +61,16 @@ This file documents all custom Composer scripts related to static analysis, metr
 - **Command**: `php scripts/tools/php-cs-fixer/launcher.php`
 - **Purpose**: Automatically formats PHP code to comply with defined coding standards.
 - **Timeout Disabled** via `Composer\\Config::disableProcessTimeout`: for long-running formatting tasks.
+
+---
+
+## 🛠️ Refactoring
+
+### rector:fix
+
+- **Command**: `rector process`
+- **Purpose**: Performs automated code refactoring and modernization.
+- **Timeout Disabled** via `Composer\\Config::disableProcessTimeout`: for long-running refactoring tasks.
 
 ---
 

@@ -28,8 +28,8 @@ use App\Scheduler\{
 #[AsMessageHandler]
 class CartReminderTask extends AbstractTask
 {
-    private const INACTIVE_HOURS  = 24;
-    private const EXPIRY_DAYS     = 7;
+    private const INACTIVE_HOURS = 24;
+    private const EXPIRY_DAYS = 7;
 
     /**
      * @param CartRepositoryContract $cartRepository
@@ -72,7 +72,7 @@ class CartReminderTask extends AbstractTask
     protected function fetchItems(): iterable
     {
         $from = new \DateTimeImmutable(sprintf('-%d hours', self::INACTIVE_HOURS));
-        $to   = new \DateTimeImmutable(sprintf('-%d days', self::EXPIRY_DAYS));
+        $to = new \DateTimeImmutable(sprintf('-%d days', self::EXPIRY_DAYS));
 
         return $this->cartRepository->findAbandonedForReminder($from, $to);
     }
@@ -84,7 +84,7 @@ class CartReminderTask extends AbstractTask
     */
     protected function processItems(iterable $items): int
     {
-        $count   = 0;
+        $count = 0;
         $cartUrl = $this->urlGenerator->generate('home', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
         foreach ($items as $cart) {
@@ -112,7 +112,7 @@ class CartReminderTask extends AbstractTask
     {
         $updatedAt = $cart->getUpdatedAt() ?? $cart->getCreatedAt();
         $expiresAt = $updatedAt->modify(sprintf('+%d days', self::EXPIRY_DAYS));
-        $diff      = (new \DateTimeImmutable())->diff($expiresAt);
+        $diff = (new \DateTimeImmutable())->diff($expiresAt);
 
         return max(1, $diff->days);
     }

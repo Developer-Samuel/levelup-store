@@ -91,8 +91,8 @@ We maintain 100% focus on code quality using these tools:
 | PHPLoc       | Lines of Code (LOC) analyzer                   | composer php-loc          |
 | PHPMetrics   | Visual quality metrics and complexity analysis | composer php-metrics      |
 | PDepend      | Design metrics and software artifacts          | composer pdepend          |
-| Rector       | Automated refactoring and upgrades             | composer rector:fix       |
 | PHP CS Fixer | Coding standards enforcement                   | composer php-cs-fixer:fix |
+| Rector       | Automated refactoring and upgrades             | composer rector:fix       |
 
 ### Frontend QA
 

@@ -86,7 +86,7 @@ Modify these framework configs only for engine-level changes (e.g., switching ad
 - `config/packages/cache.yaml` → Cache adapter (`Redis` / `filesystem`)
 - `config/packages/doctrine.yaml` → Database engine (`PostgreSQL` or `MySQL`)
 - `config/packages/framework.yaml` → Session handler (`Redis` or `Native`)
-- `config/packages/messenger.yaml` → Async transport (`RabbitMQ/AMQP` or `Doctrine` fallback). AMQP-specific options (`exchange`, `queues`) are commented out by default — uncomment when running with RabbitMQ enabled.
+- `config/packages/messenger.yaml` → Async transport (`RabbitMQ/AMQP` or `Doctrine` fallback). AMQP-specific options (`exchange`, `queues`) are commented out by default - uncomment when running with RabbitMQ enabled.
 
 ---
 
