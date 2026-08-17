@@ -1,3 +1,21 @@
+## [v1.3.0] - 2026-08-17
+
+## [1.3.0] - 2026-08-17
+
+### 🚀 Features                                                                                                                                                                  
+- Abandoned cart reminder email via scheduler
+- Auto-login user after email verification
+- RabbitMQ messaging infrastructure with AMQP transport
+
+### 🏗️  Infrastructure
+- RabbitMQ service added to CI test pipeline (PHPUnit + E2E)
+- Composite action for RabbitMQ health-check setup
+
+### 🐛 Fixes
+- Prevent order creation when notification fails
+- Resolve Deptrac architecture violation in CartReminderTask
+- Comment out transport-specific messenger options to support Doctrine fallback
+
 ## [v1.2.0] - 2026-08-16
 
 ## [1.2.0] - 2026-08-16
