@@ -36,9 +36,17 @@ Core variables to check / configure:
   Supports PostgreSQL or MySQL.
 
 - **Redis**  
-  `REDIS_URL`  
-  Used for cache and sessions. Disable if not required.
+  `REDIS_ENABLED`, `REDIS_URL`  
+  Used for cache and sessions.  
+  - Set `REDIS_ENABLED=true` to use Redis.  
+  - Set `REDIS_ENABLED=false` to fall back to filesystem cache.
 
+- **RabbitMQ**  
+  `RABBITMQ_ENABLED`, `RABBITMQ_HOST`, `RABBITMQ_PORT`, `RABBITMQ_USER`, `RABBITMQ_PASS`, `RABBITMQ_VHOST`, `MESSENGER_TRANSPORT_DSN`  
+  Used for async message queue (emails, background tasks).  
+  - Set `RABBITMQ_ENABLED=true` to use RabbitMQ (requires broker running).  
+  - Set `RABBITMQ_ENABLED=false` to fall back to Doctrine queue (no broker needed).
+  
 - **Mailer**  
   `MAILER_DSN`  
   SMTP / email service configuration.
@@ -75,9 +83,10 @@ Defaults for:
 - Redis (cache, sessions, rate limiting)
 
 Modify these framework configs only for engine-level changes (e.g., switching adapters):
-- `config/packages/cache.yaml` -> Cache adapter (`Redis`/`filesystem`)
-- `config/packages/doctrine.yaml` -> Database engine (`PostgreSQL` or `MySQL`)
-- `config/packages/framework.yaml` -> Session handler (`Redis` or `Native`)
+- `config/packages/cache.yaml` → Cache adapter (`Redis` / `filesystem`)
+- `config/packages/doctrine.yaml` → Database engine (`PostgreSQL` or `MySQL`)
+- `config/packages/framework.yaml` → Session handler (`Redis` or `Native`)
+- `config/packages/messenger.yaml` → Async transport (`RabbitMQ/AMQP` or `Doctrine` fallback). AMQP-specific options (`exchange`, `queues`) are commented out by default — uncomment when running with RabbitMQ enabled.
 
 ---
 

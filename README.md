@@ -7,7 +7,7 @@ Designed for security, scalability, robustness, observability, and maintainabili
 - Cart, checkout, and order management with Stripe and cash-on-delivery
 - JWT authentication - login, signup, password reset, email verification
 - Admin panel with dashboard analytics, CRUD for products, orders, and users
-- Wishlist, reviews with reactions, PDF invoices, and Redis caching
+- Wishlist, reviews with reactions, PDF invoices, Redis caching, and async email queue via RabbitMQ
 
 ---
 
@@ -46,6 +46,7 @@ src/
 | Frontend       | Vanilla TypeScript, SCSS, Vite             |
 | Database       | PostgreSQL / MySQL                         |
 | Cache          | Redis (cache, sessions, rate limiting)     |
+| Queue          | RabbitMQ / Doctrine (Symfony Messenger)    |
 | Payments       | Stripe API (card), cash-on-delivery        |
 | Infrastructure | Docker, Nginx, Prometheus, Grafana, Sentry |
 | Testing        | PHPUnit, Vitest, Playwright                |

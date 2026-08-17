@@ -15,6 +15,7 @@ This document provides a comprehensive overview of the technologies, frameworks,
 - **Migration Tool:** Doctrine Migrations
 - **Emailing:** Symfony Mailer (SMTP)
 - **Task Scheduling:** Symfony Scheduler & Cron
+- **Async Messaging:** Symfony Messenger (AMQP via RabbitMQ / Doctrine fallback)
 
 ---
 
@@ -36,6 +37,7 @@ This document provides a comprehensive overview of the technologies, frameworks,
 - **Version Control:** Git
 - **Database:** PostgreSQL (Primary) / MySQL (Secondary)
 - **Caching & Storage:** Redis (cache, sessions, rate limiting)
+- **Message Broker:** RabbitMQ (async email queue via Symfony Messenger)
 - **External API**: REST API [apicountries.com](https://www.apicountries.com/countries) for country data ingestion
 - **Payment Gateway:** Stripe API
 - **PDF Generation:** wkhtmltopdf
