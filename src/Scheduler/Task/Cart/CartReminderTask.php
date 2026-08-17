@@ -18,7 +18,7 @@ use App\Core\Ports\{
     Shared\Logging\ConsoleLoggerContract
 };
 
-use App\Infrastructure\Segment\Cart\Email\CartReminderEmail;
+use App\Core\Ports\Segment\Cart\Email\CartReminderEmailContract;
 
 use App\Scheduler\{
     Abstract\AbstractTask,
@@ -33,14 +33,14 @@ class CartReminderTask extends AbstractTask
 
     /**
      * @param CartRepositoryContract $cartRepository
-     * @param CartReminderEmail $cartReminderEmail
+     * @param CartReminderEmailContract $cartReminderEmail
      * @param UrlGeneratorInterface $urlGenerator
      * @param EntityManagerInterface $entityManager
      * @param ConsoleLoggerContract $logger
     */
     public function __construct(
         private readonly CartRepositoryContract $cartRepository,
-        private readonly CartReminderEmail $cartReminderEmail,
+        private readonly CartReminderEmailContract $cartReminderEmail,
         private readonly UrlGeneratorInterface $urlGenerator,
         EntityManagerInterface $entityManager,
         ConsoleLoggerContract $logger,
